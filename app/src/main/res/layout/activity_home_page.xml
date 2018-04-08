@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.lianghuawang.cottonfarmer.activity.HomePageActivity">
+    <FrameLayout
+        android:id="@+id/fragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+    <RadioGroup
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:fadingEdge="none"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_01"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background01"
+            android:button="@null"
+            android:checked="true"
+            android:drawableTop="@mipmap/home"
+            android:gravity="center"
+            android:text="首页" />
+
+        <RadioButton
+            android:id="@+id/rb_02"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background01"
+            android:button="@null"
+            android:drawableTop="@mipmap/comments"
+            android:gravity="center"
+            android:text="消息" />
+
+
+        <RadioButton
+            android:id="@+id/rb_03"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background01"
+            android:button="@null"
+            android:drawableTop="@mipmap/form"
+            android:gravity="center"
+            android:text="订单" />
+
+        <RadioButton
+            android:id="@+id/rb_04"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/background01"
+            android:button="@null"
+            android:drawableTop="@mipmap/account"
+            android:gravity="center"
+            android:text="我的" />
+
+
+    </RadioGroup>
+</LinearLayout>

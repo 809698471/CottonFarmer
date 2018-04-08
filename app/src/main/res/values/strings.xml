@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">cottonfarmer</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment1">首页</string>
+    <string name="hello_blank_fragment2">消息</string>
+    <string name="hello_blank_fragment3">订单</string>
+    <string name="hello_blank_fragment4">我的</string>
+</resources>
