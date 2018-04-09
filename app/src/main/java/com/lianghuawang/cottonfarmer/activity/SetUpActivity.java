@@ -1,15 +1,18 @@
 package com.lianghuawang.cottonfarmer.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 import com.lianghuawang.cottonfarmer.R;
 //我的设置
-public class SetUpActivity extends AppCompatActivity {
+public class SetUpActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_set_up);
+    protected int getLayoutId() {
+        return R.layout.activity_set_up;
     }
+
+    @Override
+    protected void init() {
+
+    }
+
+
 }

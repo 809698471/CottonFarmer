@@ -1,15 +1,16 @@
 package com.lianghuawang.cottonfarmer.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 import com.lianghuawang.cottonfarmer.R;
 //我的保险
-public class InsuranceActivity extends AppCompatActivity {
+public class InsuranceActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_insurance_activity);
+    protected int getLayoutId() {
+        return R.layout.activity_insurance;
+    }
+
+    @Override
+    protected void init() {
+
     }
 }

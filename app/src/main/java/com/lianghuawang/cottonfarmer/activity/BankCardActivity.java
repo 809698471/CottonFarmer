@@ -1,15 +1,16 @@
 package com.lianghuawang.cottonfarmer.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-
 import com.lianghuawang.cottonfarmer.R;
 //我的银行卡
-public class BankCardActivity extends AppCompatActivity {
+public class BankCardActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bank_card);
+    protected int getLayoutId() {
+        return R.layout.activity_bank_card;
+    }
+
+    @Override
+    protected void init() {
+
     }
 }
