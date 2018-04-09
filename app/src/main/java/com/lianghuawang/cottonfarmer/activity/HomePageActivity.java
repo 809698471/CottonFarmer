@@ -31,6 +31,7 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     private OrderFragment orderFragment;
     private MyFragment myFragment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
