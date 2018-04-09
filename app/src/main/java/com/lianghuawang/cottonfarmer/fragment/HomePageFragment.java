@@ -1,6 +1,7 @@
 package com.lianghuawang.cottonfarmer.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,12 @@ import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.Bean;
 import com.lianghuawang.cottonfarmer.GridAdapter;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.activity.BuyInsuranceActivity;
+import com.lianghuawang.cottonfarmer.activity.CooperativeOrganizationActivity;
+import com.lianghuawang.cottonfarmer.activity.CottonTradeActivity;
+import com.lianghuawang.cottonfarmer.activity.IWantToBorrowMoneyActivity;
+import com.lianghuawang.cottonfarmer.activity.MyCreditActivity;
+import com.lianghuawang.cottonfarmer.activity.OrderAgriculturalCapitalActivity;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -53,15 +60,17 @@ public class HomePageFragment extends Fragment {
         return view;
 
     }
+
     private void initView(View view) {
         grid_banner = (Banner) view.findViewById(R.id.grid_banner);
         main_grid = (GridView) view.findViewById(R.id.main_grid);
         image1 = (ImageView) view.findViewById(R.id.image1);
         image2 = (ImageView) view.findViewById(R.id.image2);
     }
+
     private void grid() {
 
-        Bean bean1 = new Bean("购买保险", R.mipmap.ic_launcher);
+        final Bean bean1 = new Bean("购买保险", R.mipmap.ic_launcher);
         Bean bean2 = new Bean("我要借款", R.mipmap.ic_launcher);
         Bean bean3 = new Bean("订购农资", R.mipmap.ic_launcher);
         Bean bean4 = new Bean("棉花交易", R.mipmap.ic_launcher);
@@ -79,7 +88,26 @@ public class HomePageFragment extends Fragment {
         main_grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(), beans.get(position).getName(), Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getActivity(), beans.get(position).getName(), Toast.LENGTH_SHORT).show();
+                if (position == 0) {
+                    //购买保险
+                    startActivity(new Intent(getActivity(),BuyInsuranceActivity.class));
+                } else if (position == 1) {
+                    //我要借款
+                    startActivity(new Intent(getActivity(),IWantToBorrowMoneyActivity.class));
+                } else if (position == 2) {
+                    //订购农资
+                    startActivity(new Intent(getActivity(),OrderAgriculturalCapitalActivity.class));
+                } else if (position == 3) {
+                    //棉花交易
+                    startActivity(new Intent(getActivity(),CottonTradeActivity.class));
+                } else if (position == 4) {
+                    //合作组织
+                    startActivity(new Intent(getActivity(),CooperativeOrganizationActivity.class));
+                } else if (position == 5) {
+                    //我的信用
+                    startActivity(new Intent(getActivity(),MyCreditActivity.class));
+                }
             }
         });
     }
@@ -129,7 +157,6 @@ public class HomePageFragment extends Fragment {
             }
         });
     }
-
 
 
 }

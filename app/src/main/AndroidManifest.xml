@@ -27,8 +27,15 @@
         <activity android:name=".activity.InsuranceActivity" />
         <activity android:name=".activity.ClaimCompensationActivity" />
         <activity android:name=".activity.CreditActivity" />
-        <activity android:name=".activity.LoanActivity"/>
-        <activity android:name=".module.login.LoginActivity"/>
+        <activity android:name=".activity.LoanActivity" />
+        <activity android:name=".module.login.LoginActivity" />
+        <activity android:name=".activity.BuyInsuranceActivity" />
+        <activity android:name=".activity.IWantToBorrowMoneyActivity" />
+        <activity android:name=".activity.OrderAgriculturalCapitalActivity" />
+        <activity android:name=".activity.CottonTradeActivity" />
+        <activity android:name=".activity.CooperativeOrganizationActivity" />
+        <activity android:name=".activity.MyCreditActivity" />
+        <activity android:name=".activity.CreditIntroductionActivity"></activity>
     </application>
 
 </manifest>
