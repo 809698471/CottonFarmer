@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.lianghuawang.cottonfarmer.mvp.base.BaseView;
 
+import butterknife.ButterKnife;
+
 
 /**
  *
@@ -17,6 +19,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
+        ButterKnife.bind(this);
         initView();
     }
 
@@ -24,5 +27,9 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
 
     protected abstract void initView();
 
-
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.unbind(this);
+    }
 }

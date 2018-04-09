@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.lianghuawang.cottonfarmer.activity.HomePageActivity;
+import com.lianghuawang.cottonfarmer.module.login.LoginActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -41,7 +41,7 @@ public class AdvertisingPageActivity extends AppCompatActivity implements View.O
             @Override
             public void run() {
                 //从闪屏界面跳转到首界面
-                Intent intent = new Intent(AdvertisingPageActivity.this, HomePageActivity.class);
+                Intent intent = new Intent(AdvertisingPageActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -78,7 +78,7 @@ public class AdvertisingPageActivity extends AppCompatActivity implements View.O
         switch (v.getId()) {
             case R.id.tv:
                 //从闪屏界面跳转到首界面
-                Intent intent = new Intent(AdvertisingPageActivity.this, HomePageActivity.class);
+                Intent intent = new Intent(AdvertisingPageActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
                 if (runnable != null) {

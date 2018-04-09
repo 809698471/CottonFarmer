@@ -1,6 +1,8 @@
 package com.lianghuawang.cottonfarmer.activity;
 
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+
 //报案理赔
 public class ClaimCompensationActivity extends BaseActivity {
 
@@ -10,7 +12,7 @@ public class ClaimCompensationActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void initView() {
 
     }
 }

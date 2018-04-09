@@ -6,4 +6,16 @@
     <string name="hello_blank_fragment2">消息</string>
     <string name="hello_blank_fragment3">订单</string>
     <string name="hello_blank_fragment4">我的</string>
+
+    <string name="hint_login_username">请输入手机号码</string>
+    <string name="hint_login_password">输入密码</string>
+    <string name="login">登录</string>
+    <string name="login_forget_pwd">忘记密码</string>
+    <string name="please_input_limit_pwd">请输入数字或字母</string>
+    
+    <!-- LoginActivity-->
+    <string name="automaticLogin">下次自动登陆</string>
+    <string name="username_null">手机号不能为空</string>
+    <string name="password_null">密码不能为空</string>
+    <string name="phone_illegal">手机号不合法</string>
 </resources>

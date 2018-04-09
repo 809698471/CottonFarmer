@@ -1,6 +1,8 @@
 package com.lianghuawang.cottonfarmer.activity;
 
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+
 //我的账本
 public class TheBooksActivity extends BaseActivity {
 
@@ -10,7 +12,7 @@ public class TheBooksActivity extends BaseActivity {
     }
 
     @Override
-    protected void init() {
+    protected void initView() {
 
     }
 }

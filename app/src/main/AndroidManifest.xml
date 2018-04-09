@@ -21,14 +21,14 @@
         </activity>
         <activity android:name=".activity.HomePageActivity" />
         <activity android:name=".AdvertisingPageActivity" />
-        <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.SetUpActivity" />
         <activity android:name=".activity.BankCardActivity" />
         <activity android:name=".activity.TheBooksActivity" />
         <activity android:name=".activity.InsuranceActivity" />
         <activity android:name=".activity.ClaimCompensationActivity" />
         <activity android:name=".activity.CreditActivity" />
-        <activity android:name=".activity.LoanActivity"></activity>
+        <activity android:name=".activity.LoanActivity"/>
+        <activity android:name=".module.login.LoginActivity"/>
     </application>
 
 </manifest>
