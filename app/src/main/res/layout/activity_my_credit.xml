@@ -19,12 +19,12 @@
             android:src="@drawable/back" />
 
         <TextView
+            android:textStyle="bold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
             android:gravity="center_horizontal"
             android:text="我的信用"
-
             android:textSize="15sp" />
     </LinearLayout>
 
@@ -73,6 +73,7 @@
         android:layout_height="1dp"
         android:background="@color/coloroe" />
     <Button
+        android:id="@+id/my_credit_btn"
         android:background="@drawable/btn"
         android:text="信用提升"
         android:textColor="@color/white"
