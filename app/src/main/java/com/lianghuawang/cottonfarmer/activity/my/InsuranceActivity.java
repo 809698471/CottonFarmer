@@ -1,15 +1,14 @@
-package com.lianghuawang.cottonfarmer.activity;
+package com.lianghuawang.cottonfarmer.activity.my;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
-//购买保险
-public class BuyInsuranceActivity extends BaseActivity {
-
+//我的保险
+public class InsuranceActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_buy_insurance;
+        return R.layout.activity_insurance;
     }
 
     @Override

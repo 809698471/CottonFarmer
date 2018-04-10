@@ -26,4 +26,8 @@
     <string name="register">注册</string>
     <string name="back_login">返回登录</string>
     <string name="registerSuccess">注册成功</string>
+
+    <!--InsuranceActivity-->
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

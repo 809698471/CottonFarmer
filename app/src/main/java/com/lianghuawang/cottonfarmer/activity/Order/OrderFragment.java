@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.fragment;
+package com.lianghuawang.cottonfarmer.activity.Order;
 
 
 import android.os.Bundle;

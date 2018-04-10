@@ -25,11 +25,11 @@
         <activity android:name=".activity.SetUpActivity" />
         <activity android:name=".activity.BankCardActivity" />
         <activity android:name=".activity.TheBooksActivity" />
-        <activity android:name=".activity.InsuranceActivity" />
+        <activity android:name=".activity.my.InsuranceActivity" />
         <activity android:name=".activity.ClaimCompensationActivity" />
         <activity android:name=".activity.LoanActivity" />
         <activity android:name=".module.login.LoginActivity" />
-        <activity android:name=".activity.BuyInsuranceActivity" />
+        <activity android:name=".activity.Home.BuyInsuranceActivity" />
         <activity android:name=".activity.IWantToBorrowMoneyActivity" />
         <activity android:name=".activity.OrderAgriculturalCapitalActivity" />
         <activity android:name=".activity.CottonTradeActivity" />
