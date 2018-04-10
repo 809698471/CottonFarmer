@@ -1,11 +1,8 @@
 package com.lianghuawang.cottonfarmer.utils;
 
-import android.content.Context;
-import android.widget.Toast;
-
-import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
-
+/**
+ * 登录／注册工具
+ */
 public class LoginUtils {
     /**
      * 验证用户名是否为空

@@ -4,20 +4,22 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Button;
 
+import com.lianghuawang.cottonfarmer.MyApp;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.mvp.base.BasePresenter;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.utils.LoginUtils;
+import com.lianghuawang.cottonfarmer.utils.TimekeeperUtil;
 
 
 public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
 
-    private final static int NUMBER = 50;
-    private Handler handler;
+    private final static int NUMBER = 5;
     private int count_number = NUMBER;
-
+    private TimekeeperUtil timekeeperUtil;
+    private Button button;
     /**
      * 登录验证
      *
@@ -52,46 +54,27 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
         getView().login();
     }
 
-    @SuppressLint("HandlerLeak")
-    public void captcha(final Context context) {
-        final Times[] times = {new Times()};
-        times[0].start();
-        handler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                int i = msg.what;
-                String message = i + "";
-                if (i == -1) {
-                    times[0] = null;
-                    message = (String) context.getResources().getText(R.string.captcha);
-                }
-                getView().captcha(message);
-            }
-        };
+
+    public void captcha(Button mCaptcha) {
+        timekeeperUtil = new TimekeeperUtil(handler,NUMBER,count_number);
+        timekeeperUtil.start();
+        button = mCaptcha;
+        button.setEnabled(false);
     }
 
-    class Times extends Thread {
+    @SuppressLint("HandlerLeak")
+    private Handler handler = new Handler() {
         @Override
-        public void run() {
-            super.run();
-            while (true) {
-                if (count_number < 0) {
-                    count_number = NUMBER;
-                    return;
-                }
-                Message message = new Message();
-                message.what = count_number;
-                if (count_number == 0) {
-                    message.what = -1;
-                }
-                LoginPresenter.this.handler.sendMessage(message);
-                try {
-                    sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                count_number--;
+        public void handleMessage(Message msg) {
+            int i = msg.what;
+            String message = i + "";
+            if (i == -1) {
+                timekeeperUtil = null;
+                message = (String) MyApp.getInstance().getText(R.string.captcha);
+                button.setEnabled(true);
             }
+            getView().captcha(message);
         }
-    }
+    };
+
 }

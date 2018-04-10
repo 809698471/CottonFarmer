@@ -50,7 +50,7 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
                 mPresenter.startlogin(this, user, pass);
                 break;
             case R.id.btn_login_captcha:
-                mPresenter.captcha(this);
+                mPresenter.captcha(mCaptcha);
                 break;
             default:
         }
