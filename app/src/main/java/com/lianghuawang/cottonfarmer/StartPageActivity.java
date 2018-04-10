@@ -33,7 +33,7 @@ public class StartPageActivity extends AppCompatActivity {
                     public void run() {
                         Intent intent = new Intent(StartPageActivity.this, AdvertisingPageActivity.class);
                         startActivity(intent);
-
+                        finish();
                     }
                 });
             }

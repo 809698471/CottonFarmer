@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="data">
+        <item>棉花</item>
+        <item>稻谷</item>
+        <item>麦子</item>
+        <item>小米</item>
+    </string-array>
+    <string-array name="corps">
+        <item>一团</item>
+        <item>二团</item>
+        <item>三团</item>
+        <item>四团</item>
+    </string-array>
+    <string-array name="address">
+        <item>新疆1</item>
+        <item>新疆2</item>
+        <item>新疆3</item>
+        <item>新疆4</item>
+    </string-array>
+    <string-array name="other">
+        <item>吃</item>
+        <item>喝</item>
+        <item>玩</item>
+        <item>乐</item>
+    </string-array>
+</resources>

@@ -1,5 +1,6 @@
 package com.lianghuawang.cottonfarmer.module.personalinformation.activity;
 
+
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
@@ -10,7 +11,9 @@ public class PlantingInformationActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
+
         return R.layout.activity_planting_information;
+
     }
 
     @Override
