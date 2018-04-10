@@ -29,18 +29,18 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
      */
     public void startlogin(Context context, String usename, String password) {
 
-        if (!LoginUtils.isEmpty_Username(usename)) {//验证用户名不为空
-            ToastUtils.showLong(context, context.getResources().getText(R.string.username_null));
-            return;
-        }
-        if (!LoginUtils.isMobile(usename)) {//验证用户名合法性
-            ToastUtils.showLong(context, context.getResources().getText(R.string.phone_illegal));
-            return;
-        }
-        if (!LoginUtils.isEmpty_Passwrod(password)) {//验证密码不为空
-            ToastUtils.showLong(context, context.getResources().getText(R.string.password_null));
-            return;
-        }
+//        if (!LoginUtils.isEmpty_Username(usename)) {//验证用户名不为空
+//            ToastUtils.showLong(context, context.getResources().getText(R.string.username_null));
+//            return;
+//        }
+//        if (!LoginUtils.isMobile(usename)) {//验证用户名合法性
+//            ToastUtils.showLong(context, context.getResources().getText(R.string.phone_illegal));
+//            return;
+//        }
+//        if (!LoginUtils.isEmpty_Passwrod(password)) {//验证密码不为空
+//            ToastUtils.showLong(context, context.getResources().getText(R.string.password_null));
+//            return;
+//        }
 
         startHttp();
     }
