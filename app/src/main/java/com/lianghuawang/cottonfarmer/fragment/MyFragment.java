@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.BankCardActivity;
 import com.lianghuawang.cottonfarmer.activity.ClaimCompensationActivity;
-import com.lianghuawang.cottonfarmer.activity.CreditActivity;
 import com.lianghuawang.cottonfarmer.activity.InsuranceActivity;
 import com.lianghuawang.cottonfarmer.activity.LoanActivity;
+import com.lianghuawang.cottonfarmer.activity.MyCreditActivity;
 import com.lianghuawang.cottonfarmer.activity.SetUpActivity;
 import com.lianghuawang.cottonfarmer.activity.TheBooksActivity;
 
@@ -88,7 +88,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 break;
             //我的信用
             case R.id.myfragment_credit:
-                startActivity(new Intent(getActivity(), CreditActivity.class));
+                startActivity(new Intent(getActivity(), MyCreditActivity.class));
                 break;
             //我的贷款
             case R.id.myfragment_loan:

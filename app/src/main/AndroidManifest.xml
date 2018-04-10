@@ -27,7 +27,6 @@
         <activity android:name=".activity.TheBooksActivity" />
         <activity android:name=".activity.InsuranceActivity" />
         <activity android:name=".activity.ClaimCompensationActivity" />
-        <activity android:name=".activity.CreditActivity" />
         <activity android:name=".activity.LoanActivity" />
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".activity.BuyInsuranceActivity" />
@@ -36,12 +35,19 @@
         <activity android:name=".activity.CottonTradeActivity" />
         <activity android:name=".activity.CooperativeOrganizationActivity" />
         <activity android:name=".activity.MyCreditActivity" />
-        <activity android:name=".activity.CreditIntroductionActivity" />
+        <activity android:name=".module.mycredit.CreditIntroductionActivity" />
         <activity android:name=".module.register.RegisterActivity" />
         <activity android:name=".activity.ReceivingAddressActivity" />
         <activity android:name=".activity.PaymentPasswordSettingsActivity" />
         <activity android:name=".activity.HelpActivity" />
-        <activity android:name=".activity.PromotionOfCreditActivity"></activity>
+        <activity android:name=".module.mycredit.PromotionOfCreditActivity" />
+        <activity android:name=".module.mycredit.activity.AuthenticationActivity" />
+        <activity android:name=".module.mycredit.activity.BankCardBindingActivity" />
+        <activity android:name=".module.personalinformation.PersonalInformationActivity" />
+        <activity android:name=".module.personalinformation.activity.EssentialInformationActivity" />
+        <activity android:name=".module.personalinformation.activity.PlantingInformationActivity" />
+        <activity android:name=".module.personalinformation.activity.ProofOfOwnershipActivity" />
+        <activity android:name=".module.personalinformation.activity.InsurancePurchaseRecordActivity"></activity>
     </application>
 
 </manifest>
