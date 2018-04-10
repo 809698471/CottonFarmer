@@ -36,7 +36,8 @@
         <activity android:name=".activity.CottonTradeActivity" />
         <activity android:name=".activity.CooperativeOrganizationActivity" />
         <activity android:name=".activity.MyCreditActivity" />
-        <activity android:name=".activity.CreditIntroductionActivity"></activity>
+        <activity android:name=".activity.CreditIntroductionActivity"/>
+        <activity android:name=".module.register.RegisterActivity"/>
     </application>
 
 </manifest>

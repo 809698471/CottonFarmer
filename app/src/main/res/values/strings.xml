@@ -20,4 +20,10 @@
     <string name="phone_illegal">手机号不合法</string>
     <string name="loginsuccess">登录成功</string>
     <string name="captcha">获取验证码</string>
+    <string name="new_register">注册新用户</string>
+
+    <!--RegisterActivity-->
+    <string name="register">注册</string>
+    <string name="back_login">返回登录</string>
+    <string name="registerSuccess">注册成功</string>
 </resources>
