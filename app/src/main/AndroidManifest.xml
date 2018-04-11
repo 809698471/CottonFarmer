@@ -29,7 +29,7 @@
         <activity android:name=".activity.ClaimCompensationActivity" />
         <activity android:name=".activity.LoanActivity" />
         <activity android:name=".module.login.LoginActivity" />
-        <activity android:name=".activity.Home.BuyInsuranceActivity" />
+        <activity android:name=".activity.home.insurance.BuyInsuranceActivity" />
         <activity android:name=".activity.IWantToBorrowMoneyActivity" />
         <activity android:name=".activity.OrderAgriculturalCapitalActivity" />
         <activity android:name=".activity.CottonTradeActivity" />
@@ -47,7 +47,7 @@
         <activity android:name=".module.personalinformation.activity.EssentialInformationActivity" />
         <activity android:name=".module.personalinformation.activity.PlantingInformationActivity" />
         <activity android:name=".module.personalinformation.activity.ProofOfOwnershipActivity" />
-        <activity android:name=".module.personalinformation.activity.InsurancePurchaseRecordActivity"></activity>
+        <activity android:name=".module.personalinformation.activity.InsurancePurchaseRecordActivity"/>
     </application>
 
 </manifest>

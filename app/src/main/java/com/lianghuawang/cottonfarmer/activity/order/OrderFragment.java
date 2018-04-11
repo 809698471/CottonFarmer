@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.Order;
+package com.lianghuawang.cottonfarmer.activity.order;
 
 
 import android.os.Bundle;

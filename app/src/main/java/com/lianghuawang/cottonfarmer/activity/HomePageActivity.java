@@ -10,10 +10,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.Home.HomePageFragment;
+import com.lianghuawang.cottonfarmer.activity.home.HomePageFragment;
 import com.lianghuawang.cottonfarmer.activity.my.MyFragment;
-import com.lianghuawang.cottonfarmer.activity.Message.NewsFragment;
-import com.lianghuawang.cottonfarmer.activity.Order.OrderFragment;
+import com.lianghuawang.cottonfarmer.activity.message.NewsFragment;
+import com.lianghuawang.cottonfarmer.activity.order.OrderFragment;
 
 /**
  * 首页

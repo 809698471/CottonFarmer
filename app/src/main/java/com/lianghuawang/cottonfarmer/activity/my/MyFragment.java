@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.BankCardActivity;
 import com.lianghuawang.cottonfarmer.activity.ClaimCompensationActivity;
-import com.lianghuawang.cottonfarmer.activity.my.InsuranceActivity;
 import com.lianghuawang.cottonfarmer.activity.LoanActivity;
 import com.lianghuawang.cottonfarmer.activity.MyCreditActivity;
 import com.lianghuawang.cottonfarmer.activity.SetUpActivity;

@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.Message;
+package com.lianghuawang.cottonfarmer.activity.message;
 
 
 import android.os.Bundle;

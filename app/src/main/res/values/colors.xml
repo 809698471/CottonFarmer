@@ -14,6 +14,8 @@
     <color name="color_d81e06">#d81e06</color>
     <color name="color_b0b8b2">#b0b8b2</color>
     <color name="color_333333">#333333</color>
+    <color name="tab_unselect_color">#AAFFFFFF</color>
+    <color name="image_default_bg">#E4E4E4</color>
 
     <color name="login_automatic">#4B48FD</color>
 
