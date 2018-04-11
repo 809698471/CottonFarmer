@@ -1,14 +1,14 @@
-package com.lianghuawang.cottonfarmer.module.personalinformation;
+package com.lianghuawang.cottonfarmer.activity.personalinformation;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.module.personalinformation.activity.EssentialInformationActivity;
-import com.lianghuawang.cottonfarmer.module.personalinformation.activity.InsurancePurchaseRecordActivity;
-import com.lianghuawang.cottonfarmer.module.personalinformation.activity.PlantingInformationActivity;
-import com.lianghuawang.cottonfarmer.module.personalinformation.activity.ProofOfOwnershipActivity;
+import com.lianghuawang.cottonfarmer.activity.personalinformation.activity.EssentialInformationActivity;
+import com.lianghuawang.cottonfarmer.activity.personalinformation.activity.InsurancePurchaseRecordActivity;
+import com.lianghuawang.cottonfarmer.activity.personalinformation.activity.PlantingInformationActivity;
+import com.lianghuawang.cottonfarmer.activity.personalinformation.activity.ProofOfOwnershipActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //个人信息

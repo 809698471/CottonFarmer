@@ -1,16 +1,19 @@
-package com.lianghuawang.cottonfarmer.module.personalinformation.activity;
+package com.lianghuawang.cottonfarmer.activity.personalinformation.activity;
+
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
-//权属证明
-public class ProofOfOwnershipActivity extends BaseActivity {
+//种植信息
+public class PlantingInformationActivity extends BaseActivity {
 
 
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_proof_of_ownership;
+
+        return R.layout.activity_planting_information;
+
     }
 
     @Override

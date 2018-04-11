@@ -1,15 +1,16 @@
-package com.lianghuawang.cottonfarmer.module.personalinformation.activity;
+package com.lianghuawang.cottonfarmer.activity.mycredit.activity;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
-//基本信息
-public class EssentialInformationActivity extends BaseActivity {
+//银行卡绑定
+public class BankCardBindingActivity extends BaseActivity {
+
 
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_essential_information;
+        return R.layout.activity_bank_card_binding;
     }
 
     @Override

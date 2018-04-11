@@ -1,13 +1,13 @@
-package com.lianghuawang.cottonfarmer.module.mycredit;
+package com.lianghuawang.cottonfarmer.activity.mycredit;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.module.mycredit.activity.AuthenticationActivity;
-import com.lianghuawang.cottonfarmer.module.mycredit.activity.BankCardBindingActivity;
-import com.lianghuawang.cottonfarmer.module.personalinformation.PersonalInformationActivity;
+import com.lianghuawang.cottonfarmer.activity.mycredit.activity.AuthenticationActivity;
+import com.lianghuawang.cottonfarmer.activity.mycredit.activity.BankCardBindingActivity;
+import com.lianghuawang.cottonfarmer.activity.personalinformation.PersonalInformationActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //提升信用

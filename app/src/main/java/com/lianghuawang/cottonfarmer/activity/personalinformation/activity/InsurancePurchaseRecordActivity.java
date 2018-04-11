@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.module.personalinformation.activity;
+package com.lianghuawang.cottonfarmer.activity.personalinformation.activity;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;

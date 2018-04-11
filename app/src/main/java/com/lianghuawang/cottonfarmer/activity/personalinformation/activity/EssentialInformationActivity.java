@@ -1,15 +1,15 @@
-package com.lianghuawang.cottonfarmer.module.mycredit.activity;
+package com.lianghuawang.cottonfarmer.activity.personalinformation.activity;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
-//身份证验证
-public class AuthenticationActivity extends BaseActivity {
+//基本信息
+public class EssentialInformationActivity extends BaseActivity {
 
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_authentication;
+        return R.layout.activity_essential_information;
     }
 
     @Override

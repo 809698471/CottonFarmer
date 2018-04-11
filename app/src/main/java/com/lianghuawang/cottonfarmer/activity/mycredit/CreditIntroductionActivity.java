@@ -1,19 +1,15 @@
-package com.lianghuawang.cottonfarmer.module.personalinformation.activity;
-
+package com.lianghuawang.cottonfarmer.activity.mycredit;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
-//种植信息
-public class PlantingInformationActivity extends BaseActivity {
-
+//信用介绍
+public class CreditIntroductionActivity extends BaseActivity {
 
 
     @Override
     protected int getLayoutId() {
-
-        return R.layout.activity_planting_information;
-
+        return R.layout.activity_credit_introduction;
     }
 
     @Override

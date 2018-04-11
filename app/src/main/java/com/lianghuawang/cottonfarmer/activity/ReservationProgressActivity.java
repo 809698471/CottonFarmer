@@ -1,16 +1,15 @@
-package com.lianghuawang.cottonfarmer.module.mycredit.activity;
+package com.lianghuawang.cottonfarmer.activity;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
-//银行卡绑定
-public class BankCardBindingActivity extends BaseActivity {
-
+//预约进度
+public class ReservationProgressActivity extends BaseActivity {
 
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_bank_card_binding;
+        return R.layout.activity_reservation_progress;
     }
 
     @Override
