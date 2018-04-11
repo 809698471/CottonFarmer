@@ -30,6 +30,7 @@
         <activity android:name=".activity.LoanActivity" />
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".activity.home.insurance.BuyInsuranceActivity" />
+        <activity android:name=".activity.home.insurance.InsuranceParticularsActivity"/>
         <activity android:name=".activity.IWantToBorrowMoneyActivity" />
         <activity android:name=".activity.OrderAgriculturalCapitalActivity" />
         <activity android:name=".activity.CottonTradeActivity" />
@@ -49,7 +50,7 @@
         <activity android:name=".activity.personalinformation.activity.ProofOfOwnershipActivity" />
         <activity android:name=".activity.personalinformation.activity.InsurancePurchaseRecordActivity" />
         <activity android:name=".activity.ReservationProgressActivity" />
-        <activity android:name=".activity.ApplyForALoanActivity"></activity>
+        <activity android:name=".activity.ApplyForALoanActivity"/>
     </application>
 
 </manifest>

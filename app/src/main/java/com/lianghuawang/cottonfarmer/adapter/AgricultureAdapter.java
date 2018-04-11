@@ -33,12 +33,18 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
     }
 
     @Override
-    public void onBindViewHolder(ClickableViewHolder holder, int position) {
+    public void onBindViewHolder(ClickableViewHolder holder, final int position) {
         if (holder instanceof ItemViewHolder){
-            ItemViewHolder holde = (ItemViewHolder) holder;
+            final ItemViewHolder holde = (ItemViewHolder) holder;
             holde.title.setText(insuranceList.get(position).getTitle());
             holde.content.setText(insuranceList.get(position).getContent());
             holde.time.setText(insuranceList.get(position).getValidity());
+            holde.btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickListener.setOnClickListener(position,holde);
+                }
+            });
         }
         super.onBindViewHolder(holder, position);
     }
@@ -66,5 +72,16 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
             time = $(R.id.tv_subscribe_time);
             btn = $(R.id.btn_subscribe);
         }
+    }
+
+    private OnClickListener onClickListener;
+
+    public void setOnClickListener(OnClickListener onClickListener){
+        this.onClickListener = onClickListener;
+    }
+
+    public interface OnClickListener{
+
+        void setOnClickListener(int position, ClickableViewHolder holder);
     }
 }

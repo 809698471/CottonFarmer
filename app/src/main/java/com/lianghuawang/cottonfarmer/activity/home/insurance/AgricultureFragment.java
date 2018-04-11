@@ -61,24 +61,15 @@ public class AgricultureFragment extends BaseFragment {
             @Override
             public void onRefresh() {
                 list = InsuranceData.newInstance().setAdd(list);
-                mAdapter.notifyDataSetChanged();
-                mSwipeRefreshLayout.setRefreshing(false);
-            }
-        });
-        mSwipeRefreshLayout.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeRefreshLayout.setRefreshing(true);
-                list = InsuranceData.newInstance().setAdd(list);
                 mSwipeRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        mSwipeRefreshLayout.setRefreshing(false);
                         mAdapter.notifyDataSetChanged();
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
-                },1000);
+                }, 1000);
             }
-        },500);
+        });
     }
 
     private void initRecyclerView() {
@@ -90,11 +81,11 @@ public class AgricultureFragment extends BaseFragment {
     }
 
     //跳转到详情页面
-    private void particulars(){
-        mAdapter.setOnItemClickListener(new AbsRecyclerViewAdapter.OnItemClickListener() {
+    private void particulars() {
+        mAdapter.setOnClickListener(new AgricultureAdapter.OnClickListener() {
             @Override
-            public void onItemClick(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
-                startActivity(new Intent(getContext(),InsuranceParticularsActivity.class));
+            public void setOnClickListener(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
+                startActivity(new Intent(getContext(), InsuranceParticularsActivity.class));
             }
         });
     }
