@@ -72,7 +72,7 @@ public class OkHttp3Utils {
 
     private static OkHttpClient okHttpClient = null;
 
-    public synchronized static OkHttpClient getOkHttpClient() {
+    private synchronized static OkHttpClient getOkHttpClient() {
         if (okHttpClient == null) {
             //判空 为空创建实例
             // okHttpClient = new OkHttpClient();
@@ -131,33 +131,35 @@ public class OkHttp3Utils {
         call.enqueue(callback);
     }
 
-    public static void doGet(String token ,String url, Callback callback) {
+    public static void doGet(String token, String url, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建Request
-        Request request = new Request.Builder().addHeader("token",token).url(url).build();
+        Request request = new Request.Builder().addHeader("token", token).url(url).build();
         //得到Call对象
         Call call = okHttpClient.newCall(request);
         //执行异步请求
         call.enqueue(callback);
     }
-    public static void doGet(String token ,String url,LinkedHashMap<String,String> params,Callback callback) {
+
+    public static void doGet(String token, String url, LinkedHashMap<String, String> params, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建Request
         String data_url = attachHttpGetParams(url, params);
-        Request request = new Request.Builder().addHeader("token",token).url(data_url).build();
+        Request request = new Request.Builder().addHeader("token", token).url(data_url).build();
         //得到Call对象
         Call call = okHttpClient.newCall(request);
         //执行异步请求
         call.enqueue(callback);
     }
+
     /**
      * post请求  token头部添加
      * 参数1 url
      * 参数2 回调Callback
      */
-    public static void doPost(String token,String url, Map<String, String> params, Callback callback) {
+    public static void doPost(String token, String url, Map<String, String> params, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //3.x版本post请求换成FormBody 封装键值对参数
@@ -167,7 +169,8 @@ public class OkHttp3Utils {
             builder.add(key, params.get(key));
         }
         Request.Builder builder1 = new Request.Builder();
-        builder1.addHeader("token",token);
+//        builder1.addHeader("token",token);
+        builder1.addHeader("Authorization","Bearer " + token);
         Request request = builder1.url(url).post(builder.build()).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(callback);
@@ -187,12 +190,13 @@ public class OkHttp3Utils {
         Call call = okHttpClient.newCall(request);
         call.enqueue(callback);
     }
+
     /**
      * post请求上传文件
      * 参数1 url
      * 参数2 回调Callback
      */
-    public static void uploadPic(final Context context, String url, Map<String, Object> params) {
+    public static void uploadPic(String token, final Context context, String url, Map<String, Object> params) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建MultipartBody.Builder 设置支持FORM
@@ -205,40 +209,48 @@ public class OkHttp3Utils {
                 builder.addFormDataPart(entry.getKey(), file.getName(), RequestBody.create(MediaType.parse("application/octet-stream"), file));
 
             } else {
-                builder.addFormDataPart(entry.getKey(), value.toString());}}
+                builder.addFormDataPart(entry.getKey(), value.toString());
+            }
+        }
         //创建RequestBody 设置类型等
         RequestBody requestBody = builder.build();
-        final Request request = new Request.Builder().url(url).post(requestBody).build();
-        Call call = okHttpClient.newCall(request);
+        final Request.Builder request = new Request.Builder();
+//        request.addHeader("token", token);
+        Request request1 = request.url(url).post(requestBody).build();
+        Call call = okHttpClient.newCall(request1);
         //执行请求
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {}
+            public void onFailure(Call call, IOException e) {
+            }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 //上传成功回调 目前不需要处理
                 Looper.prepare();
                 String string = response.body().string();
-                LogUtils.i("jkjkjk",string);
+                LogUtils.d("jkjkjk", string);
                 //进行保存token值
                 try {
                     JSONObject jsonObject = new JSONObject(string);
                     String code = jsonObject.getString("code");
-                    if(code.equals("200")){
+                    if (code.equals("200")) {
                         JSONObject result = jsonObject.getJSONObject("result");
                         String token = result.getString("token");
 
-                    }else if(code.equals("4001")){
+                    } else if (code.equals("4001")) {
                         String descriptions = jsonObject.getString("descriptions");
-                        ToastUtils.showShort(context,descriptions);
+                        ToastUtils.showShort(context, descriptions);
                     }
-                } catch (JSONException e) {e.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
                 Looper.loop();
             }
         });
     }
-    public static void changeuploadPic(String token ,final Context context, String url, Map<String, Object> params) {
+
+    public static void changeuploadPic(String token, final Context context, String url, Map<String, Object> params) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建MultipartBody.Builder 设置支持FORM
@@ -251,18 +263,22 @@ public class OkHttp3Utils {
                 builder.addFormDataPart(entry.getKey(), file.getName(), RequestBody.create(MediaType.parse("application/octet-stream"), file));
 
             } else {
-                builder.addFormDataPart(entry.getKey(), value.toString());}}
+                builder.addFormDataPart(entry.getKey(), value.toString());
+            }
+        }
         //创建RequestBody 设置类型等
         RequestBody requestBody = builder.build();
         Request.Builder builder1 = new Request.Builder();
-        builder1.addHeader("token",token);
+        builder1.addHeader("token", token);
 
         Request request = builder1.url(url).post(requestBody).build();
         Call call = okHttpClient.newCall(request);
         //执行请求
         call.enqueue(new Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {}
+            public void onFailure(Call call, IOException e) {
+            }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 //上传成功回调 目前不需要处理
@@ -281,11 +297,12 @@ public class OkHttp3Utils {
 //                    SPUtil.put(MyApp.getInstance(),"token",token);
 //                } catch (JSONException e) {e.printStackTrace();
 //                }
-                LogUtils.i("string",string);
+                LogUtils.i("string", string);
                 Looper.loop();
             }
         });
     }
+
     /**
      * 下载文件 以流的形式把apk写入的指定文件 得到file后进行安装
      * 参数一：请求Url
@@ -327,7 +344,9 @@ public class OkHttp3Utils {
                     e.printStackTrace();
                 } finally {
                     if (is != null) is.close();
-                    if (fos != null) fos.close();}}
+                    if (fos != null) fos.close();
+                }
+            }
         });
     }
 
@@ -350,6 +369,7 @@ public class OkHttp3Utils {
         }
         return null;
     }
+
     /**
      * @param url
      * @return 从下载连接中解析出文件名
@@ -397,32 +417,36 @@ public class OkHttp3Utils {
 
     /**
      * 为HttpGet 的 url 方便的添加多个name value 参数。
-     *  url
-     *  params
+     * url
+     * params
      */
-    public static String attachHttpGetParams(String url, LinkedHashMap<String,String> params){
+    public static String attachHttpGetParams(String url, LinkedHashMap<String, String> params) {
 
         Iterator<String> keys = params.keySet().iterator();
         Iterator<String> values = params.values().iterator();
         StringBuffer stringBuffer = new StringBuffer();
         stringBuffer.append("?");
 
-        for (int i=0;i<params.size();i++ ) {
-            stringBuffer.append(keys.next()+"="+values.next());
-            if (i!=params.size()-1) {
-                stringBuffer.append("&");}}
+        for (int i = 0; i < params.size(); i++) {
+            stringBuffer.append(keys.next() + "=" + values.next());
+            if (i != params.size() - 1) {
+                stringBuffer.append("&");
+            }
+        }
         return url + stringBuffer.toString();
     }
+
     /**
      * 为HttpGet 的 url 方便的添加1个name value 参数。
-     *  url
-     *  name
-     *  value
+     * url
+     * name
+     * value
      */
-    public static String attachHttpGetParam(String url, String name, String value){
+    public static String attachHttpGetParam(String url, String name, String value) {
         return url + "?" + name + "=" + value;
     }
-   public  static  void  Cancel(){
 
-   }
+    public static void Cancel() {
+
+    }
 }

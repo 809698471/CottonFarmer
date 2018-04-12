@@ -18,6 +18,11 @@
         <item>新疆3</item>
         <item>新疆4</item>
     </string-array>
+    <string-array name="cooperation">
+        <item>小棉袄合作社</item>
+        <item>红日合作社</item>
+        <item>个人</item>
+    </string-array>
     <string-array name="other">
         <item>吃</item>
         <item>喝</item>

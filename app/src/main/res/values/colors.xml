@@ -17,6 +17,9 @@
     <color name="tab_unselect_color">#AAFFFFFF</color>
     <color name="image_default_bg">#E4E4E4</color>
 
+    <color name="subcolordown">#1988cc</color>
+    <color name="subcolorup">#3926FC</color>
+
     <color name="login_automatic">#4B48FD</color>
 
     <color name="white">#FFFFFF</color>

@@ -13,14 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".StartPageActivity">
+        <!--<activity android:name=".StartPageActivity">-->
+        <activity android:name=".activity.HomePageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.HomePageActivity" />
+        <!--<activity android:name=".activity.HomePageActivity" />-->
         <activity android:name=".AdvertisingPageActivity" />
         <activity android:name=".activity.my.SetUpActivity" />
         <activity android:name=".activity.bankcard.BankCardActivity" />
@@ -31,6 +32,7 @@
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".activity.home.insurance.BuyInsuranceActivity" />
         <activity android:name=".activity.home.insurance.InsuranceParticularsActivity"/>
+        <activity android:name=".activity.home.insurance.InsuranceOrderActivity"/>
         <activity android:name=".activity.IWantToBorrowMoneyActivity" />
         <activity android:name=".activity.OrderAgriculturalCapitalActivity" />
         <activity android:name=".activity.CottonTradeActivity" />

@@ -11,13 +11,22 @@ import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.entity.home.insurance.Test;
+import com.lianghuawang.cottonfarmer.netutils.GsonArrayCallback;
+import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
+import okhttp3.Call;
 
 //购买保险
 public class BuyInsuranceActivity extends BaseActivity {
@@ -50,6 +59,69 @@ public class BuyInsuranceActivity extends BaseActivity {
     protected void initView() {
         initToolbar();
         initData();
+//        http();
+//        getPost();
+//        upPost();
+    }
+
+    private void http() {
+        OkHttp3Utils.doGet("EuLUEwkkOECfeeUH1RC9otgReROf1lax",
+                "http://gwook.com:82/cotton/web/v1/products",
+                new GsonObjectCallback<Test>() {
+
+                    @Override
+                    public void onUi(Test test) {
+                        if (test == null){
+                            LogUtils.d("list == null");
+                            return;
+                        }
+//                        if (test.getData().size() == 0){
+//                            LogUtils.d("list.size() == 0");
+//                            return;
+//                        }
+                        LogUtils.d(test.toString());
+                    }
+
+                    @Override
+                    public void onFailed(Call call, IOException e) {
+                        LogUtils.d("请求失败---" + call.toString());
+                        LogUtils.d("请求失败---" + e.getMessage());
+
+                    }
+                });
+    }
+
+    private void getPost(){
+
+        Map<String, String> params = new HashMap<>();
+//        params.put("insStatus","1");
+        params.put("image","");
+
+        OkHttp3Utils.doPost("EuLUEwkkOECfeeUH1RC9otgReROf1lax",
+                "http://gwook.com:82/cotton/web/v1/cotton-farmers/upload-image",
+                params,
+                new GsonObjectCallback<Test>() {
+                    @Override
+                    public void onUi(Test test) {
+                        LogUtils.d(test.toString());
+                    }
+
+                    @Override
+                    public void onFailed(Call call, IOException e) {
+                        LogUtils.d("call--" + call.toString());
+                        LogUtils.d("e--" + e.getMessage());
+                    }
+                });
+    }
+
+    private void upPost(){
+        Map<String, Object> params = new HashMap<>();
+//        params.put("insStatus","1");
+        params.put("image","");
+        OkHttp3Utils.uploadPic("EuLUEwkkOECfeeUH1RC9otgReROf1lax",
+                this,
+                "http://gwook.com:82/cotton/web/v1/cotton-farmers/upload-image",
+                params);
     }
 
     private void initData() {
