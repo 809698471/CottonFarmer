@@ -1,5 +1,7 @@
 package com.lianghuawang.cottonfarmer.activity;
 
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.lianghuawang.cottonfarmer.R;
@@ -7,9 +9,10 @@ import com.lianghuawang.cottonfarmer.tools.CustomerCodeView;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //支付密码设置
-public class PaymentPasswordSettingsActivity extends BaseActivity implements CustomerCodeView.InputCompleteListener {
+public class PaymentPasswordSettingsActivity extends BaseActivity implements CustomerCodeView.InputCompleteListener, View.OnClickListener {
 
     private CustomerCodeView editText;
+    private ImageView paymentpasswordsettings_return;
 
     @Override
     protected int getLayoutId() {
@@ -18,7 +21,9 @@ public class PaymentPasswordSettingsActivity extends BaseActivity implements Cus
 
     @Override
     protected void initView() {
+        paymentpasswordsettings_return = (ImageView)findViewById(R.id.paymentpasswordsettings_return);
         editText = (CustomerCodeView) findViewById(R.id.edit_code);
+        paymentpasswordsettings_return.setOnClickListener(this);
         editText.setInputCompleteListener(this);
     }
 
@@ -32,5 +37,10 @@ public class PaymentPasswordSettingsActivity extends BaseActivity implements Cus
     @Override
     public void deleteContent(boolean isDelete) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        finish();
     }
 }

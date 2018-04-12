@@ -26,8 +26,8 @@ import java.util.List;
  * 订单
  */
 public class OrderFragment extends Fragment {
-    private TabLayout tab_FindFragment_title; //定义TabLayout
-    private ViewPager vp_FindFragment_pager; //定义viewPager
+    private TabLayout tab_order_title; //定义TabLayout
+    private ViewPager vp_order_pager; //定义viewPager
     private FragmentPagerAdapter fAdapter; //定义adapter
     private List<Fragment> list_fragment; //定义要装fragment的列表
     private List<String> list_title; //tab名称列表
@@ -49,8 +49,8 @@ public class OrderFragment extends Fragment {
      * 初始化各控件
      */
     private void initControls(View view) {
-        tab_FindFragment_title = (TabLayout)view.findViewById(R.id.tab_FindFragment_title);
-        vp_FindFragment_pager = (ViewPager)view.findViewById(R.id.vp_FindFragment_pager);
+        tab_order_title = (TabLayout)view.findViewById(R.id.tab_order_title);
+        vp_order_pager = (ViewPager)view.findViewById(R.id.vp_order_pager);
         //初始化各fragment
         wholeFragment = new WholeFragment();
         pendingPaymentFragment = new PendingPaymentFragment();
@@ -76,20 +76,20 @@ public class OrderFragment extends Fragment {
         list_title.add("已完成");
         list_title.add("已取消");
         //设置TabLayout的模式
-        tab_FindFragment_title.setTabMode(TabLayout.MODE_FIXED);
+        tab_order_title.setTabMode(TabLayout.MODE_FIXED);
         //为TabLayout添加tab名称
-        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(0)));
-        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(1)));
-        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(2)));
-        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(3)));
-        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(4)));
-        tab_FindFragment_title.addTab(tab_FindFragment_title.newTab().setText(list_title.get(5)));
+        tab_order_title.addTab(tab_order_title.newTab().setText(list_title.get(0)));
+        tab_order_title.addTab(tab_order_title.newTab().setText(list_title.get(1)));
+        tab_order_title.addTab(tab_order_title.newTab().setText(list_title.get(2)));
+        tab_order_title.addTab(tab_order_title.newTab().setText(list_title.get(3)));
+        tab_order_title.addTab(tab_order_title.newTab().setText(list_title.get(4)));
+        tab_order_title.addTab(tab_order_title.newTab().setText(list_title.get(5)));
         fAdapter = new Find_tab_Adapter(getActivity().getSupportFragmentManager(),list_fragment,list_title);
         //viewpager加载adapter
-        vp_FindFragment_pager.setAdapter(fAdapter);
+        vp_order_pager.setAdapter(fAdapter);
         //tab_FindFragment_title.setViewPager(vp_FindFragment_pager);
         //TabLayout加载viewpager
-        tab_FindFragment_title.setupWithViewPager(vp_FindFragment_pager);
+        tab_order_title.setupWithViewPager(vp_order_pager);
         //tab_FindFragment_title.set
     }
 

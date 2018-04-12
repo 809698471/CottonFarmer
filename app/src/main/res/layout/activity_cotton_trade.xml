@@ -84,6 +84,7 @@
                 android:textSize="15sp" />
 
             <EditText
+                android:background="@drawable/shape_frame"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>

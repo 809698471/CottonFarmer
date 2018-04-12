@@ -46,4 +46,6 @@ dependencies {
 
     //TabLayout
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.0.6@aar'
+    //EventBus
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

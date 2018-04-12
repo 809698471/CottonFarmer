@@ -2,6 +2,7 @@ package com.lianghuawang.cottonfarmer.activity.mycredit;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
@@ -18,6 +19,7 @@ public class PromotionOfCreditActivity extends BaseActivity implements View.OnCl
     private LinearLayout promotionofcredit_authentication;
     private LinearLayout promotionofcredit_bankcardbinding;
     private LinearLayout promotionofcredit_invitingtheunderwriter;
+    private ImageView promotionofcredit_return;
 
     @Override
     protected int getLayoutId() {
@@ -26,6 +28,7 @@ public class PromotionOfCreditActivity extends BaseActivity implements View.OnCl
 
     @Override
     protected void initView() {
+        promotionofcredit_return = (ImageView) findViewById(R.id.promotionofcredit_return);
         //完善个人信息
         promotionofcredit_perfect = (LinearLayout) findViewById(R.id.promotionofcredit_perfect);
         //身份证验证
@@ -44,6 +47,9 @@ public class PromotionOfCreditActivity extends BaseActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.promotionofcredit_return:
+                finish();
+                break;
             //完善个人信息
             case R.id.promotionofcredit_perfect:
                 startActivity(new Intent(PromotionOfCreditActivity.this,PersonalInformationActivity.class));

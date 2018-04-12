@@ -22,12 +22,12 @@
         </activity>
         <activity android:name=".activity.HomePageActivity" />
         <activity android:name=".AdvertisingPageActivity" />
-        <activity android:name=".activity.SetUpActivity" />
-        <activity android:name=".activity.BankCardActivity" />
-        <activity android:name=".activity.TheBooksActivity" />
+        <activity android:name=".activity.my.SetUpActivity" />
+        <activity android:name=".activity.bankcard.BankCardActivity" />
+        <activity android:name=".activity.my.TheBooksActivity" />
         <activity android:name=".activity.my.InsuranceActivity" />
-        <activity android:name=".activity.ClaimCompensationActivity" />
-        <activity android:name=".activity.LoanActivity" />
+        <activity android:name=".activity.my.ClaimCompensationActivity" />
+        <activity android:name=".activity.my.LoanActivity" />
         <activity android:name=".module.login.LoginActivity" />
         <activity android:name=".activity.home.insurance.BuyInsuranceActivity" />
         <activity android:name=".activity.home.insurance.InsuranceParticularsActivity"/>
@@ -35,7 +35,7 @@
         <activity android:name=".activity.OrderAgriculturalCapitalActivity" />
         <activity android:name=".activity.CottonTradeActivity" />
         <activity android:name=".activity.CooperativeOrganizationActivity" />
-        <activity android:name=".activity.MyCreditActivity" />
+        <activity android:name=".activity.my.MyCreditActivity" />
         <activity android:name=".activity.mycredit.CreditIntroductionActivity" />
         <activity android:name=".module.register.RegisterActivity" />
         <activity android:name=".activity.ReceivingAddressActivity" />

@@ -1,8 +1,10 @@
-package com.lianghuawang.cottonfarmer.activity;
+package com.lianghuawang.cottonfarmer.activity.my;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.Find_tab_Adapter;
@@ -12,18 +14,21 @@ import com.lianghuawang.cottonfarmer.fragment.thebooks.BookIncomeFragment;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
 //我的账本
-public class TheBooksActivity extends BaseActivity {
+public class TheBooksActivity extends BaseActivity implements View.OnClickListener {
 
 
     private ViewPager vp_thebooks_pager;
     private AllTheBooksFragment allTheBooksFragment;
     private BookIncomeFragment bookIncomeFragment;
     private BookExpenditureFragment bookExpenditureFragment;
-    private ArrayList<Fragment> list_fragment;
-    private ArrayList<String> list_title;
+    private List<Fragment> list_fragment;
+    private List<String> list_title;
     private TabLayout tab_thebooks_title;
+    private Find_tab_Adapter find_tab_adapter;
+    private ImageView thebooks_return;
 
 
     @Override
@@ -33,6 +38,8 @@ public class TheBooksActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        thebooks_return = (ImageView) findViewById(R.id.thebooks_return);
+        thebooks_return.setOnClickListener(this);
         tab_thebooks_title = (TabLayout) findViewById(R.id.tab_thebooks_title);
         vp_thebooks_pager = (ViewPager) findViewById(R.id.vp_thebooks_pager);
         //初始化各fragment
@@ -56,9 +63,15 @@ public class TheBooksActivity extends BaseActivity {
         tab_thebooks_title.addTab(tab_thebooks_title.newTab().setText(list_title.get(1)));
         tab_thebooks_title.addTab(tab_thebooks_title.newTab().setText(list_title.get(2)));
 
-        Find_tab_Adapter find_tab_adapter = new Find_tab_Adapter(getSupportFragmentManager(), list_fragment, list_title);
+        find_tab_adapter = new Find_tab_Adapter(getSupportFragmentManager(), list_fragment, list_title);
         vp_thebooks_pager.setAdapter(find_tab_adapter);
 
+        tab_thebooks_title.setupWithViewPager(vp_thebooks_pager);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        finish();
     }
 }

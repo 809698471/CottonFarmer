@@ -1,9 +1,10 @@
-package com.lianghuawang.cottonfarmer.activity;
+package com.lianghuawang.cottonfarmer.activity.my;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import com.lianghuawang.cottonfarmer.R;
@@ -20,6 +21,7 @@ public class ClaimCompensationActivity extends BaseActivity implements View.OnCl
 
     private ClaimQueryFragment claimQueryFragment;
     private ReportsFragment reportsFragment;
+    private ImageView claimcompensation_return;
 
 
     @Override
@@ -29,6 +31,7 @@ public class ClaimCompensationActivity extends BaseActivity implements View.OnCl
 
     @Override
     protected void initView() {
+        claimcompensation_return = (ImageView) findViewById(R.id.claimcompensation_return);
         claim_fragment = (FrameLayout) findViewById(R.id.claim_fragment);
         claim_rb_01 = (RadioButton) findViewById(R.id.claim_rb_01);
         claim_rb_02 = (RadioButton) findViewById(R.id.claim_rb_02);
@@ -36,6 +39,7 @@ public class ClaimCompensationActivity extends BaseActivity implements View.OnCl
 
         claim_rb_01.setOnClickListener(this);
         claim_rb_02.setOnClickListener(this);
+        claimcompensation_return.setOnClickListener(this);
         //动态添加Fragment ,获取Fragment 管理器
         FragmentManager msg = getSupportFragmentManager();
         //开启Fragment事物
@@ -80,6 +84,9 @@ public class ClaimCompensationActivity extends BaseActivity implements View.OnCl
                 } else {
                     transaction.show(claimQueryFragment);
                 }
+                break;
+            case R.id.claimcompensation_return:
+                finish();
                 break;
         }
         transaction.commit();

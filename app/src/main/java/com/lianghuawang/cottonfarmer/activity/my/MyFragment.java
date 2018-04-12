@@ -10,12 +10,10 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.BankCardActivity;
-import com.lianghuawang.cottonfarmer.activity.ClaimCompensationActivity;
-import com.lianghuawang.cottonfarmer.activity.LoanActivity;
-import com.lianghuawang.cottonfarmer.activity.MyCreditActivity;
-import com.lianghuawang.cottonfarmer.activity.SetUpActivity;
-import com.lianghuawang.cottonfarmer.activity.TheBooksActivity;
+import com.lianghuawang.cottonfarmer.activity.bankcard.BankCardActivity;
+import com.lianghuawang.cottonfarmer.tools.MessageEvent;
+
+import org.greenrobot.eventbus.EventBus;
 
 /**
  * 我的
@@ -74,8 +72,9 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 break;
             //我的订单
             case R.id.myfragment_order:
-
- //  startActivity(new Intent(getActivity(), OrderFragment.class));
+                EventBus.getDefault().register(getActivity());
+                EventBus.getDefault().post(new MessageEvent(true));
+                EventBus.getDefault().unregister(getActivity());
                 break;
             //我的保险
             case R.id.myfragment_insurance:

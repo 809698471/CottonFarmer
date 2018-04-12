@@ -20,7 +20,7 @@ import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivit
 import com.lianghuawang.cottonfarmer.activity.CooperativeOrganizationActivity;
 import com.lianghuawang.cottonfarmer.activity.CottonTradeActivity;
 import com.lianghuawang.cottonfarmer.activity.IWantToBorrowMoneyActivity;
-import com.lianghuawang.cottonfarmer.activity.MyCreditActivity;
+import com.lianghuawang.cottonfarmer.activity.my.MyCreditActivity;
 import com.lianghuawang.cottonfarmer.activity.OrderAgriculturalCapitalActivity;
 import com.youth.banner.Banner;
 

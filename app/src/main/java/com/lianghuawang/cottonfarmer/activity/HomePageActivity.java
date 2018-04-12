@@ -1,24 +1,33 @@
 package com.lianghuawang.cottonfarmer.activity;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.home.HomePageFragment;
-import com.lianghuawang.cottonfarmer.activity.my.MyFragment;
 import com.lianghuawang.cottonfarmer.activity.message.NewsFragment;
+import com.lianghuawang.cottonfarmer.activity.my.MyFragment;
 import com.lianghuawang.cottonfarmer.activity.order.OrderFragment;
+import com.lianghuawang.cottonfarmer.tools.MessageEvent;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 首页
  */
-public class HomePageActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomePageActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
     private FrameLayout fragment;
     private RadioButton rb_01;
@@ -26,10 +35,13 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
     private RadioButton rb_03;
     private RadioButton rb_04;
     private RadioGroup layout;
-    private HomePageFragment homePageFragment;
-    private NewsFragment newsFragment;
-    private OrderFragment orderFragment;
-    private MyFragment myFragment;
+    private FragmentManager msg;
+
+    private RadioButton[] rbArray;
+    private FragmentManager fm;
+    private FragmentTransaction ft;
+    private int conut = 0;
+    private List<Fragment> list_fragment;
 
 
     @Override
@@ -37,98 +49,102 @@ public class HomePageActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         initView();
+        initData();
+    }
+    //记录用户首次点击返回键的时间
+    private long firstTime=0;
 
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode){
+            case KeyEvent.KEYCODE_BACK:
+                long secondTime=System.currentTimeMillis();
+                if(secondTime-firstTime>2000){
+                    Toast.makeText(HomePageActivity.this,"再按一次退出程序--->onKeyUp",Toast.LENGTH_SHORT).show();
+                    firstTime=secondTime;
+                    return true;
+                }else{
+                    System.exit(0);
+                }
+                break;
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
+
+
+    private void initData() {
+        list_fragment.add(new HomePageFragment());
+        list_fragment.add(new NewsFragment());
+        list_fragment.add(new OrderFragment());
+        list_fragment.add(new MyFragment());
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            rbArray[i] = (RadioButton) layout.getChildAt(i);
+        }
+        ft.add(R.id.fragment, list_fragment.get(0));
+        rbArray[0].setChecked(true);
+        ft.commit();
+        layout.setOnCheckedChangeListener(this);
     }
 
     private void initView() {
-        fragment = (FrameLayout) findViewById(R.id.fragment);
-        rb_01 = (RadioButton) findViewById(R.id.rb_01);
-        rb_02 = (RadioButton) findViewById(R.id.rb_02);
-        rb_03 = (RadioButton) findViewById(R.id.rb_03);
-        rb_04 = (RadioButton) findViewById(R.id.rb_04);
-        layout = (RadioGroup) findViewById(R.id.layout);
-
-        rb_01.setOnClickListener(this);
-        rb_02.setOnClickListener(this);
-        rb_03.setOnClickListener(this);
-        rb_04.setOnClickListener(this);
         //动态添加Fragment ,获取Fragment 管理器
-        FragmentManager msg = getSupportFragmentManager();
-        //开启Fragment事物
-        FragmentTransaction transaction = msg.beginTransaction();
-        //方法2隐藏所有的Fragment。
-        hideAll(transaction);
-        if (homePageFragment == null) {
-            homePageFragment = new HomePageFragment();
-            transaction.add(R.id.fragment, homePageFragment);
+        msg = getSupportFragmentManager();
 
-        } else {
-            transaction.show(homePageFragment);
+        fragment = (FrameLayout) findViewById(R.id.fragment);
+        layout = (RadioGroup) findViewById(R.id.layout);
+        rbArray = new RadioButton[layout.getChildCount()];
+        list_fragment = new ArrayList<>();
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+    }
+
+    private void showFragment(int id) {
+        FragmentTransaction tt = fm.beginTransaction();
+        for (int i = 0; i < rbArray.length; i++) {
+            if (id == rbArray[i].getId()) {
+                if (list_fragment.get(i).isAdded()) {
+                    tt.show(list_fragment.get(i)).hide(list_fragment.get(conut)).commit();
+                } else {
+                    tt.add(R.id.fragment, list_fragment.get(i)).hide(list_fragment.get(conut)).commit();
+                }
+                conut = i;
+            }
         }
-        transaction.commit();
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(MessageEvent evnt) {
+        boolean name = evnt.names;
+        if (name) {
+            FragmentTransaction tt = msg.beginTransaction();
+            tt.replace(R.id.fragment, list_fragment.get(2));
+            rbArray[2].setChecked(true);
+            tt.commit();
+        } else {
+        }
     }
 
     @Override
-    public void onClick(View v) {
-        //动态添加Fragment ,获取Fragment 管理器
-        FragmentManager msg = getSupportFragmentManager();
-        //开启Fragment事物
-        FragmentTransaction transaction = msg.beginTransaction();
-        //方法2隐藏所有的Fragment。
-        hideAll(transaction);
-        switch (v.getId()) {
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
             case R.id.rb_01:
-                if (homePageFragment == null) {
-                    homePageFragment = new HomePageFragment();
-                    transaction.add(R.id.fragment, homePageFragment);
-
-                } else {
-                    transaction.show(homePageFragment);
-                }
+                showFragment(R.id.rb_01);
                 break;
             case R.id.rb_02:
-                if (newsFragment == null) {
-                    newsFragment = new NewsFragment();
-                    transaction.add(R.id.fragment, newsFragment);
-
-                } else {
-                    transaction.show(newsFragment);
-                }
+                showFragment(R.id.rb_02);
                 break;
             case R.id.rb_03:
-                if (orderFragment == null) {
-                    orderFragment = new OrderFragment();
-                    transaction.add(R.id.fragment, orderFragment);
-
-                } else {
-                    transaction.show(orderFragment);
-                }
+                showFragment(R.id.rb_03);
                 break;
             case R.id.rb_04:
-                if (myFragment == null) {
-                    myFragment = new MyFragment();
-                    transaction.add(R.id.fragment, myFragment);
-
-                } else {
-                    transaction.show(myFragment);
-                }
+                showFragment(R.id.rb_04);
                 break;
         }
-        transaction.commit();
     }
 
-    private void hideAll(FragmentTransaction transaction) {
-        if (homePageFragment != null) {
-            transaction.hide(homePageFragment);
-        }
-        if (newsFragment != null) {
-            transaction.hide(newsFragment);
-        }
-        if (orderFragment != null) {
-            transaction.hide(orderFragment);
-        }
-        if (myFragment != null) {
-            transaction.hide(myFragment);
-        }
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }

@@ -1,12 +1,14 @@
-package com.lianghuawang.cottonfarmer.activity;
+package com.lianghuawang.cottonfarmer.activity.my;
 
 import android.content.Intent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.activity.ApplyForALoanActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class LoanActivity extends BaseActivity implements View.OnClickListener {
 
     private GridView grid;
     private Button loan_apply_btn;
+    private ImageView loan_return;
 
     @Override
     protected int getLayoutId() {
@@ -25,6 +28,7 @@ public class LoanActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
+        loan_return = (ImageView)findViewById(R.id.loan_return);
         loan_apply_btn = (Button) findViewById(R.id.loan_apply_btn);
         grid = (GridView) findViewById(R.id.grid);
         List<String> integers = new ArrayList<>();
@@ -32,13 +36,16 @@ public class LoanActivity extends BaseActivity implements View.OnClickListener {
 
         ArrayAdapter<List<Integer>> adapter = new ArrayAdapter(LoanActivity.this, R.layout.iamge, R.id.tv,s);
         grid.setAdapter(adapter);
-
+        loan_return.setOnClickListener(this);
         loan_apply_btn.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            case R.id.loan_return:
+                finish();
+                break;
             //申请贷款
             case R.id.loan_apply_btn:
                 startActivity(new Intent(LoanActivity.this,ApplyForALoanActivity.class));

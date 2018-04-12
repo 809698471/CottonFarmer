@@ -2,6 +2,7 @@ package com.lianghuawang.cottonfarmer.activity.personalinformation;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
@@ -19,6 +20,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     private LinearLayout personalinformation_plantinginformation;
     private LinearLayout personalinformation_proofofownership;
     private LinearLayout personalinformation_insurancepurchaserecord;
+    private ImageView personalinformation_return;
 
     @Override
     protected int getLayoutId() {
@@ -27,12 +29,13 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
 
     @Override
     protected void initView() {
+        personalinformation_return = (ImageView) findViewById(R.id.personalinformation_return);
         personalinformation_personalimage = (LinearLayout) findViewById(R.id.personalinformation_personalimage);
         personalinformation_essentialinformation = (LinearLayout) findViewById(R.id.personalinformation_essentialinformation);
         personalinformation_plantinginformation = (LinearLayout) findViewById(R.id.personalinformation_plantinginformation);
         personalinformation_proofofownership = (LinearLayout) findViewById(R.id.personalinformation_proofofownership);
         personalinformation_insurancepurchaserecord = (LinearLayout) findViewById(R.id.personalinformation_insurancepurchaserecord);
-
+        personalinformation_return.setOnClickListener(this);
         personalinformation_personalimage.setOnClickListener(this);
         personalinformation_essentialinformation.setOnClickListener(this);
         personalinformation_plantinginformation.setOnClickListener(this);
@@ -43,6 +46,9 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.personalinformation_return:
+                finish();
+                break;
             //个人头像
             case R.id.personalinformation_personalimage:
                 break;
