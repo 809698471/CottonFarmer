@@ -1,14 +1,17 @@
 package com.lianghuawang.cottonfarmer.activity.home.insurance;
 
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 public class InsuranceOrderActivity extends BaseActivity{
 
@@ -17,6 +20,9 @@ public class InsuranceOrderActivity extends BaseActivity{
 
     @Bind(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
+
+    @Bind(R.id.btn_confirm_order)
+    Button mOrder;
 
     @Override
     protected int getLayoutId() {
@@ -41,5 +47,10 @@ public class InsuranceOrderActivity extends BaseActivity{
                 finish();
             }
         });
+    }
+
+    @OnClick(R.id.btn_confirm_order)
+    public void confirm(Button btn){
+        startActivity(new Intent(this,SignatureActivity.class));
     }
 }

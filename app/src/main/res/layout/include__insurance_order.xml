@@ -486,13 +486,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="30dp"
         android:orientation="horizontal">
 
         <RelativeLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="7">
             <View
                 android:layout_width="match_parent"
@@ -502,20 +502,20 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="¥720" />
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:text="¥ 720" />
 
         </RelativeLayout>
 
         <Button
+            android:id="@+id/btn_confirm_order"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:background="@color/red"
-            android:paddingBottom="10dp"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:privateImeOptions="20dp"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:background="@drawable/bg_btn_confirm_order_selected"
             android:text="确认订单" />
 
     </LinearLayout>
