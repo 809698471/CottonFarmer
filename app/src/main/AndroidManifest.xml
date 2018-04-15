@@ -34,9 +34,10 @@
         <activity android:name=".activity.home.insurance.BuyInsuranceActivity" />
         <activity android:name=".activity.home.insurance.InsuranceParticularsActivity" />
         <activity
-            android:name=".activity.home.insurance.SignatureActivity"
-            android:screenOrientation="landscape" />
+        android:name=".activity.home.insurance.SignatureActivity"
+        android:screenOrientation="landscape" />
         <activity android:name=".activity.home.insurance.InsuranceOrderActivity" />
+        <activity android:name=".activity.home.insurance.PayInsuranceActivity"/>
         <activity android:name=".activity.IWantToBorrowMoneyActivity" />
         <activity android:name=".activity.OrderAgriculturalCapitalActivity" />
         <activity android:name=".activity.CottonTradeActivity" />

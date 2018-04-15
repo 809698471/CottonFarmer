@@ -1,11 +1,13 @@
 package com.lianghuawang.cottonfarmer.activity.home.insurance;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -20,11 +22,12 @@ import java.io.File;
 import java.io.IOException;
 
 import butterknife.Bind;
+import butterknife.OnClick;
 
 /**
  * 客户签字
  */
-public class SignatureActivity extends BaseActivity{
+public class SignatureActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
@@ -61,10 +64,8 @@ public class SignatureActivity extends BaseActivity{
                     mSign.save(path);
                 } catch (IOException e) {
                     e.printStackTrace();
-                    LogUtils.d("e---" + e.getMessage());
                 }
 
-                LogUtils.d("path---:" + path );
                 mSign.setVisibility(View.GONE);
                 mRl.setVisibility(View.VISIBLE);
                 showImg(path);
@@ -91,4 +92,24 @@ public class SignatureActivity extends BaseActivity{
             }
         });
     }
+
+    @OnClick({R.id.btn_chonglai, R.id.btn_error, R.id.btn_queren})
+    public void onClick(Button btn) {
+        switch (btn.getId()) {
+            case R.id.btn_chonglai://重写
+                mToolbar.setTitle("请客户签名");
+                mSign.setVisibility(View.VISIBLE);
+                mRl.setVisibility(View.GONE);
+                break;
+            case R.id.btn_error://返回
+                this.finish();
+                break;
+            case R.id.btn_queren://确认
+                //记录图片地址
+                startActivity(new Intent(this,PayInsuranceActivity.class));
+                break;
+            default:
+        }
+    }
+
 }
