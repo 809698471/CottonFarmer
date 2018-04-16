@@ -126,7 +126,7 @@ public class BuyInsuranceActivity extends BaseActivity {
 
     private void initData() {
 
-        mViewPager.setAdapter(new MeiziTuPageAdapter(getSupportFragmentManager()));
+        mViewPager.setAdapter(new BuyInsurancePageAdapter(getSupportFragmentManager()));
         mViewPager.setOffscreenPageLimit(1);
         mSlidingTabLayout.setViewPager(mViewPager);
     }
@@ -147,9 +147,9 @@ public class BuyInsuranceActivity extends BaseActivity {
         });
     }
 
-    private class MeiziTuPageAdapter extends FragmentStatePagerAdapter {
+    private class BuyInsurancePageAdapter extends FragmentStatePagerAdapter {
 
-        public MeiziTuPageAdapter(FragmentManager fm) {
+        public BuyInsurancePageAdapter(FragmentManager fm) {
 
             super(fm);
         }

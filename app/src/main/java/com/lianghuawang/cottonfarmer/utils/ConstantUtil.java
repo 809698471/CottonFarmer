@@ -5,6 +5,8 @@ package com.lianghuawang.cottonfarmer.utils;
  */
 public class ConstantUtil {
 
+    public final static String TOKEN = "EuLUEwkkOECfeeUH1RC9otgReROf1lax";
+
     /**
      * ---------------保险模块-------------------
      */
@@ -14,6 +16,20 @@ public class ConstantUtil {
     public final static String TAG1 = "TAG1";
 
     public final static String TAG2 = "TAG2";
+
+    public final static String AGRICLURAL = "AGRICLURAL";
+
+    public final static String TAG3 = "TAG3";
+
+    public final static String TAG4 = "TAG4";
+
+    public final static String TAG5 = "TAG5";
+
+    public final static String TAG6 = "TAG6";
+
+    public final static String TAG7 = "TAG7";
+
+    public final static String TAG8 = "TAG8";
 
 
     /**

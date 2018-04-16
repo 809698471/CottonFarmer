@@ -16,12 +16,12 @@ import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.Bean;
 import com.lianghuawang.cottonfarmer.GridAdapter;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials.AMActivity;
 import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivity;
-import com.lianghuawang.cottonfarmer.activity.CooperativeOrganizationActivity;
+import com.lianghuawang.cottonfarmer.activity.home.cooperation.CooperativeOrganizationActivity;
 import com.lianghuawang.cottonfarmer.activity.CottonTradeActivity;
 import com.lianghuawang.cottonfarmer.activity.IWantToBorrowMoneyActivity;
 import com.lianghuawang.cottonfarmer.activity.my.MyCreditActivity;
-import com.lianghuawang.cottonfarmer.activity.OrderAgriculturalCapitalActivity;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -97,7 +97,7 @@ public class HomePageFragment extends Fragment {
                     startActivity(new Intent(getActivity(),IWantToBorrowMoneyActivity.class));
                 } else if (position == 2) {
                     //订购农资
-                    startActivity(new Intent(getActivity(),OrderAgriculturalCapitalActivity.class));
+                    startActivity(new Intent(getActivity(),AMActivity.class));
                 } else if (position == 3) {
                     //棉花交易
                     startActivity(new Intent(getActivity(),CottonTradeActivity.class));
