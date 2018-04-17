@@ -15,7 +15,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--<activity android:name=".activity.home.agriculturalMaterials.AMActivity">-->
         <activity android:name=".StartPageActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,14 +34,15 @@
         <activity android:name=".activity.home.insurance.BuyInsuranceActivity" />
         <activity android:name=".activity.home.insurance.InsuranceParticularsActivity" />
         <activity
-        android:name=".activity.home.insurance.SignatureActivity"
-        android:screenOrientation="landscape" />
+            android:name=".activity.home.insurance.SignatureActivity"
+            android:screenOrientation="landscape" />
         <activity android:name=".activity.home.insurance.InsuranceOrderActivity" />
-        <activity android:name=".activity.home.insurance.PayInsuranceActivity"/>
-        <activity android:name=".activity.home.agriculturalMaterials.AMActivity"/>
+        <activity android:name=".activity.home.insurance.PayInsuranceActivity" />
+        <activity android:name=".activity.home.agriculturalMaterials.AMActivity" />
         <activity android:name=".activity.IWantToBorrowMoneyActivity" />
         <activity android:name=".activity.CottonTradeActivity" />
         <activity android:name=".activity.home.cooperation.CooperativeOrganizationActivity" />
+        <activity android:name=".activity.home.cooperation.LinkmanActivity"/>
         <activity android:name=".activity.my.MyCreditActivity" />
         <activity android:name=".activity.mycredit.CreditIntroductionActivity" />
         <activity android:name=".module.register.RegisterActivity" />

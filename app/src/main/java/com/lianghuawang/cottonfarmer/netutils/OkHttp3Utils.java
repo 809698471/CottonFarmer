@@ -170,7 +170,7 @@ public class OkHttp3Utils {
         }
         Request.Builder builder1 = new Request.Builder();
 //        builder1.addHeader("token",token);
-        builder1.addHeader("Authorization","Bearer " + token);
+        builder1.addHeader("Authorization",token);
         Request request = builder1.url(url).post(builder.build()).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(callback);

@@ -118,7 +118,7 @@ public class BuyInsuranceActivity extends BaseActivity {
         Map<String, Object> params = new HashMap<>();
 //        params.put("insStatus","1");
         params.put("image","");
-        OkHttp3Utils.uploadPic("EuLUEwkkOECfeeUH1RC9otgReROf1lax",
+        OkHttp3Utils.uploadPic(ConstantUtil.TOKEN,
                 this,
                 "http://gwook.com:82/cotton/web/v1/cotton-farmers/upload-image",
                 params);

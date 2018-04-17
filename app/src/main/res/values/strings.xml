@@ -42,4 +42,13 @@
     <string name="policy_holder">投保人：</string>
     <string name="id_crad">机构代码/身份证号：</string>
     <string name="address">联系地址：</string>
+
+
+    <!--CooperativeOrganizationActivity-->
+    <string name="coop_team">组成成员</string>
+    <string name="coop_vote">投票议事</string>
+    <string name="coop_insurancepolicy">集体保单</string>
+    <string name="coop_guarantee">我的承保人</string>
+    <string name="synopsis">小棉袄简介</string>
+    <string name="dynamic">———— 合作社动态 ————</string>
 </resources>

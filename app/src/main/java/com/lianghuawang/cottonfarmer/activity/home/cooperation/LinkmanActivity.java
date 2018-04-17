@@ -6,38 +6,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.adapter.AgricultureAdapter;
 import com.lianghuawang.cottonfarmer.adapter.CooperationAdapter;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.Cooper;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.CooperData;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.Insurance;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.InsuranceData;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.OnClick;
 
-//合作组织
-public class CooperativeOrganizationActivity extends BaseActivity {
+public class LinkmanActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
 
     @Bind(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
-
-    @Bind(R.id.tv_bar_title)
-    TextView mBarTitle;
-
-    @Bind(R.id.iv_coop_banner)
-    ImageView mBanner;
 
     @Bind(R.id.recycle)
     RecyclerView mRecyclerView;
@@ -49,19 +35,17 @@ public class CooperativeOrganizationActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_cooperative_organization;
+        return R.layout.activity_linkman;
     }
 
     @Override
     protected void initView() {
         initToolbar();
-        initBanner();
-        initRecyclerView();
+        initRecylerView();
     }
 
     private void initToolbar() {
-        mToolbar.setTitle("");
-        mBarTitle.setText("小棉袄合作社");
+        mToolbar.setTitle("合作社成员");
         setSupportActionBar(mToolbar);
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null)
@@ -75,21 +59,12 @@ public class CooperativeOrganizationActivity extends BaseActivity {
         });
     }
 
-    private void initBanner() {
-        mBanner.setBackgroundResource(R.mipmap.coop_banner);
-    }
-
-    private void initRecyclerView() {
+    private void initRecylerView() {
         list = CooperData.newInstance().init();
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new CooperationAdapter(mRecyclerView, list);
         mRecyclerView.setAdapter(mAdapter);
-    }
-
-    @OnClick({R.id.btn_team})
-    public void onClick(Button btn){
-
     }
 }
