@@ -79,4 +79,9 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
     public void captcha(String message) {
         mCaptcha.setText(message);
     }
+
+    @Override
+    protected void loadData() {
+
+    }
 }

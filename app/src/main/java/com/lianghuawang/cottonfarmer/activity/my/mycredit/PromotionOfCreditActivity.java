@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.mycredit;
+package com.lianghuawang.cottonfarmer.activity.my.mycredit;
 
 import android.content.Intent;
 import android.view.View;
@@ -6,9 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.mycredit.activity.AuthenticationActivity;
-import com.lianghuawang.cottonfarmer.activity.mycredit.activity.BankCardBindingActivity;
-import com.lianghuawang.cottonfarmer.activity.personalinformation.PersonalInformationActivity;
+import com.lianghuawang.cottonfarmer.activity.personalinformation.activity.EssentialInformationActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //提升信用
@@ -52,7 +50,7 @@ public class PromotionOfCreditActivity extends BaseActivity implements View.OnCl
                 break;
             //完善个人信息
             case R.id.promotionofcredit_perfect:
-                startActivity(new Intent(PromotionOfCreditActivity.this,PersonalInformationActivity.class));
+                startActivity(new Intent(PromotionOfCreditActivity.this,EssentialInformationActivity.class));
                 break;
             //身份证验证
             case R.id.promotionofcredit_authentication:
@@ -66,6 +64,7 @@ public class PromotionOfCreditActivity extends BaseActivity implements View.OnCl
                 break;
             //邀请承保人
             case R.id.promotionofcredit_invitingtheunderwriter:
+                startActivity(new Intent(PromotionOfCreditActivity.this,InvitingTheUnderwriterActivity.class));
                 break;
         }
     }

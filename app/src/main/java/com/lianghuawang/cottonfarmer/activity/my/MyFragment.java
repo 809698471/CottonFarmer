@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.bankcard.BankCardActivity;
+import com.lianghuawang.cottonfarmer.activity.my.bankcard.BankCardActivity;
+import com.lianghuawang.cottonfarmer.activity.personalinformation.PersonalInformationActivity;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 
 import org.greenrobot.eventbus.EventBus;
@@ -29,6 +31,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private LinearLayout myfragment_credit;
     private LinearLayout myfragment_loan;
     private LinearLayout myfragment_setup;
+    private RelativeLayout myfragment_personalinformation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +42,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView(View view) {
-
+        myfragment_personalinformation = (RelativeLayout) view.findViewById(R.id.myfragment_personalinformation);
         myfragment_bankcard = (LinearLayout) view.findViewById(R.id.myfragment_bankcard);
         myfragment_thebooks = (LinearLayout) view.findViewById(R.id.myfragment_thebooks);
         myfragment_order = (LinearLayout) view.findViewById(R.id.myfragment_order);
@@ -48,7 +51,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         myfragment_credit = (LinearLayout) view.findViewById(R.id.myfragment_credit);
         myfragment_loan = (LinearLayout) view.findViewById(R.id.myfragment_loan);
         myfragment_setup = (LinearLayout) view.findViewById(R.id.myfragment_setup);
-
+        myfragment_personalinformation.setOnClickListener(this);
         myfragment_bankcard.setOnClickListener(this);
         myfragment_thebooks.setOnClickListener(this);
         myfragment_order.setOnClickListener(this);
@@ -62,6 +65,10 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //个人信息
+            case R.id.myfragment_personalinformation:
+                startActivity(new Intent(getActivity(), PersonalInformationActivity.class));
+                break;
             //我的银行卡
             case R.id.myfragment_bankcard:
                 startActivity(new Intent(getActivity(), BankCardActivity.class));

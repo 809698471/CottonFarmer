@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.fragment.news;
+package com.lianghuawang.cottonfarmer.activity.message.news;
 
 
 import android.os.Bundle;
@@ -11,9 +11,10 @@ import android.widget.TextView;
 import com.lianghuawang.cottonfarmer.R;
 
 /**
- * 贷款
+ * 投票
  */
-public class LoanFragment extends Fragment {
+public class VoteFragment extends Fragment {
+
 
 
     @Override

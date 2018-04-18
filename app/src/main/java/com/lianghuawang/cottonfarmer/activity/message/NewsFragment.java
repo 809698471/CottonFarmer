@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.Find_tab_Adapter;
-import com.lianghuawang.cottonfarmer.fragment.news.BusinessFragment;
-import com.lianghuawang.cottonfarmer.fragment.news.FormulaFragment;
-import com.lianghuawang.cottonfarmer.fragment.news.LoanFragment;
-import com.lianghuawang.cottonfarmer.fragment.news.NewestFragment;
-import com.lianghuawang.cottonfarmer.fragment.news.OtherFragment;
-import com.lianghuawang.cottonfarmer.fragment.news.VoteFragment;
+import com.lianghuawang.cottonfarmer.activity.message.news.BusinessFragment;
+import com.lianghuawang.cottonfarmer.activity.message.news.FormulaFragment;
+import com.lianghuawang.cottonfarmer.activity.message.news.LoanFragment;
+import com.lianghuawang.cottonfarmer.activity.message.news.NewestFragment;
+import com.lianghuawang.cottonfarmer.activity.message.news.OtherFragment;
+import com.lianghuawang.cottonfarmer.activity.message.news.VoteFragment;
 
 import java.util.ArrayList;
 import java.util.List;

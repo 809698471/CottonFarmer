@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.fragment.news;
+package com.lianghuawang.cottonfarmer.activity.message.news;
 
 
 import android.os.Bundle;
@@ -11,9 +11,10 @@ import android.widget.TextView;
 import com.lianghuawang.cottonfarmer.R;
 
 /**
- * 公式
+ * 贷款
  */
-public class FormulaFragment extends Fragment {
+public class LoanFragment extends Fragment {
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

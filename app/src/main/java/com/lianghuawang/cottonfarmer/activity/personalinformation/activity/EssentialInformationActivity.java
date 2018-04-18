@@ -1,6 +1,8 @@
 package com.lianghuawang.cottonfarmer.activity.personalinformation.activity;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.lianghuawang.cottonfarmer.R;
@@ -11,6 +13,7 @@ public class EssentialInformationActivity extends BaseActivity implements View.O
 
 
     private ImageView essentialinformation_return;
+    private Button essentialinformation_next;
 
     @Override
     protected int getLayoutId() {
@@ -20,11 +23,21 @@ public class EssentialInformationActivity extends BaseActivity implements View.O
     @Override
     protected void initView() {
         essentialinformation_return = (ImageView) findViewById(R.id.essentialinformation_return);
+        essentialinformation_next = (Button) findViewById(R.id.essentialinformation_next);
         essentialinformation_return.setOnClickListener(this);
+        essentialinformation_next.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        finish();
+        switch (v.getId()) {
+            case R.id.essentialinformation_return:
+                finish();
+                break;
+            //下一步---种植信息
+            case R.id.essentialinformation_next:
+                startActivity(new Intent(EssentialInformationActivity.this, PlantingInformationActivity.class));
+                break;
+        }
     }
 }

@@ -25,4 +25,8 @@ public interface MvpManager {
     abstract class TestPresenter extends BasePresenter<TestModel, TestView> {
         public abstract void loadData(String url);
     }
+
+  /*
+  * */
+
 }

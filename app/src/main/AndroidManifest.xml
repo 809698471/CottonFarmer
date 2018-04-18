@@ -25,7 +25,7 @@
         <activity android:name=".activity.HomePageActivity" />
         <activity android:name=".AdvertisingPageActivity" />
         <activity android:name=".activity.my.SetUpActivity" />
-        <activity android:name=".activity.bankcard.BankCardActivity" />
+        <activity android:name=".activity.my.bankcard.BankCardActivity" />
         <activity android:name=".activity.my.TheBooksActivity" />
         <activity android:name=".activity.my.InsuranceActivity" />
         <activity android:name=".activity.my.ClaimCompensationActivity" />
@@ -44,14 +44,14 @@
         <activity android:name=".activity.home.cooperation.CooperativeOrganizationActivity" />
         <activity android:name=".activity.home.cooperation.LinkmanActivity"/>
         <activity android:name=".activity.my.MyCreditActivity" />
-        <activity android:name=".activity.mycredit.CreditIntroductionActivity" />
+        <activity android:name=".activity.my.mycredit.CreditIntroductionActivity" />
         <activity android:name=".module.register.RegisterActivity" />
         <activity android:name=".activity.ReceivingAddressActivity" />
         <activity android:name=".activity.PaymentPasswordSettingsActivity" />
         <activity android:name=".activity.HelpActivity" />
-        <activity android:name=".activity.mycredit.PromotionOfCreditActivity" />
-        <activity android:name=".activity.mycredit.activity.AuthenticationActivity" />
-        <activity android:name=".activity.mycredit.activity.BankCardBindingActivity" />
+        <activity android:name=".activity.my.mycredit.PromotionOfCreditActivity" />
+        <activity android:name=".activity.my.mycredit.AuthenticationActivity" />
+        <activity android:name=".activity.my.mycredit.BankCardBindingActivity" />
         <activity android:name=".activity.personalinformation.PersonalInformationActivity" />
         <activity android:name=".activity.personalinformation.activity.EssentialInformationActivity" />
         <activity android:name=".activity.personalinformation.activity.PlantingInformationActivity" />
@@ -59,6 +59,8 @@
         <activity android:name=".activity.personalinformation.activity.InsurancePurchaseRecordActivity" />
         <activity android:name=".activity.ReservationProgressActivity" />
         <activity android:name=".activity.ApplyForALoanActivity" />
+        <activity android:name=".activity.my.mycredit.BankCardSMSVerification" />
+        <activity android:name=".activity.my.mycredit.InvitingTheUnderwriterActivity"></activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.bankcard;
+package com.lianghuawang.cottonfarmer.activity.my.bankcard;
 
 /**
  * Created by a on 2018/4/12.

@@ -28,4 +28,26 @@
             android:textSize="15sp"
             android:textStyle="bold" />
     </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_frame"
+        android:hint="输入近三年保险购买记录" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/insurancepurchaserecord_next"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/btn"
+        android:text="下一步"
+        android:textColor="@color/white" />
 </LinearLayout>

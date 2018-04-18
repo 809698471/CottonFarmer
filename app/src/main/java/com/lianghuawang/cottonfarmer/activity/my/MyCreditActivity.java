@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.mycredit.CreditIntroductionActivity;
-import com.lianghuawang.cottonfarmer.activity.mycredit.PromotionOfCreditActivity;
+import com.lianghuawang.cottonfarmer.activity.my.mycredit.CreditIntroductionActivity;
+import com.lianghuawang.cottonfarmer.activity.my.mycredit.PromotionOfCreditActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //我的信用

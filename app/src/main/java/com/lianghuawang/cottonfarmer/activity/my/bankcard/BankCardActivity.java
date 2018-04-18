@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.bankcard;
+package com.lianghuawang.cottonfarmer.activity.my.bankcard;
 
 import android.util.Log;
 import android.view.View;

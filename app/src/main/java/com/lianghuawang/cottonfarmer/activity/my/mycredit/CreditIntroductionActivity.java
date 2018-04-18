@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.mycredit;
+package com.lianghuawang.cottonfarmer.activity.my.mycredit;
 
 import android.view.View;
 import android.widget.ImageView;

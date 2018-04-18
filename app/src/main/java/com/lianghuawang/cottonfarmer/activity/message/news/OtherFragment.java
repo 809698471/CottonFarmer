@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.fragment.news;
+package com.lianghuawang.cottonfarmer.activity.message.news;
 
 
 import android.os.Bundle;
@@ -11,9 +11,15 @@ import android.widget.TextView;
 import com.lianghuawang.cottonfarmer.R;
 
 /**
- * 最新
+ * 其他
  */
-public class NewestFragment extends Fragment {
+public class OtherFragment extends Fragment {
+
+
+    public OtherFragment() {
+        // Required empty public constructor
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

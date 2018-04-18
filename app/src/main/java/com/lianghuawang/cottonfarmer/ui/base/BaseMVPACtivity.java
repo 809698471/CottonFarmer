@@ -22,7 +22,9 @@ public abstract class BaseMVPACtivity <T extends BasePresenter, M extends BaseMo
         mPresenter  = ReflectUtil.getT(this, 0);
         mModel = ReflectUtil.getT(this, 1);
         mPresenter.onAttach(mModel, this);
+        loadData();
     }
+    protected abstract void loadData();
     @Override
     protected void onStart() {
         super.onStart();

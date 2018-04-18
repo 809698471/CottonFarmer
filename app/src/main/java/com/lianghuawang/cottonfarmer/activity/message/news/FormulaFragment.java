@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.fragment.news;
+package com.lianghuawang.cottonfarmer.activity.message.news;
 
 
 import android.os.Bundle;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.lianghuawang.cottonfarmer.R;
 
 /**
- * 买卖
+ * 公式
  */
-public class BusinessFragment extends Fragment {
+public class FormulaFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

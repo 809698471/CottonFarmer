@@ -106,8 +106,8 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="25dp"
         android:layout_marginRight="10dp"
+        android:layout_marginTop="25dp"
         android:orientation="horizontal">
 
         <TextView
@@ -189,4 +189,19 @@
             android:background="@drawable/edit_bg"
             android:hint="未设置" />
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:layout_marginBottom="30dp"
+        android:id="@+id/essentialinformation_next"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/btn"
+        android:text="下一步"
+        android:textColor="@color/white"/>
 </LinearLayout>

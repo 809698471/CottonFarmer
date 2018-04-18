@@ -77,4 +77,8 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
         mCaptcha.setText(message);
     }
 
+    @Override
+    protected void loadData() {
+
+    }
 }
