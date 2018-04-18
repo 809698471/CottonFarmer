@@ -1,6 +1,7 @@
 package com.lianghuawang.cottonfarmer.activity.home.cooperation;
 
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -9,13 +10,24 @@ import android.view.View;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.CooperationAdapter;
+import com.lianghuawang.cottonfarmer.adapter.LinkmanAdapter;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.Cooper;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.CooperData;
+import com.lianghuawang.cottonfarmer.entity.home.cooperation.Linkman;
+import com.lianghuawang.cottonfarmer.entity.home.insurance.InsuranceData;
+import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
+import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+import com.lianghuawang.cottonfarmer.utils.API;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 
+import java.io.IOException;
 import java.util.List;
 
 import butterknife.Bind;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class LinkmanActivity extends BaseActivity {
 
@@ -25,12 +37,15 @@ public class LinkmanActivity extends BaseActivity {
     @Bind(R.id.drawer_layout)
     DrawerLayout mDrawerLayout;
 
+    @Bind(R.id.swipe_refresh)
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
     @Bind(R.id.recycle)
     RecyclerView mRecyclerView;
 
 
     private LinearLayoutManager mLayoutManager;
-    private List<Cooper> list;
+    private Linkman list;
     private CooperationAdapter mAdapter;
 
     @Override
@@ -41,6 +56,7 @@ public class LinkmanActivity extends BaseActivity {
     @Override
     protected void initView() {
         initToolbar();
+        showProgress();
         initRecylerView();
     }
 
@@ -59,12 +75,35 @@ public class LinkmanActivity extends BaseActivity {
         });
     }
 
+    private void showProgress() {
+        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                initData();
+            }
+        });
+    }
+
+    private void initData() {
+        OkHttp3Utils.doGet(ConstantUtil.TOKEN, API.LINKMAN + "1", new GsonObjectCallback<Linkman>() {
+            @Override
+            public void onUi(Linkman linkman) {
+                list = linkman;
+            }
+
+            @Override
+            public void onFailed(Call call, IOException e) {
+
+            }
+        });
+    }
+
     private void initRecylerView() {
-        list = CooperData.newInstance().init();
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new CooperationAdapter(mRecyclerView, list);
+//        mAdapter = new LinkmanAdapter(mRecyclerView, list.getData());
         mRecyclerView.setAdapter(mAdapter);
     }
 }
