@@ -40,7 +40,11 @@ public class LinkmanAdapter extends AbsRecyclerViewAdapter {
     public void onBindViewHolder(ClickableViewHolder holder, int position) {
         if (holder instanceof ItemViewHolder){
             ItemViewHolder holde = (ItemViewHolder) holder;
-            holde.textView.setText(list.get(position).getUsername());
+            if (list.get(position).getUsername() == null){
+                holde.textView.setText("无名"+position);
+            } else {
+                holde.textView.setText(list.get(position).getUsername());
+            }
             holde.textView1.setText(list.get(position).getMobile_phone());
         }
         super.onBindViewHolder(holder, position);
@@ -57,5 +61,9 @@ public class LinkmanAdapter extends AbsRecyclerViewAdapter {
             textView = $(R.id.textView);
             textView1 = $(R.id.textView2);
         }
+    }
+
+    public void notifyData(List<Linkman.DataBean> list){
+        this.list = list;
     }
 }

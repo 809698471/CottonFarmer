@@ -9,13 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.adapter.CooperationAdapter;
 import com.lianghuawang.cottonfarmer.adapter.LinkmanAdapter;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.Cooper;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.CooperData;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.Linkman;
 import com.lianghuawang.cottonfarmer.entity.home.insurance.InsuranceData;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.API;
@@ -46,7 +46,7 @@ public class LinkmanActivity extends BaseActivity {
 
     private LinearLayoutManager mLayoutManager;
     private Linkman list;
-    private CooperationAdapter mAdapter;
+    private LinkmanAdapter mAdapter;
 
     @Override
     protected int getLayoutId() {
@@ -77,12 +77,29 @@ public class LinkmanActivity extends BaseActivity {
 
     private void showProgress() {
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        mSwipeRefreshLayout.setRefreshing(true);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 initData();
             }
         });
+
+        mSwipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                initData();
+            }
+        });
+    }
+
+    private void finishTask() {
+        mAdapter.notifyData(list.getData());
+        mAdapter.notifyDataSetChanged();
+        if (mSwipeRefreshLayout.isRefreshing()){
+            mSwipeRefreshLayout.setRefreshing(false);
+        }
+        LogUtils.d("adapter.size---" + mAdapter.getItemCount());
     }
 
     private void initData() {
@@ -90,6 +107,7 @@ public class LinkmanActivity extends BaseActivity {
             @Override
             public void onUi(Linkman linkman) {
                 list = linkman;
+                finishTask();
             }
 
             @Override
@@ -103,7 +121,7 @@ public class LinkmanActivity extends BaseActivity {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-//        mAdapter = new LinkmanAdapter(mRecyclerView, list.getData());
+        mAdapter = new LinkmanAdapter(mRecyclerView, list == null ? null : list.getData());
         mRecyclerView.setAdapter(mAdapter);
     }
 }

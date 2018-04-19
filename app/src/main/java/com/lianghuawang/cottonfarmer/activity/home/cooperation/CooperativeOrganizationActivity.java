@@ -1,5 +1,6 @@
 package com.lianghuawang.cottonfarmer.activity.home.cooperation;
 
+import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
@@ -90,6 +91,10 @@ public class CooperativeOrganizationActivity extends BaseActivity {
 
     @OnClick({R.id.btn_team})
     public void onClick(Button btn){
-
+        switch (btn.getId()){
+            case R.id.btn_team:
+                startActivity(new Intent(CooperativeOrganizationActivity.this,LinkmanActivity.class));
+                break;
+        }
     }
 }
