@@ -31,6 +31,15 @@ public class ConstantUtil {
 
     public final static String TAG8 = "TAG8";
 
+    /**
+     * -------------------订单模块
+     */
+    public final static String ALL = "all";//全部
+    public final static String NON_PAYMENT = "non_payment";//未付款
+    public final static String PAYMENT_HAS_BEEN = "payment_has_been";//已付款
+    public final static String FOR_THE_GOODS = "for_the_goods";
+    public final static String HAS_BEEN_COMPLETED = "has_been_completed";
+    public final static String HAS_BEEN_CANCELLED = "has_been_cancelled";
 
     /**
      * 模拟保险说明内容

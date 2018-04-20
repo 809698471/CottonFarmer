@@ -15,6 +15,7 @@ import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.home.HomePageFragment;
 import com.lianghuawang.cottonfarmer.activity.message.NewsFragment;
 import com.lianghuawang.cottonfarmer.activity.my.MyFragment;
+import com.lianghuawang.cottonfarmer.activity.order.Order;
 import com.lianghuawang.cottonfarmer.activity.order.OrderFragment;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 
@@ -76,7 +77,7 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
     private void initData() {
         list_fragment.add(new HomePageFragment());
         list_fragment.add(new NewsFragment());
-        list_fragment.add(new OrderFragment());
+        list_fragment.add(Order.newInstance());
         list_fragment.add(new MyFragment());
         for (int i = 0; i < layout.getChildCount(); i++) {
             rbArray[i] = (RadioButton) layout.getChildAt(i);
