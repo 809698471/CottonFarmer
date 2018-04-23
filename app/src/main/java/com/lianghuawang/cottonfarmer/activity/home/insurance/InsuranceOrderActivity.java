@@ -12,7 +12,7 @@ import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-
+//保险订单
 public class InsuranceOrderActivity extends BaseActivity{
 
     @Bind(R.id.toolbar)

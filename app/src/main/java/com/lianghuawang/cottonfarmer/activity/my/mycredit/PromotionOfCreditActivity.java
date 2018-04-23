@@ -36,6 +36,7 @@ public class PromotionOfCreditActivity extends BaseActivity implements View.OnCl
         //邀请承保人
         promotionofcredit_invitingtheunderwriter = (LinearLayout) findViewById(R.id.promotionofcredit_invitingtheunderwriter);
 
+        promotionofcredit_return.setOnClickListener(this);
         promotionofcredit_perfect.setOnClickListener(this);
         promotionofcredit_authentication.setOnClickListener(this);
         promotionofcredit_bankcardbinding.setOnClickListener(this);

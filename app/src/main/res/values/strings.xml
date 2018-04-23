@@ -33,6 +33,18 @@
     <string name="introduce">保险介绍</string>
     <string name="agreed">同意《保险条例》</string>
 
+    <string name="shiyi">释义</string>
+    <string name="shiyiyu">第三十五条 本保险合同涉及下列术语时,适用下列释义:</string>
+    <string name="one">（一）暴雨：指骤雨量每小时在16mm以上，或连续12小时降雨量达30mm以上，或连续24小时降雨量达50mm以上。</string>
+    <string name="two">（二）洪水：指山洪暴发、江河泛滥、潮水上岸及倒灌或暴雨积水。规律性涨潮、海水倒灌、自动灭火设施漏水以及常年水位线以下或地下渗水、水管爆裂不属洪水责任。</string>
+    <string name="three">（三）内涝：由于降水过多，地面积水不能及时排除，农田积水超过作物耐淹能力，造成作物减产。</string>
+    <string name="four">四）风灾：本条款的风灾责任以县级以上农业部门和气象部门出具的风灾鉴定证明为准。</string>
+    <string name="five">（五）雹灾：指在对流性天气控制下，积雨云中凝结生成的冰块从空中降落，造成作物严重的机械损伤而带来的损失。</string>
+    <string name="six">（六）冻灾：指因遇到0℃以下或长期持续在0℃以下的温度，引起植株体冰冻或是丧失一切生理活力，造成植株死亡或部分死亡等现象。</string>
+    <string name="seven">（七）生荒地：新开垦的、种植时间在三年以下的土地。</string>
+    <string name="eight">（八）重大过失：指行为人不但没有遵守法律规范对其较高要求，甚至连人们都应当注意并能注意的一般标准也未达到的行为。</string>
+    <string name="nine">（九）各生长期赔偿比例：是指根据农作物各生长期物化成本的转化比例设定的赔偿标准。</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!-- TODO: Remove or change this placeholder text -->

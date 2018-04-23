@@ -19,14 +19,14 @@
 
     <ImageView
         android:src="@color/colorPrimary"
-        android:id="@+id/image1"
+        android:id="@+id/homepage_img1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5" />
 
     <ImageView
         android:src="@color/colorAccent"
-        android:id="@+id/image2"
+        android:id="@+id/homepage_img2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1.5" />

@@ -10,14 +10,14 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
-public class InsuranceParticularsActivity extends BaseActivity{
+//购买保险---棉花灾害险详情页面
+public class InsuranceParticularsActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
@@ -30,6 +30,9 @@ public class InsuranceParticularsActivity extends BaseActivity{
 
     @Bind(R.id.cb_argeed)
     CheckBox mCheck;
+
+    @Bind(R.id.tv_argeed)
+    TextView mTextView;
 
     @Bind(R.id.btn_argeed)
     Button mArgeed;
@@ -60,21 +63,27 @@ public class InsuranceParticularsActivity extends BaseActivity{
         });
     }
 
-    private void initData(){
+    private void initData() {
         content.setText(ConstantUtil.TEST);
     }
 
     @OnClick(R.id.cb_argeed)
-    public void click(CheckBox checkBox){
-        if (checkBox.isChecked()){
+    public void click(CheckBox checkBox) {
+        if (checkBox.isChecked()) {
             mArgeed.setEnabled(true);
         } else {
             mArgeed.setEnabled(false);
         }
     }
+//保单条款
+    @OnClick(R.id.tv_argeed)
+    public void tvClick(TextView textView) {
+        startActivity(new Intent(InsuranceParticularsActivity.this,InsuranceClausesActivity.class));
+    }
 
+    //预约投保>>>>>保险订单
     @OnClick(R.id.btn_argeed)
-    public void btnClick(Button button){
-        startActivity(new Intent(this,InsuranceOrderActivity.class));
+    public void btnClick(Button button) {
+        startActivity(new Intent(this, InsuranceOrderActivity.class));
     }
 }

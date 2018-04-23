@@ -4,6 +4,7 @@ package com.lianghuawang.cottonfarmer.activity.home;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +17,11 @@ import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.Bean;
 import com.lianghuawang.cottonfarmer.GridAdapter;
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials.AMActivity;
-import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivity;
-import com.lianghuawang.cottonfarmer.activity.home.cooperation.CooperativeOrganizationActivity;
 import com.lianghuawang.cottonfarmer.activity.CottonTradeActivity;
 import com.lianghuawang.cottonfarmer.activity.IWantToBorrowMoneyActivity;
+import com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials.AMActivity;
+import com.lianghuawang.cottonfarmer.activity.home.cooperation.CooperativeOrganizationActivity;
+import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivity;
 import com.lianghuawang.cottonfarmer.activity.my.MyCreditActivity;
 import com.youth.banner.Banner;
 
@@ -33,8 +34,8 @@ import java.util.List;
 public class HomePageFragment extends Fragment {
     private Banner grid_banner;
     private GridView main_grid;
-    private ImageView image1;
-    private ImageView image2;
+    private ImageView homepage_img1;
+    private ImageView homepage_img2;
     //设置图片资源:url或本地资源
     String[] images = new String[]{
             "http://218.192.170.132/BS80.jpg",
@@ -56,7 +57,14 @@ public class HomePageFragment extends Fragment {
         View view = View.inflate(getActivity(), R.layout.homepagefragment, null);
         initView(view);
         banner();
-        grid();
+        if (beans.size() <= 0 ) {
+            grid();
+        }else {
+            beans.clear();
+            grid();
+        }
+
+        Log.e("==========","==============");
         return view;
 
     }
@@ -64,11 +72,29 @@ public class HomePageFragment extends Fragment {
     private void initView(View view) {
         grid_banner = (Banner) view.findViewById(R.id.grid_banner);
         main_grid = (GridView) view.findViewById(R.id.main_grid);
-        image1 = (ImageView) view.findViewById(R.id.image1);
-        image2 = (ImageView) view.findViewById(R.id.image2);
+        homepage_img1 = (ImageView) view.findViewById(R.id.homepage_img1);
+        homepage_img2 = (ImageView) view.findViewById(R.id.homepage_img2);
+        //热销保险
+        homepage_img1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+             startActivity(new Intent(getActivity(),HotSaleInsuranceActivity.class));
+            }
+        });
+        //热销农资
+        homepage_img2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(),HotSaleOfAgriculturalCapitalActivity.class));
+
+            }
+        });
+
     }
 
     private void grid() {
+
 
         final Bean bean1 = new Bean("购买保险", R.mipmap.ic_launcher);
         Bean bean2 = new Bean("我要借款", R.mipmap.ic_launcher);

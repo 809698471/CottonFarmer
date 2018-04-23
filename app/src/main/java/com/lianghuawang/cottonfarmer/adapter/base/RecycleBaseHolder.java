@@ -13,10 +13,10 @@ import java.util.HashMap;
  */
 
 
-public class BaseHolder extends RecyclerView.ViewHolder {
+public class RecycleBaseHolder extends RecyclerView.ViewHolder {
     //不写死控件变量，而采用Map方式
     private HashMap<Integer, View> mViews = new HashMap<>();
-    public BaseHolder(View itemView) {
+    public RecycleBaseHolder(View itemView) {
         super(itemView);
     }
     /**
@@ -35,7 +35,7 @@ public class BaseHolder extends RecyclerView.ViewHolder {
     /**
      *传入文本控件id和设置的文本值，设置文本
      */
-    public BaseHolder setText(Integer viewId, String value){
+    public RecycleBaseHolder setText(Integer viewId, String value){
         TextView textView = getView(viewId);
         if (textView != null) {
             textView.setText(value);
@@ -45,7 +45,7 @@ public class BaseHolder extends RecyclerView.ViewHolder {
     /**
      * 传入图片控件id和资源id，设置图片
      */
-    public BaseHolder setImageResource(Integer viewId, Integer resId) {
+    public RecycleBaseHolder setImageResource(Integer viewId, Integer resId) {
         ImageView imageView = getView(viewId);
         if (imageView != null) {
             imageView.setImageResource(resId);

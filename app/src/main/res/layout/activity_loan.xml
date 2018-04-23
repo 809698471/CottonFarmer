@@ -122,6 +122,7 @@
             android:textStyle="bold" />
 
         <Button
+            android:id="@+id/loan_money_btn"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_alignParentRight="true"

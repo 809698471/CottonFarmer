@@ -1,11 +1,16 @@
 package com.lianghuawang.cottonfarmer.activity;
 
+import android.view.View;
+import android.widget.ImageView;
+
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //预约进度
 public class ReservationProgressActivity extends BaseActivity {
 
+
+    private ImageView reservationprogress_return;
 
     @Override
     protected int getLayoutId() {
@@ -14,6 +19,12 @@ public class ReservationProgressActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        reservationprogress_return = (ImageView) findViewById(R.id.reservationprogress_return);
+        reservationprogress_return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

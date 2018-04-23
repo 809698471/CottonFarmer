@@ -24,15 +24,15 @@ public class InvitingTheUnderwriterActivity extends BaseActivity {
     @Override
     protected void initView() {
         invitingtheunderwriter_lv = (ListView) findViewById(R.id.invitingtheunderwriter_lv);
-       iniaData();
+        iniaData();
 //        invitingtheunderwriter_lv.setAdapter(new MyAdapter(this,beanList));
-        invitingtheunderwriter_lv.setAdapter(new MyCommonAdapter(this,beanList,R.layout.invitingtheunderwriter_item));
+        invitingtheunderwriter_lv.setAdapter(new MyCommonAdapter(this, beanList, R.layout.invitingtheunderwriter_item));
     }
 
     private void iniaData() {
         beanList = new ArrayList<>();
 
-        for(int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             Bean bean = new Bean();
             bean.setName("昵称");
             beanList.add(bean);
