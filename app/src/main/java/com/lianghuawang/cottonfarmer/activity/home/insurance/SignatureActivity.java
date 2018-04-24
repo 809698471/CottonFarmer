@@ -1,8 +1,10 @@
 package com.lianghuawang.cottonfarmer.activity.home.insurance;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
@@ -14,8 +16,10 @@ import android.widget.RelativeLayout;
 import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.FileUtils;
+import com.lianghuawang.cottonfarmer.utils.PermissionUtil;
 import com.lianghuawang.cottonfarmer.widget.SignatureView;
 
 import java.io.File;
@@ -44,6 +48,10 @@ public class SignatureActivity extends BaseActivity {
     @Bind(R.id.iv_signature)
     ImageView mSignature;
 
+    private static final int MY_PERMISSIONS_EXTERNAL = 1;
+
+    private PermissionUtil p = PermissionUtil.newInstance(this, MY_PERMISSIONS_EXTERNAL);
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_signature;
@@ -52,7 +60,15 @@ public class SignatureActivity extends BaseActivity {
     @Override
     protected void initView() {
         initTooble();
+        initPermissiont();
         initData();
+    }
+
+    private void initPermissiont() {
+        p.Build()
+                .add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .setPermission()
+                .build();
     }
 
     private void initData() {
@@ -106,10 +122,25 @@ public class SignatureActivity extends BaseActivity {
                 break;
             case R.id.btn_queren://确认
                 //记录图片地址
-                startActivity(new Intent(this,PayInsuranceActivity.class));
+                startActivity(new Intent(this, PayInsuranceActivity.class));
                 break;
             default:
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        p.Call(requestCode, permissions, grantResults, new PermissionUtil.Call() {
+            @Override
+            public void succeed() {
+
+            }
+
+            @Override
+            public void error(String permission) {
+                SignatureActivity.this.finish();
+            }
+        });
+    }
 }

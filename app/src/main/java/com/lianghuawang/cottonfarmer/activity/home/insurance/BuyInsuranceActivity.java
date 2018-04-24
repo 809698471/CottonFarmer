@@ -1,5 +1,6 @@
 package com.lianghuawang.cottonfarmer.activity.home.insurance;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -174,5 +175,10 @@ public class BuyInsuranceActivity extends BaseActivity {
 
             return titles.size();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 }
