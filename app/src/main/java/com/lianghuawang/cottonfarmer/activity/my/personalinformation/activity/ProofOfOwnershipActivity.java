@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.personalinformation.activity;
+package com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity;
 
 import android.content.Intent;
 import android.view.View;

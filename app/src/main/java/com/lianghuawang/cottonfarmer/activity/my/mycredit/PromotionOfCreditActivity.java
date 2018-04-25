@@ -6,7 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.personalinformation.activity.EssentialInformationActivity;
+import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.EssentialInformationActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //提升信用

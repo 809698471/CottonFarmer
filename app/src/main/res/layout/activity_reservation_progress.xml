@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lianghuawang.cottonfarmer.activity.ReservationProgressActivity">
+    tools:context="com.lianghuawang.cottonfarmer.activity.my.ReservationProgressActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"

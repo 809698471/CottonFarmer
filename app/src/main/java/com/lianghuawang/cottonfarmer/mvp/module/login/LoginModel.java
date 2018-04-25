@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.module.login;
+package com.lianghuawang.cottonfarmer.mvp.module.login;
 
 import com.lianghuawang.cottonfarmer.mvp.base.BaseModel;
 

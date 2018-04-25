@@ -17,8 +17,6 @@ import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.Bean;
 import com.lianghuawang.cottonfarmer.GridAdapter;
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.CottonTradeActivity;
-import com.lianghuawang.cottonfarmer.activity.IWantToBorrowMoneyActivity;
 import com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials.AMActivity;
 import com.lianghuawang.cottonfarmer.activity.home.cooperation.CooperativeOrganizationActivity;
 import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivity;

@@ -6,9 +6,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.HelpActivity;
-import com.lianghuawang.cottonfarmer.activity.PaymentPasswordSettingsActivity;
-import com.lianghuawang.cottonfarmer.activity.ReceivingAddressActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //我的设置

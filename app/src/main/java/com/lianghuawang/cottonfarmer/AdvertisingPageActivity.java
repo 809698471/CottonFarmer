@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
-import com.lianghuawang.cottonfarmer.module.login.LoginActivity;
+import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;

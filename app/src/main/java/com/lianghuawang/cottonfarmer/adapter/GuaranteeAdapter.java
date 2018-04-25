@@ -6,7 +6,7 @@ import android.view.View;
 
 import com.lianghuawang.cottonfarmer.Bean;
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.personalinformation.DetailsOfPolicyActivity;
+import com.lianghuawang.cottonfarmer.activity.my.personalinformation.DetailsOfPolicyActivity;
 import com.lianghuawang.cottonfarmer.adapter.base.RecycleBaseAdapter;
 import com.lianghuawang.cottonfarmer.adapter.base.RecycleBaseHolder;
 

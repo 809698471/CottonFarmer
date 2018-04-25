@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.module.login;
+package com.lianghuawang.cottonfarmer.mvp.module.login;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,8 +9,6 @@ import android.widget.Button;
 import com.lianghuawang.cottonfarmer.MyApp;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.mvp.base.BasePresenter;
-import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
-import com.lianghuawang.cottonfarmer.utils.LoginUtils;
 import com.lianghuawang.cottonfarmer.utils.TimekeeperUtil;
 
 

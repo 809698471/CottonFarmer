@@ -1,15 +1,14 @@
-package com.lianghuawang.cottonfarmer.activity;
+package com.lianghuawang.cottonfarmer.activity.home;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
-//我要借款
-public class IWantToBorrowMoneyActivity extends BaseActivity {
-
+//棉花交易
+public class CottonTradeActivity extends BaseActivity {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_iwant_to_borrow_money;
+        return R.layout.activity_cotton_trade;
     }
 
     @Override

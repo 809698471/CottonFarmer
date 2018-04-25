@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.my.bankcard.BankCardActivity;
-import com.lianghuawang.cottonfarmer.activity.personalinformation.PersonalInformationActivity;
+import com.lianghuawang.cottonfarmer.activity.my.personalinformation.PersonalInformationActivity;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 
 import org.greenrobot.eventbus.EventBus;

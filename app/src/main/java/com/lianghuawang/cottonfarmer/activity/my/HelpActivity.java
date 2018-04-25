@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity;
+package com.lianghuawang.cottonfarmer.activity.my;
 
 import android.view.View;
 import android.widget.ImageView;

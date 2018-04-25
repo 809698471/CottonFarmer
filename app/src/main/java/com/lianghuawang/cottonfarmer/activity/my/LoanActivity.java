@@ -8,8 +8,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.ApplyForALoanActivity;
-import com.lianghuawang.cottonfarmer.activity.personalinformation.RepaymentActivity;
+import com.lianghuawang.cottonfarmer.activity.my.personalinformation.RepaymentActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import java.util.ArrayList;
