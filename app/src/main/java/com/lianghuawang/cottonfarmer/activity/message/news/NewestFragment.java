@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,7 @@ import java.util.List;
  */
 public class NewestFragment extends Fragment {
 
-    List<Bean> list = new ArrayList<>();
+
     private RecyclerView newst_recycler;
 
     @Override
@@ -29,6 +30,7 @@ public class NewestFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = View.inflate(getActivity(), R.layout.newstfragment, null);
         initView(view);
+        Log.e("--------------", "++++++++++" );
         return view;
     }
 
@@ -36,16 +38,18 @@ public class NewestFragment extends Fragment {
         newst_recycler = (RecyclerView) view.findViewById(R.id.newst_recy);
 
         newst_recycler.setLayoutManager(new LinearLayoutManager(getContext()));
-//        for (int i = 0; i < 10; i++) {
-//            Bean bean = new Bean();
-//            bean.setName("1" + i);
-//            list.add(bean);
-//
-//        }
-        Bean bean = new Bean();
-        list.add(bean);
+        List<Bean> list = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            Bean bean = new Bean();
+            bean.setName("棉花险");
+            list.add(bean);
+
+        }
+//        Bean bean = new Bean();
+//        bean.setName("棉花险");
+//        list.add(bean);
         //设置Adapter
-        MyHomeAdapter adapter = new MyHomeAdapter(list);
+        MyHomeAdapter adapter = new MyHomeAdapter(getContext(),list);
         newst_recycler.setAdapter(adapter);
     }
 }

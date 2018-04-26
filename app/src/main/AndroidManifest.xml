@@ -70,6 +70,7 @@
         <activity android:name=".activity.my.personalinformation.StagingDetailActivity" />
         <activity android:name=".activity.my.personalinformation.DetailsOfPolicyActivity" />
         <activity android:name=".activity.home.insurance.InsuranceClausesActivity"/>
+        <activity android:name=".activity.personalinformation.SubmitACaseForSubmissionActivity"></activity>
     </application>
 
 </manifest>

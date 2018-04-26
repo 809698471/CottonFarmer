@@ -16,7 +16,6 @@ import com.lianghuawang.cottonfarmer.activity.home.HomePageFragment;
 import com.lianghuawang.cottonfarmer.activity.message.NewsFragment;
 import com.lianghuawang.cottonfarmer.activity.my.MyFragment;
 import com.lianghuawang.cottonfarmer.activity.order.Order;
-import com.lianghuawang.cottonfarmer.activity.order.OrderFragment;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -43,7 +42,7 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
     private FragmentTransaction ft;
     private int conut = 0;
     private List<Fragment> list_fragment;
-
+    private boolean name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,26 +51,26 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
         initView();
         initData();
     }
+
     //记录用户首次点击返回键的时间
-    private long firstTime=0;
+    private long firstTime = 0;
 
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-        switch (keyCode){
+        switch (keyCode) {
             case KeyEvent.KEYCODE_BACK:
-                long secondTime=System.currentTimeMillis();
-                if(secondTime-firstTime>2000){
-                    Toast.makeText(HomePageActivity.this,"再按一次退出程序--->onKeyUp",Toast.LENGTH_SHORT).show();
-                    firstTime=secondTime;
+                long secondTime = System.currentTimeMillis();
+                if (secondTime - firstTime > 2000) {
+                    Toast.makeText(HomePageActivity.this, "再按一次退出程序--->onKeyUp", Toast.LENGTH_SHORT).show();
+                    firstTime = secondTime;
                     return true;
-                }else{
+                } else {
                     System.exit(0);
                 }
                 break;
         }
         return super.onKeyUp(keyCode, event);
     }
-
 
 
     private void initData() {
@@ -112,16 +111,25 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
                 conut = i;
             }
         }
+        if (id == 2) {
+            if (list_fragment.get(2).isAdded()) {
+                tt.show(list_fragment.get(2)).hide(list_fragment.get(conut)).commit();
+            } else {
+                tt.add(R.id.fragment, list_fragment.get(2)).hide(list_fragment.get(conut)).commit();
+            }
+        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(MessageEvent evnt) {
-        boolean name = evnt.names;
+        name = evnt.names;
         if (name) {
-            FragmentTransaction tt = msg.beginTransaction();
-            tt.replace(R.id.fragment, list_fragment.get(2));
+//            FragmentTransaction tt = msg.beginTransaction();
+            showFragment(2);
             rbArray[2].setChecked(true);
-            tt.commit();
+//            tt.replace(R.id.fragment, list_fragment.get(2));
+//            rbArray[2].setChecked(true);
+//            tt.commit();
         } else {
         }
     }
@@ -148,4 +156,5 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
     public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
+
 }

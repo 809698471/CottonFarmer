@@ -1,5 +1,8 @@
 package com.lianghuawang.cottonfarmer.adapter;
 
+import android.content.Context;
+import android.view.View;
+
 import com.lianghuawang.cottonfarmer.Bean;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.base.RecycleBaseAdapter;
@@ -15,14 +18,22 @@ import java.util.List;
 
 
 public class MyHomeAdapter extends RecycleBaseAdapter<Bean> {
+    Context context;
 
-    public MyHomeAdapter(List<Bean> list) {
+    public MyHomeAdapter(Context context, List<Bean> list) {
         super(R.layout.newstfragment_item, list);
     }
 
     @Override
     protected void convert(RecycleBaseHolder holder, Bean bean) {
-      holder.setText(R.id.item_tv_title,bean.getName());
-       // holder.setText(R.id.item_tv_title, item).setImageResource(R.id.image, R.drawable.ic_default);
+        holder.setText(R.id.tv_cotton_risks, bean.getName());
+        // holder.setText(R.id.item_tv_title, item).setImageResource(R.id.image, R.drawable.ic_default);
+       //点击消息框，跳转相应链接
+        holder.itemView.findViewById(R.id.newstfragment_item_rela).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/formulafragment_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="15dp"
+        android:text="2018-3-12  12:30:20"
+        android:textColor="@color/coloroe"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:id="@+id/formulafragment_item_lin"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/shape_kuang"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="中华保险**年农业保险承保公示情况"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:text="棉花种植险：2017年第七师130团14练130户农户投保了棉花种植险，投保棉花14500亩，农户自交保费12.25万元，中央财政补贴25万元；" />
+
+        <TextView
+            android:id="@+id/formulafragment_item_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:text="点击查看具体详情"
+            android:textColor="@color/royalblue" />
+    </LinearLayout>
+</LinearLayout>

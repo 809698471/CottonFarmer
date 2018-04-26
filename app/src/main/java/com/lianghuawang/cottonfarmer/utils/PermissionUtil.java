@@ -6,8 +6,6 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 
-import com.lianghuawang.cottonfarmer.MyApp;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,7 +87,7 @@ public class PermissionUtil {
                         //成功授权
                         call.succeed();
                     }else{
-                        //授权失败
+                        //拒绝授权
                         call.error(permissions[i]);
                     }
                 }
