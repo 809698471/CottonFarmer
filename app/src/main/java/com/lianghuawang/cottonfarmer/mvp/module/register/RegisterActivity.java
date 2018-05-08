@@ -16,7 +16,9 @@ import com.lianghuawang.cottonfarmer.ui.base.BaseMVPACtivity;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-
+/*
+* 注册页
+* */
 public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,RegisterModel> implements RegisterView{
 
     @Bind(R.id.et_mobile)

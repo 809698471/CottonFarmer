@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.personalinformation.SubmitACaseForSubmissionActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 //保单详情

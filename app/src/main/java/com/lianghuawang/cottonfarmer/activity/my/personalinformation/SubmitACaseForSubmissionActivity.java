@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.personalinformation;
+package com.lianghuawang.cottonfarmer.activity.my.personalinformation;
 
 import android.view.View;
 import android.widget.ImageView;

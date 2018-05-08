@@ -46,7 +46,7 @@ public class HotSaleOfAgriculturalCapitalActivity extends BaseActivity {
 //        bean.setName("棉花灾害险");
 //        list.add(bean);
         //设置Adapter
-        HotSaleOfAgriculturalCapitalAdapter adapter = new HotSaleOfAgriculturalCapitalAdapter(list);
+        HotSaleOfAgriculturalCapitalAdapter adapter = new HotSaleOfAgriculturalCapitalAdapter(this,list);
         hotsaleofagriculturalcapital_recy.setAdapter(adapter);
     }
 }
