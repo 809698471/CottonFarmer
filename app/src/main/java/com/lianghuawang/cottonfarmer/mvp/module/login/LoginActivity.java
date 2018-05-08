@@ -18,7 +18,7 @@ import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
- *
+ *登录页
  */
 
 public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> implements LoginView {

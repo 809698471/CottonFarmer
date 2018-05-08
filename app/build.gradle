@@ -50,6 +50,8 @@ dependencies {
     //EventBus
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'com.android.support:recyclerview-v7:26.1.0'
+    //QMUI
+    compile 'com.qmuiteam:qmui:1.0.6'
 
     compile 'com.daimajia.easing:library:2.0@aar'
     compile 'com.daimajia.androidanimations:library:2.3@aar'

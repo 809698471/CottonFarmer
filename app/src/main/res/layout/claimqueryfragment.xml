@@ -58,6 +58,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/claimqueryfragment_btn"
         android:layout_marginTop="15dp"
         android:layout_gravity="center_horizontal"
         android:layout_width="150dp"

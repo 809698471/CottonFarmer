@@ -29,7 +29,7 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/personalinformation_personalimage"
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -40,26 +40,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:text="个人头像"
             android:textSize="20sp" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <ImageView
+        <com.lianghuawang.cottonfarmer.tools.view.CircleImageView
+            android:id="@+id/head_image1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:layout_toLeftOf="@+id/img_break"
             android:src="@mipmap/ic_launcher" />
 
         <ImageView
+            android:id="@+id/img_break"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:src="@drawable/more" />
-    </LinearLayout>
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
