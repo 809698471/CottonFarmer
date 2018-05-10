@@ -7,7 +7,7 @@
     tools:context="com.lianghuawang.cottonfarmer.StartPageActivity">
 
     <ImageView
-        android:src="@mipmap/ic_launcher"
+        android:src="@mipmap/start"
         android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
