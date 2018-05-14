@@ -32,7 +32,6 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
     @Bind(R.id.tv_back_login)
     TextView mBackLogin;
 
-    private Handler handler;
 
     @Override
     protected int getLayoutId() {
@@ -60,7 +59,8 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
                 mPresenter.startRegister(this, user, pass);
                 break;
             case R.id.btn_login_captcha:
-                mPresenter.captcha(mCaptcha);
+                String phoneNumber = mUsername.getText().toString();
+                mPresenter.captcha(mCaptcha,phoneNumber);
                 break;
             default:
         }
@@ -68,7 +68,6 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
 
     @Override
     public void register() {
-        LogUtils.d("一切合法,开始请求登录接口");
         ToastUtils.showLong(this, getResources().getText(R.string.registerSuccess));
         startActivity(new Intent(this, HomePageActivity.class));
         this.finish();

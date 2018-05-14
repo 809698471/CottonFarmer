@@ -61,7 +61,8 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
                 mPresenter.startlogin(this, user, pass);
                 break;
             case R.id.btn_login_captcha:
-                mPresenter.captcha(mCaptcha);
+                String phoneNumber = mUsername.getText().toString().trim();
+                mPresenter.captcha(mCaptcha,phoneNumber);
                 break;
             default:
         }
@@ -69,7 +70,6 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
 
     @Override
     public void login() {
-        LogUtils.d("一切合法,开始请求登录接口");
         ToastUtils.showLong(this, getResources().getText(R.string.loginsuccess));
         startActivity(new Intent(this, HomePageActivity.class));
         this.finish();
