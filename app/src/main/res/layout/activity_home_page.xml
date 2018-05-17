@@ -26,10 +26,11 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/background01"
+            android:textColor="@drawable/bottom_text"
             android:button="@null"
             android:checked="true"
-            android:drawableTop="@mipmap/home"
+            android:paddingTop="8dp"
+            android:drawableTop="@drawable/bottom_sy"
             android:gravity="center"
             android:text="首页" />
 
@@ -38,9 +39,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/background01"
+            android:textColor="@drawable/bottom_text"
             android:button="@null"
-            android:drawableTop="@mipmap/comments"
+            android:paddingTop="8dp"
+            android:drawableTop="@drawable/bottom_xx"
             android:gravity="center"
             android:text="消息" />
 
@@ -50,9 +52,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/background01"
+            android:textColor="@drawable/bottom_text"
             android:button="@null"
-            android:drawableTop="@mipmap/form"
+            android:paddingTop="8dp"
+            android:drawableTop="@drawable/bottom_dd"
             android:gravity="center"
             android:text="订单" />
 
@@ -61,9 +64,10 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@drawable/background01"
+            android:textColor="@drawable/bottom_text"
             android:button="@null"
-            android:drawableTop="@mipmap/account"
+            android:paddingTop="8dp"
+            android:drawableTop="@drawable/bottom_wd"
             android:gravity="center"
             android:text="我的" />
 

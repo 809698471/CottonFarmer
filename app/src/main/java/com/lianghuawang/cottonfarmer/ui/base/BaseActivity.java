@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.lianghuawang.cottonfarmer.mvp.base.BaseView;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import butterknife.ButterKnife;
 
@@ -38,7 +39,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
-      //  QMUIStatusBarHelper.translucent(this);
+    //设置沉浸式
+      QMUIStatusBarHelper.translucent(this);
         initView();
     }
 
