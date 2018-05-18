@@ -99,7 +99,9 @@ public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView>
                 message = (String) MyApp.getInstance().getText(R.string.captcha);
                 button.setEnabled(true);
             }
-            getView().captcha(message);
+            if (getView() != null) {
+                getView().captcha(message);
+            }
         }
     };
 

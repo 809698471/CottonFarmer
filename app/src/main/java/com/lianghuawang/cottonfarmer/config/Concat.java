@@ -6,6 +6,8 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
+    String TOKEN = "Bearer i7g8XYE6l3hLUKwHHlLmGM5pu92P3r3s";
+
     String API = "http://121.42.39.45:82";
 
     String BASE_URL = API + "/v1/";
@@ -174,9 +176,14 @@ public interface Concat {
     String JOINACOOPERATIVE_URL = BASE_URL + "cotton-farmers/join-cooperative";
 
     /**
-     * GET产品列表
+     * GET农业保险
      */
     String PRODUCTLIST_URL = BASE_URL + "products";
+
+    /**
+     * GET农业保险分页
+     */
+    String PRODUCTLIST_URL2 = BASE_URL + "products?page=";
 
     /**
      * POST我要报案

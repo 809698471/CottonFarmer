@@ -41,13 +41,17 @@
         <activity android:name=".activity.my.ClaimCompensationActivity" />
         <activity android:name=".activity.my.LoanActivity" />
         <activity android:name=".mvp.module.login.LoginActivity" />
-        <activity android:name=".activity.home.insurance.BuyInsuranceActivity" />
-        <activity android:name=".activity.home.insurance.InsuranceParticularsActivity" />
+        <activity android:name=".activity.home.insurance.BuyInsuranceActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".activity.home.insurance.InsuranceParticularsActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.home.insurance.SignatureActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.home.insurance.InsuranceOrderActivity" />
-        <activity android:name=".activity.home.insurance.PayInsuranceActivity" />
+        <activity android:name=".activity.home.insurance.InsuranceOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.home.insurance.PayInsuranceActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activity.home.agriculturalMaterials.AMActivity" />
         <activity android:name=".activity.home.IWantToBorrowMoneyActivity" />
         <activity android:name=".activity.home.CottonTradeActivity" />
@@ -83,6 +87,26 @@
         <activity android:name=".activity.my.ClaimProgressActivity" />
         <activity android:name=".tools.view.ClipImageActivity" />
         <activity android:name=".GuideActivity"></activity>
+
+        <receiver
+            android:name=".receiver.JiGuangBroadcastReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <!--Required 用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!--Required 用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!--Required 用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!--Required 用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" /><!--开机广播-->
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" /><!--网络状态改变广播-->
+                <category android:name="com.woman.RCTest" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

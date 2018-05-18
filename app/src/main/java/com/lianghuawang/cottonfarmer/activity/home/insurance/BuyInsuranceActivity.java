@@ -62,69 +62,6 @@ public class BuyInsuranceActivity extends BaseActivity {
     protected void initView() {
         initToolbar();
         initData();
-//        http();
-//        getPost();
-//        upPost();
-    }
-
-    private void http() {
-        OkHttp3Utils.doGet("EuLUEwkkOECfeeUH1RC9otgReROf1lax",
-                "http://gwook.com:82/cotton/web/v1/products",
-                new GsonObjectCallback<Test>() {
-
-                    @Override
-                    public void onUi(Test test) {
-                        if (test == null){
-                            LogUtils.d("list == null");
-                            return;
-                        }
-//                        if (test.getData().size() == 0){
-//                            LogUtils.d("list.size() == 0");
-//                            return;
-//                        }
-                        LogUtils.d(test.toString());
-                    }
-
-                    @Override
-                    public void onFailed(Call call, IOException e) {
-                        LogUtils.d("请求失败---" + call.toString());
-                        LogUtils.d("请求失败---" + e.getMessage());
-
-                    }
-                });
-    }
-
-    private void getPost(){
-
-        Map<String, String> params = new HashMap<>();
-//        params.put("insStatus","1");
-        params.put("image","");
-
-        OkHttp3Utils.doPost("EuLUEwkkOECfeeUH1RC9otgReROf1lax",
-                "http://gwook.com:82/cotton/web/v1/cotton-farmers/upload-image",
-                params,
-                new GsonObjectCallback<Test>() {
-                    @Override
-                    public void onUi(Test test) {
-                        LogUtils.d(test.toString());
-                    }
-
-                    @Override
-                    public void onFailed(Call call, IOException e) {
-                        LogUtils.d("call--" + call.toString());
-                        LogUtils.d("e--" + e.getMessage());
-                    }
-                });
-    }
-
-    private void upPost(){
-        Map<String, Object> params = new HashMap<>();
-//        params.put("insStatus","1");
-        params.put("image","");
-        OkHttp3Utils.uploadPic(ConstantUtil.TOKEN,
-                this,
-                "http://gwook.com:82/cotton/web/v1/cotton-farmers/upload-image",
-                params);
     }
 
     private void initData() {

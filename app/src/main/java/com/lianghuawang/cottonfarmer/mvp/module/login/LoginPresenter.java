@@ -108,7 +108,11 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                 message = (String) MyApp.getInstance().getText(R.string.captcha);
                 button.setEnabled(true);
             }
-            getView().captcha(message);
+            if (getView() == null){
+                LogUtils.d("getView为null");
+            } else {
+                getView().captcha(message);
+            }
         }
     };
 
@@ -128,6 +132,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                     @Override
                     public void onFailed(Call call, IOException e) {
                         LogUtils.d("获取验证码失败");
+                        LogUtils.d("失败原因：" + e.getMessage());
                     }
                 })
                 .builder();

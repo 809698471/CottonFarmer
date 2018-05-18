@@ -84,4 +84,6 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
     protected void loadData() {
 
     }
+
+
 }

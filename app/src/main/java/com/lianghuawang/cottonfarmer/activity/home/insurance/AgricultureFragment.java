@@ -10,11 +10,14 @@ import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.AgricultureAdapter;
 import com.lianghuawang.cottonfarmer.entity.home.insurance.Insurance;
 import com.lianghuawang.cottonfarmer.entity.home.insurance.InsuranceData;
+import com.lianghuawang.cottonfarmer.netutils.APIUtils.BuyInsurance;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.Bind;
 
@@ -61,6 +64,14 @@ public class AgricultureFragment extends BaseFragment {
             @Override
             public void onRefresh() {
                 list = InsuranceData.newInstance().setAdd(list);
+                Map<String,String> params = new HashMap<>();
+                params.put("page","1");
+                BuyInsurance.Builder()
+                        .setPage()
+                        .setParams(params)
+                        .request()
+                        .builder();
+
                 mSwipeRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {

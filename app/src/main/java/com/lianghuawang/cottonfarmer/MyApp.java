@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.utils.SystemUtil;
+
+import cn.jpush.android.api.JPushInterface;
 
 
 /**
@@ -27,6 +30,9 @@ public class MyApp extends Application {
         super.onCreate();
         instance = this;
         mContext = this;
+        JPushInterface.init(this);
+        //您可以在开发状态中启用调试模式。当释放时，应该关闭调试模式。
+        JPushInterface.setDebugMode(true);
         LogUtils.isDebug = true;
       }
 }
