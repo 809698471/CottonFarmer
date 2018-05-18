@@ -50,7 +50,7 @@ public class GuideActivity extends Activity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         flaggingWidth = dm.widthPixels / 3;
         imageResId = new int[]
-                {R.drawable.two, R.drawable.one, R.drawable.three};
+                {R.drawable.one, R.drawable.two, R.drawable.three};
         mImageViews = new ArrayList<View>();
         // 初始化图片资源
         LayoutInflater viewInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
