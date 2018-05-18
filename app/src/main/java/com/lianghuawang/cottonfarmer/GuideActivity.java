@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -129,8 +132,11 @@ public class GuideActivity extends Activity {
      * 进入登录界面
      */
     void GoToMainActivity() {
+        SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.STARTPAGE);
+        sp.putBoolean(ConstantUtil.ISSTART,false);
         Intent intent = new Intent(GuideActivity.this, LoginActivity.class);
         startActivity(intent);
+        LogUtils.d("sp.putBoolean----:" + sp.getBoolean(ConstantUtil.ISSTART,true));
         finish();
     }
 
@@ -203,7 +209,7 @@ public class GuideActivity extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            GoToMainActivity();
+//            GoToMainActivity();
             return false;
         }
         return super.onKeyDown(keyCode, event);

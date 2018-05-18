@@ -71,5 +71,23 @@ public class VerficationInstance {
         public void setExpired_at(String expired_at) {
             this.expired_at = expired_at;
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "key='" + key + '\'' +
+                    ", expired_at='" + expired_at + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "VerficationInstance{" +
+                "success=" + success +
+                ", code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

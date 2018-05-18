@@ -7,13 +7,16 @@ import com.lianghuawang.cottonfarmer.MyApp;
 
 public class SharedPreferencesUtil {
 
-    private static SharedPreferences sp;
-    private static SharedPreferences.Editor editor;
+    private SharedPreferences sp;
+    private SharedPreferences.Editor editor;
 
     public static SharedPreferencesUtil newInstance(String NAME){
+        return new SharedPreferencesUtil(NAME);
+    }
+
+    private SharedPreferencesUtil(String NAME){
         sp = MyApp.getContext().getSharedPreferences(NAME, Context.MODE_PRIVATE);
         editor = sp.edit();
-        return new SharedPreferencesUtil();
     }
 
     public void putInt(String key, int value){
@@ -33,7 +36,8 @@ public class SharedPreferencesUtil {
     }
 
     public void putBoolean(String key, boolean value){
-        editor.putBoolean(key, value).commit();
+        editor.putBoolean(key, value);
+        editor.commit();
     }
 
     public boolean getBoolean(String key, boolean defValue){

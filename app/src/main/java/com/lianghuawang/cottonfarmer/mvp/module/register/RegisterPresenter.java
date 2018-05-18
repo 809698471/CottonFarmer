@@ -16,7 +16,9 @@ import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.netutils.instance.LoginInstance;
 import com.lianghuawang.cottonfarmer.netutils.instance.VerficationInstance;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.LoginUtils;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 import com.lianghuawang.cottonfarmer.utils.TimekeeperUtil;
 
 import java.io.IOException;
@@ -66,6 +68,9 @@ public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView>
                     public void onUi(LoginInstance loginInstance) {
                         if (loginInstance.isSuccess()){
                             //请求成功
+                            SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
+                            sp.putString(ConstantUtil.LOGINTOKEN,"Bearer " + loginInstance.getData().getAccess_token());
+                            sp.putBoolean(ConstantUtil.LOGINSTATE,true);
                             getView().register();
                         } else {
                             ToastUtils.showLong(context,loginInstance.getData().getErrmsg());

@@ -59,7 +59,7 @@ public class LoginInstance {
 
         private String errmsg;
         private String access_token;
-        private int  step;
+        private int step;
 
         public String getErrmsg() {
             return errmsg;
@@ -84,5 +84,24 @@ public class LoginInstance {
         public void setStep(int step) {
             this.step = step;
         }
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "errmsg='" + errmsg + '\'' +
+                    ", access_token='" + access_token + '\'' +
+                    ", step=" + step +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "LoginInstance{" +
+                "success=" + success +
+                ", code=" + code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
     }
 }

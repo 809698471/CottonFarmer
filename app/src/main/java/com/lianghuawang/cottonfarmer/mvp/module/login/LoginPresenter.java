@@ -2,6 +2,7 @@ package com.lianghuawang.cottonfarmer.mvp.module.login;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.widget.Button;
@@ -16,7 +17,9 @@ import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.netutils.instance.LoginInstance;
 import com.lianghuawang.cottonfarmer.netutils.instance.VerficationInstance;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.LoginUtils;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 import com.lianghuawang.cottonfarmer.utils.TimekeeperUtil;
 
 import java.io.IOException;
@@ -74,6 +77,9 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                     public void onUi(LoginInstance loginInstance) {
                         if (loginInstance.isSuccess()){
                             //请求成功
+                            SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
+                            sp.putString(ConstantUtil.LOGINTOKEN,"Bearer " + loginInstance.getData().getAccess_token());
+                            sp.putBoolean(ConstantUtil.LOGINSTATE,true);
                             getView().login();
                         } else {
                             ToastUtils.showLong(context,loginInstance.getData().getErrmsg());
@@ -127,6 +133,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                     public void onUi(VerficationInstance verficationInstance) {
                         LogUtils.d("验证码为：" + verficationInstance.getData().getKey());
                         getKey = verficationInstance.getData().getKey();
+                        LogUtils.d(verficationInstance.toString());
                     }
 
                     @Override
