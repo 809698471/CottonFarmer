@@ -36,6 +36,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     private TimekeeperUtil timekeeperUtil;
     private String getKey;
     private Button button;
+    private SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
     /**
      * 登录验证
      *
@@ -57,15 +58,20 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
             ToastUtils.showLong(context, context.getResources().getText(R.string.password_null));
             return;
         }
-        Map<String,String> params = new HashMap<>();
-        params.put("mobile_phone",usename);
-        params.put("verification_key",getKey);
-        params.put("verification_code",password);
-        startHttp(context,params);
+        Map<String, String> params = new HashMap<>();
+        params.put("mobile_phone", usename);
+        if (getKey == null) {
+            params.put("verification_key", "");
+        } else {
+            params.put("verification_key", getKey);
+        }
+        params.put("verification_code", password);
+        startHttp(context, params);
     }
 
     /**
      * 请求登录接口
+     *
      * @param context
      * @param params
      */
@@ -75,20 +81,19 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                 .request(new GsonObjectCallback<LoginInstance>() {
                     @Override
                     public void onUi(LoginInstance loginInstance) {
-                        if (loginInstance.isSuccess()){
+                        if (loginInstance.isSuccess()) {
                             //请求成功
-                            SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
-                            sp.putString(ConstantUtil.LOGINTOKEN,"Bearer " + loginInstance.getData().getAccess_token());
-                            sp.putBoolean(ConstantUtil.LOGINSTATE,true);
+                            sp.putString(ConstantUtil.LOGINTOKEN, "Bearer " + loginInstance.getData().getAccess_token());
+                            sp.putBoolean(ConstantUtil.LOGINSTATE, true);
                             getView().login();
                         } else {
-                            ToastUtils.showLong(context,loginInstance.getData().getErrmsg());
+                            ToastUtils.showLong(context, loginInstance.getData().getErrmsg());
                         }
                     }
 
                     @Override
                     public void onFailed(Call call, IOException e) {
-                        ToastUtils.showLong(context,e.getMessage());
+                        ToastUtils.showLong(context, e.getMessage());
                     }
                 })
                 .builder();
@@ -96,7 +101,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
 
 
     public void captcha(Button mCaptcha, String phoneNumber) {
-        timekeeperUtil = new TimekeeperUtil(handler,NUMBER,count_number);
+        timekeeperUtil = new TimekeeperUtil(handler, NUMBER, count_number);
         timekeeperUtil.start();
         button = mCaptcha;
         button.setEnabled(false);
@@ -114,7 +119,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                 message = (String) MyApp.getInstance().getText(R.string.captcha);
                 button.setEnabled(true);
             }
-            if (getView() == null){
+            if (getView() == null) {
                 LogUtils.d("getView为null");
             } else {
                 getView().captcha(message);
@@ -123,9 +128,9 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     };
 
 
-    private void verification(String phoneNumber){
-        Map<String,String> params = new HashMap<>();
-        params.put("mobile_phone",phoneNumber);
+    private void verification(String phoneNumber) {
+        Map<String, String> params = new HashMap<>();
+        params.put("mobile_phone", phoneNumber);
         VerificationAPI.Builder()
                 .setParams(params)
                 .request(new GsonObjectCallback<VerficationInstance>() {

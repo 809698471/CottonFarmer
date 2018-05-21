@@ -50,7 +50,11 @@ public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView>
         }
         Map<String,String> params = new HashMap<>();
         params.put("mobile_phone",usename);
-        params.put("verification_key",getKey);
+        if (getKey == null){
+            params.put("verification_key","");
+        } else {
+            params.put("verification_key",getKey);
+        }
         params.put("verification_code",password);
         startHttp(context,params);
     }

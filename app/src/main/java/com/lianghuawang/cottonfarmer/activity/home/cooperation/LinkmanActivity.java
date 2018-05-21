@@ -10,25 +10,23 @@ import android.view.View;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.LinkmanAdapter;
-import com.lianghuawang.cottonfarmer.entity.home.cooperation.Cooper;
-import com.lianghuawang.cottonfarmer.entity.home.cooperation.CooperData;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.Linkman;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.InsuranceData;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.API;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
 import java.io.IOException;
-import java.util.List;
 
 import butterknife.Bind;
 import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
+/**
+ * 合作社页面
+ */
 public class LinkmanActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
@@ -47,6 +45,7 @@ public class LinkmanActivity extends BaseActivity {
     private LinearLayoutManager mLayoutManager;
     private Linkman list;
     private LinkmanAdapter mAdapter;
+    private SharedPreferencesUtil sp;
 
     @Override
     protected int getLayoutId() {
@@ -55,6 +54,7 @@ public class LinkmanActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         initToolbar();
         showProgress();
         initRecylerView();
@@ -81,14 +81,14 @@ public class LinkmanActivity extends BaseActivity {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                initData();
+//                initData();
             }
         });
 
         mSwipeRefreshLayout.post(new Runnable() {
             @Override
             public void run() {
-                initData();
+//                initData();
             }
         });
     }
@@ -103,7 +103,7 @@ public class LinkmanActivity extends BaseActivity {
     }
 
     private void initData() {
-        OkHttp3Utils.doGet(ConstantUtil.TOKEN, API.LINKMAN + "1", new GsonObjectCallback<Linkman>() {
+        OkHttp3Utils.doGet(sp.getString(ConstantUtil.LOGINTOKEN,""), API.LINKMAN + "1", new GsonObjectCallback<Linkman>() {
             @Override
             public void onUi(Linkman linkman) {
                 list = linkman;

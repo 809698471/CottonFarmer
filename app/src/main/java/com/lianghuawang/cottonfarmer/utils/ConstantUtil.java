@@ -5,8 +5,6 @@ package com.lianghuawang.cottonfarmer.utils;
  */
 public class ConstantUtil {
 
-    public static final String TOKEN = "Bearer i7g8XYE6l3hLUKwHHlLmGM5pu92P3r3s";
-
     /**
      * ---------------保险模块-------------------
      */
