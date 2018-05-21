@@ -1,10 +1,8 @@
 package com.lianghuawang.cottonfarmer.activity;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
@@ -12,11 +10,12 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.home.HomePageFragment;
+import com.lianghuawang.cottonfarmer.activity.home.HomeFragment;
 import com.lianghuawang.cottonfarmer.activity.message.NewsFragment;
 import com.lianghuawang.cottonfarmer.activity.my.MyFragment;
 import com.lianghuawang.cottonfarmer.activity.order.Order;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
+import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -27,7 +26,7 @@ import java.util.List;
 /**
  * 首页
  */
-public class HomePageActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
     private FrameLayout fragment;
     private RadioButton rb_01;
@@ -44,12 +43,10 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
     private List<Fragment> list_fragment;
     private boolean name;
 
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_page);
-        initView();
-        initData();
+    protected int getLayoutId() {
+        return R.layout.activity_home_page;
     }
 
     //记录用户首次点击返回键的时间
@@ -74,7 +71,7 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
 
 
     private void initData() {
-        list_fragment.add(new HomePageFragment());
+        list_fragment.add(new HomeFragment());
         list_fragment.add(new NewsFragment());
         list_fragment.add(Order.newInstance());
         list_fragment.add(new MyFragment());
@@ -87,7 +84,7 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
         layout.setOnCheckedChangeListener(this);
     }
 
-    private void initView() {
+    protected void initView() {
         //动态添加Fragment ,获取Fragment 管理器
         msg = getSupportFragmentManager();
 
@@ -97,6 +94,7 @@ public class HomePageActivity extends AppCompatActivity implements RadioGroup.On
         list_fragment = new ArrayList<>();
         fm = getSupportFragmentManager();
         ft = fm.beginTransaction();
+        initData();
     }
 
     private void showFragment(int id) {

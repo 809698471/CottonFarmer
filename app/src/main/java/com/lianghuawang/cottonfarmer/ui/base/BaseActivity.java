@@ -39,8 +39,8 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
         ButterKnife.bind(this);
-    //设置沉浸式
-      QMUIStatusBarHelper.translucent(this);
+        //设置沉浸式
+        QMUIStatusBarHelper.translucent(this);
         initView();
     }
 

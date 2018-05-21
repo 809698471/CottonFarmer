@@ -11,15 +11,16 @@ import android.view.View;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.home.insurance.AgricultureFragment;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
-
 
 import java.util.Arrays;
 import java.util.List;
 
 import butterknife.Bind;
+/**
+ * 精选农资
+ */
 
 public class AMActivity extends BaseActivity {
 
