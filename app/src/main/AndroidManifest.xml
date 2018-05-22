@@ -41,16 +41,20 @@
         <activity android:name=".activity.my.ClaimCompensationActivity" />
         <activity android:name=".activity.my.LoanActivity" />
         <activity android:name=".mvp.module.login.LoginActivity" />
-        <activity android:name=".activity.home.insurance.BuyInsuranceActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.home.insurance.InsuranceParticularsActivity"
+        <activity
+            android:name=".activity.home.insurance.BuyInsuranceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.home.insurance.InsuranceParticularsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.home.insurance.SignatureActivity"
             android:screenOrientation="landscape" />
-        <activity android:name=".activity.home.insurance.InsuranceOrderActivity"
+        <activity
+            android:name=".activity.home.insurance.InsuranceOrderActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.home.insurance.PayInsuranceActivity"
+        <activity
+            android:name=".activity.home.insurance.PayInsuranceActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".activity.home.agriculturalMaterials.AMActivity" />
         <activity android:name=".activity.home.IWantToBorrowMoneyActivity" />

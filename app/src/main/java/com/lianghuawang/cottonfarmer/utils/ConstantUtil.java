@@ -5,6 +5,7 @@ package com.lianghuawang.cottonfarmer.utils;
  */
 public class ConstantUtil {
 
+    private String token = "Bearer 2rlJxMbXuhSZqGmTGHKNIvkIjb12YtVM";
     /**
      * ---------------保险模块-------------------
      */

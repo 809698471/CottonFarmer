@@ -9,17 +9,18 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.Insurance;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
+import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
 
 import java.util.List;
 
 public class AgricultureAdapter extends AbsRecyclerViewAdapter {
 
-    private List<Insurance> insuranceList;
+    private List<DataBean> insuranceList;
 
-    public AgricultureAdapter(RecyclerView recyclerView, List<Insurance> insuranceList) {
+    public AgricultureAdapter(RecyclerView recyclerView, List<DataBean> insuranceList) {
         super(recyclerView);
         this.insuranceList = insuranceList;
     }
@@ -36,9 +37,10 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
     public void onBindViewHolder(ClickableViewHolder holder, final int position) {
         if (holder instanceof ItemViewHolder){
             final ItemViewHolder holde = (ItemViewHolder) holder;
-            holde.title.setText(insuranceList.get(position).getTitle());
-            holde.content.setText(insuranceList.get(position).getContent());
-            holde.time.setText(insuranceList.get(position).getValidity());
+            holde.title.setText(insuranceList.get(position).getName());
+            holde.content.setText(insuranceList.get(position).getDescribe());
+            holde.time.setText(insuranceList.get(position).getStart_end_time());
+            Glide.with(getContext()).load(insuranceList.get(position).getImage_url()).into(holde.img);
             holde.btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -51,10 +53,10 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
 
     @Override
     public int getItemCount() {
-        return insuranceList.size();
+        return insuranceList == null ? 0 : insuranceList.size();
     }
 
-    public void upData(List<Insurance> insuranceList){
+    public void upData(List<DataBean> insuranceList){
         this.insuranceList = insuranceList;
     }
 

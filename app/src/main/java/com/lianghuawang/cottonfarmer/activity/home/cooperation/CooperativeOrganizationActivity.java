@@ -12,12 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.adapter.AgricultureAdapter;
 import com.lianghuawang.cottonfarmer.adapter.CooperationAdapter;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.Cooper;
 import com.lianghuawang.cottonfarmer.entity.home.cooperation.CooperData;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.Insurance;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.InsuranceData;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
 import java.util.List;
@@ -30,9 +27,6 @@ public class CooperativeOrganizationActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-
-    @Bind(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
 
     @Bind(R.id.tv_bar_title)
     TextView mBarTitle;

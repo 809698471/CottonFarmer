@@ -1,5 +1,9 @@
 package com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials;
 
+import android.app.Activity;
+import android.os.Build;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -8,6 +12,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.flyco.tablayout.SlidingTabLayout;
 import com.lianghuawang.cottonfarmer.R;
@@ -26,9 +31,6 @@ public class AMActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-
-    @Bind(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
 
     @Bind(R.id.sliding_tabs)
     SlidingTabLayout mSlidingTabLayout;
@@ -49,7 +51,24 @@ public class AMActivity extends BaseActivity {
             ConstantUtil.TAG8
     );
 
-
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        if (Build.VERSION.SDK_INT == Build.VERSION_CODES.KITKAT) {
+//            // 设置全屏，并且不会Activity的布局让出状态栏的空间
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+//            showStatusBar(this);
+//        }
+//        getWindow().setBackgroundDrawable(null);
+//        super.onCreate(savedInstanceState);
+//    }
+//
+//    // 显示状态栏
+//    public static void showStatusBar(Activity activity) {
+//        WindowManager.LayoutParams attrs = activity.getWindow().getAttributes();
+//        attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+//        activity.getWindow().setAttributes(attrs);
+//    }
     @Override
     protected int getLayoutId() {
         return R.layout.activity_am;

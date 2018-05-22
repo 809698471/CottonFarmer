@@ -8,22 +8,21 @@ import android.support.v7.widget.RecyclerView;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.AgricultureAdapter;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.Insurance;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.InsuranceData;
-import com.lianghuawang.cottonfarmer.netutils.APIUtils.BuyInsurance;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.netutils.APIUtils.AgriculturalInsurance;
+import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
+import com.lianghuawang.cottonfarmer.netutils.listener.APIListener;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
-
-import java.util.HashMap;
+import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.Bind;
 
 public class AgricultureFragment extends BaseFragment {
 
     public static final String EXTRA_TYPE = "extra_type";
+
+    private List<DataBean> dataBeans;
 
     @Bind(R.id.recycle)
     RecyclerView mRecyclerView;
@@ -35,7 +34,6 @@ public class AgricultureFragment extends BaseFragment {
 
     private LinearLayoutManager mLayoutManager;
 
-    private List<Insurance> list;
 
     public static AgricultureFragment newInstance(String type) {
         AgricultureFragment mFragment = new AgricultureFragment();
@@ -52,7 +50,6 @@ public class AgricultureFragment extends BaseFragment {
 
     @Override
     public void initViews() {
-        list = InsuranceData.newInstance().getData();
         initRecyclerView();
         showProgress();
         particulars();
@@ -63,18 +60,26 @@ public class AgricultureFragment extends BaseFragment {
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                list = InsuranceData.newInstance().setAdd(list);
-                Map<String,String> params = new HashMap<>();
-                params.put("page","1");
-                BuyInsurance.Builder()
+                AgriculturalInsurance.Builder()
                         .setPage()
-                        .setParams(params)
+                        .setListener(new APIListener() {
+                            @Override
+                            public void onSuccess(Object object) {
+                                dataBeans = (List<DataBean>) object;
+                            }
+
+                            @Override
+                            public void onError(String message) {
+                                ToastUtils.showLong(getContext(),message);
+                            }
+                        })
                         .request()
                         .builder();
 
                 mSwipeRefreshLayout.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        mAdapter.upData(dataBeans);
                         mAdapter.notifyDataSetChanged();
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
@@ -87,7 +92,7 @@ public class AgricultureFragment extends BaseFragment {
         mRecyclerView.setHasFixedSize(true);
         mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AgricultureAdapter(mRecyclerView, list);
+        mAdapter = new AgricultureAdapter(mRecyclerView, dataBeans);
         mRecyclerView.setAdapter(mAdapter);
     }
 
