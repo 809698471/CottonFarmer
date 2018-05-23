@@ -63,4 +63,9 @@
     <string name="coop_guarantee">我的承保人</string>
     <string name="synopsis">小棉袄简介</string>
     <string name="dynamic">———— 合作社动态 ————</string>
+
+    <!--消息模块-->
+    <string name="news_title">消息</string>
+    <!--订单模块-->
+    <string name="order_title">我的订单</string>
 </resources>

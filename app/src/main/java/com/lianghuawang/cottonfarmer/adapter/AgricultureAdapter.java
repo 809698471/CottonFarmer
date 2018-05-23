@@ -69,14 +69,4 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
         }
     }
 
-    private OnClickListener onClickListener;
-
-    public void setOnClickListener(OnClickListener onClickListener){
-        this.onClickListener = onClickListener;
-    }
-
-    public interface OnClickListener{
-
-        void setOnClickListener(int position, ClickableViewHolder holder);
-    }
 }

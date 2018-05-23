@@ -22,7 +22,7 @@ import butterknife.Bind;
 /**
  * 信用保险fragment
  */
-public class CreditFragment extends BaseFragment {
+public class CreditFragment extends BaseFragment implements AbsRecyclerViewAdapter.OnItemClickListener {
 
     public static final String EXTRA_TYPE = "extra_type";
 
@@ -56,7 +56,6 @@ public class CreditFragment extends BaseFragment {
     public void initViews() {
         initRecyclerView();
         showProgress();
-        particulars();
     }
 
     private void showProgress() {
@@ -98,15 +97,13 @@ public class CreditFragment extends BaseFragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new AgricultureAdapter(mRecyclerView, dataBeans);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(this);
     }
 
-    //跳转到详情页面
-    private void particulars() {
-        mAdapter.setOnClickListener(new AgricultureAdapter.OnClickListener() {
-            @Override
-            public void setOnClickListener(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
-                startActivity(new Intent(getContext(), InsuranceParticularsActivity.class));
-            }
-        });
+    @Override
+    public void onItemClick(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
+        //跳转到详情页面
+        startActivity(new Intent(getContext(), InsuranceParticularsActivity.class));
     }
+
 }

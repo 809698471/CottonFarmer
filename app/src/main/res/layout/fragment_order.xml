@@ -1,24 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/x144"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/order_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/x60" />
 
-    <com.flyco.tablayout.SlidingTabLayout
+    <android.support.design.widget.TabLayout
         android:id="@+id/sliding_tabss"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:tl_indicator_corner_radius="1.5dp"
-        app:tl_indicator_height="2dp"
-        app:tl_indicator_width="30dp"
-        app:tl_tab_space_equal="true" />
-
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        app:tabGravity="center"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextAppearance="@style/TabLayoutTextStyle"
+        app:tabTextColor="@color/darkgray"
+        tools:ignore="PrivateResource" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pagers"

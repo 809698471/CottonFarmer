@@ -1,5 +1,6 @@
 package com.lianghuawang.cottonfarmer.activity.order;
 
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -19,13 +20,13 @@ import butterknife.Bind;
 public class Order extends BaseFragment {
 
     @Bind(R.id.sliding_tabss)
-    SlidingTabLayout mSlidingTabLayout;
+    TabLayout mSlidingTabLayout;
 
     @Bind(R.id.view_pagers)
     ViewPager mViewPager;
 
     private List<String> titles = Arrays.asList("全部",
-            "待付款",
+            "待支付",
             "已付款",
             "待收货",
             "已完成",
@@ -57,7 +58,7 @@ public class Order extends BaseFragment {
     private void initData() {
         mViewPager.setAdapter(new OrderAdapter(getChildFragmentManager()));
         mViewPager.setOffscreenPageLimit(1);
-        mSlidingTabLayout.setViewPager(mViewPager);
+        mSlidingTabLayout.setupWithViewPager(mViewPager);
     }
 
     private class OrderAdapter extends FragmentStatePagerAdapter {

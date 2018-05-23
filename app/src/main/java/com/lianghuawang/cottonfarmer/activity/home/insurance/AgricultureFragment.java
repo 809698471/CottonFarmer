@@ -21,7 +21,7 @@ import butterknife.Bind;
 /**
  * 农业保险fragment
  */
-public class AgricultureFragment extends BaseFragment implements AgricultureAdapter.OnClickListener {
+public class AgricultureFragment extends BaseFragment implements AbsRecyclerViewAdapter.OnItemClickListener {
 
     public static final String EXTRA_TYPE = "extra_type";
 
@@ -80,7 +80,7 @@ public class AgricultureFragment extends BaseFragment implements AgricultureAdap
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new AgricultureAdapter(mRecyclerView, dataBeans);
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnClickListener(this);
+        mAdapter.setOnItemClickListener(this);
     }
 
     private void getInsurance(){
@@ -118,7 +118,7 @@ public class AgricultureFragment extends BaseFragment implements AgricultureAdap
 
     //跳转到详情页面
     @Override
-    public void setOnClickListener(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
+    public void onItemClick(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
         startActivity(new Intent(getContext(), InsuranceParticularsActivity.class));
     }
 }

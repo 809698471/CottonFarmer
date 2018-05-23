@@ -95,19 +95,19 @@ public class BuyInsuranceActivity extends BaseActivity {
 
     private void initFragment() {
         fragments = Arrays.asList(
-                AgricultureFragment.newInstance(titleTags.get(0)),
-                CreditFragment.newInstance(titleTags.get(1)),
-                PriceFragment.newInstance(titleTags.get(2))
+                (BaseFragment) AgricultureFragment.newInstance(titleTags.get(0)),
+                (BaseFragment) CreditFragment.newInstance(titleTags.get(1)),
+                (BaseFragment) PriceFragment.newInstance(titleTags.get(2))
         );
     }
 
     private void initData() {
 
         mViewPager.setAdapter(new BuyInsurancePageAdapter(getSupportFragmentManager()));
-        mViewPager.setOffscreenPageLimit(1);
+//        mViewPager.setOffscreenPageLimit(1);
         mSlidingTabLayout.setupWithViewPager(mViewPager);
-        mSlidingTabLayout.setScrollPosition(0, 0, true);
-        // 根据Tab的长度动态设置TabLayout的模式
+//        mSlidingTabLayout.setScrollPosition(0, 0, true);
+//        // 根据Tab的长度动态设置TabLayout的模式
         ViewUtil.dynamicSetTabLayoutMode(mSlidingTabLayout);
     }
 
