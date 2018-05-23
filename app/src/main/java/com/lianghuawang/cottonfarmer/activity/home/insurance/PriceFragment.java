@@ -10,18 +10,19 @@ import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.adapter.AgricultureAdapter;
 import com.lianghuawang.cottonfarmer.netutils.APIUtils.AgriculturalInsurance;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
+import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
 import com.lianghuawang.cottonfarmer.netutils.listener.APIListener;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
-import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
+
 import java.util.List;
 
 import butterknife.Bind;
 
 /**
- * 农业保险fragment
+ * 价格保险fragment
  */
-public class AgricultureFragment extends BaseFragment implements AbsRecyclerViewAdapter.OnItemClickListener {
+public class PriceFragment extends BaseFragment implements AbsRecyclerViewAdapter.OnItemClickListener {
 
     public static final String EXTRA_TYPE = "extra_type";
 
@@ -38,12 +39,12 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
     private LinearLayoutManager mLayoutManager;
 
 
-    public static AgricultureFragment newInstance(String type) {
-        AgricultureFragment mFragment = new AgricultureFragment();
+    public static PriceFragment newInstance(String type) {
+        PriceFragment mFragment = new PriceFragment();
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_TYPE, type);
         mFragment.setArguments(bundle);
-        return new AgricultureFragment();
+        return new PriceFragment();
     }
 
     @Override
@@ -53,23 +54,39 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
 
     @Override
     public void initViews() {
-        showProgress();
         initRecyclerView();
+        showProgress();
     }
 
     private void showProgress() {
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
-        mSwipeRefreshLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                mSwipeRefreshLayout.setRefreshing(true);
-                getInsurance();
-            }
-        });
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                getInsurance();
+                AgriculturalInsurance.Builder()
+                        .setPage()
+                        .setListener(new APIListener() {
+                            @Override
+                            public void onSuccess(Object object) {
+                                dataBeans = (List<DataBean>) object;
+                            }
+
+                            @Override
+                            public void onError(String message) {
+                                ToastUtils.showLong(getContext(),message);
+                            }
+                        })
+                        .request()
+                        .builder();
+
+                mSwipeRefreshLayout.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mAdapter.upData(dataBeans);
+                        mAdapter.notifyDataSetChanged();
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1000);
             }
         });
     }
@@ -81,39 +98,6 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
         mAdapter = new AgricultureAdapter(mRecyclerView, dataBeans);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.setOnItemClickListener(this);
-    }
-
-    private void getInsurance(){
-        AgriculturalInsurance.Builder()
-                .setPage()
-                .setListener(new APIListener() {
-                    @Override
-                    public void onSuccess(Object object) {
-                        dataBeans = (List<DataBean>) object;
-                        finishTask();
-                    }
-
-                    @Override
-                    public void onError(String message) {
-                        ToastUtils.showLong(getContext(),message);
-                        mSwipeRefreshLayout.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                mSwipeRefreshLayout.setRefreshing(false);
-                            }
-                        });
-                    }
-                })
-                .request()
-                .builder();
-    }
-
-    private void finishTask(){
-        mAdapter.upData(dataBeans);
-        mAdapter.notifyDataSetChanged();
-        if (mSwipeRefreshLayout.isRefreshing()){
-            mSwipeRefreshLayout.setRefreshing(false);
-        }
     }
 
     //跳转到详情页面

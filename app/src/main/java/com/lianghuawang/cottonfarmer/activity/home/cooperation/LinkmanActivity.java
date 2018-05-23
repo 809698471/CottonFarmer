@@ -32,9 +32,6 @@ public class LinkmanActivity extends BaseActivity {
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
 
-    @Bind(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
-
     @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
 

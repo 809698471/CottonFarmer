@@ -35,7 +35,7 @@ public class HomePageFragment extends Fragment {
     private ImageView homepage_img2;
     //设置图片资源:url或本地资源
     String[] images = new String[]{
-            "http://218.192.170.132/BS80.jpg",
+//            "http://218.192.170.132/BS80.jpg",
             "http://img.zcool.cn/community/0166c756e1427432f875520f7cc838.jpg",
             "http://img.zcool.cn/community/018fdb56e1428632f875520f7b67cb.jpg",
             "http://img.zcool.cn/community/01c8dc56e1428e6ac72531cbaa5f2c.jpg",

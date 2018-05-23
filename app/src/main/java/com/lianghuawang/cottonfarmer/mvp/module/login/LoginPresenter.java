@@ -85,6 +85,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                             //请求成功
                             sp.putString(ConstantUtil.LOGINTOKEN, "Bearer " + loginInstance.getData().getAccess_token());
                             sp.putBoolean(ConstantUtil.LOGINSTATE, true);
+                            LogUtils.d("Token:--- " + "Bearer " + loginInstance.getData().getAccess_token());
                             getView().login();
                         } else {
                             ToastUtils.showLong(context, loginInstance.getData().getErrmsg());

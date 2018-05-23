@@ -8,9 +8,16 @@ public interface Concat {
 
     String TOKEN = "Bearer i7g8XYE6l3hLUKwHHlLmGM5pu92P3r3s";
 
-    String API = "http://121.42.39.45:82";
+    String API = "http://121.42.39.45";
 
-    String BASE_URL = API + "/v1/";
+    String PORT = ":82";//数据请求端口
+
+    String PORTIMAGE = ":84";//图片请求端口
+
+
+    String BASE_URL = API + PORT + "/v1/";
+
+    String IMAGE_URL = API + PORTIMAGE;
 
     /**
      * GET兵团分类
