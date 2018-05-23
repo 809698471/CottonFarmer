@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -41,12 +40,6 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
             holde.content.setText(insuranceList.get(position).getDescribe());
             holde.time.setText(insuranceList.get(position).getStart_end_time());
             Glide.with(getContext()).load(insuranceList.get(position).getImage_url()).into(holde.img);
-            holde.btn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onClickListener.setOnClickListener(position,holde);
-                }
-            });
         }
         super.onBindViewHolder(holder, position);
     }
@@ -64,7 +57,7 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
 
         private ImageView img;
         private TextView title,content,time;
-        private Button btn;
+//        private Button btn;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
@@ -72,7 +65,7 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
             title = $(R.id.tv_title);
             content = $(R.id.tv_content);
             time = $(R.id.tv_subscribe_time);
-            btn = $(R.id.btn_subscribe);
+//            btn = $(R.id.btn_subscribe);
         }
     }
 

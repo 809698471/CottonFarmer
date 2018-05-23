@@ -47,6 +47,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/x45"
                         android:textColor="@android:color/black" />
 
                     <TextView
@@ -54,32 +56,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="2"
-                        android:textColor="@android:color/black" />
+                        android:gravity="center_vertical"
+                        android:textSize="@dimen/x55"
+                        android:textColor="@color/darkgray" />
+
+                    <TextView
+                        android:id="@+id/tv_subscribe_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:textColor="@color/red"
+                        android:textSize="@dimen/x35" />
                 </LinearLayout>
 
             </LinearLayout>
-
-            <RelativeLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_subscribe_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:textColor="@android:color/black" />
-
-                <Button
-                    android:id="@+id/btn_subscribe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:text="@string/subscribe"
-                    android:textColor="@android:color/white"
-                    android:background="@drawable/bg_btn_insurance_particulars_selected"/>
-            </RelativeLayout>
 
         </LinearLayout>
 
