@@ -191,7 +191,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             public void run() {
                 while (true) {
                     try {
-                        Thread.sleep(2000);
+                        Thread.sleep(3000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
