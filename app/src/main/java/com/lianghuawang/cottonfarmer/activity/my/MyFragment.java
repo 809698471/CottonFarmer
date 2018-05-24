@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
@@ -30,7 +31,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private LinearLayout myfragment_compensation;
     private LinearLayout myfragment_credit;
     private LinearLayout myfragment_loan;
-    private LinearLayout myfragment_setup;
+    private ImageView myfragment_setup;
     private RelativeLayout myfragment_personalinformation;
 
     @Override
@@ -50,7 +51,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         myfragment_compensation = (LinearLayout) view.findViewById(R.id.myfragment_compensation);
         myfragment_credit = (LinearLayout) view.findViewById(R.id.myfragment_credit);
         myfragment_loan = (LinearLayout) view.findViewById(R.id.myfragment_loan);
-        myfragment_setup = (LinearLayout) view.findViewById(R.id.myfragment_setup);
+        myfragment_setup = (ImageView) view.findViewById(R.id.myfragment_setup);
         myfragment_personalinformation.setOnClickListener(this);
         myfragment_bankcard.setOnClickListener(this);
         myfragment_thebooks.setOnClickListener(this);
