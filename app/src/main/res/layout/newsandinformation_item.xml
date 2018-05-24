@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/x1020"
+    android:layout_width="@dimen/x702"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:orientation="vertical">
 
     <LinearLayout
+        android:layout_marginTop="@dimen/y20"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/y130">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/y48"
             android:orientation="vertical">
 
             <TextView
@@ -24,54 +24,56 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginBottom="@dimen/y48"
-                android:layout_marginTop="@dimen/y34">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y30">
 
                 <ImageView
+                    android:layout_width="@dimen/x32"
+                    android:layout_height="@dimen/y20"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:src="@mipmap/look" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
+                    android:layout_marginLeft="@dimen/x16"
                     android:text="2136"
                     android:textColor="#999"
-                    android:textSize="13sp" />
+                    android:textSize="14sp" />
 
                 <ImageView
+                    android:layout_width="@dimen/x22"
+                    android:layout_height="@dimen/y22"
                     android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:layout_marginLeft="18dp"
                     android:src="@mipmap/time" />
 
                 <TextView
                     android:id="@+id/time"
-                    android:layout_marginLeft="8dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/x16"
                     android:text="2017-06-10"
                     android:textColor="#999"
                     android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
 
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
         <ImageView
-            android:layout_width="@dimen/x294"
-            android:layout_height="@dimen/y196"
-            android:layout_marginBottom="@dimen/y30"
-            android:layout_marginLeft="@dimen/x120"
-            android:layout_marginTop="@dimen/y30"
+            android:layout_width="@dimen/x200"
+            android:layout_height="@dimen/y130"
             android:scaleType="fitXY"
             android:src="@mipmap/img2" />
     </LinearLayout>
 
     <View
-    android:layout_width="@dimen/x1020"
-    android:layout_height="1dp"
-    android:background="@mipmap/fenge" />
+        android:layout_width="@dimen/x702"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/y20"
+        android:background="@mipmap/fenge" />
 </LinearLayout>

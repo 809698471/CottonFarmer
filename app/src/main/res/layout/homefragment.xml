@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -10,12 +11,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="380dp">
+            android:layout_height="@dimen/y780">
 
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewpager"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="@dimen/y520"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
@@ -26,15 +27,15 @@
             <LinearLayout
                 android:id="@+id/home_lin_weather"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y148"
-                android:layout_marginTop="25dp">
+                android:layout_height="@dimen/y100"
+                android:layout_marginTop="@dimen/y50">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/x72"
+                    android:layout_height="@dimen/y72"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
-                    android:layout_marginLeft="@dimen/x30"
+                    android:layout_marginLeft="@dimen/x24"
                     android:src="@mipmap/qing" />
 
                 <TextView
@@ -43,7 +44,7 @@
                     android:layout_gravity="center"
                     android:text="27℃"
                     android:textColor="#fff"
-                    android:textSize="41sp" />
+                    android:textSize="40sp" />
 
                 <View
                     android:layout_width="0dp"
@@ -53,18 +54,18 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/x30"
+                    android:layout_marginRight="@dimen/x38"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:layout_width="@dimen/y412"
-                        android:layout_height="@dimen/x88"
+                        android:layout_width="@dimen/x278"
+                        android:layout_height="@dimen/y58"
                         android:background="@mipmap/jx"
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/x24"
+                            android:layout_height="@dimen/y28"
                             android:layout_marginRight="10dp"
                             android:src="@mipmap/dw" />
 
@@ -73,7 +74,7 @@
                             android:layout_height="wrap_content"
                             android:text="北京市海淀区"
                             android:textColor="#fff"
-                            android:textSize="12sp" />
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <TextView
@@ -82,7 +83,7 @@
                         android:layout_gravity="center"
                         android:text="晴23℃~30℃"
                         android:textColor="#fff"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -123,7 +124,7 @@
                         android:layout_marginLeft="30px"
                         android:background="@drawable/dididi" />
 
-                    <!--<View
+           <!--         <View
                         android:id="@+id/view_dot4"
                         android:layout_width="10dp"
                         android:layout_height="2dp"
@@ -140,33 +141,34 @@
 
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/y496"
-                android:layout_marginLeft="@dimen/y30"
-                android:layout_marginRight="@dimen/y30"
-                android:layout_marginTop="200dp"
+                android:layout_width="@dimen/x702"
+                android:layout_height="@dimen/y370"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/y20"
+                android:layout_marginLeft="@dimen/x24"
+                android:layout_marginRight="@dimen/y24"
                 android:background="@mipmap/bg"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/y174"
-                    android:layout_marginLeft="@dimen/y30"
-                    android:layout_marginRight="@dimen/y30"
-                    android:layout_marginTop="@dimen/y40">
+                    android:layout_height="@dimen/y120"
+                    android:layout_marginLeft="@dimen/x25"
+                    android:layout_marginRight="@dimen/x20"
+                    android:layout_marginTop="@dimen/y30">
 
                     <LinearLayout
                         android:id="@+id/home_lin_hzbx"
-                        android:layout_width="@dimen/x465"
-                        android:layout_height="@dimen/y174"
+                        android:layout_width="@dimen/x322"
+                        android:layout_height="@dimen/y120"
                         android:background="@mipmap/yj_1">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/x48"
+                            android:layout_height="@dimen/y56"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/x40"
-                            android:layout_marginRight="@dimen/x40"
+                            android:layout_marginLeft="@dimen/x28"
+                            android:layout_marginRight="@dimen/x30"
                             android:src="@mipmap/hzbx" />
 
                         <LinearLayout
@@ -180,7 +182,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="互助保险"
                                 android:textColor="#fff"
-                                android:textSize="16sp"
+                                android:textSize="17sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -189,23 +191,23 @@
                                 android:layout_marginTop="3dp"
                                 android:text="保险让你更安心"
                                 android:textColor="#fff"
-                                android:textSize="13sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
                     </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/home_lin_zjhz"
-                        android:layout_width="@dimen/x465"
-                        android:layout_height="@dimen/y174"
-                        android:layout_marginLeft="@dimen/x30"
+                        android:layout_width="@dimen/x322"
+                        android:layout_height="@dimen/y120"
+                        android:layout_marginLeft="@dimen/x10"
                         android:background="@mipmap/yj2">
 
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="@dimen/x48"
+                            android:layout_height="@dimen/y56"
                             android:layout_gravity="center"
-                            android:layout_marginLeft="@dimen/x40"
-                            android:layout_marginRight="@dimen/x40"
+                            android:layout_marginLeft="@dimen/x28"
+                            android:layout_marginRight="@dimen/x30"
                             android:src="@mipmap/zjhz" />
 
                         <LinearLayout
@@ -219,7 +221,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="资金互助"
                                 android:textColor="#fff"
-                                android:textSize="16sp"
+                                android:textSize="17sp"
                                 android:textStyle="bold" />
 
                             <TextView
@@ -228,16 +230,15 @@
                                 android:layout_marginTop="3dp"
                                 android:text="资金不够找我凑"
                                 android:textColor="#fff"
-                                android:textSize="13sp" />
+                                android:textSize="14sp" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
                 <LinearLayout
-
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/y194"
-                    android:layout_marginTop="@dimen/y44">
+                    android:layout_height="@dimen/y150"
+                    android:layout_marginTop="@dimen/y30">
 
                     <LinearLayout
                         android:id="@+id/home_lin_wyrs"
@@ -248,16 +249,16 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/x128"
-                            android:layout_height="@dimen/y128"
+                            android:layout_width="@dimen/x89"
+                            android:layout_height="@dimen/y89"
                             android:src="@mipmap/wyrs" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/y22"
+                            android:layout_marginTop="@dimen/y14"
                             android:text="我要入社"
-                            android:textSize="11sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -269,16 +270,16 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/x128"
-                            android:layout_height="@dimen/y128"
+                            android:layout_width="@dimen/x89"
+                            android:layout_height="@dimen/y89"
                             android:src="@mipmap/mhsc" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/y22"
+                            android:layout_marginTop="@dimen/y14"
                             android:text="棉花市场"
-                            android:textSize="11sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -290,16 +291,16 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/x128"
-                            android:layout_height="@dimen/y128"
+                            android:layout_width="@dimen/x89"
+                            android:layout_height="@dimen/y89"
                             android:src="@mipmap/jxnz" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/y22"
+                            android:layout_marginTop="@dimen/y14"
                             android:text="精选农资"
-                            android:textSize="11sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -311,16 +312,16 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/x128"
-                            android:layout_height="@dimen/y128"
+                            android:layout_width="@dimen/x89"
+                            android:layout_height="@dimen/y89"
                             android:src="@mipmap/wdzl" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/y22"
+                            android:layout_marginTop="@dimen/y14"
                             android:text="我的资料"
-                            android:textSize="11sp" />
+                            android:textSize="15sp" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -333,17 +334,92 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y190">
+            android:layout_height="@dimen/y130">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x82"
+                android:layout_height="@dimen/y88"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/x30"
-                android:layout_marginRight="@dimen/x30"
+                android:layout_marginLeft="@dimen/x24"
+                android:layout_marginRight="@dimen/x20"
                 android:src="@mipmap/lhtt" />
 
+            <!-- <RelativeLayout
 
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent">
+
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_marginRight="@dimen/x160"
+                     android:layout_height="match_parent"
+                     android:orientation="vertical">
+
+                     <LinearLayout
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                         android:layout_marginTop="@dimen/y26">
+
+                         <TextView
+
+                             android:layout_width="@dimen/x180"
+                             android:layout_height="@dimen/y66"
+                             android:layout_gravity="center"
+                             android:background="@mipmap/yj"
+                             android:gravity="center"
+                             android:text="补贴来了"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                         <TextView
+
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginLeft="@dimen/x30"
+                             android:ellipsize="end"
+                             android:lines="1"
+                             android:text="定了！这里“棉花二补价格”开..."
+                             android:textColor="#666666"
+                             android:textSize="11sp" />
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:layout_marginTop="3dp"
+                         android:layout_width="wrap_content"
+                         android:layout_height="wrap_content">
+
+                         <TextView
+                             android:layout_width="@dimen/x180"
+                             android:layout_height="@dimen/y66"
+                             android:layout_gravity="center"
+                             android:background="@mipmap/yj"
+                             android:gravity="center"
+                             android:text="种植秘籍"
+                             android:textSize="11sp"
+                             android:textStyle="bold" />
+
+                         <TextView
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_gravity="center"
+                             android:layout_marginLeft="@dimen/x30"
+                             android:ellipsize="end"
+                             android:lines="1"
+                             android:text="棉花播种一膜3行和一膜6行的..."
+                             android:textColor="#666666"
+                             android:textSize="11sp" />
+                     </LinearLayout>
+
+                 </LinearLayout>
+
+                 <ImageView
+                     android:layout_alignParentRight="true"
+                     android:layout_width="wrap_content"
+                     android:layout_height="match_parent"
+                     android:src="@mipmap/img" />
+             </RelativeLayout>
+ -->
             <ViewFlipper
                 android:id="@+id/filpper"
                 android:layout_width="match_parent"
@@ -362,15 +438,15 @@
         <LinearLayout
             android:id="@+id/home_lin_zhlhcx"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y140"
+            android:layout_height="@dimen/y94"
             android:background="@mipmap/logo">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x58"
+                android:layout_height="@dimen/y41"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/x30"
-                android:layout_marginRight="@dimen/x40"
+                android:layout_marginLeft="@dimen/x24"
+                android:layout_marginRight="@dimen/x44"
                 android:src="@mipmap/icon" />
 
             <TextView
@@ -387,10 +463,10 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x15"
+                android:layout_height="@dimen/y29"
                 android:layout_gravity="center"
-                android:layout_marginRight="@dimen/x30"
+                android:layout_marginRight="@dimen/x24"
                 android:src="@mipmap/xiala" />
         </LinearLayout>
 
@@ -401,7 +477,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y446">
+            android:layout_height="@dimen/y300">
 
             <ImageView
                 android:layout_width="0dp"
@@ -442,34 +518,34 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/y30"
-            android:background="#999" />
+            android:background="#f7f7f7" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/y264">
 
             <ImageView
-                android:layout_width="@dimen/y1020"
-                android:layout_height="@dimen/y320"
-                android:layout_marginBottom="@dimen/y30"
-                android:layout_marginLeft="@dimen/x30"
-                android:layout_marginRight="@dimen/x30"
-                android:layout_marginTop="@dimen/y30"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/y20"
+                android:layout_marginLeft="@dimen/x24"
+                android:layout_marginRight="@dimen/x24"
+                android:layout_marginTop="@dimen/y20"
                 android:src="@mipmap/bg1" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/y140"
+            android:layout_height="@dimen/y94"
             android:background="@mipmap/logo">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x56"
+                android:layout_height="@dimen/y48"
                 android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/x30"
-                android:layout_marginRight="@dimen/x40"
+                android:layout_marginLeft="@dimen/x36"
+                android:layout_marginRight="@dimen/x30"
                 android:src="@mipmap/logo1" />
 
             <TextView
@@ -486,16 +562,18 @@
                 android:layout_weight="1" />
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="@dimen/x15"
+                android:layout_height="@dimen/y29"
                 android:layout_gravity="center"
-                android:layout_marginRight="@dimen/x30"
+                android:layout_marginRight="@dimen/x24"
                 android:src="@mipmap/xiala" />
         </LinearLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@mipmap/fenge" />
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recy"
             android:layout_width="match_parent"
@@ -504,17 +582,18 @@
             android:layout_marginRight="@dimen/x30">
 
         </android.support.v7.widget.RecyclerView>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/y264">
 
             <ImageView
-                android:layout_width="@dimen/y1020"
-                android:layout_height="@dimen/y320"
-                android:layout_marginBottom="@dimen/y30"
-                android:layout_marginLeft="@dimen/x30"
-                android:layout_marginRight="@dimen/x30"
-                android:layout_marginTop="@dimen/y30"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/y20"
+                android:layout_marginLeft="@dimen/x24"
+                android:layout_marginRight="@dimen/x24"
+                android:layout_marginTop="@dimen/y20"
                 android:src="@mipmap/bg2" />
 
         </LinearLayout>
