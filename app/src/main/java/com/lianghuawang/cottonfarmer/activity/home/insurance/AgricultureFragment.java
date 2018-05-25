@@ -14,6 +14,8 @@ import com.lianghuawang.cottonfarmer.netutils.listener.APIListener;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
 import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+
 import java.util.List;
 
 import butterknife.Bind;
@@ -119,6 +121,8 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
     //跳转到详情页面
     @Override
     public void onItemClick(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
-        startActivity(new Intent(getContext(), InsuranceParticularsActivity.class));
+        Intent intent = new Intent(getContext(), InsuranceParticularsActivity.class);
+        intent.putExtra(ConstantUtil.INSURANCE,dataBeans.get(position));
+        startActivity(intent);
     }
 }

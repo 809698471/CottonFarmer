@@ -28,8 +28,8 @@
 
                 <ImageView
                     android:id="@+id/iv_item_view"
-                    android:layout_width="75dp"
-                    android:layout_height="70dp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:background="@color/image_default_bg"
                     android:src="@drawable/default_" />
 
@@ -46,9 +46,9 @@
                         android:id="@+id/tv_title"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/x45"
+                        android:textSize="@dimen/x35"
                         android:textColor="@android:color/black" />
 
                     <TextView
@@ -57,17 +57,17 @@
                         android:layout_height="0dp"
                         android:layout_weight="2"
                         android:gravity="center_vertical"
-                        android:textSize="@dimen/x55"
+                        android:textSize="@dimen/x30"
                         android:textColor="@color/darkgray" />
 
                     <TextView
                         android:id="@+id/tv_subscribe_time"
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="2"
                         android:gravity="center_vertical"
                         android:textColor="@color/red"
-                        android:textSize="@dimen/x35" />
+                        android:textSize="@dimen/x20" />
                 </LinearLayout>
 
             </LinearLayout>

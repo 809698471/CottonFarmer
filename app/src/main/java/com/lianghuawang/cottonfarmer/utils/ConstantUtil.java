@@ -30,6 +30,8 @@ public class ConstantUtil {
 
     public static final String TAG8 = "TAG8";
 
+    public static final String INSURANCE = "INSURANCE";//传递订单详情key
+
     /**
      * -------------------订单模块
      */

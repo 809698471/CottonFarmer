@@ -1,17 +1,20 @@
 package com.lianghuawang.cottonfarmer.activity.home.insurance;
 
 import android.content.Intent;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -21,9 +24,6 @@ public class InsuranceParticularsActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-
-    @Bind(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
 
     @Bind(R.id.tv_ins_par_content)
     TextView content;
@@ -37,6 +37,14 @@ public class InsuranceParticularsActivity extends BaseActivity {
     @Bind(R.id.btn_argeed)
     Button mArgeed;
 
+    @Bind(R.id.toolbar_layout)
+    CollapsingToolbarLayout mColl;
+
+    @Bind(R.id.iv_item_insurance)
+    ImageView mImage;
+
+    private DataBean mData;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_buy_insurance_particulars;
@@ -44,23 +52,22 @@ public class InsuranceParticularsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        init();
         initToolbar();
         initData();
     }
 
+    private void init() {
+        mData = (DataBean) getIntent().getSerializableExtra(ConstantUtil.INSURANCE);
+        LogUtils.d(mData.toString());
+    }
+
     private void initToolbar() {
-        mToolbar.setTitle("保险名称");
-        setSupportActionBar(mToolbar);
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null)
-            supportActionBar.setDisplayHomeAsUpEnabled(true);
-        mToolbar.setNavigationIcon(R.drawable.back1);
-        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        Glide.with(this).load("https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2153457880,777912658&fm=27&gp=0.jpg").into(mImage);
+        mColl.setTitle(mData.getName());
+        mColl.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white));//在标题栏时的颜色
+        mColl.setExpandedTitleColor(ContextCompat.getColor(this, R.color.white));//在图片上的颜色时
+
     }
 
     private void initData() {
@@ -75,10 +82,11 @@ public class InsuranceParticularsActivity extends BaseActivity {
             mArgeed.setEnabled(false);
         }
     }
-//保单条款
+
+    //保单条款
     @OnClick(R.id.tv_argeed)
     public void tvClick(TextView textView) {
-        startActivity(new Intent(InsuranceParticularsActivity.this,InsuranceClausesActivity.class));
+        startActivity(new Intent(InsuranceParticularsActivity.this, InsuranceClausesActivity.class));
     }
 
     //预约投保>>>>>保险订单

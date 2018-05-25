@@ -6,9 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
-import com.flyco.tablayout.SlidingTabLayout;
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 

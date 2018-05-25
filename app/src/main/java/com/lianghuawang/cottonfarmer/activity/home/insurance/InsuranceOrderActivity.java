@@ -18,9 +18,6 @@ public class InsuranceOrderActivity extends BaseActivity{
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
 
-    @Bind(R.id.drawer_layout)
-    DrawerLayout mDrawerLayout;
-
     @Bind(R.id.btn_confirm_order)
     Button mOrder;
 

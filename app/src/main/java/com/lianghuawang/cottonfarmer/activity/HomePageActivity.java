@@ -14,6 +14,7 @@ import com.lianghuawang.cottonfarmer.activity.home.HomeFragment;
 import com.lianghuawang.cottonfarmer.activity.message.NewsFragment;
 import com.lianghuawang.cottonfarmer.activity.my.MyFragment;
 import com.lianghuawang.cottonfarmer.activity.order.Order;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 
@@ -71,10 +72,12 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
 
 
     private void initData() {
+        Order order = Order.newInstance();
         list_fragment.add(new HomeFragment());
         list_fragment.add(new NewsFragment());
-        list_fragment.add(Order.newInstance());
+        list_fragment.add(order);
         list_fragment.add(new MyFragment());
+        LogUtils.d(order.toString());//Order{ae30b41}
         for (int i = 0; i < layout.getChildCount(); i++) {
             rbArray[i] = (RadioButton) layout.getChildAt(i);
         }
@@ -109,25 +112,13 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
                 conut = i;
             }
         }
-        if (id == 2) {
-            if (list_fragment.get(2).isAdded()) {
-                tt.show(list_fragment.get(2)).hide(list_fragment.get(conut)).commit();
-            } else {
-                tt.add(R.id.fragment, list_fragment.get(2)).hide(list_fragment.get(conut)).commit();
-            }
-        }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(MessageEvent evnt) {
         name = evnt.names;
         if (name) {
-//            FragmentTransaction tt = msg.beginTransaction();
-            showFragment(2);
             rbArray[2].setChecked(true);
-//            tt.replace(R.id.fragment, list_fragment.get(2));
-//            rbArray[2].setChecked(true);
-//            tt.commit();
         } else {
         }
     }

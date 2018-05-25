@@ -1,11 +1,12 @@
 package com.lianghuawang.cottonfarmer.netutils.instance;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 农业保险实例
  */
-public class AgriculturalInsurances {
+public class AgriculturalInsurances implements Serializable {
 
 
     /**
@@ -52,7 +53,7 @@ public class AgriculturalInsurances {
         this.data = data;
     }
 
-    public static class DataBean {
+    public static class DataBean implements Serializable {
 /**
         product_id 产品编号
         name 商品名称
@@ -135,6 +136,37 @@ public class AgriculturalInsurances {
         private int n_tgt_fld7;
         private int n_tgt_fld8;
         private List<AreaBean> area;
+
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "product_id='" + product_id + '\'' +
+                    ", name='" + name + '\'' +
+                    ", image_url='" + image_url + '\'' +
+                    ", describe='" + describe + '\'' +
+                    ", cate_id=" + cate_id +
+                    ", start_end_time='" + start_end_time + '\'' +
+                    ", detail_url='" + detail_url + '\'' +
+                    ", category_name=" + category_name +
+                    ", ins_obj='" + ins_obj + '\'' +
+                    ", insurance_nature='" + insurance_nature + '\'' +
+                    ", rate=" + rate +
+                    ", price='" + price + '\'' +
+                    ", dead_start_time='" + dead_start_time + '\'' +
+                    ", dead_end_time='" + dead_end_time + '\'' +
+                    ", take_effect='" + take_effect + '\'' +
+                    ", special_agreement=" + special_agreement +
+                    ", n_tgt_fld1=" + n_tgt_fld1 +
+                    ", n_tgt_fld2=" + n_tgt_fld2 +
+                    ", n_tgt_fld3=" + n_tgt_fld3 +
+                    ", n_tgt_fld4=" + n_tgt_fld4 +
+                    ", n_tgt_fld5=" + n_tgt_fld5 +
+                    ", n_tgt_fld6=" + n_tgt_fld6 +
+                    ", n_tgt_fld7=" + n_tgt_fld7 +
+                    ", n_tgt_fld8=" + n_tgt_fld8 +
+                    ", area=" + area +
+                    '}';
+        }
 
         public String getProduct_id() {
             return product_id;
@@ -336,7 +368,7 @@ public class AgriculturalInsurances {
             this.area = area;
         }
 
-        public static class CateIdBean {
+        public static class CateIdBean implements Serializable {
             /**
              * cate_id : 1
              * cate_name : 农业保险
@@ -362,7 +394,7 @@ public class AgriculturalInsurances {
             }
         }
 
-        public static class CategoryNameBean {
+        public static class CategoryNameBean implements Serializable {
             /**
              * category_id : 1621
              * category_name : 棉花种植险
@@ -388,7 +420,7 @@ public class AgriculturalInsurances {
             }
         }
 
-        public static class AreaBean {
+        public static class AreaBean implements Serializable {
             /**
              * area_code : 6531224
              * area_name : 农三师
@@ -396,6 +428,14 @@ public class AgriculturalInsurances {
 
             private String area_code;
             private String area_name;
+
+            @Override
+            public String toString() {
+                return "AreaBean{" +
+                        "area_code='" + area_code + '\'' +
+                        ", area_name='" + area_name + '\'' +
+                        '}';
+            }
 
             public String getArea_code() {
                 return area_code;

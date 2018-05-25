@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:orientation="vertical">-->
 
     <LinearLayout
+        android:id="@+id/ll1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -28,8 +33,10 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ll1"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:orientation="horizontal">
@@ -51,6 +58,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll3"
+        android:layout_below="@id/ll2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -74,6 +83,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll4"
+        android:layout_below="@id/ll3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -241,6 +252,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll5"
+        android:layout_below="@id/ll4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
@@ -396,6 +409,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll6"
+        android:layout_below="@id/ll5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -419,6 +434,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll7"
+        android:layout_below="@id/ll6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -442,6 +459,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll8"
+        android:layout_below="@id/ll7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -465,6 +484,8 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ll9"
+        android:layout_below="@id/ll8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -484,40 +505,44 @@
             android:entries="@array/cooperation" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="30dp"
-        android:orientation="horizontal">
+    <!--<LinearLayout-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:orientation="horizontal">-->
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="7">
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/black"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:text="¥ 720" />
+        <!--<RelativeLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="7">-->
 
-        </RelativeLayout>
+            <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="1dp"-->
+                <!--android:background="@color/black" />-->
 
-        <Button
-            android:id="@+id/btn_confirm_order"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="4"
-            android:background="@drawable/bg_btn_confirm_order_selected"
-            android:text="确认订单" />
+            <!--<TextView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerInParent="true"-->
+                <!--android:gravity="center"-->
+                <!--android:text="¥ 720"-->
+                <!--android:textColor="@color/black"-->
+                <!--android:textStyle="bold" />-->
 
-    </LinearLayout>
+        <!--</RelativeLayout>-->
 
-</LinearLayout>
+        <!--<Button-->
+            <!--android:id="@+id/btn_confirm_order"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="4"-->
+            <!--android:background="@drawable/bg_btn_confirm_order_selected"-->
+            <!--android:text="确认订单" />-->
+
+    <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+
+</RelativeLayout>

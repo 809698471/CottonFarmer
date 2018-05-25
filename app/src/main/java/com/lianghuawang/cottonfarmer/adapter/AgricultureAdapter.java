@@ -57,7 +57,6 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
 
         private ImageView img;
         private TextView title,content,time;
-//        private Button btn;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
@@ -65,7 +64,6 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
             title = $(R.id.tv_title);
             content = $(R.id.tv_content);
             time = $(R.id.tv_subscribe_time);
-//            btn = $(R.id.btn_subscribe);
         }
     }
 
