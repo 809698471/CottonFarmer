@@ -5,7 +5,7 @@ package com.lianghuawang.cottonfarmer.utils;
  */
 public class ConstantUtil {
 
-    private String token = "Bearer 2--yJBR0IC9e3szMeuIpywK9Emr_E5MG";
+    private String token = "Bearer cX7wokf7Qut_3dzC7jD3lTKA0cv6_dYk";
     /**
      * ---------------保险模块-------------------
      */
@@ -41,18 +41,6 @@ public class ConstantUtil {
     public static final String FOR_THE_GOODS = "for_the_goods";//待收货
     public static final String HAS_BEEN_COMPLETED = "has_been_completed";//已完成
     public static final String HAS_BEEN_CANCELLED = "has_been_cancelled";//已取消
-
-    /**
-     * 模拟保险说明内容
-     */
-    public static final String TEST = "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用。" +
-            "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用。" +
-            "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用。" +
-            "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用。" +
-            "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用。" +
-            "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用。" +
-            "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用。" +
-            "保险者对所承保的财产负赔偿责任的范围有，因遇保险责任范围内的各种灾害而遭受的损失，进行施救或抢救而造成的损失以及相应支付的各种费用";
 
 
     /**---------------------------------数据库-----------------------------------**/

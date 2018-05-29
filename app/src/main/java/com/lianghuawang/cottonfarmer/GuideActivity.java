@@ -1,9 +1,7 @@
 package com.lianghuawang.cottonfarmer;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -13,12 +11,12 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
@@ -29,7 +27,7 @@ import java.util.List;
  * 引导页
  */
 
-public class GuideActivity extends Activity {
+public class GuideActivity extends BaseActivity {
     private ViewPager viewPager;
     private List<View> mImageViews; // 滑动的图片集合
     private int[] imageResId; // 图片ID
@@ -41,13 +39,13 @@ public class GuideActivity extends Activity {
     private int flaggingWidth;// 互动翻页所需滚动的长度是当前屏幕宽度的1/3
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);// 去掉标题栏
-        setContentView(R.layout.activity_guide);
+    protected int getLayoutId() {
+        return R.layout.activity_guide;
+    }
 
+    @Override
+    protected void initView() {
         gestureDetector = new GestureDetector(new GuideViewTouch());
-
         // 获取分辨率
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -104,6 +102,7 @@ public class GuideActivity extends Activity {
         // 设置一个监听器，当ViewPager中的页面改变时调用
         viewPager.setOnPageChangeListener(new MyPageChangeListener());
     }
+
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {

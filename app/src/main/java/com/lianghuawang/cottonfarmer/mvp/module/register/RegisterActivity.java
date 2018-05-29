@@ -29,8 +29,8 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
     Button mRegister;
     @Bind(R.id.btn_login_captcha)
     Button mCaptcha;
-    @Bind(R.id.tv_back_login)
-    TextView mBackLogin;
+//    @Bind(R.id.tv_back_login)
+//    TextView mBackLogin;
 
 
     @Override
@@ -40,14 +40,14 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
 
     @Override
     protected void initView() {
-        mBackLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-                RegisterActivity.this.finish();
-                overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
-            }
-        });
+//        mBackLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+//                RegisterActivity.this.finish();
+//                overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
+//            }
+//        });
     }
 
     @OnClick({R.id.btn_login, R.id.btn_login_captcha})

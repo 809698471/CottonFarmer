@@ -50,7 +50,7 @@ public class BuyInsuranceActivity extends BaseActivity {
     @Bind(R.id.iv_right)
     ImageView mRight;
 
-    private List<String> titles = Arrays.asList("农业保险", "信用保险", "价格保险");
+    private List<String> titles = Arrays.asList("农业保险", "即将推出", "预约再保");
 
     private List<String> titleTags = Arrays.asList(
             ConstantUtil.AGRICULTURE,

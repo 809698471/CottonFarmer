@@ -11,6 +11,8 @@
     <color name="color_ffffff">#ffffff</color>
     <color name="color_c61a04">#c61a04</color>
     <color name="color_cccccc">#cccccc</color>
+    <color name="loginfalse">#67d979</color>
+    <color name="loginture">#2bc286</color>
     <color name="color_d81e06">#d81e06</color>
     <color name="color_b0b8b2">#b0b8b2</color>
     <color name="color_333333">#333333</color>
@@ -318,4 +320,7 @@
     <!-- 黑色 -->
     <color name="transparent">#00000000</color>
     <!--透明-->
+
+    <color name="black1">#333333</color>
+    <color name="tabs">#3C9B6D</color>
 </resources>

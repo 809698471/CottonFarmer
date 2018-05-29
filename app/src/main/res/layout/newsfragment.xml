@@ -5,14 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y48"
+        android:background="@color/colorPrimary" />
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/x144"
+        android:layout_height="@dimen/y96"
         android:background="@color/colorPrimary"
         android:gravity="center"
-        android:text="@string/news_title"
+        android:text="@string/order_title"
         android:textColor="@color/white"
-        android:textSize="@dimen/x60" />
+        android:textSize="@dimen/x40" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_news_title"
@@ -23,6 +28,7 @@
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/darkgray" />
+
     <View
         android:layout_width="match_parent"
         android:layout_height="0.5dp"

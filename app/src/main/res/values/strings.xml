@@ -20,7 +20,7 @@
     <string name="phone_illegal">手机号不合法</string>
     <string name="loginsuccess">登录成功</string>
     <string name="captcha">获取验证码</string>
-    <string name="new_register">注册新用户</string>
+    <string name="new_register">注册</string>
 
     <!--RegisterActivity-->
     <string name="register">注册</string>
@@ -32,6 +32,16 @@
     <string name="subscribe1">预 约 投 保</string>
     <string name="introduce">保险介绍</string>
     <string name="agreed">同意《保险条例》</string>
+    <string name="rates">保险费率：%1$s</string>
+    <string name="central">中央：%1$s</string>
+    <string name="personal">个人：%1$s</string>
+    <string name="policy">保单%1$s个月</string>
+
+    <!--InsuranceParticularsActivity-->
+    <string name="object">保险对象：%1$s</string>
+    <string name="price">单位保金：%1$s</string>
+    <string name="properties">保险性质：%1$s</string>
+
 
     <string name="shiyi">释义</string>
     <string name="shiyiyu">第三十五条 本保险合同涉及下列术语时,适用下列释义:</string>

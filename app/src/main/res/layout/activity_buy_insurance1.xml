@@ -5,11 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.home.insurance.BuyInsuranceActivity">
-    <!--<View-->
-    <!--android:id="@+id/status_view"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="24dp"-->
-    <!--android:background="?attr/colorPrimary"/>-->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -82,10 +77,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                app:tabIndicatorColor="@color/colorPrimary"
+                app:tabIndicatorColor="@color/tabs"
                 app:tabMode="scrollable"
-                app:tabSelectedTextColor="@color/colorPrimary"
-                app:tabTextColor="@color/darkgray"
+                app:tabSelectedTextColor="@color/tabs"
+                app:tabTextColor="@color/black1"
                 app:tabTextAppearance="@style/TabLayoutTextStyle"/>
 
 

@@ -32,7 +32,7 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
     @Bind(R.id.btn_login_captcha)
     Button mCaptcha;
     @Bind(R.id.tv_new_regist)
-    TextView mNewRegister;
+    Button mNewRegister;
 
     private Handler handler;
 
@@ -47,7 +47,6 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-                LoginActivity.this.finish();
             }
         });
     }

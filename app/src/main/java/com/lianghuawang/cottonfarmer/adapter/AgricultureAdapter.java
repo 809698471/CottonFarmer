@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
+import com.lianghuawang.cottonfarmer.utils.MeasureUtil;
 
 import java.util.List;
 
@@ -37,6 +38,7 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
         if (holder instanceof ItemViewHolder){
             final ItemViewHolder holde = (ItemViewHolder) holder;
             holde.title.setText(insuranceList.get(position).getName());
+//            holde.title.setTextSize(MeasureUtil.px2sp(getContext(),30f));
             holde.content.setText(insuranceList.get(position).getDescribe());
             holde.time.setText(insuranceList.get(position).getStart_end_time());
             Glide.with(getContext()).load(insuranceList.get(position).getImage_url()).into(holde.img);
