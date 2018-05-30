@@ -14,8 +14,9 @@ public interface Concat {
 
     String PORTIMAGE = ":84";//图片请求端口
 
+    String APIS= API + PORT;
 
-    String BASE_URL = API + PORT + "/v1/";
+    String BASE_URL = APIS + "/v1/";
 
     String IMAGE_URL = API + PORTIMAGE;
 

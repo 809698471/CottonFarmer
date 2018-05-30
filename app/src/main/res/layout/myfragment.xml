@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:layout_marginTop="33dp"
             android:src="@mipmap/shezhi" />
 
-        <ImageView
+        <com.lianghuawang.cottonfarmer.tools.view.CircleImageView
             android:id="@+id/myfragment_personalinformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -28,29 +27,31 @@
             android:src="@mipmap/button" />
 
         <TextView
-            android:id="@+id/textView"
-            android:layout_marginTop="15dp"
+            android:id="@+id/tv_username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/myfragment_personalinformation"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
             android:text="未登录"
             android:textColor="#fff"
             android:textSize="18sp" />
     </RelativeLayout>
+
     <android.support.v7.widget.CardView
         android:layout_width="350dp"
-        app:cardBackgroundColor="#fff"
-        app:cardCornerRadius="15dp"
         android:layout_height="208dp"
         android:layout_marginLeft="12dp"
         android:layout_marginRight="12dp"
         android:layout_marginTop="165dp"
-        >
+        app:cardBackgroundColor="#fff"
+        app:cardCornerRadius="15dp">
+
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -181,6 +182,7 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:src="@mipmap/daikuan" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -213,10 +215,10 @@
             android:src="@mipmap/rexian" />
 
         <TextView
-            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             android:text="理赔热线："
             android:textColor="#eb864a"
             android:textSize="15sp" />
