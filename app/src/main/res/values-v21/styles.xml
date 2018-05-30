@@ -117,4 +117,8 @@
         <!--<item name="android:windowSharedElementExitTransition">@android:transition/move</item>-->
     <!--</style>-->
 
+    <style name="SpnStyle">
+        <item name="android:colorControlNormal">@color/colorPrimary</item>
+    </style>
+
 </resources>

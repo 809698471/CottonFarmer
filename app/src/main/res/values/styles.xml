@@ -62,4 +62,5 @@
     <style name="TabLayoutTextStyle">
         <item name="android:textSize">@dimen/x36</item>
     </style>
+
 </resources>

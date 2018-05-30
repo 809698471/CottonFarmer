@@ -4,8 +4,9 @@ package com.lianghuawang.cottonfarmer.utils;
  * 常量配置工具类
  */
 public class ConstantUtil {
-
-    private String token = "Bearer cX7wokf7Qut_3dzC7jD3lTKA0cv6_dYk";
+    public static String tokenKey = "Authorization";
+    //179 6325 4258
+    private String token = "Bearer _Xvbc3UfAI_z3iGZkxfbDwsdcMIjYE6x";
     /**
      * ---------------保险模块-------------------
      */

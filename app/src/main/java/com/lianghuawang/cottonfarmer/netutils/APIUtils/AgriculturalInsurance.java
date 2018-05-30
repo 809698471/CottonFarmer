@@ -52,7 +52,7 @@ public class AgriculturalInsurance extends BaseAPI {
     }
 
     public AgriculturalInsurance request(){
-        OkHttp3Utils.doGet(SP.getString(ConstantUtil.LOGINTOKEN,""), PRODUCTLIST_URL2 + mPage, new GsonObjectCallback<AgriculturalInsurances>() {
+        OkHttp3Utils.doGet(ConstantUtil.tokenKey,SP.getString(ConstantUtil.LOGINTOKEN,""), PRODUCTLIST_URL2 + mPage, new GsonObjectCallback<AgriculturalInsurances>() {
             @Override
             public void onUi(AgriculturalInsurances buyInsurances) {
                 if (buyInsurances.isSuccess()) {

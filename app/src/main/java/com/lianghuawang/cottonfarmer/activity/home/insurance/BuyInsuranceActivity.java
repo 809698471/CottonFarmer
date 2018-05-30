@@ -32,7 +32,7 @@ import java.util.List;
 
 import butterknife.Bind;
 
-//购买保险
+//保险二级页面--保险列表
 public class BuyInsuranceActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)

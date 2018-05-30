@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
- * 农业保险fragment
+ * 保险列表fragment
  */
 public class AgricultureFragment extends BaseFragment implements AbsRecyclerViewAdapter.OnItemClickListener {
 

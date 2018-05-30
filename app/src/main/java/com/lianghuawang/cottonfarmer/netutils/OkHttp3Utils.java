@@ -131,23 +131,23 @@ public class OkHttp3Utils {
         call.enqueue(callback);
     }
 
-    public static void doGet(String token, String url, Callback callback) {
+    public static void doGet(String tokenKey, String token, String url, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建Request
-        Request request = new Request.Builder().addHeader("Authorization", token).url(url).build();
+        Request request = new Request.Builder().addHeader(tokenKey, token).url(url).build();
         //得到Call对象
         Call call = okHttpClient.newCall(request);
         //执行异步请求
         call.enqueue(callback);
     }
 
-    public static void doGet(String token, String url, LinkedHashMap<String, String> params, Callback callback) {
+    public static void doGet(String tokenKey,String token, String url, LinkedHashMap<String, String> params, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建Request
         String data_url = attachHttpGetParams(url, params);
-        Request request = new Request.Builder().addHeader("token", token).url(data_url).build();
+        Request request = new Request.Builder().addHeader(tokenKey, token).url(data_url).build();
         //得到Call对象
         Call call = okHttpClient.newCall(request);
         //执行异步请求
@@ -155,11 +155,33 @@ public class OkHttp3Utils {
     }
 
     /**
+     * patch请求
+     * @param tokenKey
+     * @param token
+     * @param url
+     * @param params
+     * @param callback
+     */
+    public static void doPat(String tokenKey, String token, String url,Map<String,String> params, Callback callback){
+        OkHttpClient okHttpClient = getOkHttpClient();
+        FormBody.Builder formbody = new FormBody.Builder();
+        for (String key : params.keySet()){
+            formbody.add(key, params.get(key));
+        }
+        Request.Builder builder = new Request.Builder();
+        builder.addHeader(tokenKey,token);
+        Request request = builder.url(url).patch(formbody.build()).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(callback);
+
+    }
+
+    /**
      * post请求  token头部添加
      * 参数1 url
      * 参数2 回调Callback
      */
-    public static void doPost(String token, String url, Map<String, String> params, Callback callback) {
+    public static void doPost(String tokenKey,String token, String url, Map<String, String> params, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //3.x版本post请求换成FormBody 封装键值对参数
@@ -169,8 +191,7 @@ public class OkHttp3Utils {
             builder.add(key, params.get(key));
         }
         Request.Builder builder1 = new Request.Builder();
-//        builder1.addHeader("token",token);
-        builder1.addHeader("Authorization",token);
+        builder1.addHeader(tokenKey,token);
         Request request = builder1.url(url).post(builder.build()).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(callback);

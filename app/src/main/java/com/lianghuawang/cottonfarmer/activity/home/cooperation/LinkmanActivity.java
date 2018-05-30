@@ -100,7 +100,7 @@ public class LinkmanActivity extends BaseActivity {
     }
 
     private void initData() {
-        OkHttp3Utils.doGet(sp.getString(ConstantUtil.LOGINTOKEN,""), API.LINKMAN + "1", new GsonObjectCallback<Linkman>() {
+        OkHttp3Utils.doGet(ConstantUtil.tokenKey,sp.getString(ConstantUtil.LOGINTOKEN,""), API.LINKMAN + "1", new GsonObjectCallback<Linkman>() {
             @Override
             public void onUi(Linkman linkman) {
                 list = linkman;

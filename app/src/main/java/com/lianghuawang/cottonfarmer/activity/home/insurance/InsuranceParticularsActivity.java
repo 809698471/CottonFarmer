@@ -19,7 +19,7 @@ import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.Da
 import butterknife.Bind;
 import butterknife.OnClick;
 
-//购买保险---棉花灾害险详情页面
+//保险三级页面---保险详情
 public class InsuranceParticularsActivity extends BaseActivity {
 
     @Bind(R.id.toolbar)
