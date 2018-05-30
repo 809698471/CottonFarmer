@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.my.bankcard.BankCardActivity;
@@ -32,7 +31,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private LinearLayout myfragment_credit;
     private LinearLayout myfragment_loan;
     private ImageView myfragment_setup;
-    private RelativeLayout myfragment_personalinformation;
+    private ImageView myfragment_personalinformation;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,7 +42,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initView(View view) {
-        myfragment_personalinformation = (RelativeLayout) view.findViewById(R.id.myfragment_personalinformation);
+        myfragment_personalinformation = (ImageView) view.findViewById(R.id.myfragment_personalinformation);
         myfragment_bankcard = (LinearLayout) view.findViewById(R.id.myfragment_bankcard);
         myfragment_thebooks = (LinearLayout) view.findViewById(R.id.myfragment_thebooks);
         myfragment_order = (LinearLayout) view.findViewById(R.id.myfragment_order);

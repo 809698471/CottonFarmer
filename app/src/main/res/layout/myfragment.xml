@@ -6,7 +6,6 @@
     >
 
     <RelativeLayout
-        android:id="@+id/myfragment_personalinformation"
         android:layout_width="match_parent"
         android:layout_height="244dp"
         android:background="#2dc181">
@@ -21,7 +20,7 @@
             android:src="@mipmap/shezhi" />
 
         <ImageView
-            android:id="@+id/img_touxiang"
+            android:id="@+id/myfragment_personalinformation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -33,7 +32,7 @@
             android:layout_marginTop="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/img_touxiang"
+            android:layout_below="@id/myfragment_personalinformation"
             android:layout_centerHorizontal="true"
             android:text="未登录"
             android:textColor="#fff"

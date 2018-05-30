@@ -31,12 +31,17 @@ import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.Es
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.InsurancePurchaseRecordActivity;
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.PlantingInformationActivity;
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.ProofOfOwnershipActivity;
+import com.lianghuawang.cottonfarmer.config.Concat;
+import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.tools.view.CircleImageView;
 import com.lianghuawang.cottonfarmer.tools.view.ClipImageActivity;
 import com.lianghuawang.cottonfarmer.tools.view.FileUtil;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
 import java.io.File;
+import java.util.HashMap;
 
 import static com.lianghuawang.cottonfarmer.tools.view.FileUtil.getRealFilePathFromUri;
 
@@ -65,6 +70,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     private LinearLayout personalinformation_proofofownership;
     private LinearLayout personalinformation_insurancepurchaserecord;
     private ImageView personalinformation_return;
+    private String token;
 
     @Override
     protected int getLayoutId() {
@@ -91,6 +97,10 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
         personalinformation_plantinginformation.setOnClickListener(this);
         personalinformation_proofofownership.setOnClickListener(this);
         personalinformation_insurancepurchaserecord.setOnClickListener(this);
+
+        SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
+        token = sp.getString(ConstantUtil.LOGINTOKEN, "as");
+        Log.d("tag", "initView: " + token);
     }
 
     @Override
@@ -266,7 +276,9 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
                     String cropImagePath = getRealFilePathFromUri(getApplicationContext(), uri);
                     Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
                     if (type == 1) {
+//
                         headImage1.setImageBitmap(bitMap);
+                        SubmitImg();
                     } else {
 
                     }
@@ -291,6 +303,14 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
         intent.putExtra("type", type);
         intent.setData(uri);
         startActivityForResult(intent, REQUEST_CROP_PHOTO);
+    }
+
+    public void SubmitImg() {
+        HashMap<String, Object> map = new HashMap<>();
+
+        map.put("image", tempFile);
+
+        OkHttp3Utils.sendImage(token, Concat.UPLOADAHEADIMAGE_URL, map);
     }
 
 }
