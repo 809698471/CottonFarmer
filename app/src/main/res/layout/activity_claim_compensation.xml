@@ -9,29 +9,72 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_cccccc"
-        android:gravity="center_vertical">
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
 
-        <ImageView
-            android:id="@+id/claimcompensation_return"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/back" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:gravity="center_horizontal"
-            android:text="报案理赔"
-            android:textSize="15sp" />
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/claimcompensation_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="报案理赔"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
     </LinearLayout>
 
+    <!--<RadioGroup-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="@dimen/y100"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginLeft="@dimen/x24"-->
+        <!--android:layout_marginRight="@dimen/x24"-->
+        <!--android:fadingEdge="none"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/claim_rb_01"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/radiobutton_baoan"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:text="报案" />-->
+
+
+        <!--<RadioButton-->
+            <!--android:id="@+id/claim_rb_02"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/radiobutton_chaxun"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:text="理赔查询" />-->
+
+    <!--</RadioGroup>-->
     <RadioGroup
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="@dimen/y100"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
         android:fadingEdge="none"
         android:gravity="center_vertical"
         android:orientation="horizontal">
@@ -42,13 +85,11 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
+            android:checked="true"
+            android:paddingTop="8dp"
+            android:background="@drawable/radiobutton_chaxun"
             android:gravity="center"
             android:text="报案" />
-
-        <View
-            android:layout_width="2dp"
-            android:layout_height="wrap_content"
-            android:background="@color/coloroe" />
 
         <RadioButton
             android:id="@+id/claim_rb_02"
@@ -56,8 +97,12 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:button="@null"
+            android:paddingTop="8dp"
+            android:background="@drawable/radiobutton_chaxun"
             android:gravity="center"
             android:text="理赔查询" />
+
+
 
     </RadioGroup>
 

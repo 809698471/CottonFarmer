@@ -1,77 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginBottom="15dp"
-        android:background="@drawable/yin_ying"
-        android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y50"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginTop="@dimen/y50"
+        android:text="案件进度查询："
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y60"
+        android:layout_marginLeft="@dimen/x40">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="案件进度查询:"
-            android:textSize="20sp" />
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/x20"
+            android:text="案件条："
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="案件号:"
-                android:textSize="20sp" />
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x117"
+            android:background="@mipmap/bg_shuarukuang">
 
             <EditText
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/shape_frame" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="保单号:"
-                android:textSize="20sp" />
-
-            <EditText
-                android:layout_width="230dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/shape_frame" />
-        </LinearLayout>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/claimqueryfragment_btn"
-        android:layout_marginTop="15dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/btn"
-        android:textColor="#fff"
-        android:text="查 询"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y60"
+        android:layout_marginLeft="@dimen/x40"
+        android:layout_marginTop="@dimen/y46">
 
-    <TextView
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/x20"
+            android:text="案件条："
+            android:textSize="15sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/x117"
+            android:background="@mipmap/bg_shuarukuang">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@null" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/claimqueryfragment_img"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="*请输入案件号或保单号查询理赔进度"
-        android:textSize="18sp" />
+        android:layout_marginBottom="@dimen/y34"
+        android:layout_marginLeft="@dimen/x234"
+        android:layout_marginRight="@dimen/x234"
+        android:layout_marginTop="@dimen/y40"
+        android:src="@mipmap/btn_chaxun" />
+
 </LinearLayout>

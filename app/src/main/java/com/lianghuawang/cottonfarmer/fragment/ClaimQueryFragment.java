@@ -7,7 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageView;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.my.ClaimProgressActivity;
@@ -18,7 +18,7 @@ import com.lianghuawang.cottonfarmer.activity.my.ClaimProgressActivity;
 public class ClaimQueryFragment extends Fragment implements View.OnClickListener {
 
 
-    private Button claimqueryfragment_btn;
+    private ImageView claimqueryfragment_btn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,7 +29,7 @@ public class ClaimQueryFragment extends Fragment implements View.OnClickListener
     }
 
     private void initView(View view) {
-        claimqueryfragment_btn = (Button) view.findViewById(R.id.claimqueryfragment_btn);
+        claimqueryfragment_btn = (ImageView) view.findViewById(R.id.claimqueryfragment_img);
 
         claimqueryfragment_btn.setOnClickListener(this);
     }
@@ -38,7 +38,7 @@ public class ClaimQueryFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()) {
             //理赔进度
-            case R.id.claimqueryfragment_btn:
+            case R.id.claimqueryfragment_img:
                 startActivity(new Intent(getActivity(), ClaimProgressActivity.class));
                 break;
         }

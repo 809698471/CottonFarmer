@@ -22,7 +22,6 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.BuildConfig;
@@ -64,7 +63,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     // 1: qq, 2: weixin
     private int type;
 
-    private RelativeLayout personalinformation_personalimage;
+    private ImageView personalinformation_personalimage;
     private LinearLayout personalinformation_essentialinformation;
     private LinearLayout personalinformation_plantinginformation;
     private LinearLayout personalinformation_proofofownership;
@@ -81,8 +80,8 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     protected void initView() {
         personalinformation_return = (ImageView) findViewById(R.id.personalinformation_return);
         //个人头像
-        personalinformation_personalimage = (RelativeLayout) findViewById(R.id.personalinformation_personalimage);
-        headImage1 = (CircleImageView) findViewById(R.id.head_image1);
+        personalinformation_personalimage = (ImageView) findViewById(R.id.personalinformation_personalimage);
+
         //基本信息
         personalinformation_essentialinformation = (LinearLayout) findViewById(R.id.personalinformation_essentialinformation);
         //种植信息

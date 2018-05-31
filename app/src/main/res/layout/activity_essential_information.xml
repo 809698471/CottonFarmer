@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.my.personalinformation.activity.EssentialInformationActivity">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/y48"
-        android:background="@color/colorPrimary" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y96"
@@ -21,15 +15,14 @@
             android:layout_width="@dimen/x48"
             android:layout_height="@dimen/y48"
             android:layout_centerVertical="true"
-            android:src="@drawable/back" />
+            android:src="@mipmap/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="基本信息"
-            android:textColor="#fff"
-            android:textSize="@dimen/x36" />
+            android:textColor="#fff" />
     </RelativeLayout>
 
     <android.support.v4.widget.NestedScrollView
