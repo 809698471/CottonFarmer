@@ -6,31 +6,51 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.lianghuawang.cottonfarmer.activity.my.HelpActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_cccccc"
-        android:gravity="center_vertical">
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
 
-        <ImageView
-            android:id="@+id/help_return"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/back" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:gravity="center_horizontal"
-            android:text="帮助"
-            android:textStyle="bold"
-            android:textSize="15sp" />
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/help_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="帮助"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
     </LinearLayout>
+
     <TextView
-        android:layout_margin="25dp"
-        android:text="帮助客服 4555454"
-        android:textSize="20sp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#32c683"
+        android:layout_marginTop="@dimen/y480"
+        android:text="拨打官方客服电话"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/y54"
+        android:text="400-630-8055"
+        android:textSize="18sp" />
 </LinearLayout>
