@@ -9,168 +9,152 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_cccccc"
-        android:gravity="center_vertical">
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
 
-        <ImageView
-            android:id="@+id/setup_return"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/back" />
-
-        <TextView
+        <RelativeLayout
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:gravity="center_horizontal"
-            android:text="设置"
-            android:textSize="15sp" />
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/setup_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="我的设置"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/set_up_receivingaddress"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_height="match_parent"
+        android:background="#f7f7f7"
+        android:orientation="vertical">
 
+        <LinearLayout
+            android:id="@+id/set_up_receivingaddress"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginTop="@dimen/y30">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:text="收货地址"
-            android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x34"
+                android:text="收货地址"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="@dimen/x16"
+                android:layout_height="@dimen/y30"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/x24"
+                android:src="@mipmap/back_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/set_up_paymentpasswordsettings"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginTop="@dimen/y30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x34"
+                android:text="支付密码设置"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="@dimen/x16"
+                android:layout_height="@dimen/y30"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/x24"
+                android:src="@mipmap/back_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/set_up_help"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y100"
+            android:layout_marginBottom="@dimen/y20"
+            android:layout_marginTop="@dimen/y30">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/x34"
+                android:text="帮助"
+                android:textSize="15sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:layout_width="@dimen/x16"
+                android:layout_height="@dimen/y30"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/x24"
+                android:src="@mipmap/back_1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y214"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="版本 V1.0"
+                android:textSize="15sp" />
+        </LinearLayout>
 
         <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/more" />
+        <Button
+            android:layout_width="@dimen/x280"
+            android:layout_height="@dimen/y80"
+            android:layout_marginBottom="@dimen/y140"
+            android:layout_marginLeft="@dimen/x234"
+            android:layout_marginRight="@dimen/x234"
+            android:background="@drawable/btn_1"
+            android:text="退出登录"
+            android:textColor="@color/white" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/coloroe" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/coloroe" />
-
-
-    <LinearLayout
-        android:id="@+id/set_up_paymentpasswordsettings"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:text="支付密码设置"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/more" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/coloroe" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/coloroe" />
-
-
-    <LinearLayout
-        android:id="@+id/set_up_help"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="20dp"
-            android:text="帮助"
-            android:textSize="20sp" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/more" />
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/coloroe" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/coloroe" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="版本v1.0"
-        android:textSize="20sp" />
-
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/coloroe" />
-    <View
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"/>
-    <Button
-        android:text="退出登录"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/white"
-        android:background="@drawable/btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </LinearLayout>

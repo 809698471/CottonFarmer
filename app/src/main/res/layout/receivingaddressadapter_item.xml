@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/y20"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y38"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:layout_marginTop="@dimen/y30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="李晨"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="18888888888"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/y66"
+        android:layout_marginLeft="@dimen/x24">
+
+        <TextView
+            android:id="@+id/dizhi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="具体地址："
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="北京市丰台科技园"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/y20"
+        android:background="@mipmap/fenge" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x56"
+        android:layout_marginRight="@dimen/x56">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:button="@null"
+            android:checked="true"
+            android:drawableLeft="@drawable/morendizhi"
+            android:gravity="center"
+            android:text="默认地址"
+            android:textColor="@drawable/dizhizitiyanse"
+            android:textSize="15sp" />
+        <!--  <ImageView
+              android:layout_width="@dimen/x20"
+              android:layout_height="@dimen/y20"
+              android:layout_gravity="center"
+              android:background="@drawable/morendizhi"
+           />
+
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/x18"
+              android:text="收货地址"
+              android:textSize="15sp" />-->
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="@dimen/x28"
+            android:layout_height="@dimen/y30"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/x10"
+            android:src="@mipmap/icon_bianji" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/x56"
+            android:text="编辑"
+            android:textSize="15sp" />
+
+        <ImageView
+            android:layout_width="@dimen/x21"
+            android:layout_height="@dimen/y28"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/x10"
+            android:src="@mipmap/icon_shanchu" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除"
+            android:textSize="15sp" />
+    </LinearLayout>
+</LinearLayout>
