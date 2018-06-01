@@ -29,7 +29,7 @@
             android:textColor="#fff"
             android:textSize="18sp" />
 
-        <ImageView
+        <com.lianghuawang.cottonfarmer.tools.view.CircleImageView
             android:id="@+id/personalinformation_personalimage"
             android:layout_width="@dimen/x158"
             android:layout_height="@dimen/y158"

@@ -9,57 +9,32 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y128"
-        android:background="#32c683">
+        android:layout_height="50dp"
+        android:background="@color/color_cccccc"
+        android:gravity="center_vertical">
 
-        <RelativeLayout
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/y88"
-            android:layout_gravity="center">
+        <ImageView
+            android:id="@+id/proofofownership_return"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/back" />
 
-            <ImageView
-                android:id="@+id/proofofownership_return"
-                android:layout_width="@dimen/x24"
-                android:layout_height="@dimen/y44"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/x24"
-                android:src="@mipmap/back" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center"
-                android:text="权属证明"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#f6f6f6"
-        android:orientation="vertical">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/x24"
-            android:layout_marginRight="@dimen/x24"
-            android:layout_marginTop="@dimen/y30">
-
-        </LinearLayout>
-
-        <Button
-            android:background="#32c683"
-            android:layout_gravity="center"
-            android:text="下一步"
-            android:textColor="#fff"
-            android:id="@+id/proofofownership_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_marginRight="40dp"
+            android:gravity="center_horizontal"
+            android:text="权属证明"
+            android:textSize="15sp"
+            android:textStyle="bold" />
     </LinearLayout>
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/proofofownership_next"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn"
+        android:text="下一步"
+        android:textColor="@color/white" />
 </LinearLayout>

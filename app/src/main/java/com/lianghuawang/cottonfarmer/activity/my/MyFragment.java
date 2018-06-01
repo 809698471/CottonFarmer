@@ -48,6 +48,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private ImageView myfragment_setup;
     private ImageView myfragment_personalinformation;
     private TextView mUsername;
+    private Perfect_Receive_Information.DataBean mData;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,6 +68,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                         if (data.isSuccess()) {
                             LogUtils.d("请求成功"+data.getData().getUsername());
                             setData(data.getData());
+                            mData = data.getData();
                         } else {
                             ToastUtils.showLong(getContext(),data.getData().getErrmsg());
                         }
@@ -85,7 +87,9 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 .load(APIS + data.getAvatar())
                 .error(R.mipmap.button)
                 .into(myfragment_personalinformation);
-        mUsername.setText(data.getUsername());
+        if (data.getUsername() != null) {
+            mUsername.setText(data.getUsername());
+        }
     }
 
     private void initView(View view) {

@@ -66,25 +66,39 @@ public class EssentialInformationActivity extends BaseActivity {
         getApi();
     }
 
-    private void setData(Perfect_Receive_Information.DataBean data){
-        name.setText(data.getUsername());
-        String sexs = data.getGender();
-        if (sexs.equals("男")){
-            sex.check(R.id.male_rb);
-        } else if (sexs.equals("女")){
-            sex.check(R.id.famale_rb);
+    private void setData(Perfect_Receive_Information.DataBean data) {
+        if (data.getUsername() != null) {
+            name.setText(data.getUsername());
         }
-        String nation = data.getNation();
-        SpinnerAdapter adapter = minzsp.getAdapter();
-        for (int i = 0; i < adapter.getCount(); i++){
-            if (nation.equals(adapter.getItem(i).toString())){
-                minzsp.setSelection(i);
+        if (data.getGender() != null) {
+            String sexs = data.getGender();
+            if (sexs.equals("男")) {
+                sex.check(R.id.male_rb);
+            } else if (sexs.equals("女")) {
+                sex.check(R.id.famale_rb);
             }
         }
-        idCard.setText(data.getId_code());
-        phone.setText(data.getContact_phone());
-        address.setText(data.getAddress());
-        zip.setText(data.getPostcode());
+        String nation = data.getNation();
+        if (nation != null) {
+            SpinnerAdapter adapter = minzsp.getAdapter();
+            for (int i = 0; i < adapter.getCount(); i++) {
+                if (nation.equals(adapter.getItem(i).toString())) {
+                    minzsp.setSelection(i);
+                }
+            }
+        }
+        if (data.getId_code() != null) {
+            idCard.setText(data.getId_code());
+        }
+        if (data.getContact_phone() != null) {
+            phone.setText(data.getContact_phone());
+        }
+        if (data.getAddress() != null) {
+            address.setText(data.getAddress());
+        }
+        if (data.getPostcode() != null) {
+            zip.setText(data.getPostcode());
+        }
     }
 
     private void getApi() {
@@ -94,10 +108,10 @@ public class EssentialInformationActivity extends BaseActivity {
                     @Override
                     public void onUi(Perfect_Receive_Information data) {
                         if (data.isSuccess()) {
-                            LogUtils.d("请求成功"+data.getData().getUsername());
+                            LogUtils.d("请求成功" + data.getData().getUsername());
                             setData(data.getData());
                         } else {
-                            ToastUtils.showLong(EssentialInformationActivity.this,data.getData().getErrmsg());
+                            ToastUtils.showLong(EssentialInformationActivity.this, data.getData().getErrmsg());
                         }
                     }
 
@@ -141,9 +155,9 @@ public class EssentialInformationActivity extends BaseActivity {
                     @Override
                     public void onUi(Perfect_Receive_Information data) {
                         if (data.isSuccess()) {
-                            LogUtils.d("请求成功"+data.getData().getUsername());
+                            LogUtils.d("请求成功" + data.getData().getUsername());
                         } else {
-                            ToastUtils.showLong(EssentialInformationActivity.this,data.getData().getErrmsg());
+                            ToastUtils.showLong(EssentialInformationActivity.this, data.getData().getErrmsg());
                         }
                     }
 

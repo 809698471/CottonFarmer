@@ -142,7 +142,7 @@ public class OkHttp3Utils {
         call.enqueue(callback);
     }
 
-    public static void doGet(String tokenKey,String token, String url, LinkedHashMap<String, String> params, Callback callback) {
+    public static void doGet(String tokenKey, String token, String url, LinkedHashMap<String, String> params, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建Request
@@ -156,20 +156,21 @@ public class OkHttp3Utils {
 
     /**
      * patch请求
+     *
      * @param tokenKey
      * @param token
      * @param url
      * @param params
      * @param callback
      */
-    public static void doPat(String tokenKey, String token, String url,Map<String,String> params, Callback callback){
+    public static void doPat(String tokenKey, String token, String url, Map<String, String> params, Callback callback) {
         OkHttpClient okHttpClient = getOkHttpClient();
         FormBody.Builder formbody = new FormBody.Builder();
-        for (String key : params.keySet()){
+        for (String key : params.keySet()) {
             formbody.add(key, params.get(key));
         }
         Request.Builder builder = new Request.Builder();
-        builder.addHeader(tokenKey,token);
+        builder.addHeader(tokenKey, token);
         Request request = builder.url(url).patch(formbody.build()).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(callback);
@@ -181,7 +182,7 @@ public class OkHttp3Utils {
      * 参数1 url
      * 参数2 回调Callback
      */
-    public static void doPost(String tokenKey,String token, String url, Map<String, String> params, Callback callback) {
+    public static void doPost(String tokenKey, String token, String url, Map<String, String> params, Callback callback) {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //3.x版本post请求换成FormBody 封装键值对参数
@@ -191,7 +192,7 @@ public class OkHttp3Utils {
             builder.add(key, params.get(key));
         }
         Request.Builder builder1 = new Request.Builder();
-        builder1.addHeader(tokenKey,token);
+        builder1.addHeader(tokenKey, token);
         Request request = builder1.url(url).post(builder.build()).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(callback);
@@ -324,7 +325,7 @@ public class OkHttp3Utils {
         });
     }
 
-    public static void sendImage(final String  token,String url,Map<String,Object> params){
+    public static void sendImage(final String token, String url, Map<String, Object> params) {
         OkHttpClient okHttpClient = getOkHttpClient();
         MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
         for (Map.Entry<String, Object> entry : params.entrySet()) {
@@ -334,10 +335,12 @@ public class OkHttp3Utils {
                 //创建RequestBody 封装file参数
                 builder.addFormDataPart(entry.getKey(), file.getName(), RequestBody.create(MediaType.parse("application/octet-stream"), file));
             } else {
-                builder.addFormDataPart(entry.getKey(), value.toString());}}
+                builder.addFormDataPart(entry.getKey(), value.toString());
+            }
+        }
         //创建RequestBody 设置类型等
         final RequestBody requestBody = builder.build();
-        final Request request = new Request.Builder().addHeader("Authorization",token).url(url).post(requestBody).build();
+        final Request request = new Request.Builder().addHeader("Authorization", token).url(url).post(requestBody).build();
         Call call = okHttpClient.newCall(request);
         call.enqueue(new Callback() {
             @Override
@@ -348,12 +351,13 @@ public class OkHttp3Utils {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String string = response.body().string();
-                Log.e("string", string+"" );
+                Log.e("string", string + "");
 
             }
         });
 
     }
+
     /**
      * 下载文件 以流的形式把apk写入的指定文件 得到file后进行安装
      * 参数一：请求Url

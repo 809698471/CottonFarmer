@@ -56,14 +56,12 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     private static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 103;
     //请求写入外部存储
     private static final int WRITE_EXTERNAL_STORAGE_REQUEST_CODE = 104;
-    //头像1
-    private CircleImageView headImage1;
     //调用照相机返回图片文件
     private File tempFile;
     // 1: qq, 2: weixin
     private int type;
 
-    private ImageView personalinformation_personalimage;
+    private CircleImageView personalinformation_personalimage;
     private LinearLayout personalinformation_essentialinformation;
     private LinearLayout personalinformation_plantinginformation;
     private LinearLayout personalinformation_proofofownership;
@@ -80,7 +78,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     protected void initView() {
         personalinformation_return = (ImageView) findViewById(R.id.personalinformation_return);
         //个人头像
-        personalinformation_personalimage = (ImageView) findViewById(R.id.personalinformation_personalimage);
+        personalinformation_personalimage = findViewById(R.id.personalinformation_personalimage);
 
         //基本信息
         personalinformation_essentialinformation = (LinearLayout) findViewById(R.id.personalinformation_essentialinformation);
@@ -276,7 +274,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
                     Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
                     if (type == 1) {
 //
-                        headImage1.setImageBitmap(bitMap);
+                        personalinformation_personalimage.setImageBitmap(bitMap);
                         SubmitImg();
                     } else {
 
