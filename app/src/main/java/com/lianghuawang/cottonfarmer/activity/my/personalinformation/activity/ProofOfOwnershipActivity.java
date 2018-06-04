@@ -316,7 +316,6 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
 
     @Override
     public void delImage(final int position) {
-        ToastUtils.showLong(this, "删除第" + mData.get(position).getId() + "张");
         if (mData.get(position).isUpdata()) {
             Map<String, String> params = new HashMap<>();
             params.put("img_id", mData.get(position).getId() + "");
