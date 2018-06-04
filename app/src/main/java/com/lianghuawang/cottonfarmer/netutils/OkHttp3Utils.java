@@ -357,6 +357,26 @@ public class OkHttp3Utils {
         });
 
     }
+    public static void sendImage(final String token, String url, Map<String, Object> params,Callback callback) {
+        OkHttpClient okHttpClient = getOkHttpClient();
+        MultipartBody.Builder builder = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        for (Map.Entry<String, Object> entry : params.entrySet()) {
+            Object value = entry.getValue();
+            if (value instanceof File) {
+                File file = (File) value;
+                //创建RequestBody 封装file参数
+                builder.addFormDataPart(entry.getKey(), file.getName(), RequestBody.create(MediaType.parse("image/png"), file));
+            } else {
+                builder.addFormDataPart(entry.getKey(), value.toString());
+            }
+        }
+        //创建RequestBody 设置类型等
+        final RequestBody requestBody = builder.build();
+        final Request request = new Request.Builder().addHeader("Authorization", token).url(url).post(requestBody).build();
+        Call call = okHttpClient.newCall(request);
+        call.enqueue(callback);
+
+    }
 
     /**
      * 下载文件 以流的形式把apk写入的指定文件 得到file后进行安装

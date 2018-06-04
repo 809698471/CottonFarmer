@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.my.personalinformation.activity.ProofOfOwnershipActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y128"
         android:background="#32c683">
 
         <RelativeLayout
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y88"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:id="@+id/proofofownership_return"
@@ -36,16 +37,27 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginRight="@dimen/x24"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:scrollbars="none" />
 
     <Button
-        android:layout_gravity="center"
         android:id="@+id/proofofownership_next"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="@drawable/btn"
         android:text="下一步"
         android:textColor="@color/white" />

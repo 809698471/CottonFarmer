@@ -8,7 +8,7 @@ public interface Concat {
 
     String TOKEN = "Bearer i7g8XYE6l3hLUKwHHlLmGM5pu92P3r3s";
 
-    String API = "http://121.42.39.45";
+    String API = "http://47.93.200.37";
 
     String PORT = ":82";//数据请求端口
 
@@ -97,6 +97,16 @@ public interface Concat {
      * POST权属证明（多图上传）
      */
     String PROOFOFOWNERSHIP_URL = BASE_URL + "cotton-farmers/upload-files";
+
+    /**
+     * 删除权属证明
+     */
+    String DELEPROOFO_URL = BASE_URL + "cotton-farmers/delete-owner-image";
+
+    /**
+     * 权属列表
+     */
+    String PROOFLIST_URL = BASE_URL + "cotton-farmers/owner-image";
 
     /**
      * POST身份证实名认证
