@@ -28,12 +28,12 @@ public class PermissionUtil {
         return PermissionHolder.util;
     }
 
-    private PermissionUtil(int key) {
+    private PermissionUtil() {
 
     }
 
     private static class PermissionHolder {
-        private static PermissionUtil util = new PermissionUtil(Key);
+        private static PermissionUtil util = new PermissionUtil();
     }
 
     public PermissionUtil Build(){
@@ -62,15 +62,18 @@ public class PermissionUtil {
     /**
      * 授权
      */
-    public PermissionUtil setPermission(){
+    public PermissionUtil setPermission(Calls calls){
         while(p.size()>temp){
             requestPermission(temp);
             temp++;
         }
 
         String [] strings = getPermissionString();
-        if (strings.length != 0)
-            ActivityCompat.requestPermissions((Activity) Context,strings,Key);
+        if (strings.length != 0) {
+            ActivityCompat.requestPermissions((Activity) Context, strings, Key);
+        } else {
+            calls.GoOn(Key);
+        }
         return this;
     }
 
@@ -126,6 +129,10 @@ public class PermissionUtil {
     public interface Call{
         void succeed();
         void error(String permission);
+    }
+
+    public interface Calls{
+        void GoOn(int key);
     }
 
 }

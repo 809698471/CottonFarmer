@@ -67,7 +67,12 @@ public class SignatureActivity extends BaseActivity {
     private void initPermissiont() {
         p.Build()
                 .add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                .setPermission()
+                .setPermission(new PermissionUtil.Calls() {
+                    @Override
+                    public void GoOn(int key) {
+
+                    }
+                })
                 .build();
     }
 

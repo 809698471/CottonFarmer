@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
@@ -23,14 +24,27 @@ import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.BuildConfig;
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.my.personalinformation.PersonalInformationActivity;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.tools.view.FileUtil;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+import com.lianghuawang.cottonfarmer.utils.PermissionUtil;
 
 import java.io.File;
 
+import butterknife.Bind;
+import butterknife.OnClick;
+
 //权属证明
-public class ProofOfOwnershipActivity extends BaseActivity implements View.OnClickListener {
+public class ProofOfOwnershipActivity extends BaseActivity implements PermissionUtil.Calls {
+
+    @Bind(R.id.proofofownership_return)
+    ImageView mBack;
+
+    @Bind(R.id.proofofownership_next)
+    Button mSubmit;
+
+    private PermissionUtil permission;
+
     //请求访问外部存储
     private static final int READ_EXTERNAL_STORAGE_REQUEST_CODE = 103;
     //请求写入外部存储
@@ -38,9 +52,6 @@ public class ProofOfOwnershipActivity extends BaseActivity implements View.OnCli
 
     //请求相机
     private static final int REQUEST_CAPTURE = 100;
-
-    private ImageView proofofownership_return;
-    private Button proofofownership_next;
 
     //调用照相机返回图片文件
     private File tempFile;
@@ -52,10 +63,23 @@ public class ProofOfOwnershipActivity extends BaseActivity implements View.OnCli
 
     @Override
     protected void initView() {
-        proofofownership_return = (ImageView) findViewById(R.id.proofofownership_return);
-        proofofownership_next = (Button) findViewById(R.id.proofofownership_next);
-        proofofownership_return.setOnClickListener(this);
-        proofofownership_next.setOnClickListener(this);
+
+    }
+
+
+    @OnClick({R.id.proofofownership_return, R.id.proofofownership_next})
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.proofofownership_return:
+                finish();
+                break;
+            //下一步---购买保险记录
+            case R.id.proofofownership_next:
+//                startActivity(new Intent(ProofOfOwnershipActivity.this,InsurancePurchaseRecordActivity.class ));
+                uploadHeadImage();
+                break;
+        }
+
     }
 
     /**
@@ -86,16 +110,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements View.OnCli
         btnCarema.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //权限判断
-                if (ContextCompat.checkSelfPermission(ProofOfOwnershipActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    //申请WRITE_EXTERNAL_STORAGE权限
-                    ActivityCompat.requestPermissions(ProofOfOwnershipActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-                } else {
-                    //跳转到调用系统相机
-                    gotoCamera();
-                }
+                PermissionUtil();
                 popupWindow.dismiss();
             }
         });
@@ -125,6 +140,42 @@ public class ProofOfOwnershipActivity extends BaseActivity implements View.OnCli
         });
     }
 
+    private void PermissionUtil() {
+        permission = PermissionUtil.newInstance(this, REQUEST_CAPTURE);
+        permission
+                .Build()
+                .add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .add(Manifest.permission.CAMERA)
+                .setPermission(this)
+                .build();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(final int requestCode, @NonNull final String[] permissions, @NonNull final int[] grantResults) {
+        permission.Call(requestCode, permissions, grantResults, new PermissionUtil.Call() {
+            @Override
+            public void succeed() {
+                if (requestCode == REQUEST_CAPTURE) {
+                    //跳转到调用系统相机
+                    gotoCamera();
+                }
+            }
+
+            @Override
+            public void error(String permission) {
+                return;
+            }
+        });
+    }
+
+    @Override
+    public void GoOn(int key) {
+        if (key == REQUEST_CAPTURE) {
+            //跳转到调用系统相机
+            gotoCamera();
+        }
+    }
+
     /**
      * 跳转到照相机
      */
@@ -146,18 +197,4 @@ public class ProofOfOwnershipActivity extends BaseActivity implements View.OnCli
         startActivityForResult(intent, REQUEST_CAPTURE);
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.proofofownership_return:
-                finish();
-                break;
-            //下一步---购买保险记录
-            case R.id.proofofownership_next:
-//                startActivity(new Intent(ProofOfOwnershipActivity.this,InsurancePurchaseRecordActivity.class ));
-                uploadHeadImage();
-                break;
-        }
-
-    }
 }
