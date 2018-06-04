@@ -19,6 +19,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //地区选择
+        maven { url "https://jitpack.io" }
     }
 }
 

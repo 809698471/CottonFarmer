@@ -5,20 +5,20 @@ package com.lianghuawang.cottonfarmer.activity.my.bankcard;
  */
 
 class Card_Bean {
-    String name;
-    String number_card;
+ /*   String name;
+    String number_card;*/
     int card_icon;
 
-    public Card_Bean(String name, String number_card, int card_icon) {
-        this.name = name;
-        this.number_card = number_card;
+    public Card_Bean(/*String name, String number_card,*/ int card_icon) {
+      /*  this.name = name;
+        this.number_card = number_card;*/
         this.card_icon = card_icon;
     }
 
     public Card_Bean() {
     }
 
-    public String getName() {
+/*    public String getName() {
         return name;
     }
 
@@ -32,7 +32,7 @@ class Card_Bean {
 
     public void setNumber_card(String number_card) {
         this.number_card = number_card;
-    }
+    }*/
 
     public int getCard_icon() {
         return card_icon;

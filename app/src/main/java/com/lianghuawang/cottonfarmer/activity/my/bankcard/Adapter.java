@@ -47,16 +47,16 @@ public class Adapter extends BaseAdapter {
             holder = new ViewHolder();
             convertView=View.inflate(context, R.layout.lv_card_item,null);
             holder.icon_card=convertView.findViewById(R.id.icon_card);
-            holder.name_card=convertView.findViewById(R.id.name_card);
-            holder.number_card=convertView.findViewById(R.id.number_card);
+     /*       holder.name_card=convertView.findViewById(R.id.name_card);
+            holder.number_card=convertView.findViewById(R.id.number_card);*/
             convertView.setTag(holder);
         }else {
             holder= (ViewHolder) convertView.getTag();
         }
         Card_Bean card_bean = card_beans.get(position);
         holder.icon_card.setImageResource(card_bean.getCard_icon());
-        holder.name_card.setText(card_bean.getName());
-        holder.number_card.setText(card_bean.getNumber_card());
+/*        holder.name_card.setText(card_bean.getName());
+        holder.number_card.setText(card_bean.getNumber_card());*/
         return convertView;
     }
 

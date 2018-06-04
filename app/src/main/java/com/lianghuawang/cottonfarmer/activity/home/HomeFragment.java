@@ -151,6 +151,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             //天气
             case R.id.home_lin_weather:
+                startActivity(new Intent(getActivity(),WeatherActivity.class));
                 break;
             //互助保险
             case R.id.home_lin_hzbx:

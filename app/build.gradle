@@ -18,9 +18,9 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
-                JPUSH_PKGNAME : applicationId,
+                JPUSH_PKGNAME: applicationId,
                 JPUSH_APPKEY : "bc4926c5c5306c2be788e9de", //JPush上注册的包名对应的appkey.
-                JPUSH_CHANNEL : "developer-default", //暂时填写默认值即可.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
     }
     buildTypes {
@@ -60,6 +60,8 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     //QMUI
     implementation 'com.qmuiteam:qmui:1.0.6'
+    //地区选择
+    compile 'com.github.open-android:CityPickerWebView:0.1.0'
 
     implementation 'com.daimajia.easing:library:2.0@aar'
     implementation 'com.daimajia.androidanimations:library:2.3@aar'

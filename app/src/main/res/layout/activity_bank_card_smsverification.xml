@@ -9,31 +9,41 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/coloroe"
-        android:gravity="center_vertical">
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
 
-        <ImageView
-            android:id="@+id/insurancepurchaserecord_return"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/back" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:gravity="center_horizontal"
-            android:text="银行卡"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/bankcardsmsverification_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="银行卡"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="@dimen/y100"
+        android:layout_marginBottom="@dimen/y100"
         android:text="请输入短信验证码"
         android:textSize="15sp" />
 
@@ -42,8 +52,8 @@
         android:layout_height="1dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20sp"
-        android:layout_marginTop="15dp"
-        android:background="@color/coloroe" />
+        android:layout_marginBottom="@dimen/y50"
+        android:background="@mipmap/fenge" />
 
 
     <com.lianghuawang.cottonfarmer.tools.VerificationCodeView

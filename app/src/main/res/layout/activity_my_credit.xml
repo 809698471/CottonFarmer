@@ -9,24 +9,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_cccccc"
-        android:gravity="center_vertical">
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
 
-        <ImageView
-            android:id="@+id/mycredit_return"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/back" />
-
-        <TextView
-            android:textStyle="bold"
+        <RelativeLayout
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:gravity="center_horizontal"
-            android:text="我的信用"
-            android:textSize="15sp" />
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/mycredit_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="我的信用"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
     </LinearLayout>
 
     <TextView

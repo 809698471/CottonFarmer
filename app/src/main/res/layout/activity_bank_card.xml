@@ -6,54 +6,73 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.lianghuawang.cottonfarmer.activity.my.bankcard.BankCardActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/color_cccccc"
-        android:gravity="center_vertical">
-
-        <ImageView
-            android:id="@+id/bankcard_return"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/back" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:gravity="center_horizontal"
-            android:text="我的银行卡"
-            android:textStyle="bold"
-            android:textSize="15sp" />
-    </LinearLayout>
-    <ScrollView
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:scrollbars="none"
-        android:overScrollMode="never"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
 
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/bankcard_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="我的银行卡"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#f7f7f7"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/x24"
+            android:layout_marginRight="@dimen/x24"
             android:orientation="vertical">
 
             <ListView
-                android:layout_weight="1"
                 android:id="@+id/lv_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"/>
-
-            <ImageView
-                android:layout_below="@id/lv_item"
-                android:id="@+id/commit"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
                 android:layout_margin="10dp"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher" />
-        </RelativeLayout>
+                android:layout_weight="1" />
+
+            <android.support.v7.widget.CardView
+                app:cardCornerRadius="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y372">
+
+                <ImageView
+                    android:id="@+id/commit"
+                    android:layout_gravity="center"
+                    android:layout_width="@dimen/x60"
+                    android:layout_height="@dimen/y60"
+                    android:src="@mipmap/icon_jiahao" />
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
     </ScrollView>
 </LinearLayout>

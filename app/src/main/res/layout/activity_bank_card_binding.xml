@@ -8,103 +8,215 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/chartreuse"
-        android:gravity="center_vertical">
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
 
-        <ImageView
-            android:id="@+id/insurancepurchaserecord_return"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:src="@drawable/back" />
-
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="40dp"
-            android:gravity="center_horizontal"
-            android:text="银行卡"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/bankcardbinding_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="银行卡"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/coloroe" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/y30"
+        android:orientation="vertical">
 
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="银行卡:"
-            android:textSize="20sp" />
-
-        <EditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="25dp"
-            android:background="@null"
-            android:hint="点击输入文本" />
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp">
 
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="持卡人:"
+                android:textSize="15sp" />
+
+            <EditText
+                android:singleLine="true"
+                android:id="@+id/bankcardbinding_name"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:background="@null"
+                android:hint="点击输入文本" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/coloroe" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="卡    号:"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/bankcardbinding_cardnumber"
+                android:singleLine="true"
+                android:numeric="integer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:background="@null"
+                android:maxLength="26"
+                android:inputType="numberSigned"
+                android:hint="点击输入文本" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/coloroe" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="银行预留手机号:"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/bankcardbinding_phone"
+                android:phoneNumber="true"
+                android:maxLength="11"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:background="@null"
+                android:hint="点击输入文本" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/coloroe" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="开户行地区:"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tv_show"
+                android:layout_width="0dp"
+                android:gravity="center"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:text="..."
+                android:id="@+id/btn_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+              />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/coloroe" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="银行详细地址 :"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/bankcardbinding_dizhi"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="25dp"
+                android:background="@null"
+                android:hint="点击输入文本" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/coloroe" />
+
+        <Button
+            android:id="@+id/bankcardbinding_btn"
+            android:layout_width="150dp"
+            android:layout_height="@dimen/x80"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/btn_1"
+            android:text="去绑定"
+            android:textColor="@color/white" />
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/coloroe" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/coloroe" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="10dp">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="卡    号:"
-            android:textSize="20sp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="25dp"
-            android:background="@null"
-            android:hint="点击输入文本" />
-
-
-    </LinearLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/coloroe" />
-
-    <Button
-        android:id="@+id/bankcardbinding_btn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:background="@drawable/btn"
-        android:text="去绑定"
-        android:textColor="@color/white" />
 </LinearLayout>
