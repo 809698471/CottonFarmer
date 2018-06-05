@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mvp.module.personalinformation.activity.PlantingInformationActivity">
+    tools:context=".activity.my.personalinformation.activity.PlantingInformationActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y128"
         android:background="#32c683">
 
         <RelativeLayout
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y88"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:id="@+id/plantinginformation_return"
@@ -53,11 +54,15 @@
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
             android:text="作物名称："
+            android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="棉花"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -76,12 +81,30 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
-            android:text="作物名称："
+            android:text="种植面积："
+            android:textSize="16sp"
             android:textStyle="bold" />
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+        <EditText
+            android:id="@+id/et_acres"
+            android:layout_width="@dimen/x300"
+            android:layout_height="@dimen/y50"
+            android:layout_gravity="center"
+            android:background="@color/color_eeeeee"
+            android:hint="请输入亩数"
+            android:inputType="number"
+            android:singleLine="true"
+            android:textColor="@color/color_999999"
+            android:textColorHint="@color/color_999999"
+            android:textSize="16sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:text="亩"
+            android:textSize="16sp" />
 
     </LinearLayout>
 
@@ -92,7 +115,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
@@ -101,9 +124,12 @@
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="20dp"
-            android:text="种植地址：" />
+            android:text="种植地址："
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <RadioGroup
+            android:id="@+id/radio"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:layout_marginBottom="5dp"
@@ -117,7 +143,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:checked="true"
                 android:text="新疆兵团" />
 
             <RadioButton
@@ -139,27 +164,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
 
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/corps" />
 
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/address" />
-
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:entries="@array/other" />
         </LinearLayout>
     </LinearLayout>
+
+    <com.lianghuawang.cottonfarmer.widget.linkage_menu.AddressSelector
+        android:id="@+id/address1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:visibility="gone" />
 
     <View
         android:layout_width="match_parent"
@@ -192,34 +210,37 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_margin="15dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
 
             android:text="地块信息：" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
-                android:text="近3年平均产量："
-                android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="近3年平均产量：" />
+
             <EditText
-                android:hint="公斤/亩"
-                android:gravity="center"
-                android:background="@null"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:gravity="center"
+                android:hint="公斤/亩" />
         </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:layout_marginTop="@dimen/y30"
         android:id="@+id/plantinginformation_next"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginTop="@dimen/y30"
         android:background="@drawable/btn_1"
         android:text="下一步"
         android:textColor="@color/white" />

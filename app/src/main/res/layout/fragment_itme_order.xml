@@ -6,21 +6,34 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/gray" />
+        android:layout_height="@dimen/y20"
+        android:background="@color/color_dddddd" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="@dimen/y80"
+        android:background="@color/lightblue"
+        android:gravity="center_vertical">
 
         <TextView
+            android:id="@+id/tv_year"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="下单时间：2018-03-11  12:00:00"
-            android:textColor="@color/black"
+            android:text="下单时间：2018-03-11"
+            android:textColor="@color/textview"
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x24"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/tv_year"
+            android:text="12:00:00"
+            android:textColor="@color/textview"
             android:textSize="15dp" />
 
         <TextView
@@ -28,75 +41,67 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="@dimen/x24"
             android:layout_marginTop="5dp"
-            android:textColor="@color/gray"
+            android:textColor="@color/colorPrimary"
             android:textSize="15dp" />
     </RelativeLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/gray" />
-
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/y20">
 
         <ImageView
             android:id="@+id/iv_"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/bg_def" />
+            android:layout_width="@dimen/x146"
+            android:layout_height="@dimen/y222"
+            android:layout_marginLeft="@dimen/x24"
+            android:scaleType="fitXY"
+            android:src="@mipmap/order_img" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/x50"
             android:layout_toRightOf="@id/iv_"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:text="棉花种植险"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textColor="@color/textview"
+                android:textSize="@dimen/x36" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:text="单价：100元"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/y20"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="单价：100元"
+                    android:textColor="@color/textview"
+                    android:textSize="@dimen/x28" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:text="X50亩"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/x24" />
+            </LinearLayout>
 
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginRight="15dp"
-            android:text="X 50（亩）"
-            android:textColor="@color/gray"
-            android:textSize="15dp" />
-
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/gray" />
 
     <TextView
         android:layout_width="match_parent"
@@ -104,15 +109,10 @@
         android:layout_marginBottom="10dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
-        android:textColor="@color/black"
-        android:textSize="15dp"
         android:gravity="right"
-        android:text="总金额：￥2000" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray" />
+        android:text="总金额：￥2000"
+        android:textColor="@color/textview"
+        android:textSize="@dimen/x30" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -129,11 +129,29 @@
             android:paddingLeft="30dp"
             android:paddingRight="30dp"
             android:text="预约成功"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/iv_onsuccess"
+            android:layout_width="@dimen/x180"
+            android:layout_height="@dimen/y60"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/y30"
+            android:layout_marginRight="@dimen/x30"
+            android:src="@mipmap/order_onsuccess" />
+
+        <ImageView
+            android:layout_width="@dimen/x180"
+            android:layout_height="@dimen/y60"
+            android:layout_marginBottom="@dimen/y30"
+            android:layout_marginRight="@dimen/x30"
+            android:layout_toLeftOf="@id/iv_onsuccess"
+            android:src="@mipmap/order_queren" />
     </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/gray" />
+        android:layout_height="@dimen/y20"
+        android:background="@color/color_dddddd" />
 </LinearLayout>

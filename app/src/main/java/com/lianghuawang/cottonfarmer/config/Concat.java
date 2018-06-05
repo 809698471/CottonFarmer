@@ -8,9 +8,11 @@ public interface Concat {
 
     String TOKEN = "Bearer i7g8XYE6l3hLUKwHHlLmGM5pu92P3r3s";
 
-    String API = "http://47.93.200.37";
+//    String API = "http://47.93.200.37";
+    String API = "http://app.lianhuawang.cn";
+    String IMAGE_API = "http://images.lianhuawang.cn";
 
-    String PORT = ":82";//数据请求端口
+    String PORT = "";//数据请求端口
 
     String PORTIMAGE = ":84";//图片请求端口
 
@@ -18,12 +20,12 @@ public interface Concat {
 
     String BASE_URL = APIS + "/v1/";
 
-    String IMAGE_URL = API + PORTIMAGE;
+    String IMAGE_URL = IMAGE_API;
 
     /**
      * GET兵团分类
      */
-    String CORPS = BASE_URL + "areas/get-area?parent_id=0";
+    String CORPS = BASE_URL + "areas/get-area?area_type=%1$s&parent_id=%2$s";
 
     /**
      * POST验证码

@@ -1,5 +1,6 @@
 package com.lianghuawang.cottonfarmer.ui.base;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lianghuawang.cottonfarmer.MyApp;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.mvp.base.BaseView;
 import com.lianghuawang.cottonfarmer.utils.MeasureUtil;
+import com.lianghuawang.cottonfarmer.widget.LoadingDialog;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 //import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
@@ -39,6 +42,8 @@ import butterknife.ButterKnife;
 ////////////////////////////////////////////////////////////////////
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
+
+    private LoadingDialog dialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -91,5 +96,19 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseView
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.unbind(this);
+    }
+
+    public void showLoadingDialog(Activity activity){
+        LoadingDialog.Builder builder=new LoadingDialog.Builder(activity)
+                .setMessage("加载中...")
+                .setCancelable(false);
+        dialog=builder.create();
+        dialog.show();
+    }
+
+    public void dismissdingDialog(){
+        if (dialog != null){
+            dialog.dismiss();
+        }
     }
 }

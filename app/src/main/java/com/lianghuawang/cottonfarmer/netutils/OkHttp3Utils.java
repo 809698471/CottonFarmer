@@ -135,7 +135,7 @@ public class OkHttp3Utils {
         //创建OkHttpClient请求对象
         OkHttpClient okHttpClient = getOkHttpClient();
         //创建Request
-        Request request = new Request.Builder().addHeader(tokenKey, token).url(url).build();
+        Request request = new Request.Builder().addHeader("Authorization", token).url(url).build();
         //得到Call对象
         Call call = okHttpClient.newCall(request);
         //执行异步请求
