@@ -40,7 +40,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/y30"
-        android:background="#cccc" />
+        android:background="#f7f7f7" />
 
     <LinearLayout
 
@@ -64,7 +64,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/y30"
-        android:background="#cccc" />
+        android:background="#f7f7f7" />
 
     <LinearLayout
 
@@ -88,7 +88,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/y30"
-        android:background="#cccc" />
+        android:background="#f7f7f7" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -164,7 +164,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/y30"
-        android:background="#ccc" />
+        android:background="#f7f7f7" />
 
     <LinearLayout
         android:layout_width="match_parent"

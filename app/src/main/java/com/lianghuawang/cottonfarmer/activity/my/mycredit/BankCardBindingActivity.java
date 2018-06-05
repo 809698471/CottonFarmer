@@ -2,6 +2,7 @@ package com.lianghuawang.cottonfarmer.activity.my.mycredit;
 
 import android.content.Intent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -53,6 +54,9 @@ public class BankCardBindingActivity extends BaseActivity implements View.OnClic
         mSelector.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //隐藏软键盘
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
                 cityPicker.show();
             }
         });
