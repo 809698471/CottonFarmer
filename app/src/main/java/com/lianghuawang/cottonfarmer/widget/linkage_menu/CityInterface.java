@@ -7,6 +7,7 @@ package com.lianghuawang.cottonfarmer.widget.linkage_menu;
  */
 
 public interface CityInterface {
+    int getId();
     String getArea_code();
     String getCityName();
 }

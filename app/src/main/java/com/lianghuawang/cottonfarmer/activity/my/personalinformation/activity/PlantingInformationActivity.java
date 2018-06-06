@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.MassifInformationListActivity;
@@ -18,6 +20,7 @@ import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
+import com.lianghuawang.cottonfarmer.netutils.instance.ProofInstance;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
@@ -38,25 +41,23 @@ import butterknife.OnClick;
 import okhttp3.Call;
 
 //种植信息
-public class PlantingInformationActivity extends BaseActivity implements View.OnClickListener, OnClickDisappearListener, OnItemAddressClickListener, AddressSelector.OnTabSelectedListener {
+public class PlantingInformationActivity extends BaseActivity implements OnClickDisappearListener, OnItemAddressClickListener, AddressSelector.OnTabSelectedListener {
 
-    @Bind(R.id.radio)
-    RadioGroup mRadio;
-    @Bind(R.id.ra_a)
-    RadioButton mCorps;
-    @Bind(R.id.ra_b)
-    RadioButton mPlace;
-    @Bind(R.id.ra_c)
-    RadioButton mOther;
+    @Bind(R.id.tv_area)
+    TextView mArea;
+    @Bind(R.id.rl_block)
+    RelativeLayout mBlock;
+    @Bind(R.id.plantinginformation_return)
+    ImageView mReturn;
+    @Bind(R.id.plantinginformation_next)
+    Button mSubmit;
 
     private AddressSelector address1;
-    private ImageView plantinginformation_return;
-    private Button plantinginformation_next;
-    private EditText edit_shuliang;
     private SharedPreferencesUtil sp;
     private String token;
     private int type;
     private Map<Integer, String> key;
+    private Map<Integer, String> mapAddress;
 
     @Override
     protected int getLayoutId() {
@@ -67,30 +68,20 @@ public class PlantingInformationActivity extends BaseActivity implements View.On
 
     @Override
     protected void initView() {
-        plantinginformation_return = (ImageView) findViewById(R.id.plantinginformation_return);
-        plantinginformation_next = (Button) findViewById(R.id.plantinginformation_next);
-        edit_shuliang = (EditText) findViewById(R.id.edit_shuliang);
-
-        plantinginformation_return.setOnClickListener(this);
-        edit_shuliang.setOnClickListener(this);
-        plantinginformation_next.setOnClickListener(this);
 
         sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         token = sp.getString(ConstantUtil.LOGINTOKEN, "");
         address1 = findViewById(R.id.address1);
     }
 
-    @Override
+    @OnClick({R.id.plantinginformation_return,R.id.rl_block})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.plantinginformation_return:
                 finish();
                 break;
             //地块信息列表
-            case R.id.edit_shuliang:
-                //隐藏软键盘
-                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+            case R.id.rl_block:
                 startActivity(new Intent(PlantingInformationActivity.this, MassifInformationListActivity.class));
                 break;
 
@@ -98,50 +89,17 @@ public class PlantingInformationActivity extends BaseActivity implements View.On
             case R.id.plantinginformation_next:
                 startActivity(new Intent(PlantingInformationActivity.this, ProofOfOwnershipActivity.class));
                 break;
-
         }
 
     }
 
-    @OnClick({R.id.ra_a, R.id.ra_b, R.id.ra_c})
-    public void onClick(RadioButton button) {
-        switch (button.getId()) {
-            case R.id.ra_a:
-                showLoadingDialog(PlantingInformationActivity.this);
-                Corps();
-                break;
-            case R.id.ra_b:
-                Place();
-                break;
-            case R.id.ra_c:
-                Other();
-                break;
-        }
-    }
-
-    boolean flag = true;
-
-    //选择兵团数据
-    private void Corps() {
+    @OnClick(R.id.tv_area)
+    public void onClick(TextView textView) {
         type = 1;
-        initAddress();
+        key_item = 1;
         address1.setVisibility(View.VISIBLE);
-        flag = true;
-        getData(type, 0);
-    }
-
-    //选择地方数据
-    private void Place() {
-        type = 2;
+        address1.setCities((ArrayList) setClass(), 5, true, PlantingInformationActivity.this);
         initAddress();
-        address1.setVisibility(View.VISIBLE);
-        flag = true;
-        getData(type, 0);
-    }
-
-    //选择其他
-    private void Other() {
-
     }
 
     private void getData(final int type, Object id) {
@@ -151,14 +109,11 @@ public class PlantingInformationActivity extends BaseActivity implements View.On
             public void onUi(Corps corps) {
                 if (corps.getData() != null && corps.getData().size() != 0) {
                     List<Corps.DataBean> dataBeans = corps.getData();
-                    if (flag) {
-                        address1.setCities((ArrayList) dataBeans, type, true, PlantingInformationActivity.this);
-                        initAddress();
-                        flag = false;
-                    } else {
-                        address1.setCities((ArrayList) dataBeans, type, false, null);
-                    }
-
+                    address1.setCities((ArrayList) dataBeans, 5, false, null);
+                    dismissdingDialog();
+                } else if (corps.getData() != null && corps.getData().size() == 0) {
+                    dismissdingDialog();
+                    dimss();
                 }
                 dismissdingDialog();
             }
@@ -175,13 +130,24 @@ public class PlantingInformationActivity extends BaseActivity implements View.On
 
     @Override
     public void itemClick(AddressSelector addressSelector, CityInterface city, int tabPosition) {
-
-        String id = city.getArea_code();
+        showLoadingDialog(PlantingInformationActivity.this);
+        String id;
+        if (key_item == 1) {
+            type = city.getId();
+            id = 0 + "";
+        } else {
+            id = city.getArea_code();
+        }
         getData(type, id);
         if (key == null) {
             key = new WeakHashMap<>();
         }
         key.put(key_item, id);
+        if (mapAddress == null) {
+            mapAddress = new WeakHashMap<>();
+        }
+        mapAddress.put(key_item, city.getCityName());
+
         key_item++;
     }
 
@@ -191,18 +157,31 @@ public class PlantingInformationActivity extends BaseActivity implements View.On
         switch (tab.getIndex()) {
             case 0:
                 key_item = 1;
-                getData(type, 0);
+                address1.setCities((ArrayList) setClass(), 5, false, null);
                 break;
             case 1:
                 key_item = 2;
                 String value = key.get(1);
+                showLoadingDialog(PlantingInformationActivity.this);
                 getData(type, value);
                 break;
             case 2:
+                key_item = 3;
+                String value1 = key.get(2);
+                showLoadingDialog(PlantingInformationActivity.this);
+                getData(type, value1);
                 break;
             case 3:
+                key_item = 4;
+                String value2 = key.get(3);
+                showLoadingDialog(PlantingInformationActivity.this);
+                getData(type, value2);
                 break;
             case 4:
+                key_item = 5;
+                String value3 = key.get(4);
+                showLoadingDialog(PlantingInformationActivity.this);
+                getData(type, value3);
                 break;
         }
     }
@@ -221,5 +200,30 @@ public class PlantingInformationActivity extends BaseActivity implements View.On
         address1.setDisapperListener(this);
         address1.setOnItemClickListener(this);
         address1.setOnTabSelectedListener(this);
+    }
+
+    private void dimss() {
+        address1.setVisibility(View.GONE);
+        String address = "";
+        for (int i : mapAddress.keySet()) {
+
+            address = mapAddress.get(i) + address;
+        }
+        address = address.replace("新疆地方","新疆");
+        mArea.setText(address);
+        mapAddress = null;
+    }
+
+    private List<Corps.DataBean> setClass() {
+        List<Corps.DataBean> list = new ArrayList<>();
+        Corps.DataBean bean = new Corps.DataBean();
+        bean.setArea_name("新疆兵团");
+        bean.setId(1);
+        list.add(bean);
+        Corps.DataBean bean1 = new Corps.DataBean();
+        bean1.setArea_name("新疆地方");
+        bean1.setId(2);
+        list.add(bean1);
+        return list;
     }
 }

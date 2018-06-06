@@ -177,11 +177,7 @@ public class AddressSelector extends LinearLayout implements View.OnClickListene
             //会移动的横线布局
             line = null;
             //总共tab的数量
-            if (activityType == 2){
-                tabAmount = 4;
-            } else {
-                tabAmount = 3;
-            }
+            tabAmount = activityType;
             //当前tab的位置
             this.tabIndex = 0;
             //分隔线

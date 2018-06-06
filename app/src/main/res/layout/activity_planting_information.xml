@@ -116,7 +116,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
@@ -128,47 +128,14 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <RadioGroup
-            android:id="@+id/radio"
+        <TextView
+            android:id="@+id/tv_area"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_marginBottom="5dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+            android:gravity="center_vertical"
+            android:textSize="16sp" />
 
-            <RadioButton
-                android:id="@+id/ra_a"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="新疆兵团" />
-
-            <RadioButton
-                android:id="@+id/ra_b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="新疆地方" />
-
-            <RadioButton
-                android:id="@+id/ra_c"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="其他省份" />
-        </RadioGroup>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:orientation="vertical">
-
-
-        </LinearLayout>
     </LinearLayout>
 
     <com.lianghuawang.cottonfarmer.widget.linkage_menu.AddressSelector
@@ -193,55 +160,79 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="15dp"
-            android:text="地块数量：" />
+            android:text="地块数量："
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edit_shuliang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
             android:background="@null"
-            android:gravity="center"
-            android:hint="未填写" />
+            android:gravity="center_vertical"
+            android:hint="未填写"
+            android:textSize="16sp" />
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/rl_block"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="50dp"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="地块信息"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            android:text="地块信息：" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/back_1" />
+    </RelativeLayout>
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="近3年平均产量："
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:text="近3年平均产量：" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:gravity="center"
-                android:hint="公斤/亩" />
-        </LinearLayout>
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:gravity="center_vertical"
+            android:hint="公斤/亩"
+            android:textSize="16sp" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/plantinginformation_next"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/y30"
-        android:background="@drawable/btn_1"
-        android:text="下一步"
-        android:textColor="@color/white" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/plantinginformation_next"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_1"
+            android:text="提交"
+            android:textColor="@color/white" />
+    </LinearLayout>
 </LinearLayout>

@@ -5,8 +5,6 @@ package com.lianghuawang.cottonfarmer.utils;
  */
 public class ConstantUtil {
     public static String tokenKey = "Authorization";
-    //179 6325 4258
-    private String token = "Bearer cO3vjJttkI6COqgLyZwxA_FhR6hwO-_n";
     /**
      * ---------------保险模块-------------------
      */
