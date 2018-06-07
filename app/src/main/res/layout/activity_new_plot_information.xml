@@ -63,6 +63,7 @@
                     android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/et_dihao"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null" />
@@ -86,6 +87,7 @@
                     android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/et_sucheng"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null" />
@@ -109,6 +111,7 @@
                     android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/et_jingdu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null" />
@@ -132,6 +135,7 @@
                     android:textSize="15sp" />
 
                 <EditText
+                    android:id="@+id/et_weidu"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@null" />
@@ -150,6 +154,7 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/btn_submit"
             android:layout_width="@dimen/y250"
             android:layout_height="@dimen/y80"
             android:layout_gravity="center"

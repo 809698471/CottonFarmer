@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
     tools:context="com.lianghuawang.cottonfarmer.activity.my.personalinformation.MassifInformationListActivity">
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y128"
         android:background="#32c683">
@@ -40,8 +41,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_above="@id/massifinformation_xinzeng"
+        android:layout_below="@id/ll"
         android:background="#f6f6f6"
         android:orientation="vertical">
 
@@ -56,6 +58,7 @@
         android:id="@+id/massifinformation_xinzeng"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y100"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="@dimen/x24"
         android:layout_marginRight="@dimen/x24"
         android:background="@drawable/btn_1"
@@ -75,4 +78,4 @@
             android:textSize="18sp" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>

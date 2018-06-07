@@ -68,7 +68,16 @@ public interface Concat {
     /**
      * PATCH完善种植信息
      */
-    String PERFECTPLANTING_URL = BASE_URL + "cotton-farmers/update-plant";
+    String PERFECTPLANTING_URL = BASE_URL + "cotton-farmers/update-plants";
+
+    /**
+     * 新增地块
+     */
+    String ADD_BLOCK_URL = BASE_URL + "cotton-farmers/add-plot";
+    /**
+     * 获取地块列表
+     */
+    String BLOCK_URL = BASE_URL + "cotton-farmers/plot-list";
 
     /**
      * PATCH完善基本信息
