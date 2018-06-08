@@ -12,6 +12,7 @@
         android:layout_height="@dimen/y128">
 
         <LinearLayout
+            android:id="@+id/weather_lin"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y88"
             android:layout_gravity="center"
@@ -27,18 +28,18 @@
                 android:src="@mipmap/dingwei" />
 
             <TextView
+                android:id="@+id/weather_Province"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginRight="@dimen/x20"
-                android:text="新疆"
                 android:textSize="18sp" />
 
             <TextView
+                android:id="@+id/weather_City_District"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="乌鲁木齐市天山区"
                 android:textColor="#2ac386"
                 android:textSize="12sp" />
         </LinearLayout>

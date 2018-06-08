@@ -70,9 +70,9 @@
                             android:src="@mipmap/dw" />
 
                         <TextView
+                            android:id="@+id/text_dingwei"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="北京市海淀区"
                             android:textColor="#fff"
                             android:textSize="14sp" />
                     </LinearLayout>
