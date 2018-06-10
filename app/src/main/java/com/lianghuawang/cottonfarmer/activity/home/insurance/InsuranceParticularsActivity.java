@@ -22,8 +22,8 @@ import butterknife.OnClick;
 //保险三级页面---保险详情
 public class InsuranceParticularsActivity extends BaseActivity {
 
-    @Bind(R.id.toolbar)
-    Toolbar mToolbar;
+    @Bind(R.id.tv_name)
+    TextView mName;
 
     @Bind(R.id.tv_ins_par_content)
     TextView mMontent;
@@ -36,9 +36,6 @@ public class InsuranceParticularsActivity extends BaseActivity {
 
     @Bind(R.id.btn_argeed)
     Button mArgeed;
-
-    @Bind(R.id.toolbar_layout)
-    CollapsingToolbarLayout mColl;
 
     @Bind(R.id.iv_item_insurance)
     ImageView mImage;
@@ -79,6 +76,24 @@ public class InsuranceParticularsActivity extends BaseActivity {
     @Bind(R.id.tv_myself)
     TextView mMyself;
 
+    @Bind(R.id.tv_longtou)
+    TextView mLongtou;
+
+    @Bind(R.id.tv_sheng)
+    TextView mSheng;
+
+    @Bind(R.id.tv_shi)
+    TextView mShi;
+
+    @Bind(R.id.tv_xian)
+    TextView mXian;
+
+    @Bind(R.id.tv_xiang)
+    TextView mXiang;
+
+    @Bind(R.id.tv_qita)
+    TextView mQita;
+
     private DataBean mData;
 
     @Override
@@ -96,17 +111,30 @@ public class InsuranceParticularsActivity extends BaseActivity {
     private void init() {
         mData = (DataBean) getIntent().getSerializableExtra(ConstantUtil.INSURANCE);
         LogUtils.d(mData.toString());
-        String Rates = String.format(getResources().getString(R.string.rates), mData.getRate() + "%");
+        mName.setText(mData.getName());
+        String Rates = String.format(getResources().getString(R.string.rates), mData.getRate() + "‰");
         mRates.setText(Rates);
         String Central = String.format(getResources().getString(R.string.central), mData.getN_tgt_fld1() + "%");
         mCentral.setText(Central);
+        String Longtou = String.format(getResources().getString(R.string.longtou),mData.getN_tgt_fld6() + "%");
+        mLongtou.setText(Longtou);
         String Personal = String.format(getResources().getString(R.string.personal), mData.getN_tgt_fld8() + "%");
         mPersonal.setText(Personal);
+        String Sheng = String.format(getResources().getString(R.string.sheng), mData.getN_tgt_fld2() + "%");
+        mSheng.setText(Sheng);
+        String Shi = String.format(getResources().getString(R.string.shi), mData.getN_tgt_fld3() + "%");
+        mShi.setText(Shi);
+        String Xian = String.format(getResources().getString(R.string.xian), mData.getN_tgt_fld4() + "%");
+        mXian.setText(Xian);
+        String Xiang = String.format(getResources().getString(R.string.xiang), mData.getN_tgt_fld5() + "%");
+        mXiang.setText(Xiang);
+        String Qita = String.format(getResources().getString(R.string.qita), mData.getN_tgt_fld7() + "%");
+        mQita.setText(Qita);
 //        String policy = String.format(getResources().getString(R.string.policy),mData.getDescribe())
         mPolicy.setText("保单6个月");
         mMontent.setText("      " + mData.getDescribe());
         //保险对象
-        String Object = String.format(getResources().getString(R.string.object), mData.getIns_obj());
+        String Object = String.format(getResources().getString(R.string.object), mData.getStart_end_time());
         mObject.setText(Object);
         mRates1.setText(Rates);//费率
         //单位保额
@@ -124,10 +152,6 @@ public class InsuranceParticularsActivity extends BaseActivity {
 
     private void initToolbar() {
         Glide.with(this).load(mData.getImage_url()).into(mImage);
-        mColl.setTitle(mData.getName());
-        mColl.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white));//在标题栏时的颜色
-        mColl.setExpandedTitleColor(ContextCompat.getColor(this, R.color.white));//在图片上的颜色时
-
     }
 
     private void initData() {

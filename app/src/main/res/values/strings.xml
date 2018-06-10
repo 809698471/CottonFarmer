@@ -33,12 +33,18 @@
     <string name="introduce">保险介绍</string>
     <string name="agreed">同意《保险条例》</string>
     <string name="rates">保险费率：%1$s</string>
-    <string name="central">中央：%1$s</string>
-    <string name="personal">个人：%1$s</string>
+    <string name="central">中央%1$s</string>
+    <string name="longtou">龙头企业%1$s</string>
+    <string name="personal">农户%1$s</string>
     <string name="policy">保单%1$s个月</string>
+    <string name="sheng">省%1$s</string>
+    <string name="shi">市%1$s</string>
+    <string name="xian">县%1$s</string>
+    <string name="xiang">乡%1$s</string>
+    <string name="qita">其他%1$s</string>
 
     <!--InsuranceParticularsActivity-->
-    <string name="object">保险对象：%1$s</string>
+    <string name="object">有效日期：%1$s</string>
     <string name="price">单位保金：%1$s</string>
     <string name="properties">保险性质：%1$s</string>
 

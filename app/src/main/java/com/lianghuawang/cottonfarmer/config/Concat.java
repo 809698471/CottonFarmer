@@ -6,7 +6,7 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer cO3vjJttkI6COqgLyZwxA_FhR6hwO-_n";
+    String TOKEN = "Bearer Xl-yZhj9aq4Ea0dKg3LCYHLqUK2A3jVx";
 
 //    String API = "http://47.93.200.37";
     String API = "http://app.lianhuawang.cn";

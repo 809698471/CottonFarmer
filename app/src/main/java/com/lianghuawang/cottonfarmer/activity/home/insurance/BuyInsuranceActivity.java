@@ -50,15 +50,16 @@ public class BuyInsuranceActivity extends BaseActivity {
     @Bind(R.id.iv_right)
     ImageView mRight;
 
-    private List<String> titles = Arrays.asList("农业保险", "即将推出", "预约再保");
+    private List<String> titles = Arrays.asList("农业保险", "信用保险", "其他");
 
     private List<String> titleTags = Arrays.asList(
             ConstantUtil.AGRICULTURE,
             ConstantUtil.TAG1,
             ConstantUtil.TAG2);
 
-    private List<String> images = Arrays.asList(
-            "http://img.zcool.cn/community/0114a856640b6d32f87545731c076a.jpg");
+    private List<Integer> images = Arrays.asList(
+            R.mipmap.insurance_zuo_img,
+            R.mipmap.insurance_you_img);
 
     private List<BaseFragment> fragments;
 
@@ -122,7 +123,7 @@ public class BuyInsuranceActivity extends BaseActivity {
         toolbarLayout.setExpandedTitleColor(ContextCompat.getColor(this, R.color.transparent));
         toolbarLayout.setCollapsedTitleTextColor(ContextCompat.getColor(this, R.color.white));
         Glide.with(this).load(images.get(0)).transform(new CornersTransform(this, 50)).into(mLeft);
-        Glide.with(this).load(images.get(0)).transform(new CornersTransform(this, 50)).into(mRight);
+        Glide.with(this).load(images.get(1)).transform(new CornersTransform(this, 50)).into(mRight);
 
     }
 

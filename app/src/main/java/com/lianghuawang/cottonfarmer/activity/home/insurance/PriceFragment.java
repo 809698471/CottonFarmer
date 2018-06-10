@@ -20,23 +20,23 @@ import java.util.List;
 import butterknife.Bind;
 
 /**
- * 价格保险fragment
+ * 其他保险fragment
  */
 public class PriceFragment extends BaseFragment implements AbsRecyclerViewAdapter.OnItemClickListener {
 
     public static final String EXTRA_TYPE = "extra_type";
 
-    private List<DataBean> dataBeans;
+//    private List<DataBean> dataBeans;
 
-    @Bind(R.id.recycle)
-    RecyclerView mRecyclerView;
-
+//    @Bind(R.id.recycle)
+//    RecyclerView mRecyclerView;
+//
     @Bind(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefreshLayout;
 
-    private AgricultureAdapter mAdapter;
+//    private AgricultureAdapter mAdapter;
 
-    private LinearLayoutManager mLayoutManager;
+//    private LinearLayoutManager mLayoutManager;
 
 
     public static PriceFragment newInstance(String type) {
@@ -49,55 +49,63 @@ public class PriceFragment extends BaseFragment implements AbsRecyclerViewAdapte
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_insurance_agriculture;
+        return R.layout.fragment_insurance_other;
     }
 
     @Override
     public void initViews() {
-        initRecyclerView();
-        showProgress();
-    }
-
-    private void showProgress() {
-        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+//        initRecyclerView();
+//        showProgress();
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                AgriculturalInsurance.Builder()
-                        .setPage()
-                        .setListener(new APIListener() {
-                            @Override
-                            public void onSuccess(Object object) {
-                                dataBeans = (List<DataBean>) object;
-                            }
-
-                            @Override
-                            public void onError(String message) {
-                                ToastUtils.showLong(getContext(),message);
-                            }
-                        })
-                        .request()
-                        .builder();
-
-                mSwipeRefreshLayout.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        mAdapter.upData(dataBeans);
-                        mAdapter.notifyDataSetChanged();
-                        mSwipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 1000);
+                if (mSwipeRefreshLayout.isRefreshing()){
+                    mSwipeRefreshLayout.setRefreshing(false);
+                }
             }
         });
     }
 
+    private void showProgress() {
+//        mSwipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+//        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                AgriculturalInsurance.Builder()
+//                        .setPage()
+//                        .setListener(new APIListener() {
+//                            @Override
+//                            public void onSuccess(Object object) {
+//                                dataBeans = (List<DataBean>) object;
+//                            }
+//
+//                            @Override
+//                            public void onError(String message) {
+//                                ToastUtils.showLong(getContext(),message);
+//                            }
+//                        })
+//                        .request()
+//                        .builder();
+//
+//                mSwipeRefreshLayout.postDelayed(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        mAdapter.upData(dataBeans);
+//                        mAdapter.notifyDataSetChanged();
+//                        mSwipeRefreshLayout.setRefreshing(false);
+//                    }
+//                }, 1000);
+//            }
+//        });
+    }
+
     private void initRecyclerView() {
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new AgricultureAdapter(mRecyclerView, dataBeans);
-        mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(this);
+//        mRecyclerView.setHasFixedSize(true);
+//        mLayoutManager = new LinearLayoutManager(getContext());
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        mAdapter = new AgricultureAdapter(mRecyclerView, dataBeans);
+//        mRecyclerView.setAdapter(mAdapter);
+//        mAdapter.setOnItemClickListener(this);
     }
 
     //跳转到详情页面

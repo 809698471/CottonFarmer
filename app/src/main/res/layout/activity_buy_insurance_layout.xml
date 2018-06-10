@@ -15,11 +15,11 @@
         android:layout_height="@dimen/y400"
         android:fitsSystemWindows="true"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_header"
+        android:src="@mipmap/insurance_banner"
         android:transitionName="photos"
         app:layout_collapseMode="parallax"
         app:layout_collapseParallaxMultiplier="0.7"
-        tools:src="@mipmap/ic_header" />
+        tools:src="@mipmap/insurance_banner" />
 
     <TextView
         android:id="@+id/tv_tuijian"

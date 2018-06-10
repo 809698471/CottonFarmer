@@ -7,55 +7,15 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/tv_rates"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:textSize="@dimen/x30" />
-
-        <TextView
-            android:id="@+id/tv_central"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:textSize="@dimen/x25" />
-
-        <TextView
-            android:id="@+id/tv_personal"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:textSize="@dimen/x25" />
-
-        <TextView
-            android:id="@+id/tv_policy"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.5"
-            android:gravity="center"
-            android:textSize="@dimen/x25" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:text="@string/introduce"
             android:textColor="@android:color/black"
             android:textSize="@dimen/x40"
             android:textStyle="bold" />
@@ -112,8 +72,8 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:divider="@drawable/table_v_divider"
                 android:layout_marginTop="5dp"
+                android:divider="@drawable/table_v_divider"
                 android:orientation="vertical"
                 android:showDividers="middle|beginning|end">
 

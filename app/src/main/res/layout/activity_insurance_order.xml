@@ -25,6 +25,7 @@
         android:layout_below="@id/appBar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/ll"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <include
@@ -35,6 +36,7 @@
     </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
