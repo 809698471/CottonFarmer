@@ -68,7 +68,7 @@
 
     <!--InsuranceOrderActivity-->
     <string name="policy_holder">投保人：</string>
-    <string name="id_crad">机构代码/身份证号：</string>
+    <string name="id_crad">身份证号：</string>
     <string name="address">联系地址：</string>
 
 

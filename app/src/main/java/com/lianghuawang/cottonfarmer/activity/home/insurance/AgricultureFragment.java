@@ -39,13 +39,14 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
 
     private LinearLayoutManager mLayoutManager;
 
+    private String Token;
 
     public static AgricultureFragment newInstance(String type) {
         AgricultureFragment mFragment = new AgricultureFragment();
         Bundle bundle = new Bundle();
         bundle.putString(EXTRA_TYPE, type);
         mFragment.setArguments(bundle);
-        return new AgricultureFragment();
+        return mFragment;
     }
 
     @Override
@@ -55,6 +56,7 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
 
     @Override
     public void initViews() {
+        Token = getArguments().getString(EXTRA_TYPE);
         showProgress();
         initRecyclerView();
     }
@@ -123,6 +125,7 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
     public void onItemClick(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
         Intent intent = new Intent(getContext(), InsuranceParticularsActivity.class);
         intent.putExtra(ConstantUtil.INSURANCE,dataBeans.get(position));
+        intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
         startActivity(intent);
     }
 }

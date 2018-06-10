@@ -42,7 +42,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/massifinformation_xinzeng"
+        android:layout_above="@+id/massifinformation_xinzeng"
         android:layout_below="@id/ll"
         android:background="#f6f6f6"
         android:orientation="vertical">

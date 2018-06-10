@@ -50,7 +50,7 @@
         android:id="@+id/recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/proofofownership_next"
+        android:layout_above="@+id/proofofownership_next"
         android:layout_below="@id/view"
         android:layout_marginLeft="@dimen/x24"
         android:layout_marginRight="@dimen/x24"

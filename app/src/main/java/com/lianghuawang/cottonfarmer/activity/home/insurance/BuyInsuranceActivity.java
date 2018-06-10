@@ -24,6 +24,7 @@ import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.MeasureUtil;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 import com.lianghuawang.cottonfarmer.utils.ViewUtil;
 import com.lianghuawang.cottonfarmer.widget.CornersTransform;
 
@@ -50,12 +51,9 @@ public class BuyInsuranceActivity extends BaseActivity {
     @Bind(R.id.iv_right)
     ImageView mRight;
 
-    private List<String> titles = Arrays.asList("农业保险", "信用保险", "其他");
+    private String Token;
 
-    private List<String> titleTags = Arrays.asList(
-            ConstantUtil.AGRICULTURE,
-            ConstantUtil.TAG1,
-            ConstantUtil.TAG2);
+    private List<String> titles = Arrays.asList("农业保险", "信用保险", "其他");
 
     private List<Integer> images = Arrays.asList(
             R.mipmap.insurance_zuo_img,
@@ -89,6 +87,7 @@ public class BuyInsuranceActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        Token = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP).getString(ConstantUtil.LOGINTOKEN,"");
         initToolbar();
         initFragment();
         initData();
@@ -96,9 +95,9 @@ public class BuyInsuranceActivity extends BaseActivity {
 
     private void initFragment() {
         fragments = Arrays.asList(
-                (BaseFragment) AgricultureFragment.newInstance(titleTags.get(0)),
-                (BaseFragment) CreditFragment.newInstance(titleTags.get(1)),
-                (BaseFragment) PriceFragment.newInstance(titleTags.get(2))
+                (BaseFragment) AgricultureFragment.newInstance(Token),
+                (BaseFragment) CreditFragment.newInstance(Token),
+                (BaseFragment) PriceFragment.newInstance(Token)
         );
     }
 

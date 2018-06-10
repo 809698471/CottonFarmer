@@ -96,6 +96,8 @@ public class InsuranceParticularsActivity extends BaseActivity {
 
     private DataBean mData;
 
+    private String Token;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_buy_insurance_particulars;
@@ -103,6 +105,7 @@ public class InsuranceParticularsActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        Token = getIntent().getStringExtra(ConstantUtil.INTENTTOKEN);
         init();
         initToolbar();
         initData();
@@ -177,7 +180,10 @@ public class InsuranceParticularsActivity extends BaseActivity {
     @OnClick(R.id.btn_argeed)
     public void btnClick(Button button) {
         Intent intent = new Intent(this, InsuranceOrderActivity.class);
-        intent.putExtra(ConstantUtil.INSURANCE,mData);
+//        intent.putExtra(ConstantUtil.INSURANCE,mData);
+        intent.putExtra("product_id",mData.getProduct_id());
+        intent.putExtra("cate_id",mData.getCate_id().getCate_id()+"");
+        intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
         startActivity(intent);
     }
 }

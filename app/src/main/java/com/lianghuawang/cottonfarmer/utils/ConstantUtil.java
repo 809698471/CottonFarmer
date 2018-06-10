@@ -56,5 +56,9 @@ public class ConstantUtil {
     public static final String LOGINSTATE = "LOGINSTATE";
     public static final String LOGINTOKEN = "TOKEN";//TOKEN
 
+    /**---------------------------------Intent-----------------------------------**/
+    public static final String INTENTTOKEN = "intent_token";
 
+    /**---------------------------------Intent-----------------------------------**/
+    public static final String NETERROR = "网络连接失败";
 }

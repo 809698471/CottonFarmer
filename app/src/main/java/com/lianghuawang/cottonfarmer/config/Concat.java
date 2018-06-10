@@ -6,7 +6,7 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer Xl-yZhj9aq4Ea0dKg3LCYHLqUK2A3jVx";
+    String TOKEN = "Bearer C3nMm0ju5wNEusXwy06F3PqamPwlfkkQ";
 
 //    String API = "http://47.93.200.37";
     String API = "http://app.lianhuawang.cn";
@@ -26,6 +26,21 @@ public interface Concat {
      * GET兵团分类
      */
     String CORPS = BASE_URL + "areas/get-area?area_type=%1$s&parent_id=%2$s";
+
+    /**
+     * GET获取省机构
+     */
+    String SHENGJIGOU = BASE_URL + "mechanisms/get-province";
+
+    /**
+     * 分机构
+     */
+    String FENJIGOU = BASE_URL + "mechanisms/get-branch?p_id=65";
+
+    /**
+     * 机构
+     */
+    String JIGOU = BASE_URL + "mechanisms/get-mechanism?name=";
 
     /**
      * POST验证码
@@ -213,6 +228,16 @@ public interface Concat {
      * GET农业保险分页
      */
     String PRODUCTLIST_URL2 = BASE_URL + "products?page=";
+
+    /**
+     * 确认订单
+     */
+    String CONFIRMORDER_URL = BASE_URL + "insurances/insurance-detail?product_id=%1$s&cate_id=%2$s";
+
+    /**
+     * 预约保险订单
+     */
+    String YUYUEBAOXIAN_URL = BASE_URL + "insurances/insured";
 
     /**
      * POST我要报案
