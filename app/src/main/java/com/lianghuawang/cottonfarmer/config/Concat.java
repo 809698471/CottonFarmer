@@ -6,7 +6,7 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer C3nMm0ju5wNEusXwy06F3PqamPwlfkkQ";
+    String TOKEN = "Bearer onh7R_Pw9lm2b_QU55IUboxIGWdTvrMT";
 
 //    String API = "http://47.93.200.37";
     String API = "http://app.lianhuawang.cn";
@@ -238,6 +238,11 @@ public interface Concat {
      * 预约保险订单
      */
     String YUYUEBAOXIAN_URL = BASE_URL + "insurances/insured";
+
+    /**
+     * 签名
+     */
+    String QIANMING_URL = BASE_URL + "insurances/sign";
 
     /**
      * POST我要报案

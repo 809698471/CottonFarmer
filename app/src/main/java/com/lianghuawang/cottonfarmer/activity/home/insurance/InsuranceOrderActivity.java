@@ -191,8 +191,15 @@ public class InsuranceOrderActivity extends BaseActivity implements OnClickDisap
                 @Override
                 public void onUi(toubao toubao) {
                     if (toubao.isSuccess()) {
-                        startActivity(new Intent(InsuranceOrderActivity.this, SignatureActivity.class));
+                        Intent intent = new Intent(InsuranceOrderActivity.this, SignatureActivity.class);
+                        intent.putExtra("o_water",toubao.getData().getO_water());
+                        intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
+                        startActivity(intent);
                     } else {
+                        Intent intent = new Intent(InsuranceOrderActivity.this, SignatureActivity.class);
+                        intent.putExtra("o_water","CZPT2018061100040659690000");
+                        intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
+                        startActivity(intent);
                         ToastUtils.showLong(InsuranceOrderActivity.this,toubao.getData().getErrmsg());
                     }
                 }

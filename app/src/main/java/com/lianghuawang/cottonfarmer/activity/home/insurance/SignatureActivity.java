@@ -3,7 +3,6 @@ package com.lianghuawang.cottonfarmer.activity.home.insurance;
 import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -15,18 +14,27 @@ import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.config.Concat;
+import com.lianghuawang.cottonfarmer.entity.my.Qianming;
+import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
-import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
+import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.FileUtils;
 import com.lianghuawang.cottonfarmer.utils.PermissionUtil;
 import com.lianghuawang.cottonfarmer.widget.SignatureView;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * 客户签字
@@ -48,6 +56,10 @@ public class SignatureActivity extends BaseActivity {
     @Bind(R.id.iv_signature)
     ImageView mSignature;
 
+    private String Token;
+    private String o_water;
+    private String path;
+
     private static final int MY_PERMISSIONS_EXTERNAL = 1;
 
     private PermissionUtil p = PermissionUtil.newInstance(this, MY_PERMISSIONS_EXTERNAL);
@@ -59,6 +71,8 @@ public class SignatureActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        Token = getIntent().getStringExtra(ConstantUtil.INTENTTOKEN);
+        o_water = getIntent().getStringExtra("o_water");
         initTooble();
         initPermissiont();
         initData();
@@ -80,7 +94,7 @@ public class SignatureActivity extends BaseActivity {
         mSign.setSignatureCallBack(new SignatureView.ISignatureCallBack() {
             @Override
             public void onSignCompeleted(View view, Bitmap bitmap) {
-                String path = FileUtils.ImagePath();
+                path = FileUtils.ImagePath();
                 try {
                     mSign.save(path);
                 } catch (IOException e) {
@@ -127,7 +141,8 @@ public class SignatureActivity extends BaseActivity {
                 break;
             case R.id.btn_queren://确认
                 //记录图片地址
-                startActivity(new Intent(this, PayInsuranceActivity.class));
+                commit();
+//                startActivity(new Intent(this, PayInsuranceActivity.class));
                 break;
             default:
         }
@@ -145,6 +160,33 @@ public class SignatureActivity extends BaseActivity {
             @Override
             public void error(String permission) {
                 SignatureActivity.this.finish();
+            }
+        });
+    }
+
+    private Map<String, Object> getParams(){
+        File file = new File(path);
+        Map<String,Object> params = new HashMap<>();
+        params.put("o_water",o_water);
+        params.put("images",file);
+        return params;
+    }
+
+    private void commit(){
+        OkHttp3Utils.sendImage(Token, Concat.QIANMING_URL, getParams(), new GsonObjectCallback<Qianming>() {
+            @Override
+            public void onUi(Qianming qianming) {
+                if (qianming.isSuccess()){
+                    Intent intent = new Intent(SignatureActivity.this,PayInsuranceActivity.class);
+                    intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
+                    intent.putExtra("o_water",o_water);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onFailed(Call call, IOException e) {
+
             }
         });
     }
