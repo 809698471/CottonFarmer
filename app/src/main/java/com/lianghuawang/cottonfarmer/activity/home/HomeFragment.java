@@ -81,7 +81,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 /*    amapLocation.getProvince();//省信息
                     amapLocation.getCity();//城市信息
                     amapLocation.getDistrict();//城区信息*/
-                    String str = amapLocation.getProvince() + amapLocation.getDistrict();
+                   // String str = amapLocation.getProvince() + amapLocation.getDistrict();
+                    String str = amapLocation.getDistrict();
                     text_dingwei.setText(str);
                     Log.e("AmapError2222", amapLocation.getAddress());
                 } else {

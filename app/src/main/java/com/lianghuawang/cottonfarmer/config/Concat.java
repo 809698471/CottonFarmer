@@ -259,4 +259,5 @@ public interface Concat {
      */
     String APPLICATIONAMOUNT_URL = BASE_URL + "loans/apply";
 
+
 }

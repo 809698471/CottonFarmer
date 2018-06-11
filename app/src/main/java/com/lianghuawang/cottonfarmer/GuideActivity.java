@@ -11,7 +11,7 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
@@ -51,7 +51,7 @@ public class GuideActivity extends BaseActivity {
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         flaggingWidth = dm.widthPixels / 3;
         imageResId = new int[]
-                {R.drawable.one, R.drawable.two, R.drawable.three};
+                {R.mipmap.yindaoye_1,R.mipmap.yindaoye_2, R.mipmap.yindaoye_3,R.mipmap.yindaoye_4};
         mImageViews = new ArrayList<View>();
         // 初始化图片资源
         LayoutInflater viewInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -70,32 +70,20 @@ public class GuideActivity extends BaseActivity {
         LinearLayout linearLayout2 = (LinearLayout) convertView2.findViewById(R.id.guide_item);
         linearLayout2.setBackgroundResource(imageResId[2]);
         mImageViews.add(linearLayout2);
-        // button监听
-        Button btn = (Button) convertView2.findViewById(R.id.start);
-        btn.setVisibility(View.VISIBLE);
-        btn.setOnClickListener(new View.OnClickListener() {
+        // 3
+        View convertView3 = viewInflater.inflate(R.layout.guide_item, null);
+        LinearLayout linearLayout3 = (LinearLayout) convertView3.findViewById(R.id.guide_item);
+        linearLayout3.setBackgroundResource(imageResId[3]);
+        mImageViews.add(linearLayout3);
+
+        ImageView igm = (ImageView) convertView3.findViewById(R.id.start);
+        igm.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
 
                 GoToMainActivity();
             }
         });
-
-        // 3
-//        View convertView3 = viewInflater.inflate(R.layout.guide_item, null);
-//        LinearLayout linearLayout3 = (LinearLayout) convertView3.findViewById(R.id.guide_item);
-//        linearLayout3.setBackgroundResource(imageResId[3]);
-//        mImageViews.add(linearLayout3);
-//        // button监听
-//        ImageView igm = (ImageView) convertView3.findViewById(R.id.start);
-//       // btn.setVisibility(View.VISIBLE);
-//        igm.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
-//
-//                GoToMainActivity();
-//            }
-//        });
 
         viewPager = (ViewPager) findViewById(R.id.guide_view);
         viewPager.setAdapter(new MyAdapter());// 设置填充ViewPager页面的适配器

@@ -36,7 +36,15 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/weather_City_District"
+                android:id="@+id/weather_City"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textColor="#2ac386"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/weather_District"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
