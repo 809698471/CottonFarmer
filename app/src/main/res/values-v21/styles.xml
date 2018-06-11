@@ -120,5 +120,9 @@
     <style name="SpnStyle">
         <item name="android:colorControlNormal">@color/colorPrimary</item>
     </style>
+    <style name="SpnStyle1" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorControlNormal">@color/colorPrimary</item>
+    </style>
+
 
 </resources>

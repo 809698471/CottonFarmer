@@ -2,6 +2,7 @@ package com.lianghuawang.cottonfarmer.activity.home.insurance;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +29,8 @@ import com.lianghuawang.cottonfarmer.widget.linkage_menu.AddressSelector;
 import com.lianghuawang.cottonfarmer.widget.linkage_menu.CityInterface;
 import com.lianghuawang.cottonfarmer.widget.linkage_menu.OnClickDisappearListener;
 import com.lianghuawang.cottonfarmer.widget.linkage_menu.OnItemAddressClickListener;
+import com.lianghuawang.cottonfarmer.widget.pay.PayDialog;
+import com.lianghuawang.cottonfarmer.widget.pay.PayDialog2;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,9 +41,11 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.OnClick;
 import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 //保险订单
-public class InsuranceOrderActivity extends BaseActivity implements OnClickDisappearListener, OnItemAddressClickListener, AddressSelector.OnTabSelectedListener {
+public class InsuranceOrderActivity extends BaseActivity implements OnClickDisappearListener, OnItemAddressClickListener, AddressSelector.OnTabSelectedListener, PayDialog2.DimssLienter, PayDialog2.PayLienter {
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
@@ -93,6 +98,8 @@ public class InsuranceOrderActivity extends BaseActivity implements OnClickDisap
     @Bind(R.id.tv_jigou)
     TextView mJigou;
 
+    private final int RESULT = 1;
+    private final int RESULTCODE = 2;
     private DataBean mData;
 
     private String cate_id;
@@ -105,6 +112,7 @@ public class InsuranceOrderActivity extends BaseActivity implements OnClickDisap
     private List<FenGongSi.DataBean> list2;
     private List<FenJiGou.DataBean> list3;
     private String name = "";
+    private String o_water;
 
     @Override
     protected int getLayoutId() {
@@ -191,15 +199,17 @@ public class InsuranceOrderActivity extends BaseActivity implements OnClickDisap
                 @Override
                 public void onUi(toubao toubao) {
                     if (toubao.isSuccess()) {
+                        o_water = toubao.getData().getO_water();
                         Intent intent = new Intent(InsuranceOrderActivity.this, SignatureActivity.class);
                         intent.putExtra("o_water",toubao.getData().getO_water());
                         intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
-                        startActivity(intent);
+                        startActivityForResult(intent,RESULT);
                     } else {
+                        o_water = "CZPT2018061100040659690000";
                         Intent intent = new Intent(InsuranceOrderActivity.this, SignatureActivity.class);
                         intent.putExtra("o_water","CZPT2018061100040659690000");
                         intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
-                        startActivity(intent);
+                        startActivityForResult(intent,RESULT);
                         ToastUtils.showLong(InsuranceOrderActivity.this,toubao.getData().getErrmsg());
                     }
                 }
@@ -323,5 +333,43 @@ public class InsuranceOrderActivity extends BaseActivity implements OnClickDisap
         params.put("pay_amount",dataBeans.getN_tgt_fld8()+"");
         params.put("cate_id",1+"");
         return params;
+    }
+    private PayDialog2 payDialog;
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT && resultCode == RESULTCODE){
+            if (payDialog == null) {
+                payDialog = new PayDialog2(InsuranceOrderActivity.this,dataBeans.getCategory_name().getCategory_name(), "￥" + dataBeans.getN_tgt_fld8());//设置progress的颜色
+                payDialog.getDimssLienter(InsuranceOrderActivity.this);
+                payDialog.getPayLienter(InsuranceOrderActivity.this);
+                payDialog.show();
+
+            }
+        }
+    }
+
+    @Override
+    public void dimss() {
+        payDialog.dismiss();
+    }
+
+    @Override
+    public void pay(int payType) {
+        Map<String,String> params = new HashMap<>();
+        params.put("o_water",o_water);
+        params.put("pay_way",payType+"");
+
+        OkHttp3Utils.doPost(ConstantUtil.tokenKey, Token, Concat.PAY_URL, params, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
     }
 }

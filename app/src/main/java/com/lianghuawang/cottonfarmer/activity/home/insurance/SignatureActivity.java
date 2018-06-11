@@ -61,6 +61,7 @@ public class SignatureActivity extends BaseActivity {
     private String path;
 
     private static final int MY_PERMISSIONS_EXTERNAL = 1;
+    private final int RESULT = 2;
 
     private PermissionUtil p = PermissionUtil.newInstance(this, MY_PERMISSIONS_EXTERNAL);
 
@@ -177,10 +178,13 @@ public class SignatureActivity extends BaseActivity {
             @Override
             public void onUi(Qianming qianming) {
                 if (qianming.isSuccess()){
-                    Intent intent = new Intent(SignatureActivity.this,PayInsuranceActivity.class);
-                    intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
-                    intent.putExtra("o_water",o_water);
-                    startActivity(intent);
+//                    Intent intent = new Intent(SignatureActivity.this,PayInsuranceActivity.class);
+//                    intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
+//                    intent.putExtra("o_water",o_water);
+//                    startActivity(intent);
+                    Intent intent = new Intent();
+                    setResult(RESULT,intent);
+                    finish();
                 }
             }
 

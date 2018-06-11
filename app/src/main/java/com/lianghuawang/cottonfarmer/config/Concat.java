@@ -6,7 +6,7 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer onh7R_Pw9lm2b_QU55IUboxIGWdTvrMT";
+    String TOKEN = "Bearer FmzbODMTA30TgyRMtCVQMKFD09ozelHw";
 
 //    String API = "http://47.93.200.37";
     String API = "http://app.lianhuawang.cn";
@@ -158,6 +158,12 @@ public interface Concat {
      * DELETE删除地块信息
      */
     String DELETEMASSIFINFORMATION_URL = BASE_URL + "cotton-farmers/delete-plant";
+
+    /**
+     * 支付
+     */
+    String PAY_URL = BASE_URL + "insures/update-pay-status";
+
 
     /**
      * GET订单列表

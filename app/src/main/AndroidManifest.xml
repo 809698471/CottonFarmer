@@ -76,7 +76,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".activity.home.insurance.InsuranceOrderActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden"/>
         <activity
             android:name=".activity.home.insurance.PayInsuranceActivity"
             android:screenOrientation="portrait" />
