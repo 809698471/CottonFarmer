@@ -64,8 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="25dp"
-                android:background="@null"
-                android:hint="点击输入文本" />
+                android:background="@null" />
 
 
         </LinearLayout>
@@ -99,8 +98,7 @@
                 android:layout_marginLeft="25dp"
                 android:background="@null"
                 android:maxLength="26"
-                android:inputType="numberSigned"
-                android:hint="点击输入文本" />
+                android:inputType="numberSigned" />
 
 
         </LinearLayout>
@@ -126,14 +124,12 @@
 
             <EditText
                 android:id="@+id/bankcardbinding_phone"
-                android:phoneNumber="true"
+                android:inputType="number"
                 android:maxLength="11"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="25dp"
-                android:background="@null"
-                android:hint="点击输入文本" />
-
+                android:background="@null" />
 
         </LinearLayout>
 
@@ -197,8 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="25dp"
-                android:background="@null"
-                android:hint="点击输入文本" />
+                android:background="@null" />
 
 
         </LinearLayout>

@@ -59,7 +59,8 @@
         <activity android:name=".activity.HomePageActivity" />
         <activity android:name=".AdvertisingPageActivity" />
         <activity android:name=".activity.my.SetUpActivity" />
-        <activity android:name=".activity.my.bankcard.BankCardActivity" />
+        <activity android:name=".activity.my.bankcard.BankCardActivity"
+            android:launchMode="singleTask"/>
         <activity android:name=".activity.my.TheBooksActivity" />
         <activity android:name=".activity.my.InsuranceActivity" />
         <activity android:name=".activity.my.ClaimCompensationActivity" />

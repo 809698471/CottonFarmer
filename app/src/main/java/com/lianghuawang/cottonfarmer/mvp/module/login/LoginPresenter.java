@@ -132,6 +132,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     private void verification(String phoneNumber) {
         Map<String, String> params = new HashMap<>();
         params.put("mobile_phone", phoneNumber);
+        params.put("is_login", "1");
         VerificationAPI.Builder()
                 .setParams(params)
                 .request(new GsonObjectCallback<VerficationInstance>() {

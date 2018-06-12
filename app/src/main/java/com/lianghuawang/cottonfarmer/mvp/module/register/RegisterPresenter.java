@@ -117,6 +117,7 @@ public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView>
     private void verification(String phoneNumber){
         Map<String,String> params = new HashMap<>();
         params.put("mobile_phone",phoneNumber);
+        params.put("is_login", "0");
         VerificationAPI.Builder()
                 .setParams(params)
                 .request(new GsonObjectCallback<VerficationInstance>() {

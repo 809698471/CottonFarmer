@@ -68,4 +68,14 @@
         app:vcv_et_inputType="number"
         app:vcv_et_number="6"
         app:vcv_et_text_color="#000" />
+
+    <Button
+        android:id="@+id/bankcardbinding_btn"
+        android:layout_width="150dp"
+        android:layout_height="@dimen/x80"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/btn_1"
+        android:text="绑定"
+        android:textColor="@color/white" />
 </LinearLayout>
