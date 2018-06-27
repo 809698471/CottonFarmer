@@ -6,21 +6,21 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer FmzbODMTA30TgyRMtCVQMKFD09ozelHw";
+    String TOKEN = "Bearer uirFmlpdkqMOdb84Pl_eVH7mVBti54kI";
 
-//    String API = "http://47.93.200.37";
-    String API = "http://app.lianhuawang.cn";
-    String IMAGE_API = "http://images.lianhuawang.cn";
+    String API = "http://39.107.229.149";
+//    String API = "http://app.lianhuawang.cn";
+//    String IMAGE_API = "http://images.lianhuawang.cn";
 
-    String PORT = "";//数据请求端口
+    String PORT = ":82";//数据请求端口
 
-    String PORTIMAGE = ":84";//图片请求端口
+    String PORTIMAGE = ":86";//图片请求端口
 
     String APIS= API + PORT;
 
-    String BASE_URL = APIS + "/v1/";
+    String BASE_URL = APIS + "/v2/";
 
-    String IMAGE_URL = IMAGE_API;
+    String IMAGE_URL = API + PORTIMAGE + "/";
 
     /**
      * GET兵团分类
@@ -59,6 +59,11 @@ public interface Concat {
      * 已测试调通
      */
     String SIGNIN_URL = BASE_URL + "login/login";
+
+    /**
+     * 退出用户
+     */
+    String EXIT_LOGIN = BASE_URL + "login/log-out";
 
     /**
      * GET消息通知

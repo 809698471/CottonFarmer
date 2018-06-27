@@ -1,5 +1,6 @@
 package com.lianghuawang.cottonfarmer.activity;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -17,6 +18,9 @@ import com.lianghuawang.cottonfarmer.activity.order.Order;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.LoginUtils;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -29,6 +33,9 @@ import java.util.List;
  */
 public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 
+    private static final int CODE = 1;
+    private static final int RECODE = 2;
+    private static final int RECODE1 = 3;
     private FrameLayout fragment;
     private RadioButton rb_01;
     private RadioButton rb_02;
@@ -44,6 +51,12 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
     private List<Fragment> list_fragment;
     private boolean name;
 
+    private Fragment order;
+    private Fragment home;
+    private Fragment news;
+    private MyFragment my;
+
+    private SharedPreferencesUtil loginSP;
 
     @Override
     protected int getLayoutId() {
@@ -59,7 +72,7 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
             case KeyEvent.KEYCODE_BACK:
                 long secondTime = System.currentTimeMillis();
                 if (secondTime - firstTime > 2000) {
-                    Toast.makeText(HomePageActivity.this, "再按一次退出程序--->onKeyUp", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(HomePageActivity.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                     firstTime = secondTime;
                     return true;
                 } else {
@@ -72,11 +85,14 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
 
 
     private void initData() {
-        Order order = Order.newInstance();
-        list_fragment.add(new HomeFragment());
-        list_fragment.add(new NewsFragment());
+        home = new HomeFragment();
+        order = Order.newInstance();
+        news = new NewsFragment();
+        my = new MyFragment();
+        list_fragment.add(home);
+        list_fragment.add(news);
         list_fragment.add(order);
-        list_fragment.add(new MyFragment());
+        list_fragment.add(my);
         LogUtils.d(order.toString());//Order{ae30b41}
         for (int i = 0; i < layout.getChildCount(); i++) {
             rbArray[i] = (RadioButton) layout.getChildAt(i);
@@ -88,6 +104,7 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
     }
 
     protected void initView() {
+        loginSP = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         //动态添加Fragment ,获取Fragment 管理器
         msg = getSupportFragmentManager();
 
@@ -125,15 +142,24 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
 
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
+        boolean login = loginSP.getBoolean(ConstantUtil.LOGINSTATE, false);
         switch (checkedId) {
             case R.id.rb_01:
                 showFragment(R.id.rb_01);
                 break;
             case R.id.rb_02:
-                showFragment(R.id.rb_02);
+                if (login) {
+                    showFragment(R.id.rb_02);
+                } else {
+                    LoginUtils.StartActivity(HomePageActivity.this, null, CODE, RECODE);
+                }
                 break;
             case R.id.rb_03:
-                showFragment(R.id.rb_03);
+                if (login) {
+                    showFragment(R.id.rb_03);
+                } else {
+                    LoginUtils.StartActivity(HomePageActivity.this, null, CODE, RECODE1);
+                }
                 break;
             case R.id.rb_04:
                 showFragment(R.id.rb_04);
@@ -146,4 +172,11 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
 
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1 && resultCode == 4) {
+            my.onResumeData();
+        }
+    }
 }

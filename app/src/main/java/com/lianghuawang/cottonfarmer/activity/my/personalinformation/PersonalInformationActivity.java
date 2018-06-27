@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.BuildConfig;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.EssentialInformationActivity;
@@ -37,6 +38,7 @@ import com.lianghuawang.cottonfarmer.tools.view.ClipImageActivity;
 import com.lianghuawang.cottonfarmer.tools.view.FileUtil;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.PermissionUtil;
 import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
 import java.io.File;
@@ -45,7 +47,7 @@ import java.util.HashMap;
 import static com.lianghuawang.cottonfarmer.tools.view.FileUtil.getRealFilePathFromUri;
 
 //个人信息
-public class PersonalInformationActivity extends BaseActivity implements View.OnClickListener {
+public class PersonalInformationActivity extends BaseActivity implements View.OnClickListener, PermissionUtil.Calls {
     //请求相机
     private static final int REQUEST_CAPTURE = 100;
     //请求相册
@@ -69,6 +71,9 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
     private ImageView personalinformation_return;
     private String token;
 
+    private PermissionUtil permission;
+    private SharedPreferencesUtil Per;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_personal_information;
@@ -76,9 +81,12 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
 
     @Override
     protected void initView() {
+        Per = SharedPreferencesUtil.newInstance(ConstantUtil.PERSONAL);
+
         personalinformation_return = (ImageView) findViewById(R.id.personalinformation_return);
         //个人头像
         personalinformation_personalimage = findViewById(R.id.personalinformation_personalimage);
+        Glide.with(this).load(Per.getString(ConstantUtil.PERSONAL_HEAD,"")).into(personalinformation_personalimage);
 
         //基本信息
         personalinformation_essentialinformation = (LinearLayout) findViewById(R.id.personalinformation_essentialinformation);
@@ -162,15 +170,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
             @Override
             public void onClick(View v) {
                 //权限判断
-                if (ContextCompat.checkSelfPermission(PersonalInformationActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    //申请WRITE_EXTERNAL_STORAGE权限
-                    ActivityCompat.requestPermissions(PersonalInformationActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            WRITE_EXTERNAL_STORAGE_REQUEST_CODE);
-                } else {
-                    //跳转到调用系统相机
-                    gotoCamera();
-                }
+                PermissionUtil(REQUEST_CAPTURE);
                 popupWindow.dismiss();
             }
         });
@@ -178,17 +178,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
             @Override
             public void onClick(View v) {
                 //权限判断
-                if (ContextCompat.checkSelfPermission(PersonalInformationActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    //申请READ_EXTERNAL_STORAGE权限
-                    ActivityCompat.requestPermissions(PersonalInformationActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                            READ_EXTERNAL_STORAGE_REQUEST_CODE);
-                    Log.e("------------", "00000000000000000");
-                } else {
-                    Log.e("------------", "11111111111111");
-                    //跳转到相册
-                    gotoPhoto();
-                }
+                PermissionUtil(READ_EXTERNAL_STORAGE_REQUEST_CODE);
                 popupWindow.dismiss();
             }
         });
@@ -200,22 +190,28 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
         });
     }
 
+    private void PermissionUtil(int key) {
+        permission = PermissionUtil.newInstance(this, key);
+        permission
+                .Build()
+                .add(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .add(Manifest.permission.CAMERA)
+                .setPermission(this)
+                .build();
+    }
+
     /**
      * 外部存储权限申请返回
      */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == WRITE_EXTERNAL_STORAGE_REQUEST_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission Granted
-                gotoCamera();
-            }
+        if (requestCode == REQUEST_CAPTURE) {
+            //跳转到调用系统相机
+            gotoCamera();
         } else if (requestCode == READ_EXTERNAL_STORAGE_REQUEST_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                // Permission Granted
-                gotoPhoto();
-            }
+            gotoPhoto();
         }
     }
 
@@ -273,7 +269,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
                     String cropImagePath = getRealFilePathFromUri(getApplicationContext(), uri);
                     Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
                     if (type == 1) {
-//
+                        tempFile= new File(cropImagePath);
                         personalinformation_personalimage.setImageBitmap(bitMap);
                         SubmitImg();
                     } else {
@@ -310,4 +306,13 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
         OkHttp3Utils.sendImage(token, Concat.UPLOADAHEADIMAGE_URL, map);
     }
 
+    @Override
+    public void GoOn(int key) {
+        if (key == REQUEST_CAPTURE) {
+            //跳转到调用系统相机
+            gotoCamera();
+        } else if (key == READ_EXTERNAL_STORAGE_REQUEST_CODE) {
+            gotoPhoto();
+        }
+    }
 }

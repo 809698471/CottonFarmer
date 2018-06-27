@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.my.bankcard.BankCardActivity;
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.PersonalInformationActivity;
-import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.EssentialInformationActivity;
+import com.lianghuawang.cottonfarmer.config.Concat;
 import com.lianghuawang.cottonfarmer.netutils.APIUtils.PerfectAPI;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
@@ -23,6 +23,9 @@ import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.netutils.instance.Perfect_Receive_Information;
 import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 import com.lianghuawang.cottonfarmer.tools.view.CircleImageView;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.LoginUtils;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -37,6 +40,8 @@ import static com.lianghuawang.cottonfarmer.config.Concat.APIS;
  */
 public class MyFragment extends Fragment implements View.OnClickListener {
 
+    private final static int CODE = 1;
+    private final static int RECODE = 4;
 
     private LinearLayout myfragment_bankcard;
     private LinearLayout myfragment_thebooks;
@@ -50,6 +55,8 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     private TextView mUsername;
     private Perfect_Receive_Information.DataBean mData;
 
+    private SharedPreferencesUtil Per;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,6 +67,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initData() {
+        Per = SharedPreferencesUtil.newInstance(ConstantUtil.PERSONAL);
         PerfectAPI api = PerfectAPI.newInstance();
         api.getToken()
                 .requestGet(new GsonObjectCallback<Perfect_Receive_Information>() {
@@ -68,9 +76,10 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                         if (data.isSuccess()) {
                             LogUtils.d("请求成功"+data.getData().getUsername());
                             setData(data.getData());
+                            Per.putString(ConstantUtil.PERSONAL_HEAD,Concat.IMAGE_URL + data.getData().getAvatar());
                             mData = data.getData();
                         } else {
-                            ToastUtils.showLong(getContext(),data.getData().getErrmsg());
+//                            ToastUtils.showLong(getContext(),data.getData().getErrmsg());
                         }
                     }
 
@@ -84,13 +93,14 @@ public class MyFragment extends Fragment implements View.OnClickListener {
 
     private void setData(Perfect_Receive_Information.DataBean data){
         Glide.with(getContext())
-                .load(APIS + data.getAvatar())
+                .load(Concat.IMAGE_URL + data.getAvatar())
                 .error(R.mipmap.button)
                 .into(myfragment_personalinformation);
         if (data.getUsername() != null) {
             mUsername.setText(data.getUsername());
         }
     }
+
 
     private void initView(View view) {
         myfragment_personalinformation = (CircleImageView) view.findViewById(R.id.myfragment_personalinformation);
@@ -119,15 +129,15 @@ public class MyFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             //个人信息
             case R.id.myfragment_personalinformation:
-                startActivity(new Intent(getActivity(), PersonalInformationActivity.class));
+                LoginUtils.StartActivity(getActivity(),PersonalInformationActivity.class,CODE,RECODE);
                 break;
             //我的银行卡
             case R.id.myfragment_bankcard:
-                startActivity(new Intent(getActivity(), BankCardActivity.class));
+                LoginUtils.StartActivity(getActivity(),BankCardActivity.class,CODE,RECODE);
                 break;
             //我的账本
             case R.id.myfragment_thebooks:
-                startActivity(new Intent(getActivity(), TheBooksActivity.class));
+                LoginUtils.StartActivity(getActivity(),TheBooksActivity.class,CODE,RECODE);
                 break;
             //我的订单
             case R.id.myfragment_order:
@@ -137,25 +147,28 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 break;
             //我的保险
             case R.id.myfragment_insurance:
-                startActivity(new Intent(getActivity(), InsuranceActivity.class));
+                LoginUtils.StartActivity(getActivity(),InsuranceActivity.class,CODE,RECODE);
                 break;
             //报案理赔
             case R.id.myfragment_compensation:
-                startActivity(new Intent(getActivity(), ClaimCompensationActivity.class));
+                LoginUtils.StartActivity(getActivity(),ClaimCompensationActivity.class,CODE,RECODE);
                 break;
             //我的信用
             case R.id.myfragment_credit:
-                startActivity(new Intent(getActivity(), MyCreditActivity.class));
+                LoginUtils.StartActivity(getActivity(),MyCreditActivity.class,CODE,RECODE);
                 break;
             //我的贷款
             case R.id.myfragment_loan:
-                startActivity(new Intent(getActivity(), LoanActivity.class));
+                LoginUtils.StartActivity(getActivity(),LoanActivity.class,CODE,RECODE);
                 break;
             //我的设置
             case R.id.myfragment_setup:
-                startActivity(new Intent(getActivity(), SetUpActivity.class));
+                LoginUtils.StartActivity(getActivity(),SetUpActivity.class,CODE,RECODE);
                 break;
-
         }
+    }
+
+    public void onResumeData() {
+        initData();
     }
 }

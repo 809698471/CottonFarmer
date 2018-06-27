@@ -34,6 +34,8 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
     @Bind(R.id.tv_new_regist)
     Button mNewRegister;
 
+    private static int SUCCESSCODE;
+
     private Handler handler;
 
     @Override
@@ -43,6 +45,7 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
 
     @Override
     protected void initView() {
+        SUCCESSCODE = getIntent().getIntExtra("resultCode",1);
         mNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,7 +73,8 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
     @Override
     public void login() {
         ToastUtils.showLong(this, getResources().getText(R.string.loginsuccess));
-        startActivity(new Intent(this, HomePageActivity.class));
+//        startActivity(new Intent(this, HomePageActivity.class));
+        setResult(SUCCESSCODE);
         this.finish();
     }
 

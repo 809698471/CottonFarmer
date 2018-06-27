@@ -146,6 +146,7 @@
             android:layout_weight="1" />
 
         <Button
+            android:id="@+id/btn_login_back"
             android:layout_width="@dimen/x280"
             android:layout_height="@dimen/y80"
             android:layout_marginBottom="@dimen/y140"

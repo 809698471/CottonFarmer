@@ -1,5 +1,11 @@
 package com.lianghuawang.cottonfarmer.utils;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+
+import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
+
 /**
  * 登录／注册工具
  */
@@ -39,5 +45,22 @@ public class LoginUtils {
     public static boolean isMobile(String username) {
 
         return PhoneNumberValidation.isMobile(username);
+    }
+
+    /**
+     * 验证是否已登录
+     */
+    public static void StartActivity(Activity context, Class<?> clas,int code, int resultCode){
+        SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
+        boolean login = sp.getBoolean(ConstantUtil.LOGINSTATE,false);
+        Intent intent = null;
+        if (login){
+            intent = new Intent(context,clas);
+        } else {
+            intent = new Intent(context, LoginActivity.class);
+            intent.putExtra("resultCode", resultCode);
+        }
+        context.startActivityForResult(intent,code);
+
     }
 }

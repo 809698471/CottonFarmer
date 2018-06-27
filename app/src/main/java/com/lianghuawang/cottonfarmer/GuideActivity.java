@@ -14,7 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
+import com.lianghuawang.cottonfarmer.activity.HomePageActivity;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
@@ -121,7 +121,7 @@ public class GuideActivity extends BaseActivity {
     void GoToMainActivity() {
         SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.STARTPAGE);
         sp.putBoolean(ConstantUtil.ISSTART,false);
-        Intent intent = new Intent(GuideActivity.this, LoginActivity.class);
+        Intent intent = new Intent(GuideActivity.this, HomePageActivity.class);
         startActivity(intent);
         LogUtils.d("sp.putBoolean----:" + sp.getBoolean(ConstantUtil.ISSTART,true));
         finish();

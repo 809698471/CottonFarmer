@@ -3,6 +3,8 @@ package com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -42,7 +44,9 @@ import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.PermissionUtil;
 import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -104,6 +108,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
         SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         Token = sp.getString(ConstantUtil.LOGINTOKEN, "");
         initRecylerView();
+        showLoadingDialog(this);
         api();
     }
 
@@ -115,30 +120,31 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
                     public void onUi(ProofInstance proofInstance) {
                         if (proofInstance.getData() != null) {
                             mData = proofInstance.getData();
-                            for (ProofInstance.DataBean dataBean : mData){
+                            for (ProofInstance.DataBean dataBean : mData) {
                                 dataBean.setFlag(-1);
-                                dataBean.setImg_url(Concat.APIS + "/" + dataBean.getImg_url());
+                                dataBean.setImg_url(Concat.IMAGE_URL + dataBean.getImg_url());
                                 dataBean.setUpdata(true);
                             }
                             ProofInstance.DataBean dataBean = new ProofInstance.DataBean();
                             dataBean.setFlag(0);
                             dataBean.setUpdata(true);
-                            mData.add(mData.size(),dataBean);
+                            mData.add(0, dataBean);
                         } else {
                             ProofInstance.DataBean dataBean = new ProofInstance.DataBean();
                             dataBean.setFlag(0);
                             dataBean.setUpdata(true);
-                            if (mData == null){
+                            if (mData == null) {
                                 mData = new ArrayList<>();
                             }
                             mData.add(dataBean);
                         }
                         mAdapter.getData(mData);
+                        dismissdingDialog();
                     }
 
                     @Override
                     public void onFailed(Call call, IOException e) {
-
+                        dismissdingDialog();
                     }
                 });
     }
@@ -162,6 +168,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
             //下一步---购买保险记录
             case R.id.proofofownership_next:
 //                startActivity(new Intent(ProofOfOwnershipActivity.this,InsurancePurchaseRecordActivity.class ));
+
                 UploadImage();
                 break;
         }
@@ -283,14 +290,14 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == REQUEST_CAPTURE) {//调用系统相机返回
+        if (requestCode == REQUEST_CAPTURE && resultCode == -1) {//调用系统相机返回
             ProofInstance.DataBean bean = new ProofInstance.DataBean();
             bean.setUpdata(false);
             bean.setImg_url(imagePath);
             bean.setFlag(-1);
             bean.setId(0);
             bean.setIs_real(0);
-            mData.add(0, bean);
+            mData.add(1, bean);
             mAdapter.getData(mData);
         } else if (requestCode == REQUEST_CODE && data != null) {
             //获取选择器返回的数据
@@ -303,7 +310,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
                 bean.setFlag(-1);
                 bean.setId(0);
                 bean.setIs_real(0);
-                mData.add(0, bean);
+                mData.add(1, bean);
             }
             mAdapter.getData(mData);
         }
@@ -342,40 +349,87 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
 
 
     private void UploadImage() {
+        showLoadingDialog(ProofOfOwnershipActivity.this);
+        HashMap<String, Object> map = new HashMap<>();
         for (int i = 0; i < mData.size(); i++) {
             if (!mData.get(i).isUpdata()) {
-                File file = new File(mData.get(i).getImg_url());
-                HashMap<String, Object> map = new HashMap<>();
-                LogUtils.d("file" + file.getName());
-                map.put("images[]", file);
-                final int finalI1 = i;
-                OkHttp3Utils.sendImage(Token, Concat.PROOFOFOWNERSHIP_URL, map, new GsonObjectCallback<ProofInstance>() {
-                    @Override
-                    public void onUi(ProofInstance proofInstance) {
-                        ProofInstance.DataBean data = proofInstance.getData().get(proofInstance.getData().size() - 1);
-                        ProofInstance.DataBean dataBean = mData.get(finalI1);
-                        dataBean.setId(data.getId());
-                        dataBean.setUpdata(true);
-                        dataBean.setFlag(-1);
-                        dataBean.setImg_url(Concat.APIS + "/" + data.getImg_url());
-                        dataBean.setIs_real(data.getIs_real());
-                    }
-
-                    @Override
-                    public void onFailed(Call call, IOException e) {
-
-                    }
-                });
+                String[] paths = mData.get(i).getImg_url().split("/");
+                String path = paths[paths.length - 1];
+                String imagePath = FileUtil.checkDirPath(Environment.getExternalStorageDirectory().getPath() + "/DCIM/Camera/") + path;
+                File file1 = new File(imagePath);
+                Bitmap bitmap = BitmapFactory.decodeFile(mData.get(i).getImg_url());
+                qualityCompress(bitmap, file1);
+                File file = new File(imagePath);
+                map.put("images["+ i +"]", file);
             }
+        }
+
+        OkHttp3Utils.sendImage(Token, Concat.PROOFOFOWNERSHIP_URL, map, new GsonObjectCallback<ProofInstance>() {
+            @Override
+            public void onUi(ProofInstance proofInstance) {
+                if (proofInstance.getData() != null) {
+                    mData = proofInstance.getData();
+                    for (ProofInstance.DataBean dataBean : mData) {
+                        dataBean.setFlag(-1);
+                        dataBean.setImg_url(Concat.IMAGE_URL + dataBean.getImg_url());
+                        dataBean.setUpdata(true);
+                    }
+                    ProofInstance.DataBean dataBean = new ProofInstance.DataBean();
+                    dataBean.setFlag(0);
+                    dataBean.setUpdata(true);
+                    mData.add(0, dataBean);
+                } else {
+                    ProofInstance.DataBean dataBean = new ProofInstance.DataBean();
+                    dataBean.setFlag(0);
+                    dataBean.setUpdata(true);
+                    if (mData == null) {
+                        mData = new ArrayList<>();
+                    }
+                    mData.add(dataBean);
+                }
+                mAdapter.getData(mData);
+                dismissdingDialog();
+                ToastUtils.showLong(ProofOfOwnershipActivity.this, "上传成功");
+            }
+
+            @Override
+            public void onFailed(Call call, IOException e) {
+                dismissdingDialog();
+                ToastUtils.showLong(ProofOfOwnershipActivity.this, "网络连接不佳，上传失败");
+            }
+        });
+    }
+
+    /**
+     * 3.质量压缩
+     * 设置bitmap options属性，降低图片的质量，像素不会减少
+     * 第一个参数为需要压缩的bitmap图片对象，第二个参数为压缩后图片保存的位置
+     * 设置options 属性0-100，来实现压缩
+     *
+     * @param bmp
+     * @param file
+     */
+    public static void qualityCompress(Bitmap bmp, File file) {
+        // 0-100 100为不压缩
+        int quality = 20;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        // 把压缩后的数据存放到baos中
+        bmp.compress(Bitmap.CompressFormat.JPEG, quality, baos);
+        try {
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(baos.toByteArray());
+            fos.flush();
+            fos.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
-
     @SuppressLint("HandlerLeak")
-    private Handler handler = new Handler(){
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            if (msg.what == 2){
+            if (msg.what == 2) {
                 mAdapter.getData(mData);
             }
         }

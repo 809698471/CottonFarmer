@@ -31,8 +31,10 @@ import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials.AMActivity;
 import com.lianghuawang.cottonfarmer.activity.home.cooperation.CooperativeOrganizationActivity;
 import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivity;
+import com.lianghuawang.cottonfarmer.activity.my.InsuranceActivity;
 import com.lianghuawang.cottonfarmer.activity.my.MyCreditActivity;
 import com.lianghuawang.cottonfarmer.adapter.NewsAndInformationAdapter;
+import com.lianghuawang.cottonfarmer.utils.LoginUtils;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import java.util.ArrayList;
@@ -43,6 +45,8 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
+    private static final int RECODE = 1;
+    private static final int CODE = 1;
     private ViewPager viewpager;
     private View view_dot1;
     private View view_dot2;
@@ -252,31 +256,31 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             //天气
             case R.id.home_lin_weather:
-                startActivity(new Intent(getActivity(),WeatherActivity.class));
+                LoginUtils.StartActivity(getActivity(),WeatherActivity.class,CODE,RECODE);
                 break;
             //互助保险
             case R.id.home_lin_hzbx:
-                startActivity(new Intent(getActivity(),BuyInsuranceActivity.class));
+                LoginUtils.StartActivity(getActivity(),BuyInsuranceActivity.class,CODE,RECODE);
                 break;
             //资金互助
             case R.id.home_lin_zjhz:
-                startActivity(new Intent(getActivity(),IWantToBorrowMoneyActivity.class));
+                LoginUtils.StartActivity(getActivity(),IWantToBorrowMoneyActivity.class,CODE,RECODE);
                 break;
             //我要入社
             case R.id.home_lin_wyrs:
-                startActivity(new Intent(getActivity(),CooperativeOrganizationActivity.class));
+                LoginUtils.StartActivity(getActivity(),CooperativeOrganizationActivity.class,CODE,RECODE);
                 break;
             //棉花市场
             case R.id.home_lin_mhsc:
-                startActivity(new Intent(getActivity(),CottonTradeActivity.class));
+                LoginUtils.StartActivity(getActivity(),CottonTradeActivity.class,CODE,RECODE);
                 break;
             //精选农资
             case R.id.home_lin_jxnz:
-                startActivity(new Intent(getActivity(),AMActivity.class));
+                LoginUtils.StartActivity(getActivity(),AMActivity.class,CODE,RECODE);
                 break;
             //我的资料
             case R.id.home_lin_wdzl:
-                startActivity(new Intent(getActivity(),MyCreditActivity.class));
+                LoginUtils.StartActivity(getActivity(),MyCreditActivity.class,CODE,RECODE);
                 break;
             //链花头条
             case R.id.filpper:

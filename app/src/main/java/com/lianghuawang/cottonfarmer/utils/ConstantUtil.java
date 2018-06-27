@@ -56,6 +56,12 @@ public class ConstantUtil {
     public static final String LOGINSTATE = "LOGINSTATE";
     public static final String LOGINTOKEN = "TOKEN";//TOKEN
 
+    /**
+     * ---------------------------------个人信息----------------------------------------
+     */
+    public static final String PERSONAL = "PERSONAL";//key
+    public static final String PERSONAL_HEAD = "PERSONAL_HEAD";
+
     /**---------------------------------Intent-----------------------------------**/
     public static final String INTENTTOKEN = "intent_token";
 
