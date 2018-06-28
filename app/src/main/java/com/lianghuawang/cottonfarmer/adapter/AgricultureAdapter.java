@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.config.Concat;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
 import com.lianghuawang.cottonfarmer.utils.MeasureUtil;
@@ -41,7 +42,7 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
 //            holde.title.setTextSize(MeasureUtil.px2sp(getContext(),30f));
             holde.content.setText(insuranceList.get(position).getDescribe());
             holde.time.setText(insuranceList.get(position).getStart_end_time());
-            Glide.with(getContext()).load(insuranceList.get(position).getImage_url()).into(holde.img);
+            Glide.with(getContext()).load(Concat.IMAGE_URL + insuranceList.get(position).getImage_url()).into(holde.img);
         }
         super.onBindViewHolder(holder, position);
     }

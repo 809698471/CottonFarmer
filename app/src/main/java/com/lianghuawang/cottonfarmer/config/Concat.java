@@ -6,7 +6,7 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer uirFmlpdkqMOdb84Pl_eVH7mVBti54kI";
+    String TOKEN = "Bearer EiKe_jTWtu-wdmzfz7syjprAOGhZ2OKf";
 
     String API = "http://39.107.229.149";
 //    String API = "http://app.lianhuawang.cn";
@@ -20,7 +20,7 @@ public interface Concat {
 
     String BASE_URL = APIS + "/v2/";
 
-    String IMAGE_URL = API + PORTIMAGE + "/";
+    String IMAGE_URL = API + PORTIMAGE;
 
     /**
      * GET兵团分类
@@ -147,7 +147,7 @@ public interface Concat {
     /**
      * POST上传身份证正面照
      */
-    String UPLOADIDENTITYCARDZHENG_URL = BASE_URL + "cotton-farmers upload-id-card";
+    String UPLOADIDENTITYCARDZHENG_URL = BASE_URL + "cotton-farmers/upload-id-card";
 
     /**
      * POST上传身份证反面照

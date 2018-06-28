@@ -105,7 +105,7 @@ public class ClipImageActivity extends AppCompatActivity implements View.OnClick
             try {
                 outputStream = getContentResolver().openOutputStream(mSaveUri);
                 if (outputStream != null) {
-                    zoomedCropBitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream);
+                    zoomedCropBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
                 }
             } catch (IOException ex) {
                 Log.e("android", "Cannot open file: " + mSaveUri, ex);

@@ -47,7 +47,7 @@ public class NewsFragment extends BaseFragment {
     private OtherFragment otherFragment;
 
     private List<String> list_title = Arrays.asList(
-            "最近",
+            "最新",
             "保险",
             "合作社",
             "互助资金",

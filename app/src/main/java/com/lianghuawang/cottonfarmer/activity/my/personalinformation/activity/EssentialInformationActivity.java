@@ -1,6 +1,8 @@
 package com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity;
 
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -8,6 +10,7 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.activity.my.mycredit.AuthenticationActivity;
 import com.lianghuawang.cottonfarmer.netutils.APIUtils.PerfectAPI;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
@@ -47,6 +50,9 @@ public class EssentialInformationActivity extends BaseActivity {
 
     @Bind(R.id.et_zip)
     EditText zip;//邮编
+
+    @Bind(R.id.btn_authentication)
+    Button mAuthentication;
 
     private String mName;
     private String mSex;
@@ -99,6 +105,10 @@ public class EssentialInformationActivity extends BaseActivity {
         if (data.getPostcode() != null) {
             zip.setText(data.getPostcode());
         }
+        if (data.getIs_identity() == 1){
+            mAuthentication.setEnabled(false);
+            mAuthentication.setText("已实名认证");
+        }
     }
 
     private void getApi() {
@@ -134,7 +144,7 @@ public class EssentialInformationActivity extends BaseActivity {
         mZip = zip.getText().toString().trim();
     }
 
-    @OnClick({R.id.btn_save})
+    @OnClick({R.id.btn_save,R.id.btn_authentication})
     public void onClick(View v) {
         switch (v.getId()) {
 //            case R.id.essentialinformation_return:
@@ -143,6 +153,9 @@ public class EssentialInformationActivity extends BaseActivity {
             //下一步---种植信息
             case R.id.btn_save:
                 HttpAPI();
+                break;
+            case R.id.btn_authentication:
+                startActivity(new Intent(EssentialInformationActivity.this, AuthenticationActivity.class));
                 break;
         }
     }

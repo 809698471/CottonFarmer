@@ -11,13 +11,21 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.config.Concat;
+import com.lianghuawang.cottonfarmer.entity.home.insurance.ConfirmOrder;
+import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
+import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
 
+import java.io.IOException;
+
 import butterknife.Bind;
 import butterknife.OnClick;
+import okhttp3.Call;
 
 //保险三级页面---保险详情
 public class InsuranceParticularsActivity extends BaseActivity {
@@ -119,7 +127,7 @@ public class InsuranceParticularsActivity extends BaseActivity {
         mRates.setText(Rates);
         String Central = String.format(getResources().getString(R.string.central), mData.getN_tgt_fld1() + "%");
         mCentral.setText(Central);
-        String Longtou = String.format(getResources().getString(R.string.longtou),mData.getN_tgt_fld6() + "%");
+        String Longtou = String.format(getResources().getString(R.string.longtou), mData.getN_tgt_fld6() + "%");
         mLongtou.setText(Longtou);
         String Personal = String.format(getResources().getString(R.string.personal), mData.getN_tgt_fld8() + "%");
         mPersonal.setText(Personal);
@@ -144,7 +152,7 @@ public class InsuranceParticularsActivity extends BaseActivity {
         String Price = String.format(getResources().getString(R.string.price), mData.getPrice());
         mPrice.setText(Price);
         //保险性质
-        String Properties = String.format(getResources().getString(R.string.properties),mData.getInsurance_nature());
+        String Properties = String.format(getResources().getString(R.string.properties), mData.getInsurance_nature());
         mProperties.setText(Properties);
 
         mContent.setText(mData.getN_tgt_fld1() + "%");
@@ -179,11 +187,32 @@ public class InsuranceParticularsActivity extends BaseActivity {
     //预约投保>>>>>保险订单
     @OnClick(R.id.btn_argeed)
     public void btnClick(Button button) {
-        Intent intent = new Intent(this, InsuranceOrderActivity.class);
-//        intent.putExtra(ConstantUtil.INSURANCE,mData);
-        intent.putExtra("product_id",mData.getProduct_id());
-        intent.putExtra("cate_id",mData.getCate_id().getCate_id()+"");
-        intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
-        startActivity(intent);
+        initData(mData.getProduct_id(),mData.getCate_id().getCate_id() + "");
+    }
+
+    private void initData(String product_id, String cate_id) {
+        showLoadingDialog(this);
+        String url = String.format(Concat.CONFIRMORDER_URL, product_id, cate_id);
+        OkHttp3Utils.doGet(ConstantUtil.tokenKey, Token, url, new GsonObjectCallback<ConfirmOrder>() {
+            @Override
+            public void onUi(ConfirmOrder confirmOrder) {
+                if (confirmOrder.isSuccess()) {
+                    Intent intent = new Intent(InsuranceParticularsActivity.this, InsuranceOrderActivity.class);
+                    intent.putExtra("product_id", mData.getProduct_id());
+                    intent.putExtra("cate_id", mData.getCate_id().getCate_id() + "");
+                    intent.putExtra(ConstantUtil.INTENTTOKEN, Token);
+                    startActivity(intent);
+                    dismissdingDialog();
+                } else {
+                    ToastUtils.showLong(InsuranceParticularsActivity.this, confirmOrder.getData().getErrmsg());
+                    dismissdingDialog();
+                }
+            }
+
+            @Override
+            public void onFailed(Call call, IOException e) {
+                ToastUtils.showLong(InsuranceParticularsActivity.this, ConstantUtil.NETERROR);
+            }
+        });
     }
 }

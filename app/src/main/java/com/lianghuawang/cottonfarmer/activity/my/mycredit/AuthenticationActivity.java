@@ -2,17 +2,14 @@ package com.lianghuawang.cottonfarmer.activity.my.mycredit;
 
 import android.Manifest;
 import android.app.Dialog;
-import android.content.ContentResolver;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Build;
-import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.util.Log;
+import android.support.v4.content.FileProvider;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,39 +20,83 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.lianghuawang.cottonfarmer.BuildConfig;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.config.Concat;
+import com.lianghuawang.cottonfarmer.entity.my.Attestation;
+import com.lianghuawang.cottonfarmer.entity.my.IDCard;
+import com.lianghuawang.cottonfarmer.imageSelect.ImageSelectorUtils;
+import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
+import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
+import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
+import com.lianghuawang.cottonfarmer.tools.view.ClipImageActivity;
+import com.lianghuawang.cottonfarmer.tools.view.FileUtil;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.ImageUtil;
+import com.lianghuawang.cottonfarmer.utils.PermissionUtil;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
-import java.io.FileNotFoundException;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+import butterknife.Bind;
+import butterknife.OnClick;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
+
+import static com.lianghuawang.cottonfarmer.tools.view.FileUtil.getRealFilePathFromUri;
 
 //身份证验证
-public class AuthenticationActivity extends BaseActivity {
-    private TextView text_add_zheng, text_add_fan, text_add_people;
-    private TextView tv1_paizhao, tv2_xiangce;
-    private TextView tv2_no;
-    private Button btn_commit;
-    private ImageView layout_zheng, layout_fan, layout_people;
+public class AuthenticationActivity extends BaseActivity implements View.OnClickListener, PermissionUtil.Calls {
+
+    private static final String BODY_ZHENG = "id_positive";
+    private static final String BODY_FAN = "id_reverse";
+    private static final String BODY_SHOU = "hand_img";
+
+    private TextView tv1_paizhao, tv2_xiangce, tv2_no;
     private int TAKE_PHOTO = 1;   //拍照
-    private int GET_PHOTO = 2;    //取照片
     private Dialog dialog;
     private int clicked = 0;
-    private int MY_PERMISSIONS_REQUEST_CAMERA = 10012;
+    private static final int REQUEST_CAPTURE = 100;
+    private static final int REQUEST_CODE = 105;
+
+    @Bind(R.id.text_add)
+    TextView text_add_zheng;
+    @Bind(R.id.text_add_dialog)
+    TextView text_add_fan;
+    @Bind(R.id.text_add_people)
+    TextView text_add_people;
+    @Bind(R.id.btn_commit)
+    Button btn_commit;
+    @Bind(R.id.layout_zheng)
+    ImageView layout_zheng;
+    @Bind(R.id.layout_fan)
+    ImageView layout_fan;
+    @Bind(R.id.layout_people)
+    ImageView layout_people;
+
+    private String Token;
+
+    private PermissionUtil permission;
+    private String imagePath;
+    private File tempFile;
+    private static final int REQUEST_CROP_PHOTO = 102;
 
     @Override
     protected int getLayoutId() {
         return R.layout.activity_authentication;
-
     }
 
     @Override
     protected void initView() {
-        text_add_zheng = findViewById(R.id.text_add);
-        text_add_fan = findViewById(R.id.text_add_dialog);
-        text_add_people = findViewById(R.id.text_add_people);
-        btn_commit = findViewById(R.id.btn_commit);
-        layout_zheng = findViewById(R.id.layout_zheng);
-        layout_fan = findViewById(R.id.layout_fan);
-        layout_people = findViewById(R.id.layout_people);
+        SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
+        Token = sp.getString(ConstantUtil.LOGINTOKEN, "");
         layout_zheng.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,63 +148,74 @@ public class AuthenticationActivity extends BaseActivity {
         //将属性设置给窗体
         dialogWindow.setAttributes(lp);
         dialog.show();//显示对话框
-        tv1_paizhao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //系统6.0以上需要判断是否有危险权限
-                if (Build.VERSION.SDK_INT >= 23) {
-                    //如果权限授权了 打开相机
-                    if (PackageManager.PERMISSION_GRANTED == ContextCompat.checkSelfPermission(
-                            AuthenticationActivity.this, Manifest.permission.CAMERA)) {
-                        try {
-                            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                                startActivityForResult(takePictureIntent, TAKE_PHOTO);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        //如果没有授权了
-                        //提示用户开户权限
-                        String[] perms = {"android.permission.CAMERA"};
-                        ActivityCompat.requestPermissions(AuthenticationActivity.this, perms, MY_PERMISSIONS_REQUEST_CAMERA);
-                    }
-                } else {
-                    //不是6.0以上的系统，直接打开相机
-                    try {
-                        Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                            startActivityForResult(takePictureIntent, TAKE_PHOTO);
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
+        tv1_paizhao.setOnClickListener(AuthenticationActivity.this);
+        tv2_xiangce.setOnClickListener(AuthenticationActivity.this);
+        tv2_no.setOnClickListener(AuthenticationActivity.this);
+    }
 
-                //设置拍照意图
-//                Intent mIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-//                startActivityForResult(mIntent, TAKE_PHOTO);
-             /*   Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, TAKE_PHOTO);
-                }*/
-            }
-        });
-        tv2_xiangce.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-                intent.setType("image/*");
-                startActivityForResult(intent, GET_PHOTO);
-            }
-        });
-        tv2_no.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.takePhoto:
+                //系统6.0以上需要判断是否有危险权限
+                PermissionUtil(REQUEST_CAPTURE);
+                break;
+            case R.id.choosePhoto:
+                PermissionUtil(REQUEST_CODE);
+                break;
+            case R.id.btn_cancel:
                 dialog.dismiss();
-            }
-        });
+                break;
+        }
+    }
+
+    @OnClick(R.id.btn_commit)
+    public void OnClick(View view) {
+        if (view.getId() == R.id.btn_commit) {
+            Attestation();
+            showLoadingDialog(this);
+        }
+    }
+
+    private void PermissionUtil(int key) {
+        permission = PermissionUtil.newInstance(this, key);
+        permission
+                .Build()
+                .add(Manifest.permission.READ_EXTERNAL_STORAGE)
+                .add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                .add(Manifest.permission.CAMERA)
+                .setPermission(this)
+                .build();
+    }
+
+    @Override
+    public void GoOn(int key) {
+        if (key == REQUEST_CAPTURE) {
+            //跳转到调用系统相机
+            gotoCamera();
+        } else if (key == REQUEST_CODE) {
+            gotoPhoto();
+        }
+    }
+
+    private void gotoCamera() {
+        imagePath = FileUtil.checkDirPath(Environment.getExternalStorageDirectory().getPath() + "/image/") + System.currentTimeMillis() + ".jpg";
+        tempFile = new File(imagePath);
+        //跳转到调用系统相机
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            //设置7.0中共享文件，分享路径定义在xml/file_paths.xml
+            intent.setFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            Uri contentUri = FileProvider.getUriForFile(AuthenticationActivity.this, BuildConfig.APPLICATION_ID + ".fileProvider", tempFile);
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, contentUri);
+        } else {
+            intent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));
+        }
+        startActivityForResult(intent, REQUEST_CAPTURE);
+    }
+
+    private void gotoPhoto() {
+        ImageSelectorUtils.openPhoto(this, REQUEST_CODE, false, 1);
     }
 
     //接受回传值
@@ -171,89 +223,125 @@ public class AuthenticationActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {  //回传值接受成功
-            Log.e("1111111111111111", requestCode + "-------------------" + resultCode);
+            if (requestCode == REQUEST_CAPTURE) {
+                dialog.dismiss();
+//                gotoClipActivity(Uri.fromFile(tempFile));
+            } else if (requestCode == REQUEST_CODE) {     //正面的相册取图
+                ArrayList<String> images = data.getStringArrayListExtra(
+                        ImageSelectorUtils.SELECT_RESULT);
+                imagePath = images.get(0);
+                dialog.dismiss();
+//                gotoClipActivity(Uri.fromFile(new File(imagePath)));
+            } else if (requestCode == REQUEST_CROP_PHOTO) {
+                final Uri uri = data.getData();
+                if (uri == null) {
+                    return;
+                }
+                String cropImagePath = getRealFilePathFromUri(getApplicationContext(), uri);
+                Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
+                tempFile = new File(cropImagePath);
+                layout_zheng.setImageBitmap(bitMap);
+//                SubmitImg();
+            }
+            showLoadingDialog(AuthenticationActivity.this);
             switch (clicked) {
                 case 1:
-                    if (requestCode == TAKE_PHOTO) {    //正面拍照取图
-//                        Bundle bundle = data.getExtras();   //获取data数据集合
-//                        Bitmap bitmap = (Bitmap) bundle.get("data");        //获得data数据
-//                        Log.e("TAG", "拍照回传bitmap：" + bitmap);
-//                        layout_zheng.setImageBitmap(bitmap);
-                        Bundle extras = data.getExtras();
-                        Bitmap mImageBitmap = (Bitmap) extras.get("data");
-                        layout_zheng.setImageBitmap(mImageBitmap);
-                        dialog.dismiss();
-                        text_add_zheng.setVisibility(View.GONE);
-                    } else {
-                        if (requestCode == GET_PHOTO) {     //正面的相册取图
-                            ContentResolver contentResolver = getContentResolver();
-                            try {
-                                Bitmap bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(data.getData()));
-                                Log.e("TAG", "从相册回传bitmap：" + bitmap);
-                                layout_zheng.setImageBitmap(bitmap);
-
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                            dialog.dismiss();
-                        }
-                    }
+                    Glide.with(AuthenticationActivity.this)
+                            .load(imagePath).into(layout_zheng);
                     text_add_zheng.setVisibility(View.GONE);
+                    imageCompression(imagePath);
                     break;
                 case 2:
-                    if (requestCode == TAKE_PHOTO) {    //反面的拍照取图
-//                        Bundle bundle = data.getExtras();   //获取data数据集合
-//                        Bitmap bitmap = (Bitmap) bundle.get("data");        //获得data数据
-//                        Log.e("TAG", "拍照回传bitmap：" + bitmap);
-//                        layout_fan.setImageBitmap(bitmap);
-                        Bundle extras = data.getExtras();
-                        Bitmap mImageBitmap = (Bitmap) extras.get("data");
-                        layout_fan.setImageBitmap(mImageBitmap);
-                        dialog.dismiss();
-                        text_add_fan.setVisibility(View.GONE);
-                    } else {
-                        if (requestCode == GET_PHOTO) {     //反面的相册取图
-                            ContentResolver contentResolver = getContentResolver();
-                            try {
-                                Bitmap bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(data.getData()));
-                                Log.e("TAG", "从相册回传bitmap：" + bitmap);
-                                layout_fan.setImageBitmap(bitmap);
-                                dialog.dismiss();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
+                    Glide.with(AuthenticationActivity.this)
+                            .load(imagePath).into(layout_fan);
                     text_add_fan.setVisibility(View.GONE);
+                    imageCompression(imagePath);
                     break;
                 case 3:
-                    if (requestCode == TAKE_PHOTO) {    //手持的拍照取图
-//                        Bundle bundle = data.getExtras();   //获取data数据集合
-//                        Bitmap bitmap = (Bitmap) bundle.get("data");        //获得data数据
-//                        Log.e("TAG", "拍照回传bitmap：" + bitmap);
-//                        layout_people.setImageBitmap(bitmap);
-                        Bundle extras = data.getExtras();
-                        Bitmap mImageBitmap = (Bitmap) extras.get("data");
-                        layout_people.setImageBitmap(mImageBitmap);
-                        dialog.dismiss();
-                        text_add_people.setVisibility(View.GONE);
-                    } else {
-                        if (requestCode == GET_PHOTO) {     //反面的相册取图
-                            ContentResolver contentResolver = getContentResolver();
-                            try {
-                                Bitmap bitmap = BitmapFactory.decodeStream(contentResolver.openInputStream(data.getData()));
-                                Log.e("TAG", "从相册回传bitmap：" + bitmap);
-                                layout_people.setImageBitmap(bitmap);
-                                dialog.dismiss();
-                            } catch (FileNotFoundException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
+                    Glide.with(AuthenticationActivity.this)
+                            .load(imagePath).into(layout_people);
                     text_add_people.setVisibility(View.GONE);
+                    imageCompression(imagePath);
                     break;
             }
-
         }
     }
+
+    /**
+     * 打开截图界面
+     */
+    public void gotoClipActivity(Uri uri) {
+        if (uri == null) {
+            return;
+        }
+//        uri--:file:///storage/emulated/0/image/1530172957841.jpg
+        Intent intent = new Intent();
+        intent.setClass(this, ClipImageActivity.class);
+        intent.putExtra("type", 2);
+        intent.setData(uri);
+        startActivityForResult(intent, REQUEST_CROP_PHOTO);
+    }
+
+    /**
+     * 压缩图片
+     **/
+    private void imageCompression(String bitmap) {
+        File imageFile = ImageUtil.compressImage(bitmap);
+        uploadPictures(imageFile);
+    }
+
+    /**
+     * 上传图片
+     **/
+    private void uploadPictures(File imageFile) {
+        Map<String, Object> params = new HashMap<>();
+        String key = "";
+        if (clicked == 1) {
+            key = BODY_ZHENG;
+        } else if (clicked == 2) {
+            key = BODY_FAN;
+        } else if (clicked == 3) {
+            key = BODY_SHOU;
+        }
+        params.put(key, imageFile);
+
+        OkHttp3Utils.sendImage(Token, Concat.UPLOADIDENTITYCARDZHENG_URL, params, new GsonObjectCallback<IDCard>() {
+            @Override
+            public void onUi(IDCard idCard) {
+                if (idCard.isSuccess()) {
+                    dismissdingDialog();
+                } else {
+                    dismissdingDialog();
+                }
+            }
+
+            @Override
+            public void onFailed(Call call, IOException e) {
+                dismissdingDialog();
+            }
+        });
+    }
+
+    private void Attestation() {
+        Map<String, String> params = new HashMap<>();
+        OkHttp3Utils.doPost(ConstantUtil.tokenKey, Token, Concat.IDENTITYCARDREALNAMEAUTHENTICATION_URL,
+                params, new GsonObjectCallback<Attestation>() {
+                    @Override
+                    public void onUi(Attestation attestation) {
+                        if (attestation.isSuccess()) {
+                            ToastUtils.showLong(AuthenticationActivity.this, attestation.getData().getResult());
+                            dismissdingDialog();
+                        } else {
+                            dismissdingDialog();
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(Call call, IOException e) {
+                        dismissdingDialog();
+                    }
+                });
+    }
+
 }
+

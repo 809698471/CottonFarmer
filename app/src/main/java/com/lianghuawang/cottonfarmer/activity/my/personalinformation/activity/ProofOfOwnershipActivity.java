@@ -41,6 +41,7 @@ import com.lianghuawang.cottonfarmer.netutils.instance.ProofInstance;
 import com.lianghuawang.cottonfarmer.tools.view.FileUtil;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.ImageUtil;
 import com.lianghuawang.cottonfarmer.utils.PermissionUtil;
 import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 
@@ -122,7 +123,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
                             mData = proofInstance.getData();
                             for (ProofInstance.DataBean dataBean : mData) {
                                 dataBean.setFlag(-1);
-                                dataBean.setImg_url(Concat.IMAGE_URL + dataBean.getImg_url());
+                                dataBean.setImg_url(Concat.IMAGE_URL + "/" + dataBean.getImg_url());
                                 dataBean.setUpdata(true);
                             }
                             ProofInstance.DataBean dataBean = new ProofInstance.DataBean();
@@ -353,13 +354,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
         HashMap<String, Object> map = new HashMap<>();
         for (int i = 0; i < mData.size(); i++) {
             if (!mData.get(i).isUpdata()) {
-                String[] paths = mData.get(i).getImg_url().split("/");
-                String path = paths[paths.length - 1];
-                String imagePath = FileUtil.checkDirPath(Environment.getExternalStorageDirectory().getPath() + "/DCIM/Camera/") + path;
-                File file1 = new File(imagePath);
-                Bitmap bitmap = BitmapFactory.decodeFile(mData.get(i).getImg_url());
-                qualityCompress(bitmap, file1);
-                File file = new File(imagePath);
+                File file = ImageUtil.compressImage(mData.get(i).getImg_url());
                 map.put("images["+ i +"]", file);
             }
         }
@@ -371,7 +366,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
                     mData = proofInstance.getData();
                     for (ProofInstance.DataBean dataBean : mData) {
                         dataBean.setFlag(-1);
-                        dataBean.setImg_url(Concat.IMAGE_URL + dataBean.getImg_url());
+                        dataBean.setImg_url(Concat.IMAGE_URL + "/" + dataBean.getImg_url());
                         dataBean.setUpdata(true);
                     }
                     ProofInstance.DataBean dataBean = new ProofInstance.DataBean();
@@ -398,31 +393,6 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
                 ToastUtils.showLong(ProofOfOwnershipActivity.this, "网络连接不佳，上传失败");
             }
         });
-    }
-
-    /**
-     * 3.质量压缩
-     * 设置bitmap options属性，降低图片的质量，像素不会减少
-     * 第一个参数为需要压缩的bitmap图片对象，第二个参数为压缩后图片保存的位置
-     * 设置options 属性0-100，来实现压缩
-     *
-     * @param bmp
-     * @param file
-     */
-    public static void qualityCompress(Bitmap bmp, File file) {
-        // 0-100 100为不压缩
-        int quality = 20;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        // 把压缩后的数据存放到baos中
-        bmp.compress(Bitmap.CompressFormat.JPEG, quality, baos);
-        try {
-            FileOutputStream fos = new FileOutputStream(file);
-            fos.write(baos.toByteArray());
-            fos.flush();
-            fos.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     @SuppressLint("HandlerLeak")

@@ -32,6 +32,7 @@ import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.In
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.PlantingInformationActivity;
 import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.ProofOfOwnershipActivity;
 import com.lianghuawang.cottonfarmer.config.Concat;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.tools.view.CircleImageView;
 import com.lianghuawang.cottonfarmer.tools.view.ClipImageActivity;
@@ -291,6 +292,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
         if (uri == null) {
             return;
         }
+//        uri--:file:///storage/emulated/0/image/1530172957841.jpg
         Intent intent = new Intent();
         intent.setClass(this, ClipImageActivity.class);
         intent.putExtra("type", type);

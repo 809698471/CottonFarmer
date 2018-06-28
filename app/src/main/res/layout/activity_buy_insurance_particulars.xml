@@ -5,162 +5,370 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/iv_item_insurance"
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nested"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y456"
-        android:scaleType="centerCrop"
-        app:layout_collapseMode="parallax"
-        app:layout_collapseParallaxMultiplier="0.7" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/dibu">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x24"
-        android:layout_marginTop="@dimen/y60"
-        android:src="@drawable/back1" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/x12"
-        android:layout_marginRight="@dimen/x12"
-        android:layout_marginTop="@dimen/y420"
-        app:cardBackgroundColor="@color/white"
-        app:cardCornerRadius="5dp"
-        app:cardElevation="3dp">
-
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <RelativeLayout
+            <ImageView
+                android:id="@+id/iv_item_insurance"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="@dimen/y456"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax"
+                app:layout_collapseParallaxMultiplier="0.7" />
 
-                <!--中央-->
-                <TextView
-                    android:id="@+id/tv_central"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:layout_toLeftOf="@+id/tv_longtou"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="30dp"
-                    android:textSize="12sp" />
-                <!--费率-->
-                <TextView
-                    android:id="@+id/tv_rates"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:visibility="gone" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x24"
+                android:layout_marginTop="@dimen/y60"
+                android:src="@drawable/back1" />
 
-                <TextView
-                    android:id="@+id/tv_longtou"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:layout_centerHorizontal="true"
-                    android:text="龙头企业"
-                    android:textSize="12sp" />
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/x12"
+                android:layout_marginRight="@dimen/x12"
+                android:layout_marginTop="@dimen/y420"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="3dp">
 
-                <!--保单-->
-                <TextView
-                    android:id="@+id/tv_policy"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:layout_toRightOf="@id/tv_longtou"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="30dp"
-                    android:textSize="12sp" />
-            </RelativeLayout>
+                    android:layout_gravity="center"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <!--中央-->
+                        <TextView
+                            android:id="@+id/tv_central"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="30dp"
+                            android:layout_toLeftOf="@+id/tv_longtou"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:textSize="12sp" />
+                        <!--费率-->
+                        <TextView
+                            android:id="@+id/tv_rates"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_longtou"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:text="龙头企业"
+                            android:textSize="12sp" />
+
+                        <!--保单-->
+                        <TextView
+                            android:id="@+id/tv_policy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="30dp"
+                            android:layout_toRightOf="@id/tv_longtou"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:textSize="12sp" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_sheng"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:text="省"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_shi"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:text="市"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_xian"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:text="县"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_xiang"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:text="乡"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_personal"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/tv_qita"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableLeft="@mipmap/duihao"
+                            android:text="其他"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_below="@id/cardview"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tv_sheng"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_name"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:text="省"
-                    android:textSize="12sp" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/x40"
+                    android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/tv_shi"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_ins_par_content"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:text="市"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/x30" />
 
                 <TextView
-                    android:id="@+id/tv_xian"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_object"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:text="县"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/x30" />
 
                 <TextView
-                    android:id="@+id/tv_xiang"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_rates1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:text="乡"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/x30" />
 
                 <TextView
-                    android:id="@+id/tv_personal"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/x30" />
 
                 <TextView
-                    android:id="@+id/tv_qita"
-                    android:layout_width="0dp"
+                    android:id="@+id/tv_properties"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawableLeft="@mipmap/duihao"
-                    android:text="其他"
-                    android:textSize="12sp" />
+                    android:layout_marginTop="5dp"
+                    android:textSize="@dimen/x30" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll4"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="保险构成"
+                        android:textSize="@dimen/x30" />
+
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:divider="@drawable/table_v_divider"
+                        android:orientation="vertical"
+                        android:showDividers="middle|beginning|end">
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/gray"
+                            android:divider="@drawable/table_h_divider"
+                            android:orientation="horizontal"
+                            android:showDividers="middle|beginning|end">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="来源"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="中央"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="地方"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="其他"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="自己"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+                        </TableRow>
+
+                        <TableRow
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:divider="@drawable/table_h_divider"
+                            android:orientation="horizontal"
+                            android:showDividers="middle|beginning|end">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="比例"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:id="@+id/tv_content"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:id="@+id/tv_place"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:id="@+id/tv_other"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                            <TextView
+                                android:id="@+id/tv_myself"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_weight="1"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/x30" />
+
+                        </TableRow>
+                    </TableLayout>
+                </LinearLayout>
             </LinearLayout>
 
-        </LinearLayout>
-    </android.support.v7.widget.CardView>
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/cardview"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <include layout="@layout/include_buy_insurance_particulars" />
-
+        </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 
     <LinearLayout
+        android:id="@+id/dibu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/color_eeeeee"
         android:orientation="vertical"
         app:layout_behavior="@string/bottom_sheet_behavior">
 
@@ -168,47 +376,58 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/dimgray" />
+            android:background="@color/color_eeeeee" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="20dp">
-
-            <CheckBox
-                android:id="@+id/cb_argeed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_argeed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/agreed"
-                android:textColor="@color/subcolordown"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_argeed"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/bg_btn_insurance_particulars_selected"
-                android:enabled="false"
-                android:text="@string/subscribe1"
-                android:textColor="@color/white"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/cb_argeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true" />
+
+                <TextView
+                    android:id="@+id/tv_argeed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/agreed"
+                    android:textColor="@color/subcolordown"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn_argeed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/bg_btn_insurance_particulars_selected"
+                    android:enabled="true"
+                    android:text="@string/subscribe1"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

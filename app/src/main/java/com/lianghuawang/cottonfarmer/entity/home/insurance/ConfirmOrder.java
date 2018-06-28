@@ -75,7 +75,17 @@ public class ConfirmOrder {
          * dead_end_time : 2018-06-12 00:00:00
          * take_effect : 测试测试测试测试测试测试
          * special_agreement : 测试测试测试测试测试测试
+         * "errmsg":"该账号尚未实名认证，无法预约。"
          */
+        private String errmsg;
+
+        public String getErrmsg() {
+            return errmsg;
+        }
+
+        public void setErrmsg(String errmsg) {
+            this.errmsg = errmsg;
+        }
 
         private String username;
         private String id_code;
