@@ -34,12 +34,10 @@ public class ConstantUtil {
     /**
      * -------------------订单模块
      */
-    public static final String ALL = "all";//全部
-    public static final String NON_PAYMENT = "non_payment";//未付款
-    public static final String PAYMENT_HAS_BEEN = "payment_has_been";//已付款
-    public static final String FOR_THE_GOODS = "for_the_goods";//待收货
-    public static final String HAS_BEEN_COMPLETED = "has_been_completed";//已完成
-    public static final String HAS_BEEN_CANCELLED = "has_been_cancelled";//已取消
+    public static final int ALL = -1;//全部
+    public static final int NON_PAYMENT = 0;//未付款
+    public static final int PAYMENT_HAS_BEEN = 1;//已付款
+    public static final int HAS_BEEN_COMPLETED = 2;//已完成
 
 
     /**---------------------------------数据库-----------------------------------**/

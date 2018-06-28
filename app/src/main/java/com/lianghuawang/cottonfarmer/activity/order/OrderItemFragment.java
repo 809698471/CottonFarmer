@@ -5,8 +5,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.entity.oder.OrderAll;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+
+import java.util.List;
 
 import butterknife.Bind;
 
@@ -20,12 +24,12 @@ public class OrderItemFragment extends BaseFragment {
     @Bind(R.id.btn_state)
     Button mBtnState;
 
-    private String type;
+    private int type;
 
-    public static OrderItemFragment newInstance(String type){
+    public static OrderItemFragment newInstance(int type, List<OrderAll.DataBean> dataBeans){
         OrderItemFragment mFragment = new OrderItemFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(EXTRA_TYPE, type);
+        bundle.putInt(EXTRA_TYPE, type);
         mFragment.setArguments(bundle);
         return mFragment;
     }
@@ -37,7 +41,8 @@ public class OrderItemFragment extends BaseFragment {
 
     @Override
     public void initViews() {
-        type = getArguments().getString(EXTRA_TYPE);
+        type = getArguments().getInt(EXTRA_TYPE);
+        LogUtils.d("type---:" + type);
         switch (type){
             case ConstantUtil.ALL:
                 mTvState.setText("已支付");
@@ -51,16 +56,8 @@ public class OrderItemFragment extends BaseFragment {
                 mTvState.setText("已支付");
                 mBtnState.setText("预约完成");
                 break;
-            case ConstantUtil.FOR_THE_GOODS:
-                mTvState.setText("已发货");
-                mBtnState.setText("查看订单");
-                break;
             case ConstantUtil.HAS_BEEN_COMPLETED:
                 mTvState.setText("已收货");
-                mBtnState.setText("查看订单");
-                break;
-            case ConstantUtil.HAS_BEEN_CANCELLED:
-                mTvState.setText("已取消");
                 mBtnState.setText("查看订单");
                 break;
         }

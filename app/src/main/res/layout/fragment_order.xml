@@ -5,10 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/y48"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/y96"
@@ -23,9 +25,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:tabGravity="center"
         app:tabIndicatorColor="@color/colorPrimary"
-        app:tabMode="scrollable"
+        app:tabMode="fixed"
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabTextColor="@color/darkgray"
         tools:ignore="PrivateResource" />
