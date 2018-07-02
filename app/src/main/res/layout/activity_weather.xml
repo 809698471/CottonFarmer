@@ -53,8 +53,14 @@
         </LinearLayout>
 
     </LinearLayout>
+    <ListView
+        android:id="@+id/lvNews"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <ScrollView
+    </ListView>
+
+ <!--   <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -446,6 +452,6 @@
                     android:textSize="15sp" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </ScrollView>-->
 
 </LinearLayout>

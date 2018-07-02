@@ -39,10 +39,11 @@
                     android:src="@mipmap/qing" />
 
                 <TextView
+                    android:id="@+id/home_text_wendu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="27℃"
+
                     android:textColor="#fff"
                     android:textSize="40sp" />
 
@@ -78,10 +79,11 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/home_text_fengli"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="晴23℃~30℃"
+
                         android:textColor="#fff"
                         android:textSize="15sp" />
                 </LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/loadMoreButton"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/y110"
+        android:background="#fff"
+        android:text="15天趋势预报"
+        android:textColor="#2ac386"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y30"
+        android:background="#2bc286" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:background="#ddaaaa"
+        android:layout_height="@dimen/y430" >
+
+        <com.lianghuawang.cottonfarmer.tools.SunriseView
+            android:id="@+id/sun"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/y20"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y300"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y110"
+        android:background="#2bc286"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="气象数据来自聚合数据"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+</LinearLayout>

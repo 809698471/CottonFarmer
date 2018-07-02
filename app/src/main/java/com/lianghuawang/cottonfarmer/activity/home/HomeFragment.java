@@ -4,7 +4,6 @@ package com.lianghuawang.cottonfarmer.activity.home;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
@@ -36,15 +35,17 @@ import com.lianghuawang.cottonfarmer.adapter.NewsAndInformationAdapter;
 import com.lianghuawang.cottonfarmer.config.Concat;
 import com.lianghuawang.cottonfarmer.entity.home.news.News;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.LoginUtils;
 import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
+import com.zaaach.citypicker.db.DBManager;
+import com.zaaach.citypicker.model.City;
 
-import org.w3c.dom.Text;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,6 +53,8 @@ import java.util.List;
 
 import butterknife.Bind;
 import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 /**
  * 新版----首页
@@ -110,6 +113,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     LinearLayout zhlhcx;
     @Bind(R.id.filpper)
     ViewFlipper filpper;
+    @Bind(R.id.home_text_wendu)
+    TextView home_text_wendu;
+    @Bind(R.id.home_text_fengli)
+    TextView home_text_fengli;
 
     private List<News.DataBean> dataBeans;
 
@@ -127,6 +134,9 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
                     // String str = amapLocation.getProvince() + amapLocation.getDistrict();
                     String str = amapLocation.getDistrict();
                     text_dingwei.setText(str);
+                    String bianma = bianma(amapLocation.getProvince(), amapLocation.getDistrict());
+                    Log.e("asdasdasdasdada", "" + bianma);
+                    LoadWeather(bianma);
                     Log.e("AmapError2222", amapLocation.getAddress());
                 } else {
                     //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
@@ -220,6 +230,74 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         zhlhcx.setOnClickListener(this);
     }
 
+    /**
+     * 获取当前编码
+     */
+
+    public String bianma(String province, String name) {
+
+        String cityCode = "失败";
+
+        Log.e("Test", "province : " + province);
+        Log.e("Test", "name : " + name);
+        DBManager dbManager = new DBManager(getActivity());
+        List<City> allCities = dbManager.getAllCities();
+        for (int i = 0; i < allCities.size(); i++) {
+            Log.e("Test", "getProvince : " + allCities.get(i).getProvince());
+            if (province.contains(allCities.get(i).getProvince())) {
+                Log.e("Test", "getName : " + allCities.get(i).getName());
+                if (name.contains(allCities.get(i).getName())) {
+                    cityCode = allCities.get(i).getCode();
+                    return cityCode;
+                }
+            }
+        }
+        return cityCode;
+    }
+
+    private void LoadWeather(String bianma) {
+        final String path = "http://v.juhe.cn/xiangji_weather/real_time_weather.php?areaid=" + bianma + "&key=fff40e6954a6f1fc5c5864c5e21ec683";
+        OkHttp3Utils.getInstance().doGet(path, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+            @Override
+            public void onResponse(Call call, final Response response) throws IOException {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response.body().string());
+                            JSONObject result = jsonObject.getJSONObject("result");
+                            JSONObject data = result.getJSONObject("data");
+                            String cw = data.getString("cw");
+                            String w = data.getString("w");
+                            String rh = data.getString("rh");//相对湿度
+                            String cwd = data.getString("cwd");//风力描述
+                            String wd = data.getString("wd");//风向描述
+                            String wdg = data.getString("wdg");//风力级别
+                            String tmp = data.getString("tmp");//温度
+                            String airp = data.getString("airp");//气压
+                            String st = data.getString("st");//体感温度
+//                            ToastUtils.show(getApplicationContext(),cw+"---"+w,1);
+
+                            home_text_fengli.setText(wd + wdg + "级");
+                            home_text_wendu.setText(tmp + "℃");
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        });
+
+    }
+
     private void checkPermission() {
         if (ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -310,7 +388,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             //链花头条
             case R.id.filpper:
                 Intent intent = new Intent(getContext(), HeadLineActivity.class);
-                intent.putExtra(ConstantUtil.HEAD_LINE,dataBeans.get(filpper.getDisplayedChild()).getId());
+                intent.putExtra(ConstantUtil.HEAD_LINE, dataBeans.get(filpper.getDisplayedChild()).getId());
                 startActivity(intent);
                 break;
             //中华联合财险
