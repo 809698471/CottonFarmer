@@ -65,4 +65,9 @@ public class ConstantUtil {
 
     /**---------------------------------Intent-----------------------------------**/
     public static final String NETERROR = "网络连接失败";
+
+    /**---------------------------------新闻-----------------------------------**/
+
+    public static final String HEAD_LINE = "head_line";
+
 }

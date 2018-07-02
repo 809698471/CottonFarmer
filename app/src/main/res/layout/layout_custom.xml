@@ -22,16 +22,18 @@
                 android:gravity="center"
                 android:text="补贴来了"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
             <TextView
-
+                android:id="@+id/tv_head_title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/x20"
+                android:layout_marginRight="@dimen/x60"
                 android:ellipsize="end"
-                android:lines="1"
+                android:lines="2"
                 android:text="定了！这里“棉花二补价格”开..."
                 android:textColor="#666666"
                 android:textSize="14sp" />
@@ -40,7 +42,8 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="3dp">
+            android:layout_marginTop="3dp"
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="@dimen/x124"
@@ -50,9 +53,11 @@
                 android:gravity="center"
                 android:text="种植秘籍"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
             <TextView
+                android:id="@+id/tv_head_title2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -61,7 +66,8 @@
                 android:lines="1"
                 android:text="棉花播种一膜3行和一膜6行的..."
                 android:textColor="#666666"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:visibility="gone"/>
         </LinearLayout>
 
     </LinearLayout>

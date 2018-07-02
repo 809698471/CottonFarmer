@@ -107,6 +107,7 @@
         <activity android:name=".activity.my.mycredit.InvitingTheUnderwriterActivity" />
         <activity android:name=".activity.home.HotSaleInsuranceActivity" />
         <activity android:name=".activity.home.HotSaleOfAgriculturalCapitalActivity" />
+        <activity android:name=".activity.home.news.HeadLineActivity"/>
         <activity android:name=".activity.my.personalinformation.RepaymentActivity" />
         <activity android:name=".activity.my.personalinformation.EarlyRepaymentActivity" />
         <activity android:name=".activity.my.personalinformation.StagingDetailActivity" />

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -122,7 +123,12 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
         for (int i = 0; i < rbArray.length; i++) {
             if (id == rbArray[i].getId()) {
                 if (list_fragment.get(i).isAdded()) {
-                    tt.show(list_fragment.get(i)).hide(list_fragment.get(conut)).commit();
+                    if (conut == -1) {
+                        tt.show(list_fragment.get(i)).commit();
+                    } else {
+                        tt.show(list_fragment.get(i)).hide(list_fragment.get(conut)).commit();
+                    }
+
                 } else {
                     tt.add(R.id.fragment, list_fragment.get(i)).hide(list_fragment.get(conut)).commit();
                 }
@@ -177,6 +183,35 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == 4) {
             my.onResumeData();
+        } else if (resultCode == 2) {
+            rbArray[1].setChecked(true);
+        } else if (resultCode == 3) {
+            rbArray[2].setChecked(true);
+        }
+    }
+
+    private boolean type = true;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        boolean login = loginSP.getBoolean(ConstantUtil.LOGINSTATE, false);
+        if (!login) {
+            if (conut == 3) {
+                conut = 0;
+                rbArray[3].setChecked(true);
+            } else if (conut == 0) {
+                if (!type) {
+                    if (list_fragment.get(3).isAdded()) {
+                        conut = 3;
+                    } else {
+                        conut = -1;
+                    }
+                    rbArray[0].setChecked(true);
+                } else {
+                    type = false;
+                }
+            }
         }
     }
 }

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -31,49 +30,89 @@ import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials.AMActivity;
 import com.lianghuawang.cottonfarmer.activity.home.cooperation.CooperativeOrganizationActivity;
 import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivity;
-import com.lianghuawang.cottonfarmer.activity.my.InsuranceActivity;
+import com.lianghuawang.cottonfarmer.activity.home.news.HeadLineActivity;
 import com.lianghuawang.cottonfarmer.activity.my.MyCreditActivity;
 import com.lianghuawang.cottonfarmer.adapter.NewsAndInformationAdapter;
+import com.lianghuawang.cottonfarmer.config.Concat;
+import com.lianghuawang.cottonfarmer.entity.home.news.News;
+import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
+import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.LoginUtils;
+import com.lianghuawang.cottonfarmer.utils.SharedPreferencesUtil;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
+import org.w3c.dom.Text;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import butterknife.Bind;
+import okhttp3.Call;
 
 /**
  * 新版----首页
  */
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener {
 
     private static final int RECODE = 1;
     private static final int CODE = 1;
-    private ViewPager viewpager;
-    private View view_dot1;
-    private View view_dot2;
-    private View view_dot3;
-    private LinearLayout ll_dot;
-    private int doubl;
-    private View view_dot;
-    private RelativeLayout Rl_dot;
-    private ViewFlipper filpper;
-    private RecyclerView recy;
-    private MyAdper myAdper;
-    List<View> list = new ArrayList<>();
-    List<Bean> beanList = new ArrayList<>();
-    private LinearLayout home_lin_weather;
-    private LinearLayout hzbx;
-    private LinearLayout zjhz;
-    private LinearLayout wyrs;
-    private LinearLayout mhsc;
-    private LinearLayout jxnz;
-    private LinearLayout wdzl;
-    private LinearLayout zhlhcx;
-    private TextView text_dingwei;
     private static final int WRITE_COARSE_LOCATION_REQUEST_CODE = 100;
     private static final int ACCESS_FINE_LOCATION = 200;
     private static final int WRITE_EXTERNAL_STORAGE = 300;
     private static final int READ_EXTERNAL_STORAGE = 400;
     private static final int READ_PHONE_STATE = 500;
+
+    private int doubl;
+    private MyAdper myAdper;
+    List<View> list = new ArrayList<>();
+    List<Bean> beanList = new ArrayList<>();
+
+    private SharedPreferencesUtil LoginSP;
+    private String Token;
+
+    @Bind(R.id.text_dingwei)
+    TextView text_dingwei;
+    @Bind(R.id.viewpager)
+    ViewPager viewpager;
+    @Bind(R.id.view_dot1)
+    View view_dot1;
+    @Bind(R.id.view_dot2)
+    View view_dot2;
+    @Bind(R.id.view_dot3)
+    View view_dot3;
+    @Bind(R.id.ll_dot)
+    LinearLayout ll_dot;
+    @Bind(R.id.view_dot)
+    View view_dot;
+    @Bind(R.id.Rl_dot)
+    RelativeLayout Rl_dot;
+    @Bind(R.id.recy)
+    RecyclerView recy;
+    @Bind(R.id.home_lin_weather)
+    LinearLayout home_lin_weather;
+    @Bind(R.id.home_lin_hzbx)
+    LinearLayout hzbx;
+    @Bind(R.id.home_lin_zjhz)
+    LinearLayout zjhz;
+    @Bind(R.id.home_lin_wyrs)
+    LinearLayout wyrs;
+    @Bind(R.id.home_lin_mhsc)
+    LinearLayout mhsc;
+    @Bind(R.id.home_lin_jxnz)
+    LinearLayout jxnz;
+    @Bind(R.id.home_lin_wdzl)
+    LinearLayout wdzl;
+    @Bind(R.id.home_lin_zhlhcx)
+    LinearLayout zhlhcx;
+    @Bind(R.id.filpper)
+    ViewFlipper filpper;
+
+    private List<News.DataBean> dataBeans;
+
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
     //声明定位回调监听器
@@ -85,7 +124,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                 /*    amapLocation.getProvince();//省信息
                     amapLocation.getCity();//城市信息
                     amapLocation.getDistrict();//城区信息*/
-                   // String str = amapLocation.getProvince() + amapLocation.getDistrict();
+                    // String str = amapLocation.getProvince() + amapLocation.getDistrict();
                     String str = amapLocation.getDistrict();
                     text_dingwei.setText(str);
                     Log.e("AmapError2222", amapLocation.getAddress());
@@ -101,19 +140,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     };
     //声明AMapLocationClientOption对象
     public AMapLocationClientOption mLocationOption = null;
+
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View view = View.inflate(getActivity(), R.layout.homefragment, null);
-        initView(view);
+    public int getLayoutId() {
+        return R.layout.homefragment;
+    }
+
+    @Override
+    public void initViews() {
+        News(1);
+        initView();
         initDate();
         getleng();
         myAdper = new MyAdper();
         viewpager.setAdapter(myAdper);
-        return view;
     }
 
     private void initDate() {
+        LoginSP = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
+        Token = LoginSP.getString(ConstantUtil.LOGINTOKEN, "");
+
         View view1 = View.inflate(getActivity(), R.layout.view1, null);
         View view2 = View.inflate(getActivity(), R.layout.view1, null);
         View view3 = View.inflate(getActivity(), R.layout.view1, null);
@@ -126,12 +172,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
     }
 
-    private void initView(View view) {
+    private void initView() {
         QMUIStatusBarHelper.setStatusBarDarkMode(getActivity());
-        text_dingwei = (TextView) view.findViewById(R.id.text_dingwei);
         initDingWeiData();
         checkPermission();
-        viewpager = (ViewPager) view.findViewById(R.id.viewpager);
         viewpager.setCurrentItem(0);
         viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -153,37 +197,18 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
         initTab();
-        view_dot1 = (View) view.findViewById(R.id.view_dot1);
-        view_dot2 = (View) view.findViewById(R.id.view_dot2);
-        view_dot3 = (View) view.findViewById(R.id.view_dot3);
-        ll_dot = (LinearLayout) view.findViewById(R.id.ll_dot);
-        view_dot = (View) view.findViewById(R.id.view_dot);
-        Rl_dot = (RelativeLayout) view.findViewById(R.id.Rl_dot);
         //链花头条
-        filpper = (ViewFlipper) view.findViewById(R.id.filpper);
-        for (int i = 0; i < 5; i++) {
-            View view1 = LayoutInflater.from(getActivity()).inflate(R.layout.layout_custom, null);
-            filpper.addView(view1);
-        }
         //资讯
-        recy = (RecyclerView) view.findViewById(R.id.recy);
         recy.setLayoutManager(new LinearLayoutManager(getContext()));
         for (int i = 0; i < 15; i++) {
             Bean bean = new Bean();
             bean.setName("2017-06-10");
             beanList.add(bean);
         }
-        NewsAndInformationAdapter adapter = new NewsAndInformationAdapter(getActivity(),beanList);
+        NewsAndInformationAdapter adapter = new NewsAndInformationAdapter(getActivity(), beanList);
         recy.setAdapter(adapter);
 
-        home_lin_weather = (LinearLayout) view.findViewById(R.id.home_lin_weather);
-        hzbx = (LinearLayout) view.findViewById(R.id.home_lin_hzbx);
-        zjhz = (LinearLayout) view.findViewById(R.id.home_lin_zjhz);
-        wyrs = (LinearLayout) view.findViewById(R.id.home_lin_wyrs);
-        mhsc = (LinearLayout) view.findViewById(R.id.home_lin_mhsc);
-        jxnz = (LinearLayout) view.findViewById(R.id.home_lin_jxnz);
-        wdzl = (LinearLayout) view.findViewById(R.id.home_lin_wdzl);
-        zhlhcx = (LinearLayout) view.findViewById(R.id.home_lin_zhlhcx);
+
         home_lin_weather.setOnClickListener(this);
         hzbx.setOnClickListener(this);
         zjhz.setOnClickListener(this);
@@ -256,34 +281,37 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             //天气
             case R.id.home_lin_weather:
-                LoginUtils.StartActivity(getActivity(),WeatherActivity.class,CODE,RECODE);
+                LoginUtils.StartActivity(getActivity(), WeatherActivity.class, CODE, RECODE);
                 break;
             //互助保险
             case R.id.home_lin_hzbx:
-                LoginUtils.StartActivity(getActivity(),BuyInsuranceActivity.class,CODE,RECODE);
+                LoginUtils.StartActivity(getActivity(), BuyInsuranceActivity.class, CODE, RECODE);
                 break;
             //资金互助
             case R.id.home_lin_zjhz:
-                LoginUtils.StartActivity(getActivity(),IWantToBorrowMoneyActivity.class,CODE,RECODE);
+                LoginUtils.StartActivity(getActivity(), IWantToBorrowMoneyActivity.class, CODE, RECODE);
                 break;
             //我要入社
             case R.id.home_lin_wyrs:
-                LoginUtils.StartActivity(getActivity(),CooperativeOrganizationActivity.class,CODE,RECODE);
+                LoginUtils.StartActivity(getActivity(), CooperativeOrganizationActivity.class, CODE, RECODE);
                 break;
             //棉花市场
             case R.id.home_lin_mhsc:
-                LoginUtils.StartActivity(getActivity(),CottonTradeActivity.class,CODE,RECODE);
+                LoginUtils.StartActivity(getActivity(), CottonTradeActivity.class, CODE, RECODE);
                 break;
             //精选农资
             case R.id.home_lin_jxnz:
-                LoginUtils.StartActivity(getActivity(),AMActivity.class,CODE,RECODE);
+                LoginUtils.StartActivity(getActivity(), AMActivity.class, CODE, RECODE);
                 break;
             //我的资料
             case R.id.home_lin_wdzl:
-                LoginUtils.StartActivity(getActivity(),MyCreditActivity.class,CODE,RECODE);
+                LoginUtils.StartActivity(getActivity(), MyCreditActivity.class, CODE, RECODE);
                 break;
             //链花头条
             case R.id.filpper:
+                Intent intent = new Intent(getContext(), HeadLineActivity.class);
+                intent.putExtra(ConstantUtil.HEAD_LINE,dataBeans.get(filpper.getDisplayedChild()).getId());
+                startActivity(intent);
                 break;
             //中华联合财险
             case R.id.home_lin_zhlhcx:
@@ -352,4 +380,37 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             container.removeView(list.get(position));
         }
     }
+
+    /**
+     * -----------------------头条、资讯------------------------------------
+     **/
+
+    private void News(int type) {
+        String URL = String.format(Concat.NEWS, type);
+        OkHttp3Utils.doGet(URL, new GsonObjectCallback<News>() {
+            @Override
+            public void onUi(News news) {
+                if (news.isSuccess()) {
+                    dataBeans = news.getData();
+                    headline(dataBeans);
+                }
+            }
+
+            @Override
+            public void onFailed(Call call, IOException e) {
+
+            }
+        });
+    }
+
+    private void headline(List<News.DataBean> dataBeans) {
+        for (int i = 0; i < dataBeans.size(); i++) {
+            View view = LayoutInflater.from(getActivity()).inflate(R.layout.layout_custom, null);
+            TextView title1 = view.findViewById(R.id.tv_head_title1);
+            title1.setText(dataBeans.get(i).getTitle());
+            filpper.addView(view);
+
+        }
+    }
+
 }

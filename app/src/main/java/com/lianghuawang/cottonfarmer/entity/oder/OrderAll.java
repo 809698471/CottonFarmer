@@ -9,7 +9,7 @@ public class OrderAll {
      * success : true
      * code : 200
      * message : OK
-     * data : [{"id":7,"o_water":"CZPT2018061316470635400000","order_num":"CZPT20180615003178","user_id":60,"user_type":"1","cooperative_id":"1","product_id":"D1528860397","plant_area":"新疆兵团农一师一团一连","plot_number":1,"land_num":"007","vulgo":"宝地1号","cotton_area":200,"additional":null,"num":null,"status":1,"premium":"13200","pay_amount":"13200","pay_status":1,"created_at":1528879651,"updated_at":1529026383,"effective_time":null,"expire_time":null,"signed":"/images/sign/20180613/152887976842651361-786a-3ff6-85d5-31a6f8ff394c.","c_ply_no":null,"EKEY_PLYSEQ_NO":"CZPT20180613008406","C_PLY_APP_NO_HX":null,"mechanism_code":"65430601","product_number":"1668","pay_way":1,"shi":"6269901","tuan":"626990101","lian":"6269901010101","cun":null,"region":1},{"id":10,"o_water":"CZPT2018061317320613450000","order_num":"CZPT20180615007059","user_id":60,"user_type":"1","cooperative_id":"1","product_id":"D1528859637","plant_area":"新疆地方乌鲁木齐乌鲁木齐县","plot_number":1,"land_num":"007","vulgo":"宝地1号","cotton_area":1000000,"additional":null,"num":null,"status":1,"premium":"70000000","pay_amount":"24500000","pay_status":1,"created_at":1528882353,"updated_at":1529026371,"effective_time":null,"expire_time":null,"signed":"/images/sign/20180613/1528882359bb9db2b0-dcaf-3072-94a9-934a2ffd9ffb.","c_ply_no":null,"EKEY_PLYSEQ_NO":"CZPT20180613004058","C_PLY_APP_NO_HX":null,"mechanism_code":"65920200","product_number":"1621","pay_way":1,"shi":"6269901","tuan":"626990101","lian":"6269901010101","cun":null,"region":1}]
+     * data : [{"o_water":"CZPT2018061317320613450000","c_ply_no":null,"username":"范文轲","id_code":"412727199308122715","address":"北京","category_name":{"category_id":"1621","category_name":"棉花种植险"},"name":"2018年新疆兵团棉花种植保险","risk_name":"综合保险","image_url":"/images/insurance/images/product_picture1528859637t01fd08f0d837bed260.jpg","cotton_area":"1000000亩","price":"1000","insurance_amount":"1000000000","rate":70,"premium":"70000000","plant_area":"一团一团一连新疆兵团农一师","n_tgt_fld1":"45500000","n_tgt_fld2":"0","n_tgt_fld3":"0","n_tgt_fld4":"0","n_tgt_fld5":"0","n_tgt_fld6":"0","n_tgt_fld7":"0","n_tgt_fld8":"24500000","pay_amount":"24500000","dead_start_time":"2018-07-01 00:00:00","dead_end_time":"2018-09-30 23:59:00","start_end_time":"2018.07.01 -2018.09.30","take_effect":"保险责任期间自保险棉花播种时起，至成熟开始收获时止，但不得超出保险单载明的保险期间范围。","special_agreement":"1：按照每亩皮棉100公斤计算；2：棉花保险价格1650元/吨；3：棉花实际价格采集期2018年5月2日至2018年6月12日实际价格来源为1801合约在价格采集期的平均收盘价。","created_at":"2018-06-13 17:32:33","pay_way":"线下支付","pay_status":1,"service_time":"2018-06-29 09:50:14","cooperative":"小棉袄合作社","mechanism":"中华联合财产保险股份有限公司一团支公司","status":1,"signed":{"status":1,"message":"已签名","sign_url":"/images/sign/20180613/1528882359bb9db2b0-dcaf-3072-94a9-934a2ffd9ffb."},"pay_date_time":"2018-06-14 17:32:33","describe":"<p><span style=\"font-size:19px;font-family:宋体\">在保险期间内，由于下列原因直接造成保险的或损失，损失率达到10%以上的，保险人按照本保险合同的约定负责赔偿： 暴雨、洪水（政府行蓄洪除外）、内涝、风灾、雹灾、冻灾、旱灾、地震、火灾； 泥石流、山体滑坡； 病虫草鼠害。&nbsp; &nbsp;<\/span><\/p>"},{"o_water":"CZPT2018061316470635400000","c_ply_no":null,"username":"范文轲","id_code":"412727199308122715","address":"北京","category_name":{"category_id":"1668","category_name":"棉花价格险"},"name":"2018年棉花价格保险","risk_name":"主险","image_url":"/images/insurance/images/product_picture1528860397t01c3bcccd9066fc125.jpg","cotton_area":"200亩","price":"1650","insurance_amount":"330000","rate":40,"premium":"13200","plant_area":"一团一团一连新疆兵团农一师","n_tgt_fld1":"0","n_tgt_fld2":"0","n_tgt_fld3":"0","n_tgt_fld4":"0","n_tgt_fld5":"0","n_tgt_fld6":"0","n_tgt_fld7":"0","n_tgt_fld8":"13200","pay_amount":"13200","dead_start_time":"2018-10-01 00:00:00","dead_end_time":"2018-11-30 23:59:00","start_end_time":"2018.10.01 -2018.11.30","take_effect":"标的合约：郑商所棉花1801合约\r\n行权价格：投保时标的合约价格\r\n期权期限：10月1日-11月30日\r\n结算价格：10月1日-11月30日标的合约日收盘价均值","special_agreement":"1：按照每亩皮棉1140公斤计算；2：棉花保险价格16000元/吨；3：棉花实际价格采集期2018年5月2日至2018年6月12日实际价格来源为1801合约在价格采集期的平均收盘价。","created_at":"2018-06-13 16:47:31","pay_way":"线下支付","pay_status":1,"service_time":"2018-06-29 09:50:14","cooperative":"小棉袄合作社","mechanism":"中华联合财产保险股份有限公司哈巴河支公司一八五团营销服务部","status":1,"signed":{"status":1,"message":"已签名","sign_url":"/images/sign/20180613/152887976842651361-786a-3ff6-85d5-31a6f8ff394c."},"pay_date_time":"2018-06-14 16:47:31","describe":"<p style=\"background: white\"><span style=\"font-size: 19px;font-family: 宋体\">农户向保险公司购买价格保险，当实际价格低于目标价格时获得赔付；保险公司通过购买期货公司风险管理子公司的场外期权对冲价格风险；期货公司风险管理子公司利用期货复制期权，通过期货市场转移风险；<\/span><\/p><p><br/><\/p>"}]
      */
 
     private boolean success;
@@ -51,84 +51,86 @@ public class OrderAll {
 
     public static class DataBean {
         /**
-         * id : 7
-         * o_water : CZPT2018061316470635400000
-         * order_num : CZPT20180615003178
-         * user_id : 60
-         * user_type : 1
-         * cooperative_id : 1
-         * product_id : D1528860397
-         * plant_area : 新疆兵团农一师一团一连
-         * plot_number : 1
-         * land_num : 007
-         * vulgo : 宝地1号
-         * cotton_area : 200
-         * additional : null
-         * num : null
-         * status : 1
-         * premium : 13200
-         * pay_amount : 13200
-         * pay_status : 1
-         * created_at : 1528879651
-         * updated_at : 1529026383
-         * effective_time : null
-         * expire_time : null
-         * signed : /images/sign/20180613/152887976842651361-786a-3ff6-85d5-31a6f8ff394c.
+         * o_water : CZPT2018061317320613450000
          * c_ply_no : null
-         * EKEY_PLYSEQ_NO : CZPT20180613008406
-         * C_PLY_APP_NO_HX : null
-         * mechanism_code : 65430601
-         * product_number : 1668
-         * pay_way : 1
-         * shi : 6269901
-         * tuan : 626990101
-         * lian : 6269901010101
-         * cun : null
-         * region : 1
+         * username : 范文轲
+         * id_code : 412727199308122715
+         * address : 北京
+         * category_name : {"category_id":"1621","category_name":"棉花种植险"}
+         * name : 2018年新疆兵团棉花种植保险
+         * risk_name : 综合保险
+         * image_url : /images/insurance/images/product_picture1528859637t01fd08f0d837bed260.jpg
+         * cotton_area : 1000000亩
+         * price : 1000
+         * insurance_amount : 1000000000
+         * rate : 70
+         * premium : 70000000
+         * plant_area : 一团一团一连新疆兵团农一师
+         * n_tgt_fld1 : 45500000
+         * n_tgt_fld2 : 0
+         * n_tgt_fld3 : 0
+         * n_tgt_fld4 : 0
+         * n_tgt_fld5 : 0
+         * n_tgt_fld6 : 0
+         * n_tgt_fld7 : 0
+         * n_tgt_fld8 : 24500000
+         * pay_amount : 24500000
+         * dead_start_time : 2018-07-01 00:00:00
+         * dead_end_time : 2018-09-30 23:59:00
+         * start_end_time : 2018.07.01 -2018.09.30
+         * take_effect : 保险责任期间自保险棉花播种时起，至成熟开始收获时止，但不得超出保险单载明的保险期间范围。
+         * special_agreement : 1：按照每亩皮棉100公斤计算；2：棉花保险价格1650元/吨；3：棉花实际价格采集期2018年5月2日至2018年6月12日实际价格来源为1801合约在价格采集期的平均收盘价。
+         * created_at : 2018-06-13 17:32:33
+         * pay_way : 线下支付
+         * pay_status : 1
+         * service_time : 2018-06-29 09:50:14
+         * cooperative : 小棉袄合作社
+         * mechanism : 中华联合财产保险股份有限公司一团支公司
+         * status : 1
+         * signed : {"status":1,"message":"已签名","sign_url":"/images/sign/20180613/1528882359bb9db2b0-dcaf-3072-94a9-934a2ffd9ffb."}
+         * pay_date_time : 2018-06-14 17:32:33
+         * describe : <p><span style="font-size:19px;font-family:宋体">在保险期间内，由于下列原因直接造成保险的或损失，损失率达到10%以上的，保险人按照本保险合同的约定负责赔偿： 暴雨、洪水（政府行蓄洪除外）、内涝、风灾、雹灾、冻灾、旱灾、地震、火灾； 泥石流、山体滑坡； 病虫草鼠害。&nbsp; &nbsp;</span></p>
          */
 
-        private int id;
         private String o_water;
-        private String order_num;
-        private int user_id;
-        private String user_type;
-        private String cooperative_id;
-        private String product_id;
-        private String plant_area;
-        private int plot_number;
-        private String land_num;
-        private String vulgo;
-        private int cotton_area;
-        private Object additional;
-        private Object num;
-        private int status;
+        private String c_ply_no;
+        private String username;
+        private String id_code;
+        private String address;
+        private CategoryNameBean category_name;
+        private String name;
+        private String risk_name;
+        private String image_url;
+        private String cotton_area;
+        private String price;
+        private String insurance_amount;
+        private int rate;
         private String premium;
+        private String plant_area;
+        private String n_tgt_fld1;
+        private String n_tgt_fld2;
+        private String n_tgt_fld3;
+        private String n_tgt_fld4;
+        private String n_tgt_fld5;
+        private String n_tgt_fld6;
+        private String n_tgt_fld7;
+        private String n_tgt_fld8;
         private String pay_amount;
+        private String dead_start_time;
+        private String dead_end_time;
+        private String start_end_time;
+        private String take_effect;
+        private String special_agreement;
+        private String created_at;
+        private String pay_way;
         private int pay_status;
-        private int created_at;
-        private int updated_at;
-        private Object effective_time;
-        private Object expire_time;
-        private String signed;
-        private Object c_ply_no;
-        private String EKEY_PLYSEQ_NO;
-        private Object C_PLY_APP_NO_HX;
-        private String mechanism_code;
-        private String product_number;
-        private int pay_way;
-        private String shi;
-        private String tuan;
-        private String lian;
-        private Object cun;
-        private int region;
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
+        private String service_time;
+        private String cooperative;
+        private String mechanism;
+        private int status;
+        private SignedBean signed;
+        private String pay_date_time;
+        private String describe;
 
         public String getO_water() {
             return o_water;
@@ -138,108 +140,100 @@ public class OrderAll {
             this.o_water = o_water;
         }
 
-        public String getOrder_num() {
-            return order_num;
+        public String getC_ply_no() {
+            return c_ply_no;
         }
 
-        public void setOrder_num(String order_num) {
-            this.order_num = order_num;
+        public void setC_ply_no(String c_ply_no) {
+            this.c_ply_no = c_ply_no;
         }
 
-        public int getUser_id() {
-            return user_id;
+        public String getUsername() {
+            return username;
         }
 
-        public void setUser_id(int user_id) {
-            this.user_id = user_id;
+        public void setUsername(String username) {
+            this.username = username;
         }
 
-        public String getUser_type() {
-            return user_type;
+        public String getId_code() {
+            return id_code;
         }
 
-        public void setUser_type(String user_type) {
-            this.user_type = user_type;
+        public void setId_code(String id_code) {
+            this.id_code = id_code;
         }
 
-        public String getCooperative_id() {
-            return cooperative_id;
+        public String getAddress() {
+            return address;
         }
 
-        public void setCooperative_id(String cooperative_id) {
-            this.cooperative_id = cooperative_id;
+        public void setAddress(String address) {
+            this.address = address;
         }
 
-        public String getProduct_id() {
-            return product_id;
+        public CategoryNameBean getCategory_name() {
+            return category_name;
         }
 
-        public void setProduct_id(String product_id) {
-            this.product_id = product_id;
+        public void setCategory_name(CategoryNameBean category_name) {
+            this.category_name = category_name;
         }
 
-        public String getPlant_area() {
-            return plant_area;
+        public String getName() {
+            return name;
         }
 
-        public void setPlant_area(String plant_area) {
-            this.plant_area = plant_area;
+        public void setName(String name) {
+            this.name = name;
         }
 
-        public int getPlot_number() {
-            return plot_number;
+        public String getRisk_name() {
+            return risk_name;
         }
 
-        public void setPlot_number(int plot_number) {
-            this.plot_number = plot_number;
+        public void setRisk_name(String risk_name) {
+            this.risk_name = risk_name;
         }
 
-        public String getLand_num() {
-            return land_num;
+        public String getImage_url() {
+            return image_url;
         }
 
-        public void setLand_num(String land_num) {
-            this.land_num = land_num;
+        public void setImage_url(String image_url) {
+            this.image_url = image_url;
         }
 
-        public String getVulgo() {
-            return vulgo;
-        }
-
-        public void setVulgo(String vulgo) {
-            this.vulgo = vulgo;
-        }
-
-        public int getCotton_area() {
+        public String getCotton_area() {
             return cotton_area;
         }
 
-        public void setCotton_area(int cotton_area) {
+        public void setCotton_area(String cotton_area) {
             this.cotton_area = cotton_area;
         }
 
-        public Object getAdditional() {
-            return additional;
+        public String getPrice() {
+            return price;
         }
 
-        public void setAdditional(Object additional) {
-            this.additional = additional;
+        public void setPrice(String price) {
+            this.price = price;
         }
 
-        public Object getNum() {
-            return num;
+        public String getInsurance_amount() {
+            return insurance_amount;
         }
 
-        public void setNum(Object num) {
-            this.num = num;
+        public void setInsurance_amount(String insurance_amount) {
+            this.insurance_amount = insurance_amount;
         }
 
-        public int getStatus() {
-            return status;
+        public int getRate() {
+            return rate;
         }
 
-        public void setStatus(int status) {
-            this.status = status;
+        public void setRate(int rate) {
+            this.rate = rate;
         }
 
         public String getPremium() {
@@ -250,12 +244,140 @@ public class OrderAll {
             this.premium = premium;
         }
 
+        public String getPlant_area() {
+            return plant_area;
+        }
+
+        public void setPlant_area(String plant_area) {
+            this.plant_area = plant_area;
+        }
+
+        public String getN_tgt_fld1() {
+            return n_tgt_fld1;
+        }
+
+        public void setN_tgt_fld1(String n_tgt_fld1) {
+            this.n_tgt_fld1 = n_tgt_fld1;
+        }
+
+        public String getN_tgt_fld2() {
+            return n_tgt_fld2;
+        }
+
+        public void setN_tgt_fld2(String n_tgt_fld2) {
+            this.n_tgt_fld2 = n_tgt_fld2;
+        }
+
+        public String getN_tgt_fld3() {
+            return n_tgt_fld3;
+        }
+
+        public void setN_tgt_fld3(String n_tgt_fld3) {
+            this.n_tgt_fld3 = n_tgt_fld3;
+        }
+
+        public String getN_tgt_fld4() {
+            return n_tgt_fld4;
+        }
+
+        public void setN_tgt_fld4(String n_tgt_fld4) {
+            this.n_tgt_fld4 = n_tgt_fld4;
+        }
+
+        public String getN_tgt_fld5() {
+            return n_tgt_fld5;
+        }
+
+        public void setN_tgt_fld5(String n_tgt_fld5) {
+            this.n_tgt_fld5 = n_tgt_fld5;
+        }
+
+        public String getN_tgt_fld6() {
+            return n_tgt_fld6;
+        }
+
+        public void setN_tgt_fld6(String n_tgt_fld6) {
+            this.n_tgt_fld6 = n_tgt_fld6;
+        }
+
+        public String getN_tgt_fld7() {
+            return n_tgt_fld7;
+        }
+
+        public void setN_tgt_fld7(String n_tgt_fld7) {
+            this.n_tgt_fld7 = n_tgt_fld7;
+        }
+
+        public String getN_tgt_fld8() {
+            return n_tgt_fld8;
+        }
+
+        public void setN_tgt_fld8(String n_tgt_fld8) {
+            this.n_tgt_fld8 = n_tgt_fld8;
+        }
+
         public String getPay_amount() {
             return pay_amount;
         }
 
         public void setPay_amount(String pay_amount) {
             this.pay_amount = pay_amount;
+        }
+
+        public String getDead_start_time() {
+            return dead_start_time;
+        }
+
+        public void setDead_start_time(String dead_start_time) {
+            this.dead_start_time = dead_start_time;
+        }
+
+        public String getDead_end_time() {
+            return dead_end_time;
+        }
+
+        public void setDead_end_time(String dead_end_time) {
+            this.dead_end_time = dead_end_time;
+        }
+
+        public String getStart_end_time() {
+            return start_end_time;
+        }
+
+        public void setStart_end_time(String start_end_time) {
+            this.start_end_time = start_end_time;
+        }
+
+        public String getTake_effect() {
+            return take_effect;
+        }
+
+        public void setTake_effect(String take_effect) {
+            this.take_effect = take_effect;
+        }
+
+        public String getSpecial_agreement() {
+            return special_agreement;
+        }
+
+        public void setSpecial_agreement(String special_agreement) {
+            this.special_agreement = special_agreement;
+        }
+
+        public String getCreated_at() {
+            return created_at;
+        }
+
+        public void setCreated_at(String created_at) {
+            this.created_at = created_at;
+        }
+
+        public String getPay_way() {
+            return pay_way;
+        }
+
+        public void setPay_way(String pay_way) {
+            this.pay_way = pay_way;
         }
 
         public int getPay_status() {
@@ -266,132 +388,122 @@ public class OrderAll {
             this.pay_status = pay_status;
         }
 
-        public int getCreated_at() {
-            return created_at;
+        public String getService_time() {
+            return service_time;
         }
 
-        public void setCreated_at(int created_at) {
-            this.created_at = created_at;
+        public void setService_time(String service_time) {
+            this.service_time = service_time;
         }
 
-        public int getUpdated_at() {
-            return updated_at;
+        public String getCooperative() {
+            return cooperative;
         }
 
-        public void setUpdated_at(int updated_at) {
-            this.updated_at = updated_at;
+        public void setCooperative(String cooperative) {
+            this.cooperative = cooperative;
         }
 
-        public Object getEffective_time() {
-            return effective_time;
+        public String getMechanism() {
+            return mechanism;
         }
 
-        public void setEffective_time(Object effective_time) {
-            this.effective_time = effective_time;
+        public void setMechanism(String mechanism) {
+            this.mechanism = mechanism;
         }
 
-        public Object getExpire_time() {
-            return expire_time;
+        public int getStatus() {
+            return status;
         }
 
-        public void setExpire_time(Object expire_time) {
-            this.expire_time = expire_time;
+        public void setStatus(int status) {
+            this.status = status;
         }
 
-        public String getSigned() {
+        public SignedBean getSigned() {
             return signed;
         }
 
-        public void setSigned(String signed) {
+        public void setSigned(SignedBean signed) {
             this.signed = signed;
         }
 
-        public Object getC_ply_no() {
-            return c_ply_no;
+        public String getPay_date_time() {
+            return pay_date_time;
         }
 
-        public void setC_ply_no(Object c_ply_no) {
-            this.c_ply_no = c_ply_no;
+        public void setPay_date_time(String pay_date_time) {
+            this.pay_date_time = pay_date_time;
         }
 
-        public String getEKEY_PLYSEQ_NO() {
-            return EKEY_PLYSEQ_NO;
+        public String getDescribe() {
+            return describe;
         }
 
-        public void setEKEY_PLYSEQ_NO(String EKEY_PLYSEQ_NO) {
-            this.EKEY_PLYSEQ_NO = EKEY_PLYSEQ_NO;
+        public void setDescribe(String describe) {
+            this.describe = describe;
         }
 
-        public Object getC_PLY_APP_NO_HX() {
-            return C_PLY_APP_NO_HX;
+        public static class CategoryNameBean {
+            /**
+             * category_id : 1621
+             * category_name : 棉花种植险
+             */
+
+            private String category_id;
+            private String category_name;
+
+            public String getCategory_id() {
+                return category_id;
+            }
+
+            public void setCategory_id(String category_id) {
+                this.category_id = category_id;
+            }
+
+            public String getCategory_name() {
+                return category_name;
+            }
+
+            public void setCategory_name(String category_name) {
+                this.category_name = category_name;
+            }
         }
 
-        public void setC_PLY_APP_NO_HX(Object C_PLY_APP_NO_HX) {
-            this.C_PLY_APP_NO_HX = C_PLY_APP_NO_HX;
-        }
+        public static class SignedBean {
+            /**
+             * status : 1
+             * message : 已签名
+             * sign_url : /images/sign/20180613/1528882359bb9db2b0-dcaf-3072-94a9-934a2ffd9ffb.
+             */
 
-        public String getMechanism_code() {
-            return mechanism_code;
-        }
+            private int status;
+            private String message;
+            private String sign_url;
 
-        public void setMechanism_code(String mechanism_code) {
-            this.mechanism_code = mechanism_code;
-        }
+            public int getStatus() {
+                return status;
+            }
 
-        public String getProduct_number() {
-            return product_number;
-        }
+            public void setStatus(int status) {
+                this.status = status;
+            }
 
-        public void setProduct_number(String product_number) {
-            this.product_number = product_number;
-        }
+            public String getMessage() {
+                return message;
+            }
 
-        public int getPay_way() {
-            return pay_way;
-        }
+            public void setMessage(String message) {
+                this.message = message;
+            }
 
-        public void setPay_way(int pay_way) {
-            this.pay_way = pay_way;
-        }
+            public String getSign_url() {
+                return sign_url;
+            }
 
-        public String getShi() {
-            return shi;
-        }
-
-        public void setShi(String shi) {
-            this.shi = shi;
-        }
-
-        public String getTuan() {
-            return tuan;
-        }
-
-        public void setTuan(String tuan) {
-            this.tuan = tuan;
-        }
-
-        public String getLian() {
-            return lian;
-        }
-
-        public void setLian(String lian) {
-            this.lian = lian;
-        }
-
-        public Object getCun() {
-            return cun;
-        }
-
-        public void setCun(Object cun) {
-            this.cun = cun;
-        }
-
-        public int getRegion() {
-            return region;
-        }
-
-        public void setRegion(int region) {
-            this.region = region;
+            public void setSign_url(String sign_url) {
+                this.sign_url = sign_url;
+            }
         }
     }
 }

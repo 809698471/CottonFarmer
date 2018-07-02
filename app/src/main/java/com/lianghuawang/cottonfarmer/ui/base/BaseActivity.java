@@ -8,38 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.lianghuawang.cottonfarmer.MyApp;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.mvp.base.BaseView;
 import com.lianghuawang.cottonfarmer.utils.MeasureUtil;
 import com.lianghuawang.cottonfarmer.widget.LoadingDialog;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
-//import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import butterknife.ButterKnife;
-
-////////////////////////////////////////////////////////////////////
-//                          _ooOoo_                               //
-//                         o8888888o                              //
-//                         88" . "88                              //
-//                         (| ^_^ |)                              //
-//                         O\  =  /O                              //
-//                      ____/`---'\____                           //
-//                    .'  \\|     |//  `.                         //
-//                   /  \\|||  :  |||//  \                        //
-//                  /  _||||| -:- |||||-  \                       //
-//                  |   | \\\  -  /// |   |                       //
-//                  | \_|  ''\---/''  |   |                       //
-//                  \  .-\__  `-`  ___/-. /                       //
-//                ___`. .'  /--.--\  `. . ___                     //
-//              ."" '<  `.___\_<|>_/___.'  >'"".                  //
-//            | | :  `- \`.;`\ _ /`;.`/ - ` : | |                 //
-//            \  \ `-.   \_ __\ /__ _/   .-` /  /                 //
-//      ========`-.____`-.___\_____/___.-`____.-'========         //
-//                           `=---='                              //
-//      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^        //
-//         佛祖保佑       永无BUG     永不修改                     //
-////////////////////////////////////////////////////////////////////
 
 public abstract class BaseActivity extends AppCompatActivity implements BaseView {
 

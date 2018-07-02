@@ -271,4 +271,14 @@ public interface Concat {
     String APPLICATIONAMOUNT_URL = BASE_URL + "loans/apply";
 
 
+    /**
+     * 新闻资讯
+     * news_type:1链花头条;2推荐资讯
+     */
+    String NEWS = BASE_URL + "news/list?news_type=%1$s";
+
+    /**
+     * 新闻详情
+     */
+    String NEWS_PARTICULAR = BASE_URL + "news/by-id?news_id=%1$s";
 }
