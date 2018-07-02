@@ -6,50 +6,41 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_marginTop="@dimen/y20"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y130">
+        android:layout_height="@dimen/y130"
+        android:layout_marginTop="@dimen/y20"
+        android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_width="0dp"
             android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tv_news_item_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:lines="2"
                 android:text="要想棉花收成好，链花花费不"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:textColor="@color/black"
+                android:ellipsize="end"
+                android:textSize="16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/y30">
-
-                <ImageView
-                    android:layout_width="@dimen/x32"
-                    android:layout_height="@dimen/y20"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/look" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/x16"
-                    android:text="2136"
-                    android:textColor="#999"
-                    android:textSize="14sp" />
+                android:layout_alignParentBottom="true">
 
                 <ImageView
                     android:layout_width="@dimen/x22"
                     android:layout_height="@dimen/y22"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="18dp"
                     android:src="@mipmap/time" />
 
                 <TextView
-                    android:id="@+id/time"
+                    android:id="@+id/tv_news_item_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/x16"
@@ -57,18 +48,25 @@
                     android:textColor="#999"
                     android:textSize="13sp" />
             </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
-        <View
+        <!--<View-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="1" />-->
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
 
-        <ImageView
-            android:layout_width="@dimen/x200"
-            android:layout_height="@dimen/y130"
-            android:scaleType="fitXY"
-            android:src="@mipmap/img2" />
+            <ImageView
+                android:id="@+id/iv_news_item_icon"
+                android:layout_width="@dimen/x200"
+                android:layout_height="@dimen/y130"
+                android:scaleType="fitXY"
+                android:src="@mipmap/img2" />
+        </LinearLayout>
     </LinearLayout>
 
     <View

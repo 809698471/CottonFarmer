@@ -501,7 +501,7 @@
             android:background="@mipmap/fenge" />
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/recy"
+            android:id="@+id/recycler_home_news"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/x30"

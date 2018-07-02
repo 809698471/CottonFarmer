@@ -85,6 +85,10 @@
     <!--订单模块-->
     <string name="order_title">我的订单</string>
 
+    <!--HeadLineActivity链花头条-->
+    <string name="head_title">链花头条</string>
+    <!--NewsActivity推荐资讯-->
+    <string name="news">新闻资讯</string>
 
     <string name="image">图片</string>
     <string name="confirm">确定</string>

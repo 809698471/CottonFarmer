@@ -1,4 +1,4 @@
-package com.lianghuawang.cottonfarmer.activity.home.news;
+package com.lianghuawang.cottonfarmer.activity.home;
 
 import android.view.View;
 import android.webkit.WebSettings;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.activity.home.news.HeadLineActivity;
 import com.lianghuawang.cottonfarmer.config.Concat;
 import com.lianghuawang.cottonfarmer.entity.home.news.HeadLine;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
@@ -22,23 +23,21 @@ import butterknife.OnClick;
 import okhttp3.Call;
 
 /**
- * creat 2018/06/29 范文轲
- * <p>
- * 链花头条详情页面
- * bug：在OPPO上乱码(已解决)。
+ * create by fanwenke at 2018/7/2
+ * 推荐资讯
  */
-public class HeadLineActivity extends BaseActivity {
+public class NewsActivity extends BaseActivity {
 
-    @Bind(R.id.wv_new_headline_content)
+    @Bind(R.id.wv_news_content)
     WebView mWebView;
-    @Bind(R.id.tv_headline_title)
+    @Bind(R.id.tv_news_title)
     TextView mNewsTitle;
-    @Bind(R.id.iv_headline_back)
+    @Bind(R.id.iv_news_back)
     ImageView mBack;
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_new_head_line;
+        return R.layout.activity_recommendation_information;
     }
 
     @Override
@@ -99,11 +98,11 @@ public class HeadLineActivity extends BaseActivity {
         }
     }
 
-    @OnClick(R.id.iv_headline_back)
+    @OnClick(R.id.iv_news_back)
     public void OnClick(View v){
         switch (v.getId()){
             case R.id.iv_headline_back:
-                HeadLineActivity.this.finish();
+                NewsActivity.this.finish();
                 break;
         }
     }

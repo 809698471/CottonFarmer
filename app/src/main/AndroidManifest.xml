@@ -118,7 +118,7 @@
         <activity android:name=".activity.my.ClaimProgressActivity" />
         <activity android:name=".tools.view.ClipImageActivity" />
         <activity android:name=".GuideActivity" />
-        <activity android:name=".activity.home.RecommendationInformationActivity" />
+        <activity android:name=".activity.home.NewsActivity" />
         <activity android:name=".activity.home.WeatherActivity" />
 
         <!-- 地图的key -->

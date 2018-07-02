@@ -16,7 +16,7 @@
             android:layout_marginTop="8dp">
 
             <ImageView
-                android:id="@+id/claimcompensation_return"
+                android:id="@+id/iv_headline_back"
                 android:layout_width="@dimen/x24"
                 android:layout_height="@dimen/y44"
                 android:layout_centerVertical="true"
@@ -28,16 +28,26 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:text="请上传本人身份证照片"
+                android:text="@string/head_title"
                 android:textColor="#fff"
                 android:textSize="18sp" />
         </RelativeLayout>
 
     </LinearLayout>
 
+    <TextView
+        android:id="@+id/tv_headline_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textSize="18sp"
+        android:gravity="center" />
+
     <WebView
-        android:id="@+id/wv_new_head_line"
+        android:id="@+id/wv_new_headline_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
 
 </LinearLayout>

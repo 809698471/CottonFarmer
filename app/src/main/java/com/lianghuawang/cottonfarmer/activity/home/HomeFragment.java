@@ -36,6 +36,7 @@ import com.lianghuawang.cottonfarmer.config.Concat;
 import com.lianghuawang.cottonfarmer.entity.home.news.News;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
+import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 import com.lianghuawang.cottonfarmer.ui.base.BaseFragment;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.utils.LoginUtils;
@@ -59,7 +60,7 @@ import okhttp3.Response;
 /**
  * 新版----首页
  */
-public class HomeFragment extends BaseFragment implements View.OnClickListener {
+public class HomeFragment extends BaseFragment implements View.OnClickListener, AbsRecyclerViewAdapter.OnItemClickListener {
 
     private static final int RECODE = 1;
     private static final int CODE = 1;
@@ -93,8 +94,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     View view_dot;
     @Bind(R.id.Rl_dot)
     RelativeLayout Rl_dot;
-    @Bind(R.id.recy)
-    RecyclerView recy;
+    @Bind(R.id.recycler_home_news)
+    RecyclerView mRecyclerView;
     @Bind(R.id.home_lin_weather)
     LinearLayout home_lin_weather;
     @Bind(R.id.home_lin_hzbx)
@@ -118,7 +119,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Bind(R.id.home_text_fengli)
     TextView home_text_fengli;
 
-    private List<News.DataBean> dataBeans;
+    private List<News.DataBean> dataBeansHeadLine;
+    private List<News.DataBean> dataBeansNews;
+
+    private NewsAndInformationAdapter mNewsAdapter;
 
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
@@ -159,6 +163,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     @Override
     public void initViews() {
         News(1);
+        News(2);
         initView();
         initDate();
         getleng();
@@ -209,15 +214,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         initTab();
         //链花头条
         //资讯
-        recy.setLayoutManager(new LinearLayoutManager(getContext()));
-        for (int i = 0; i < 15; i++) {
-            Bean bean = new Bean();
-            bean.setName("2017-06-10");
-            beanList.add(bean);
-        }
-        NewsAndInformationAdapter adapter = new NewsAndInformationAdapter(getActivity(), beanList);
-        recy.setAdapter(adapter);
-
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mNewsAdapter = new NewsAndInformationAdapter(mRecyclerView);
+        mRecyclerView.setAdapter(mNewsAdapter);
+        mNewsAdapter.setOnItemClickListener(this);
 
         home_lin_weather.setOnClickListener(this);
         hzbx.setOnClickListener(this);
@@ -359,7 +359,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         switch (v.getId()) {
             //天气
             case R.id.home_lin_weather:
-                LoginUtils.StartActivity(getActivity(), WeatherActivity.class, CODE, RECODE);
+                startActivity(new Intent(getActivity(),WeatherActivity.class));
                 break;
             //互助保险
             case R.id.home_lin_hzbx:
@@ -388,7 +388,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             //链花头条
             case R.id.filpper:
                 Intent intent = new Intent(getContext(), HeadLineActivity.class);
-                intent.putExtra(ConstantUtil.HEAD_LINE, dataBeans.get(filpper.getDisplayedChild()).getId());
+                intent.putExtra(ConstantUtil.HEAD_LINE,dataBeansHeadLine.get(filpper.getDisplayedChild()).getId());
                 startActivity(intent);
                 break;
             //中华联合财险
@@ -435,6 +435,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         });
     }
 
+    @Override
+    public void onItemClick(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
+        Intent intent = new Intent(getContext(), NewsActivity.class);
+        intent.putExtra(ConstantUtil.HEAD_LINE,dataBeansNews.get(position).getId());
+        startActivity(intent);
+    }
+
 
     private class MyAdper extends PagerAdapter {
         @Override
@@ -463,14 +470,19 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
      * -----------------------头条、资讯------------------------------------
      **/
 
-    private void News(int type) {
+    private void News(final int type) {
         String URL = String.format(Concat.NEWS, type);
         OkHttp3Utils.doGet(URL, new GsonObjectCallback<News>() {
             @Override
             public void onUi(News news) {
                 if (news.isSuccess()) {
-                    dataBeans = news.getData();
-                    headline(dataBeans);
+                    if (type == 1) {
+                        dataBeansHeadLine = news.getData();
+                        headline(dataBeansHeadLine);
+                    } else if (type == 2){
+                        dataBeansNews = news.getData();
+                        mNewsAdapter.notifyData(news.getData());
+                    }
                 }
             }
 

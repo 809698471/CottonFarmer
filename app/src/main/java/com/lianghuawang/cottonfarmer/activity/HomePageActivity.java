@@ -5,7 +5,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
-import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -31,6 +30,8 @@ import java.util.List;
 
 /**
  * 首页
+ * 范文轲
+ * bug:在未登录时，Fragment跳转有问题，现已暂时解决（治标不治本），后续优化
  */
 public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheckedChangeListener {
 

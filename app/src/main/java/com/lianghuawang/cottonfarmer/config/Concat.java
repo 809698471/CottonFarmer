@@ -10,7 +10,7 @@ public interface Concat {
 
     String API = "http://39.107.229.149";
 //    String API = "http://app.lianhuawang.cn";
-//    String IMAGE_API = "http://images.lianhuawang.cn";
+    String IMAGE_URL = "http://images.lianhuawang.cn";
 
     String PORT = ":82";//数据请求端口
 
@@ -20,7 +20,7 @@ public interface Concat {
 
     String BASE_URL = APIS + "/v2/";
 
-    String IMAGE_URL = API + PORTIMAGE;
+//    String IMAGE_URL = API + PORTIMAGE;
 
     /**
      * GET兵团分类
