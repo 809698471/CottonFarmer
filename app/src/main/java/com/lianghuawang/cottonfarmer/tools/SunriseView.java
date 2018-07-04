@@ -170,31 +170,29 @@ public class SunriseView extends View {
         mAnmationPaint.setColor(Color.parseColor("#32ffffff"));
 
         //开始坐标的XY
-        mStartPointX = dp2px(10);
-        mStartPointY = dp2px(290);
+        mStartPointX = dp2px(5);
+        mStartPointY = dp2px(130);
 
         //结束坐标的XY
-        mEndPointX = dp2px(330);
+        mEndPointX = dp2px(335);
         mEndPointY = mStartPointY;
 
-        //太阳的移动坐标的XY
+        //太阳的移动坐标的XY en
         mMovePointX = mStartPointX;
         mMovePointY = mStartPointY;
 
         //圆的半径
-        mRadius = dp2px(180);
+        mRadius = dp2px(205);
 
         //圆心坐标
         mCirclePointX = dp2px(170);//宽度
-        mCirclePointY = dp2px(236); //往小调是变高
+        mCirclePointY = dp2px(250); //往小调是变高
         //圆的初始化
         mRectF = new RectF(mCirclePointX - mRadius, mCirclePointY - mRadius, mCirclePointX + mRadius, mCirclePointY + mRadius);
 
     }
 
-    /**
-     * dp转px
-     */
+    //     dp转px
     public int dp2px(float dpVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal, getResources().getDisplayMetrics());
     }

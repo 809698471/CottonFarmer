@@ -49,9 +49,9 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     private String district;
     private TextView weather_cistrict;
     //三天数据
-    private List<WeatherBean> news = new ArrayList<WeatherBean>();
+    private List<WeatherBean> threedaysdata = new ArrayList<WeatherBean>();
     //十五天数据
-    private List<WeatherBean> news1 = new ArrayList<WeatherBean>();
+    private List<WeatherBean> fifteendaysdata = new ArrayList<WeatherBean>();
 
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
@@ -169,21 +169,23 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
         loadMoreButton = (Button) loadMoreView.findViewById(R.id.loadMoreButton);
         loadMoreButton.setOnClickListener(this);
         getOldDate();
-        mSunriseView = (SunriseView)loadMoreView.findViewById(R.id.sun);
-        startSunAnim(6,18);
+        mSunriseView = (SunriseView) loadMoreView.findViewById(R.id.sun);
+        startSunAnim(6, 18);
 
     }
+
     public void startSunAnim(int sunrise, int sunset) {
         Calendar calendarNow = Calendar.getInstance();
         int hour = calendarNow.get(Calendar.HOUR_OF_DAY);
-        if(hour < sunrise){
+        if (hour < sunrise) {
             mSunriseView.sunAnim(0);
-        }else if(hour > sunset){
+        } else if (hour > sunset) {
             mSunriseView.sunAnim(1);
-        }else {
+        } else {
             mSunriseView.sunAnim(((float) hour - (float) sunrise) / ((float) sunset - (float) sunrise));
         }
     }
+
     /**
      * 获取当前编码
      */
@@ -331,9 +333,9 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
                             JSONObject jsonObject = new JSONObject(response.body().string());
                             JSONObject result = jsonObject.getJSONObject("result");
                             JSONArray data = result.getJSONArray("series");
-                            if (news.size() > 0 && news1.size() > 0) {
-                                news.clear();
-                                news1.clear();
+                            if (threedaysdata.size() > 0 && fifteendaysdata.size() > 0) {
+                                threedaysdata.clear();
+                                fifteendaysdata.clear();
                             }
                             for (int i = 0; i < data.length(); i++) {
                                 JSONObject jsonObject1 = data.getJSONObject(i);
@@ -358,12 +360,12 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
                                 items.setTmp_max(tmp_max);//预测最高高度
                                 items.setTmp_min(tmp_min + "℃");//预测最高低度
                                 if (i < 3) {
-                                    news.add(items);
+                                    threedaysdata.add(items);
                                 }
-                                news1.add(items);
+                                fifteendaysdata.add(items);
                             }
 
-                            adapter = new PaginationAdapter(news);
+                            adapter = new PaginationAdapter(threedaysdata);
                             listView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         } catch (IOException e) {
@@ -423,7 +425,7 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
      */
 
     private void loadMoreData() {
-        adapter = new PaginationAdapter(news1);
+        adapter = new PaginationAdapter(fifteendaysdata);
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         loadMoreButton.setText("点击回到顶部");
@@ -527,9 +529,9 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
                         if (data != null) {
                             LoadWeather(data.getCode());
                             initializeAdapter(data.getCode());
-
+                            loadMoreButton.setText("15天趋势预报");
                         }
-                     //   weather_cistrict.setText(data == null ? district : String.format("当前城市：%s，%s", data.getName(), data.getCode()));
+                        //   weather_cistrict.setText(data == null ? district : String.format("当前城市：%s，%s", data.getName(), data.getCode()));
                         weather_cistrict.setText(data == null ? district : String.format(data.getName()));
                         if (data != null) {
                             Toast.makeText(
