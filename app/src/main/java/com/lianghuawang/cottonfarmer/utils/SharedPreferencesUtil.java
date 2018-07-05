@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 
 import com.lianghuawang.cottonfarmer.MyApp;
 
+import java.util.Map;
+
 public class SharedPreferencesUtil {
 
     private SharedPreferences sp;
@@ -58,5 +60,17 @@ public class SharedPreferencesUtil {
 
     public long getLong(String key, long defValue){
         return sp.getLong(key, defValue);
+    }
+
+    public void remove(String key){
+        editor.remove(key).commit();
+    }
+
+    public Map<String,Object> getAll(){
+        return (Map<String, Object>) sp.getAll();
+    }
+
+    public void clear(){
+        editor.clear();
     }
 }

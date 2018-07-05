@@ -12,17 +12,8 @@ public class DialogUtil {
                 .setMessage(messages)
                 .setPositiveButton("确定", listener)
                 .setNegativeButton("取消", listener);
+        dialog.show();
 
-    }
-
-    public abstract static class AlertDialogPositive implements DialogInterface.OnClickListener {
-
-        public abstract void positive();
-
-        @Override
-        public void onClick(DialogInterface dialogInterface, int i) {
-
-        }
     }
 
 }

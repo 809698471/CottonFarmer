@@ -36,6 +36,16 @@
                 android:textColor="#fff"
                 android:textSize="18sp" />
 
+            <TextView
+                android:id="@+id/tv_proof_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="跳过"
+                android:textColor="@color/white"
+                android:visibility="gone" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -67,7 +77,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="@dimen/y80"
         android:layout_marginTop="@dimen/y80"
-        android:background="@drawable/btn"
+        android:background="@drawable/btn_1"
         android:text="提交"
         android:textColor="@color/white" />
 </RelativeLayout>

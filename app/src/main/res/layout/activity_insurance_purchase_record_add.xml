@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.my.personalinformation.activity.InsurancePurchaseRecordAddActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/y128"
+        android:background="#32c683">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y88"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
+
+            <ImageView
+                android:id="@+id/iv_insurance_purchase_return"
+                android:layout_width="@dimen/x24"
+                android:layout_height="@dimen/y44"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/x24"
+                android:src="@mipmap/back" />
+
+            <TextView
+                android:id="@+id/tv_insurance_purchase_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="新增记录"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f7f7f7"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/y450"
+            android:layout_marginTop="@dimen/y30"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x24"
+                    android:text="年        份："
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_insurance_purchase_year"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:entries="@array/year"
+                    android:spinnerMode="dialog"
+                    android:theme="@style/SpnStyle" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@mipmap/fenge" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x24"
+                    android:text="险        种："
+                    android:textSize="15sp" />
+
+                <Spinner
+                    android:id="@+id/spinner_insurance_purchase_types"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:spinnerMode="dialog"
+                    android:theme="@style/SpnStyle" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@mipmap/fenge" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/y100">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/x24"
+                    android:text="投保面积(亩)："
+                    android:textSize="15sp" />
+
+                <EditText
+                    android:id="@+id/et_insurance_purchase_area"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="number"
+                    android:background="@null" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@mipmap/fenge" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_insurance_purchase_submit"
+            android:layout_width="@dimen/y250"
+            android:layout_height="@dimen/y80"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/y150"
+            android:background="@drawable/btn_1"
+            android:text="完成"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+</LinearLayout>

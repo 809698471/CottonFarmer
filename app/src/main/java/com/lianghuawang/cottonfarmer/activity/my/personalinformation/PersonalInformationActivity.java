@@ -87,7 +87,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
         personalinformation_return = (ImageView) findViewById(R.id.personalinformation_return);
         //个人头像
         personalinformation_personalimage = findViewById(R.id.personalinformation_personalimage);
-        Glide.with(this).load(Per.getString(ConstantUtil.PERSONAL_HEAD,"")).into(personalinformation_personalimage);
+        Glide.with(this).load(Per.getString(ConstantUtil.PERSONAL_HEAD, "")).error(R.mipmap.button).into(personalinformation_personalimage);
 
         //基本信息
         personalinformation_essentialinformation = (LinearLayout) findViewById(R.id.personalinformation_essentialinformation);
@@ -122,7 +122,8 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
                 break;
             //基本信息
             case R.id.personalinformation_essentialinformation:
-                startActivity(new Intent(PersonalInformationActivity.this, EssentialInformationActivity.class));
+                Intent intent = new Intent(PersonalInformationActivity.this, EssentialInformationActivity.class);
+                startActivity(intent);
                 break;
             //种植信息
             case R.id.personalinformation_plantinginformation:
@@ -270,7 +271,7 @@ public class PersonalInformationActivity extends BaseActivity implements View.On
                     String cropImagePath = getRealFilePathFromUri(getApplicationContext(), uri);
                     Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
                     if (type == 1) {
-                        tempFile= new File(cropImagePath);
+                        tempFile = new File(cropImagePath);
                         personalinformation_personalimage.setImageBitmap(bitMap);
                         SubmitImg();
                     } else {

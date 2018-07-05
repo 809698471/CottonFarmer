@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.lianghuawang.cottonfarmer.activity.home.NewsActivity">
+    tools:context="com.lianghuawang.cottonfarmer.activity.home.news.NewsActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

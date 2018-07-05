@@ -22,10 +22,10 @@
                 android:id="@+id/massifinformationadapter_sucheng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地块俗称：" />
+                android:text="年份：" />
 
             <TextView
-                android:id="@+id/tv_sucheng"
+                android:id="@+id/tv_insurance_year"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -40,14 +40,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地        号：" />
+                android:text="险种：" />
 
             <TextView
-                android:id="@+id/tv_dihao"
+                android:id="@+id/tv_insurance_types"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:inputType="number"
                 android:text="164621564651" />
         </LinearLayout>
 
@@ -59,34 +58,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="地块经度：" />
+                android:text="投保面积（亩）：" />
 
             <TextView
-                android:id="@+id/tv_jingdu"
+                android:id="@+id/tv_insurance_area"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:inputType="number"
                 android:text="152.12" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="地块纬度：" />
-
-            <TextView
-                android:id="@+id/tv_weidu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:inputType="number"
-                android:text="156.22" />
         </LinearLayout>
 
     </LinearLayout>
@@ -100,15 +79,15 @@
         android:background="@mipmap/fenge" />
 
     <LinearLayout
+        android:id="@+id/ll_insurance_del"
+        android:gravity="center"
         android:layout_width="@dimen/x274"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:gravity="center">
+        android:layout_alignParentRight="true">
 
         <ImageView
-            android:id="@+id/iv_del"
+            android:src="@mipmap/icon_lajitong"
             android:layout_width="@dimen/x32"
-            android:layout_height="@dimen/y42"
-            android:src="@mipmap/icon_lajitong" />
+            android:layout_height="@dimen/y42" />
     </LinearLayout>
 </RelativeLayout>

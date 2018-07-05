@@ -5,11 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
+import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 
 /**
  * 登录／注册工具
  */
 public class LoginUtils {
+
+    /**
+     * 验证输入是否为空
+     * @param context
+     * @param value   验证的信息
+     * @param message 为空后，toast的内容
+     * @return
+     */
+    public static boolean isEmpty(Context context, String value, String message){
+        if (value == null || value.isEmpty()){
+            ToastUtils.showLong(context,message);
+            return false;
+        }
+        return true;
+    }
+
     /**
      * 验证用户名是否为空
      *

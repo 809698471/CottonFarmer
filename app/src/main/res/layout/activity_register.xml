@@ -28,6 +28,14 @@
             android:src="@mipmap/logo1" />
     </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/iv_register_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/x24"
+        android:layout_marginTop="@dimen/y100"
+        android:src="@drawable/back1"/>
+
     <android.support.v7.widget.CardView
         android:id="@+id/cardview"
         android:layout_width="match_parent"

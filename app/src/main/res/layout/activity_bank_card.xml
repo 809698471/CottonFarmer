@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,6 +8,7 @@
     tools:context="com.lianghuawang.cottonfarmer.activity.my.bankcard.BankCardActivity">
 
     <LinearLayout
+        android:id="@+id/ll_bank_tab"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y128"
         android:background="#32c683">
@@ -41,6 +42,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/ll_bank_tab"
         android:layout_weight="1"
         android:background="#f7f7f7"
         android:overScrollMode="never"
@@ -59,18 +61,32 @@
                 android:layout_height="wrap_content" />
 
             <android.support.v7.widget.CardView
-                app:cardCornerRadius="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/y372">
+                android:layout_height="@dimen/y372"
+                app:cardCornerRadius="20dp">
 
                 <ImageView
                     android:id="@+id/commit"
-                    android:layout_gravity="center"
                     android:layout_width="@dimen/x60"
                     android:layout_height="@dimen/y60"
+                    android:layout_gravity="center"
                     android:src="@mipmap/icon_jiahao" />
             </android.support.v7.widget.CardView>
 
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_bank_ok"
+        android:layout_width="@dimen/y250"
+        android:layout_height="@dimen/y80"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/y50"
+        android:background="@drawable/btn_1"
+        android:text="完成注册"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:visibility="gone" />
+</RelativeLayout>

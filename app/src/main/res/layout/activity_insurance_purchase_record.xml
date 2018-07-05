@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +7,7 @@
     tools:context=".activity.my.personalinformation.activity.InsurancePurchaseRecordActivity">
 
     <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y128"
         android:background="#32c683">
@@ -19,7 +19,7 @@
             android:layout_marginTop="8dp">
 
             <ImageView
-                android:id="@+id/insurancepurchaserecord_return"
+                android:id="@+id/iv_insurance_return"
                 android:layout_width="@dimen/x24"
                 android:layout_height="@dimen/y44"
                 android:layout_centerVertical="true"
@@ -31,32 +31,87 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_gravity="center"
-                android:text="购买记录"
+                android:text="历年棉花种植险购买记录"
                 android:textColor="#fff"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_insurance_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="跳过"
+                android:textColor="@color/white"
+                android:visibility="gone" />
         </RelativeLayout>
 
     </LinearLayout>
 
-    <EditText
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="20dp"
-        android:background="@drawable/shape_frame"
-        android:hint="输入近三年保险购买记录" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/ll_insurance_btn"
+        android:layout_below="@id/ll"
+        android:background="#f6f6f6"
+        android:orientation="vertical">
 
-    <View
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyc_insurance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f6f6f6" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_insurance_btn"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <Button
-        android:id="@+id/insurancepurchaserecord_next"
-        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_1"
-        android:text="下一步"
-        android:textColor="@color/white" />
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_insurance_xinzeng"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/y100"
+            android:layout_marginLeft="@dimen/x24"
+            android:layout_marginRight="@dimen/x24"
+            android:background="@drawable/btn_1"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/x28"
+                android:layout_height="@dimen/y30"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/icon_bianji1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="新增记录"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_insurance_next"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/y100"
+            android:layout_marginLeft="@dimen/x24"
+            android:layout_marginRight="@dimen/x24"
+            android:background="@drawable/btn_1"
+            android:visibility="gone"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下一步"
+                android:textColor="#fff"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

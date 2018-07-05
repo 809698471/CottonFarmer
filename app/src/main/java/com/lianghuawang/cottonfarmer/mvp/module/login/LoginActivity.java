@@ -5,6 +5,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
@@ -13,12 +14,16 @@ import com.lianghuawang.cottonfarmer.mvp.module.register.RegisterActivity;
 import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseMVPACtivity;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.LoginUtils;
 
 import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
- *登录页
+ * create by fanwenke at 2018/7/3
+ * 登录页面
+ * bug:在用户尚未注册时，输入手机号，点击获取验证码，还是能进行倒计时，不合理
  */
 
 public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> implements LoginView {
@@ -33,7 +38,8 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
     Button mCaptcha;
     @Bind(R.id.tv_new_regist)
     Button mNewRegister;
-
+    @Bind(R.id.iv_login_back)
+    ImageView mBack;
     private static int SUCCESSCODE;
 
     private Handler handler;
@@ -54,8 +60,8 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
         });
     }
 
-    @OnClick({R.id.btn_login, R.id.btn_login_captcha})
-    public void onClick(Button btn) {
+    @OnClick({R.id.btn_login, R.id.btn_login_captcha, R.id.iv_login_back})
+    public void onClick(View btn) {
         switch (btn.getId()) {
             case R.id.btn_login:
                 String user = mUsername.getText().toString();
@@ -64,7 +70,10 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
                 break;
             case R.id.btn_login_captcha:
                 String phoneNumber = mUsername.getText().toString().trim();
-                mPresenter.captcha(mCaptcha,phoneNumber);
+                mPresenter.captcha(this,mCaptcha,phoneNumber);
+                break;
+            case R.id.iv_login_back:
+                onBackPressed();
                 break;
             default:
         }
@@ -87,6 +96,5 @@ public class LoginActivity extends BaseMVPACtivity<LoginPresenter, LoginModel> i
     protected void loadData() {
 
     }
-
 
 }

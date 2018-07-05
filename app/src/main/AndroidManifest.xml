@@ -101,6 +101,7 @@
         <activity android:name=".activity.my.personalinformation.activity.PlantingInformationActivity" />
         <activity android:name=".activity.my.personalinformation.activity.ProofOfOwnershipActivity" />
         <activity android:name=".activity.my.personalinformation.activity.InsurancePurchaseRecordActivity" />
+        <activity android:name=".activity.my.personalinformation.activity.InsurancePurchaseRecordAddActivity"/><!-- 增加/修改保险记录 -->
         <activity android:name=".activity.my.ReservationProgressActivity" />
         <activity android:name=".activity.my.ApplyForALoanActivity" />
         <activity android:name=".activity.my.mycredit.BankCardSMSVerification" />
@@ -118,7 +119,7 @@
         <activity android:name=".activity.my.ClaimProgressActivity" />
         <activity android:name=".tools.view.ClipImageActivity" />
         <activity android:name=".GuideActivity" />
-        <activity android:name=".activity.home.NewsActivity" />
+        <activity android:name=".activity.home.news.NewsActivity" />
         <activity android:name=".activity.home.WeatherActivity" />
 
         <!-- 地图的key -->

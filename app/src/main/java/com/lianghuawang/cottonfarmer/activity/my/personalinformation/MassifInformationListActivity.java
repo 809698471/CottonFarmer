@@ -104,7 +104,7 @@ public class MassifInformationListActivity extends BaseActivity implements View.
             @Override
             public void onFailed(Call call, IOException e) {
                 dismissdingDialog();
-                ToastUtils.showLong(MassifInformationListActivity.this, "断网了");
+                ToastUtils.showLong(MassifInformationListActivity.this, ConstantUtil.NETERROR);
             }
         });
     }

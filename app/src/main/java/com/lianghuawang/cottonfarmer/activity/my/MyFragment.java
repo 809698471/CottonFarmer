@@ -98,6 +98,8 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 .into(myfragment_personalinformation);
         if (data.getUsername() != null) {
             mUsername.setText(data.getUsername());
+        } else {
+            mUsername.setText("游客");
         }
     }
 

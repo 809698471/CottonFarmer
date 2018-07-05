@@ -1,24 +1,24 @@
 package com.lianghuawang.cottonfarmer.mvp.module.register;
 
 import android.content.Intent;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.activity.HomePageActivity;
-import com.lianghuawang.cottonfarmer.mvp.module.login.LoginActivity;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
+import com.lianghuawang.cottonfarmer.activity.my.personalinformation.activity.EssentialInformationActivity;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseMVPACtivity;
+import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 
 import butterknife.Bind;
 import butterknife.OnClick;
-/*
-* 注册页
-* */
+/**
+ * create by fanwenke at 2018/7/3
+ * 注册页面
+ *
+ */
 public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,RegisterModel> implements RegisterView{
 
     @Bind(R.id.et_mobile)
@@ -29,8 +29,8 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
     Button mRegister;
     @Bind(R.id.btn_login_captcha)
     Button mCaptcha;
-//    @Bind(R.id.tv_back_login)
-//    TextView mBackLogin;
+    @Bind(R.id.iv_register_back)
+    ImageView mBackLogin;
 
 
     @Override
@@ -40,18 +40,10 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
 
     @Override
     protected void initView() {
-//        mBackLogin.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-//                RegisterActivity.this.finish();
-//                overridePendingTransition(android.R.anim.slide_out_right,android.R.anim.slide_in_left);
-//            }
-//        });
     }
 
-    @OnClick({R.id.btn_login, R.id.btn_login_captcha})
-    public void onClick(Button btn) {
+    @OnClick({R.id.btn_login, R.id.btn_login_captcha,R.id.iv_register_back})
+    public void onClick(View btn) {
         switch (btn.getId()) {
             case R.id.btn_login:
                 String user = mUsername.getText().toString();
@@ -60,7 +52,10 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
                 break;
             case R.id.btn_login_captcha:
                 String phoneNumber = mUsername.getText().toString();
-                mPresenter.captcha(mCaptcha,phoneNumber);
+                mPresenter.captcha(this,mCaptcha,phoneNumber);
+                break;
+            case R.id.iv_register_back:
+                onBackPressed();
                 break;
             default:
         }
@@ -69,7 +64,10 @@ public class RegisterActivity extends BaseMVPACtivity<RegisterPresenter,Register
     @Override
     public void register() {
         ToastUtils.showLong(this, getResources().getText(R.string.registerSuccess));
-        startActivity(new Intent(this, HomePageActivity.class));
+        Intent intent = new Intent(this, EssentialInformationActivity.class);
+        intent.putExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,
+                ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT);
+        startActivity(intent);
         this.finish();
     }
 

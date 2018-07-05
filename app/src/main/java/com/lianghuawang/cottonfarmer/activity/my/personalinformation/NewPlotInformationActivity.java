@@ -90,7 +90,7 @@ public class NewPlotInformationActivity extends BaseActivity {
         params.put("land_num",Dihao);
         params.put("longitude",Jingdu);
         params.put("latitude",Weidu);
-
+        LogUtils.d("NewPlotInformationActivity:"+params.toString());
         OkHttp3Utils.doPost(ConstantUtil.tokenKey, token, Concat.ADD_BLOCK_URL, params, new GsonObjectCallback<AddDiKuai>() {
             @Override
             public void onUi(AddDiKuai addDiKuai) {

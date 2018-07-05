@@ -51,8 +51,11 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 import static com.lianghuawang.cottonfarmer.tools.view.FileUtil.getRealFilePathFromUri;
-
-//身份证验证
+/**
+ * create by fanwenke at 2018/7/3
+ * 身份证实名认证
+ * bug:小米手机拍照，照片逆时针旋转90°
+ */
 public class AuthenticationActivity extends BaseActivity implements View.OnClickListener, PermissionUtil.Calls {
 
     private static final String BODY_ZHENG = "id_positive";
@@ -88,6 +91,8 @@ public class AuthenticationActivity extends BaseActivity implements View.OnClick
     private File tempFile;
     private static final int REQUEST_CROP_PHOTO = 102;
 
+    private SharedPreferencesUtil mEssentialSP;//基本信息SP
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_authentication;
@@ -95,6 +100,7 @@ public class AuthenticationActivity extends BaseActivity implements View.OnClick
 
     @Override
     protected void initView() {
+        mEssentialSP = SharedPreferencesUtil.newInstance(ConstantUtil.ESSENTIAL_INFORMATION_KEY);
         SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         Token = sp.getString(ConstantUtil.LOGINTOKEN, "");
         layout_zheng.setOnClickListener(new View.OnClickListener() {
@@ -116,12 +122,6 @@ public class AuthenticationActivity extends BaseActivity implements View.OnClick
             public void onClick(View v) {
                 showDialog();
                 clicked = 3;
-            }
-        });
-        btn_commit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(AuthenticationActivity.this, "提交", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -225,13 +225,11 @@ public class AuthenticationActivity extends BaseActivity implements View.OnClick
         if (resultCode == RESULT_OK) {  //回传值接受成功
             if (requestCode == REQUEST_CAPTURE) {
                 dialog.dismiss();
-//                gotoClipActivity(Uri.fromFile(tempFile));
             } else if (requestCode == REQUEST_CODE) {     //正面的相册取图
                 ArrayList<String> images = data.getStringArrayListExtra(
                         ImageSelectorUtils.SELECT_RESULT);
                 imagePath = images.get(0);
                 dialog.dismiss();
-//                gotoClipActivity(Uri.fromFile(new File(imagePath)));
             } else if (requestCode == REQUEST_CROP_PHOTO) {
                 final Uri uri = data.getData();
                 if (uri == null) {
@@ -241,7 +239,6 @@ public class AuthenticationActivity extends BaseActivity implements View.OnClick
                 Bitmap bitMap = BitmapFactory.decodeFile(cropImagePath);
                 tempFile = new File(cropImagePath);
                 layout_zheng.setImageBitmap(bitMap);
-//                SubmitImg();
             }
             showLoadingDialog(AuthenticationActivity.this);
             switch (clicked) {
@@ -265,21 +262,6 @@ public class AuthenticationActivity extends BaseActivity implements View.OnClick
                     break;
             }
         }
-    }
-
-    /**
-     * 打开截图界面
-     */
-    public void gotoClipActivity(Uri uri) {
-        if (uri == null) {
-            return;
-        }
-//        uri--:file:///storage/emulated/0/image/1530172957841.jpg
-        Intent intent = new Intent();
-        intent.setClass(this, ClipImageActivity.class);
-        intent.putExtra("type", 2);
-        intent.setData(uri);
-        startActivityForResult(intent, REQUEST_CROP_PHOTO);
     }
 
     /**
@@ -330,8 +312,10 @@ public class AuthenticationActivity extends BaseActivity implements View.OnClick
                     public void onUi(Attestation attestation) {
                         if (attestation.isSuccess()) {
                             ToastUtils.showLong(AuthenticationActivity.this, attestation.getData().getResult());
+                            mEssentialSP.putBoolean(ConstantUtil.ESSENTIAL_AUTHENTICATION,true);
                             dismissdingDialog();
                         } else {
+                            ToastUtils.showLong(AuthenticationActivity.this, attestation.getData().getErrmsg());
                             dismissdingDialog();
                         }
                     }

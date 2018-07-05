@@ -17,6 +17,7 @@ import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.tools.BankCardTextWatcher;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
+import com.lianghuawang.cottonfarmer.utils.VerifyUtil;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -36,25 +37,18 @@ public class BankCardBindingActivity extends BaseActivity implements CityPickerL
 
     @Bind(R.id.bankcardbinding_return)
     ImageView back;
-
     @Bind(R.id.bankcardbinding_btn)
     Button bangding;
-
     @Bind(R.id.bankcardbinding_name)
-    EditText name;
-
+    EditText mName;
     @Bind(R.id.bankcardbinding_cardnumber)
     EditText card;
-
     @Bind(R.id.bankcardbinding_phone)
     EditText phone;
-
     @Bind(R.id.btn_selector)
     Button mSelector;
-
     @Bind(R.id.tv_show)
     TextView city;
-
     @Bind(R.id.bankcardbinding_dizhi)
     EditText dizhi;
 
@@ -112,7 +106,10 @@ public class BankCardBindingActivity extends BaseActivity implements CityPickerL
     }
 
     private void getKey() {
-        final String name = this.name.getText().toString().trim();
+        final String name = this.mName.getText().toString().trim();
+        if (!VerifyUtil.IsEmpty(this,name,ConstantUtil.BANK_USERNAME_NULL)){
+            return;
+        }
         String card = this.card.getText().toString().trim();
         String cards[] = card.split(" ");
         card = "";
@@ -121,6 +118,21 @@ public class BankCardBindingActivity extends BaseActivity implements CityPickerL
         }
         final String phone = this.phone.getText().toString().trim();
         final String dizhi = this.dizhi.getText().toString().trim();
+        if (!VerifyUtil.IsEmpty(this,card,ConstantUtil.BANK_CARDID_NULL)){
+            return;
+        }
+        if (!VerifyUtil.IsEmpty(this,phone,ConstantUtil.BANK_PHONE_NULL)){
+            return;
+        }
+        if (!VerifyUtil.IsEmpty(this,citys,ConstantUtil.BANK_ADDRESS_NULL)){
+            return;
+        } else if (!VerifyUtil.IsEmpty(this,shi,ConstantUtil.BANK_ADDRESS_NULL)){
+            return;
+        }
+
+        if (!VerifyUtil.IsEmpty(this,dizhi,ConstantUtil.BANK_ADDRESS_DETAIL_NULL)){
+            return;
+        }
         Map<String, String> params = new HashMap<>();
         params.put("username", name);
         params.put("bank_card", card);

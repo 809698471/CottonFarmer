@@ -27,40 +27,37 @@ import java.util.Map;
 
 import okhttp3.Call;
 
-public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView> {
+public class RegisterPresenter extends BasePresenter<RegisterModel, RegisterView> {
 
-    private final static int NUMBER = 5;
-    private int count_number = NUMBER;
     private TimekeeperUtil timekeeperUtil;
     private String getKey;
     private Button button;
 
     public void startRegister(Context context, String usename, String password) {
-        if (!LoginUtils.isEmpty_Username(usename)) {//验证用户名不为空
-            ToastUtils.showLong(context, context.getResources().getText(R.string.username_null));
+        if (!LoginUtils.isEmpty(context, usename, ConstantUtil.INPUT_PHONE)) {//验证用户名不为空
             return;
         }
         if (!LoginUtils.isMobile(usename)) {//验证用户名合法性
-            ToastUtils.showLong(context, context.getResources().getText(R.string.phone_illegal));
+            ToastUtils.showLong(context, ConstantUtil.INPUT_CORRECT_PHONE);
             return;
         }
-        if (!LoginUtils.isEmpty_Passwrod(password)) {//验证密码不为空
-            ToastUtils.showLong(context, context.getResources().getText(R.string.password_null));
+        if (!LoginUtils.isEmpty(context, password, ConstantUtil.INPUT_CAPTCHA)) {//验证密码不为空
             return;
         }
-        Map<String,String> params = new HashMap<>();
-        params.put("mobile_phone",usename);
-        if (getKey == null){
-            params.put("verification_key","");
+        Map<String, String> params = new HashMap<>();
+        params.put("mobile_phone", usename);
+        if (getKey == null) {
+            params.put("verification_key", "");
         } else {
-            params.put("verification_key",getKey);
+            params.put("verification_key", getKey);
         }
-        params.put("verification_code",password);
-        startHttp(context,params);
+        params.put("verification_code", password);
+        startHttp(context, params);
     }
 
     /**
      * 请求注册接口
+     *
      * @param context
      * @param params
      */
@@ -70,14 +67,14 @@ public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView>
                 .request(new GsonObjectCallback<LoginInstance>() {
                     @Override
                     public void onUi(LoginInstance loginInstance) {
-                        if (loginInstance.isSuccess()){
+                        if (loginInstance.isSuccess()) {
                             //请求成功
                             SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
-                            sp.putString(ConstantUtil.LOGINTOKEN,"Bearer " + loginInstance.getData().getAccess_token());
-                            sp.putBoolean(ConstantUtil.LOGINSTATE,true);
+                            sp.putString(ConstantUtil.LOGINTOKEN, "Bearer " + loginInstance.getData().getAccess_token());
+                            sp.putBoolean(ConstantUtil.LOGINSTATE, true);
                             getView().register();
                         } else {
-                            ToastUtils.showLong(context,loginInstance.getData().getErrmsg());
+                            ToastUtils.showLong(context, loginInstance.getData().getErrmsg());
                         }
                     }
 
@@ -89,12 +86,19 @@ public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView>
                 .buidler();
     }
 
-    public void captcha(Button mCaptcha, String phoneNumber) {
-        timekeeperUtil = new TimekeeperUtil(handler,NUMBER,count_number);
+    public void captcha(Context context, Button mCaptcha, String phoneNumber) {
+        if (!LoginUtils.isEmpty(context, phoneNumber, ConstantUtil.INPUT_PHONE)) {
+            return;
+        }
+        if (!LoginUtils.isMobile(phoneNumber)) {//验证用户名合法性
+            ToastUtils.showLong(context, ConstantUtil.INPUT_CORRECT_PHONE);
+            return;
+        }
+        timekeeperUtil = new TimekeeperUtil(handler, ConstantUtil.LOGIN_CAPTCHA_NUMBER, ConstantUtil.LOGIN_CAPTCHA_NUMBER);
         timekeeperUtil.start();
         button = mCaptcha;
         button.setEnabled(false);
-        verification(phoneNumber);
+        verification(context, phoneNumber);
     }
 
     @SuppressLint("HandlerLeak")
@@ -114,22 +118,27 @@ public class RegisterPresenter extends BasePresenter<RegisterModel,RegisterView>
         }
     };
 
-    private void verification(String phoneNumber){
-        Map<String,String> params = new HashMap<>();
-        params.put("mobile_phone",phoneNumber);
+    private void verification(final Context context, String phoneNumber) {
+        Map<String, String> params = new HashMap<>();
+        params.put("mobile_phone", phoneNumber);
         params.put("is_login", "0");
         VerificationAPI.Builder()
                 .setParams(params)
                 .request(new GsonObjectCallback<VerficationInstance>() {
                     @Override
                     public void onUi(VerficationInstance verficationInstance) {
-                        LogUtils.d("验证码为：" + verficationInstance.getData().getKey());
-                        getKey = verficationInstance.getData().getKey();
+                        if (verficationInstance.isSuccess()) {
+                            LogUtils.d("验证码为：" + verficationInstance.getData().getKey());
+                            getKey = verficationInstance.getData().getKey();
+                            ToastUtils.showLong(context,ConstantUtil.CAPTCHA_ONSUCCEED);
+                        } else {
+                            ToastUtils.showLong(context, verficationInstance.getData().getErrmsg());
+                        }
                     }
 
                     @Override
                     public void onFailed(Call call, IOException e) {
-                        LogUtils.d("获取验证码失败");
+                        LogUtils.d(ConstantUtil.CAPTCHA_ERROR);
                     }
                 })
                 .builder();

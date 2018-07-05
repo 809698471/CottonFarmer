@@ -51,10 +51,20 @@ public class VerficationInstance {
         /**
          * key : verificationCode_P3JbjlXSHap3Yfd
          * expired_at : 2018-05-14 11:08:50
+         * "errmsg":"验证key不能为空。"
          */
 
         private String key;
         private String expired_at;
+        private String errmsg;
+
+        public String getErrmsg() {
+            return errmsg;
+        }
+
+        public void setErrmsg(String errmsg) {
+            this.errmsg = errmsg;
+        }
 
         public String getKey() {
             return key;

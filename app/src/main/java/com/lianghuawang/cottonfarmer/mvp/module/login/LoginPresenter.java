@@ -31,8 +31,6 @@ import okhttp3.Call;
 
 public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
 
-    private final static int NUMBER = 10;
-    private int count_number = NUMBER;
     private TimekeeperUtil timekeeperUtil;
     private String getKey;
     private Button button;
@@ -46,16 +44,14 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
      */
     public void startlogin(Context context, String usename, String password) {
 
-        if (!LoginUtils.isEmpty_Username(usename)) {//验证用户名不为空
-            ToastUtils.showLong(context, context.getResources().getText(R.string.username_null));
+        if (!LoginUtils.isEmpty(context,usename,ConstantUtil.INPUT_PHONE)) {//验证用户名不为空
             return;
         }
         if (!LoginUtils.isMobile(usename)) {//验证用户名合法性
-            ToastUtils.showLong(context, context.getResources().getText(R.string.phone_illegal));
+            ToastUtils.showLong(context, ConstantUtil.INPUT_CORRECT_PHONE);
             return;
         }
-        if (!LoginUtils.isEmpty_Passwrod(password)) {//验证验证码不为空
-            ToastUtils.showLong(context, context.getResources().getText(R.string.password_null));
+        if (!LoginUtils.isEmpty(context,password,ConstantUtil.INPUT_CAPTCHA)) {//验证验证码不为空
             return;
         }
         Map<String, String> params = new HashMap<>();
@@ -100,13 +96,25 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                 .builder();
     }
 
-
-    public void captcha(Button mCaptcha, String phoneNumber) {
-        timekeeperUtil = new TimekeeperUtil(handler, NUMBER, count_number);
+    /**
+     * 获取验证码
+     * @param context
+     * @param mCaptcha
+     * @param phoneNumber
+     */
+    public void captcha(Context context,Button mCaptcha, String phoneNumber) {
+        if (!LoginUtils.isEmpty(context,phoneNumber, ConstantUtil.INPUT_PHONE)){
+            return;
+        }
+        if (!LoginUtils.isMobile(phoneNumber)) {//验证用户名合法性
+            ToastUtils.showLong(context,ConstantUtil.INPUT_CORRECT_PHONE);
+            return;
+        }
+        timekeeperUtil = new TimekeeperUtil(handler, ConstantUtil.LOGIN_CAPTCHA_NUMBER, ConstantUtil.LOGIN_CAPTCHA_NUMBER);
         timekeeperUtil.start();
         button = mCaptcha;
         button.setEnabled(false);
-        verification(phoneNumber);
+        verification(context,phoneNumber);
     }
 
     @SuppressLint("HandlerLeak")
@@ -129,7 +137,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     };
 
 
-    private void verification(String phoneNumber) {
+    private void verification(final Context context, String phoneNumber) {
         Map<String, String> params = new HashMap<>();
         params.put("mobile_phone", phoneNumber);
         params.put("is_login", "1");
@@ -138,14 +146,18 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                 .request(new GsonObjectCallback<VerficationInstance>() {
                     @Override
                     public void onUi(VerficationInstance verficationInstance) {
-                        LogUtils.d("验证码为：" + verficationInstance.getData().getKey());
-                        getKey = verficationInstance.getData().getKey();
-                        LogUtils.d(verficationInstance.toString());
+                        if (verficationInstance.isSuccess()) {
+                            LogUtils.d("验证码为：" + verficationInstance.getData().getKey());
+                            getKey = verficationInstance.getData().getKey();
+                            ToastUtils.showLong(context,ConstantUtil.CAPTCHA_ONSUCCEED);
+                        } else {
+                            ToastUtils.showLong(context,verficationInstance.getData().getErrmsg());
+                        }
                     }
 
                     @Override
                     public void onFailed(Call call, IOException e) {
-                        LogUtils.d("获取验证码失败");
+                        LogUtils.d(ConstantUtil.CAPTCHA_ERROR);
                         LogUtils.d("失败原因：" + e.getMessage());
                     }
                 })

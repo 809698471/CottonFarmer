@@ -30,6 +30,7 @@ import com.lianghuawang.cottonfarmer.activity.home.agriculturalMaterials.AMActiv
 import com.lianghuawang.cottonfarmer.activity.home.cooperation.CooperativeOrganizationActivity;
 import com.lianghuawang.cottonfarmer.activity.home.insurance.BuyInsuranceActivity;
 import com.lianghuawang.cottonfarmer.activity.home.news.HeadLineActivity;
+import com.lianghuawang.cottonfarmer.activity.home.news.NewsActivity;
 import com.lianghuawang.cottonfarmer.activity.my.MyCreditActivity;
 import com.lianghuawang.cottonfarmer.adapter.NewsAndInformationAdapter;
 import com.lianghuawang.cottonfarmer.config.Concat;
@@ -237,15 +238,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     public String bianma(String province, String name) {
 
         String cityCode = "失败";
-
-        Log.e("Test", "province : " + province);
-        Log.e("Test", "name : " + name);
         DBManager dbManager = new DBManager(getActivity());
         List<City> allCities = dbManager.getAllCities();
         for (int i = 0; i < allCities.size(); i++) {
-            Log.e("Test", "getProvince : " + allCities.get(i).getProvince());
             if (province.contains(allCities.get(i).getProvince())) {
-                Log.e("Test", "getName : " + allCities.get(i).getName());
                 if (name.contains(allCities.get(i).getName())) {
                     cityCode = allCities.get(i).getCode();
                     return cityCode;

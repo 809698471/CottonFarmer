@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -29,12 +30,14 @@ import okhttp3.Call;
 public class BankCardActivity extends BaseActivity {
     @Bind(R.id.bankcard_return)
     ImageView bankcard_return;
-
     @Bind(R.id.commit)
     ImageView commit;
-
     @Bind(R.id.lv_item)
     RecyclerView mRecyclerView;
+    @Bind(R.id.btn_bank_ok)
+    Button mOk;
+
+    private static int Module;
 
     private String Token;
     private LinearLayoutManager manager;
@@ -47,29 +50,40 @@ public class BankCardActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        init();
         Token = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP)
-                .getString(ConstantUtil.LOGINTOKEN,"");
+                .getString(ConstantUtil.LOGINTOKEN, "");
         initRecylcView();
         showLoadingDialog(this);
         getData();
     }
 
+    private void init() {
+        Module = getIntent().getIntExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING, 0);
+        if (Module == ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT) {
+            mOk.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void initRecylcView() {
-        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayout.VERTICAL,true);
+        LinearLayoutManager manager = new LinearLayoutManager(this, LinearLayout.VERTICAL, true);
         mRecyclerView.setLayoutManager(manager);
-        adapter = new BankCardAdapter(mRecyclerView,null);
+        adapter = new BankCardAdapter(mRecyclerView, null);
         mRecyclerView.setAdapter(adapter);
     }
 
-    @OnClick({R.id.bankcard_return,R.id.commit})
+    @OnClick({R.id.bankcard_return, R.id.commit, R.id.btn_bank_ok})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.commit:
                 Intent intent = new Intent(BankCardActivity.this, BankCardBindingActivity.class);
-                intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
+                intent.putExtra(ConstantUtil.INTENTTOKEN, Token);
                 startActivity(intent);
                 break;
             case R.id.bankcard_return:
+                finish();
+                break;
+            case R.id.btn_bank_ok:
                 finish();
                 break;
         }

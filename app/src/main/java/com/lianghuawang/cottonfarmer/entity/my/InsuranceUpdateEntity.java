@@ -1,13 +1,12 @@
 package com.lianghuawang.cottonfarmer.entity.my;
 
-public class Attestation {
-
+public class InsuranceUpdateEntity {
 
     /**
      * success : true
      * code : 200
      * message : OK
-     * data : {"result":"认证成功"}
+     * data : {"successmsg":"修改保险购买记录成功","errmsg":"保险购买记录编号为空!"}
      */
 
     private boolean success;
@@ -49,13 +48,20 @@ public class Attestation {
 
     public static class DataBean {
         /**
-         * result : 认证成功
-         * "Http error code":400,
-         * "Error msg in body":"Invalid Result - input image is not qualified for current service",
-         * "errmsg":"图像不正确"
+         * successmsg : 修改保险购买记录成功
+         * errmsg : 保险购买记录编号为空!
          */
 
+        private String successmsg;
         private String errmsg;
+
+        public String getSuccessmsg() {
+            return successmsg;
+        }
+
+        public void setSuccessmsg(String successmsg) {
+            this.successmsg = successmsg;
+        }
 
         public String getErrmsg() {
             return errmsg;
@@ -63,16 +69,6 @@ public class Attestation {
 
         public void setErrmsg(String errmsg) {
             this.errmsg = errmsg;
-        }
-
-        private String result;
-
-        public String getResult() {
-            return result;
-        }
-
-        public void setResult(String result) {
-            this.result = result;
         }
     }
 }

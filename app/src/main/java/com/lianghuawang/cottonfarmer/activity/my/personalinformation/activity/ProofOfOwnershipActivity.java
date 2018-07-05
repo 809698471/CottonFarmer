@@ -63,16 +63,21 @@ import okhttp3.Response;
 import static com.lianghuawang.cottonfarmer.config.Concat.APIS;
 
 //权属证明
+/**
+ * create by fanwenke at 2018/7/4
+ * 权属证明
+ * 暂没有缓存图片，还是以请求服务器为主
+ */
 public class ProofOfOwnershipActivity extends BaseActivity implements PermissionUtil.Calls, ProofAdapter.AddLinstener, ProofAdapter.DelLinstener {
 
     @Bind(R.id.proofofownership_return)
     ImageView mBack;
-
     @Bind(R.id.proofofownership_next)
     Button mSubmit;
-
     @Bind(R.id.recycler)
     RecyclerView mRecyclerView;
+    @Bind(R.id.tv_proof_skip)
+    TextView mSkip;
 
     private PermissionUtil permission;
 
@@ -99,6 +104,8 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
 
     private String Token;
 
+    private static int Module;//进入的模式
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_proof_of_ownership;
@@ -106,6 +113,11 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
 
     @Override
     protected void initView() {
+        Module = getIntent().getIntExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,0);
+        if (Module == ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT){
+            mSkip.setVisibility(View.VISIBLE);
+            mSubmit.setText(ConstantUtil.REGISTER_NEXT);
+        }
         SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         Token = sp.getString(ConstantUtil.LOGINTOKEN, "");
         initRecylerView();
@@ -160,7 +172,7 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
     }
 
 
-    @OnClick({R.id.proofofownership_return, R.id.proofofownership_next})
+    @OnClick({R.id.proofofownership_return, R.id.proofofownership_next,R.id.tv_proof_skip})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.proofofownership_return:
@@ -168,9 +180,14 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
                 break;
             //下一步---购买保险记录
             case R.id.proofofownership_next:
-//                startActivity(new Intent(ProofOfOwnershipActivity.this,InsurancePurchaseRecordActivity.class ));
-
                 UploadImage();
+                break;
+            case R.id.tv_proof_skip:
+                Intent intent = new Intent(ProofOfOwnershipActivity.this, InsurancePurchaseRecordActivity.class);
+                    intent.putExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,
+                            ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT);
+                startActivity(intent);
+                this.finish();
                 break;
         }
 
@@ -373,6 +390,15 @@ public class ProofOfOwnershipActivity extends BaseActivity implements Permission
                     dataBean.setFlag(0);
                     dataBean.setUpdata(true);
                     mData.add(0, dataBean);
+                    Intent intent = new Intent(ProofOfOwnershipActivity.this, InsurancePurchaseRecordActivity.class);
+                    if (Module == ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT){
+                        intent.putExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,
+                                ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT);
+                    } else {
+                        intent.putExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,
+                                ConstantUtil.INTENT_MY_JUMP_PERSONALINFORMATION_INT);
+                    }
+                    startActivity(intent);
                 } else {
                     ProofInstance.DataBean dataBean = new ProofInstance.DataBean();
                     dataBean.setFlag(0);

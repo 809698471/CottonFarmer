@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.my.personalinformation.activity.EssentialInformationActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y128"
         android:background="#32c683">
 
         <RelativeLayout
-            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="@dimen/y88"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp">
 
             <ImageView
                 android:layout_width="@dimen/x24"
@@ -32,6 +33,17 @@
                 android:text="基本信息"
                 android:textColor="#fff"
                 android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/tv_essential_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:text="跳过"
+                android:textColor="@color/white"
+                android:visibility="gone" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -170,9 +182,9 @@
                         android:id="@+id/spinner_add_minzsp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:spinnerMode="dialog"
                         android:entries="@array/namefamily"
-                        android:theme="@style/SpnStyle"/>
+                        android:spinnerMode="dialog"
+                        android:theme="@style/SpnStyle" />
 
                 </LinearLayout>
 
@@ -194,9 +206,9 @@
                         android:layout_marginLeft="@dimen/x24"
                         android:layout_marginRight="@dimen/x28"
                         android:layout_marginTop="@dimen/y28"
+                        android:text="身份证号："
                         android:textColor="@color/color_333333"
                         android:textSize="@dimen/x30"
-                        android:text="身份证号："
                         android:textStyle="bold" />
 
                     <EditText
@@ -220,15 +232,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <Button
                     android:id="@+id/btn_authentication"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/y50"
                     android:layout_marginBottom="@dimen/y45"
+                    android:layout_marginTop="@dimen/y50"
                     android:background="@drawable/bg_btn_login_selected"
                     android:gravity="center"
                     android:paddingLeft="@dimen/x100"
@@ -260,9 +272,9 @@
                         android:layout_marginLeft="@dimen/x24"
                         android:layout_marginRight="@dimen/x28"
                         android:layout_marginTop="@dimen/y28"
+                        android:text="联系方式："
                         android:textColor="@color/color_333333"
                         android:textSize="@dimen/x30"
-                        android:text="联系方式："
                         android:textStyle="bold" />
 
                     <EditText
@@ -293,9 +305,9 @@
                         android:layout_marginLeft="@dimen/x24"
                         android:layout_marginRight="@dimen/x28"
                         android:layout_marginTop="@dimen/y28"
+                        android:text="家庭住址："
                         android:textColor="@color/color_333333"
                         android:textSize="@dimen/x30"
-                        android:text="家庭住址："
                         android:textStyle="bold" />
 
                     <EditText
@@ -324,9 +336,9 @@
                         android:layout_marginLeft="@dimen/x24"
                         android:layout_marginRight="@dimen/x28"
                         android:layout_marginTop="@dimen/y28"
+                        android:text="邮        编："
                         android:textColor="@color/color_333333"
                         android:textSize="@dimen/x30"
-                        android:text="邮        编："
                         android:textStyle="bold" />
 
                     <EditText
@@ -355,8 +367,8 @@
                         android:id="@+id/btn_save"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/y50"
                         android:layout_marginBottom="@dimen/y45"
+                        android:layout_marginTop="@dimen/y50"
                         android:background="@drawable/bg_btn_login_selected"
                         android:gravity="center"
                         android:paddingLeft="@dimen/x100"

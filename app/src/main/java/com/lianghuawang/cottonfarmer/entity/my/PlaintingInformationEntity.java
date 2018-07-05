@@ -1,13 +1,13 @@
 package com.lianghuawang.cottonfarmer.entity.my;
 
-public class Attestation {
+public class PlaintingInformationEntity {
 
 
     /**
-     * success : true
-     * code : 200
-     * message : OK
-     * data : {"result":"认证成功"}
+     * success : false
+     * code : 422
+     * message : Unprocessable entity
+     * data : {"errmsg":"暂无地块信息！"}
      */
 
     private boolean success;
@@ -49,10 +49,7 @@ public class Attestation {
 
     public static class DataBean {
         /**
-         * result : 认证成功
-         * "Http error code":400,
-         * "Error msg in body":"Invalid Result - input image is not qualified for current service",
-         * "errmsg":"图像不正确"
+         * errmsg : 暂无地块信息！
          */
 
         private String errmsg;
@@ -63,16 +60,6 @@ public class Attestation {
 
         public void setErrmsg(String errmsg) {
             this.errmsg = errmsg;
-        }
-
-        private String result;
-
-        public String getResult() {
-            return result;
-        }
-
-        public void setResult(String result) {
-            this.result = result;
         }
     }
 }

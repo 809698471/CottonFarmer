@@ -6,7 +6,7 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer EiKe_jTWtu-wdmzfz7syjprAOGhZ2OKf";
+    String TOKEN = "Bearer 80sCr8LOngrSnB-F0GeHXeH71ka7gtIn";
 
     String API = "http://39.107.229.149";
 //    String API = "http://app.lianhuawang.cn";
@@ -155,9 +155,29 @@ public interface Concat {
     String UPLOADIDENTITYCARDFAN_URL = BASE_URL + "cotton-farmers upload-id-card";
 
     /**
-     * PATCH保险购买记录
+     * GET保险购买记录
      */
-    String INSURANCEPURCHASERECORD_URL = BASE_URL + "cotton-farmers/update-insurance-record";
+    String INSURANCEPURCHASERECORD_URL = BASE_URL + "cotton-farmers/insurance-record";
+
+    /**
+     * GET购买保险--险种类别
+     */
+    String INSURANCEPURCHASERECORDTYPES_URL = BASE_URL + "cotton-farmers/get-risk";
+
+    /**
+     * POST删除保险记录--
+     */
+    String INSURANCEPURCHASERECORDDEL_URL = BASE_URL + "cotton-farmers/delete-insurance-record";
+
+    /**
+     * PAT修改保险记录--
+     */
+    String INSURANCEPURCHASERECORDUPDATE_URL = BASE_URL + "cotton-farmers/update-insurance-record";
+
+    /**
+     * POST修改保险记录--
+     */
+    String INSURANCEPURCHASERECORDUPADD_URL = BASE_URL + "cotton-farmers/add-insurance-record";
 
     /**
      * DELETE删除地块信息
