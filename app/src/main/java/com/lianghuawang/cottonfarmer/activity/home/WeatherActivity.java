@@ -55,38 +55,6 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
 
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
-    //声明定位回调监听器
-    public AMapLocationListener mLocationListener = new AMapLocationListener() {
-        @Override
-        public void onLocationChanged(AMapLocation amapLocation) {
-            if (amapLocation != null) {
-                if (amapLocation.getErrorCode() == 0) {
-                /*    amapLocation.getProvince();//省信息
-                    amapLocation.getCity();//城市信息
-                    amapLocation.getDistrict();//城区信息*/
-                    //  String province = amapLocation.getProvince();
-                    // String city = amapLocation.getCity();
-                    district = amapLocation.getDistrict();
-
-                    String bianma = bianma(amapLocation.getProvince(), amapLocation.getDistrict());
-                    Log.e("asdasdasdasdada", "" + bianma);
-                    LoadWeather(bianma);
-                    initializeAdapter(bianma);
-                    //  weather_province.setText(province);
-                    //  weather_city.setText(city);
-                    weather_cistrict.setText(district);
-                    LogUtils.e("===========" + amapLocation.getAdCode());
-                    Log.e("AmapError2222", amapLocation.getAddress());
-                } else {
-                    //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
-                    Log.e("AmapError", "location Error, ErrCode:"
-                            + amapLocation.getErrorCode() + ", errInfo:"
-                            + amapLocation.getErrorInfo());
-                }
-            }
-
-        }
-    };
     //声明AMapLocationClientOption对象
     public AMapLocationClientOption mLocationOption = null;
     private LinearLayout weather_lin;
@@ -117,8 +85,11 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     private String tmp_max;
     private String tmp_min;
     private SunriseView mSunriseView;
-    private int sunRise;
-    private int sunSet;
+    private String sunrise_time;
+    private String sunset_time;
+    private AMapLocationListener mLocationListener;
+    private TextView weather_sunriseTime;
+    private TextView weather_sunsetTime;
 
 
     @Override
@@ -130,6 +101,7 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     protected void initView() {
         //静态栏--黑色字体
         QMUIStatusBarHelper.setStatusBarLightMode(this);
+        initLocation();
         weather_lin = (LinearLayout) findViewById(R.id.weather_lin);
         weather_lin.setOnClickListener(this);
         //省
@@ -164,19 +136,25 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
         weather_tv_xingqi = (TextView) headlayout.findViewById(R.id.weather_tv_xingqi);
         //月、日
         weather_tv_mon_day = (TextView) headlayout.findViewById(R.id.weather_tv_mon_day);
+        //日出时间
         getTime();
         //15天趋势预报
         loadMoreButton = (Button) loadMoreView.findViewById(R.id.loadMoreButton);
         loadMoreButton.setOnClickListener(this);
         getOldDate();
         mSunriseView = (SunriseView) loadMoreView.findViewById(R.id.sun);
-        startSunAnim(6, 18);
+        //日出
+        weather_sunriseTime = (TextView) loadMoreView.findViewById(R.id.weather_sunriseTime);
+        //日落
+        weather_sunsetTime = (TextView) loadMoreView.findViewById(R.id.weather_sunsetTime);
+        // startSunAnim(6, 18);
 
     }
 
     public void startSunAnim(int sunrise, int sunset) {
         Calendar calendarNow = Calendar.getInstance();
         int hour = calendarNow.get(Calendar.HOUR_OF_DAY);
+        Log.e("获取当前时间", "" + hour);
         if (hour < sunrise) {
             mSunriseView.sunAnim(0);
         } else if (hour > sunset) {
@@ -186,10 +164,10 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
         }
     }
 
+
     /**
      * 获取当前编码
      */
-
     public String bianma(String province, String name) {
 
         String cityCode = "失败";
@@ -199,9 +177,9 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
         DBManager dbManager = new DBManager(WeatherActivity.this);
         List<City> allCities = dbManager.getAllCities();
         for (int i = 0; i < allCities.size(); i++) {
-            Log.e("Test", "getProvince : " + allCities.get(i).getProvince());
+            //   Log.e("Test", "getProvince : " + allCities.get(i).getProvince());
             if (province.contains(allCities.get(i).getProvince())) {
-                Log.e("Test", "getName : " + allCities.get(i).getName());
+                //  Log.e("Test", "getName : " + allCities.get(i).getName());
                 if (name.contains(allCities.get(i).getName())) {
                     cityCode = allCities.get(i).getCode();
                     return cityCode;
@@ -214,7 +192,6 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     /**
      * 处理首页时间
      */
-
     public void getTime() {
         final Calendar calendar = Calendar.getInstance();//获取实例
         calendar.setTimeZone(TimeZone.getTimeZone("GMT+8:00"));//设置时区
@@ -268,6 +245,44 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
         s = simpleDateFormat.format(endDate);
         Log.e("++++++", s.toString());
 
+    }
+
+    /**
+     * 定位城市
+     */
+    private void initLocation() {
+        //声明定位回调监听器
+        mLocationListener = new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation amapLocation) {
+                if (amapLocation != null) {
+                    if (amapLocation.getErrorCode() == 0) {
+                /*    amapLocation.getProvince();//省信息
+                    amapLocation.getCity();//城市信息
+                    amapLocation.getDistrict();//城区信息*/
+                        //  String province = amapLocation.getProvince();
+                        // String city = amapLocation.getCity();
+                        district = amapLocation.getDistrict();
+
+                        String bianma = bianma(amapLocation.getProvince(), amapLocation.getDistrict());
+                        Log.e("asdasdasdasdada", "" + bianma);
+                        LoadWeather(bianma);
+                        initializeAdapter(bianma);
+                        //  weather_province.setText(province);
+                        //  weather_city.setText(city);
+                        weather_cistrict.setText(district);
+                        LogUtils.e("===========" + amapLocation.getAdCode());
+                        Log.e("AmapError2222", amapLocation.getAddress());
+                    } else {
+                        //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+                        Log.e("AmapError", "location Error, ErrCode:"
+                                + amapLocation.getErrorCode() + ", errInfo:"
+                                + amapLocation.getErrorInfo());
+                    }
+                }
+
+            }
+        };
     }
 
     private void initDingWeiData() {
@@ -349,16 +364,24 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
                                 tmp_max = jsonObject1.getString("tmp_max");
                                 //预测最低温度
                                 tmp_min = jsonObject1.getString("tmp_min");
-                             /*   //日出时间
-                                sunRise = jsonObject1.getInt("sunrise");
+                                //日出时间
+                                sunrise_time = jsonObject1.getString("sunrise");
                                 //日落时间
-                                sunSet = jsonObject1.getInt("sunset");
-                                Log.e("日出日落：", "日出 "+sunRise );
-                                Log.e("日出日落：", "日落 "+sunSet );*/
+                                sunset_time = jsonObject1.getString("sunset");
+
                                 items.setW_am(w_am);//天气现象
                                 items.setWind(wind + "风");//风力
                                 items.setTmp_max(tmp_max);//预测最高高度
                                 items.setTmp_min(tmp_min + "℃");//预测最高低度
+                                weather_sunriseTime.setText("日出 " + sunrise_time);//日出时间
+                                weather_sunsetTime.setText("日落 " + sunset_time);//日落时间
+                                String startTime = sunrise_time;
+                                String endTime = sunset_time;
+                                String subStartTime = startTime.substring(0, startTime.indexOf(":"));
+                                String subEndTime = endTime.substring(0, endTime.indexOf(":"));
+                                Integer integerStart = Integer.parseInt(subStartTime);
+                                Integer integerEnd = Integer.parseInt(subEndTime);
+                                startSunAnim(integerStart, integerEnd);
                                 if (i < 3) {
                                     threedaysdata.add(items);
                                 }

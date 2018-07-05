@@ -18,11 +18,10 @@
         android:layout_height="@dimen/y30"
         android:background="#2bc286" />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y430"
-        android:background="#ddaaaa"
-        android:orientation="vertical">
+        android:background="#fff">
 
         <com.lianghuawang.cottonfarmer.tools.SunriseView
             android:id="@+id/sun"
@@ -31,7 +30,26 @@
             android:layout_gravity="center"
             android:layout_marginLeft="@dimen/x10" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/weather_sunriseTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/x50"
+            android:layout_marginTop="@dimen/y230"
+            android:textColor="#E6D68925"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/weather_sunsetTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/x70"
+            android:layout_marginTop="@dimen/y230"
+
+            android:textColor="#E6D68925"
+            android:textSize="15sp" />
+    </RelativeLayout>
 
 
     <LinearLayout

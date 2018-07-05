@@ -45,6 +45,8 @@ public class SunriseView extends View {
     private int mRadius;
     private RectF mRectF;
 
+
+
     public SunriseView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
@@ -110,7 +112,7 @@ public class SunriseView extends View {
 
     public void sunAnim(final float a) {
         if (a == 0) {
-            mSunBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.daily_deatil_sun_up);
+            mSunBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sun);
             mBitmapW = mSunBitmap.getWidth() / 2;
             mBitmapH = mSunBitmap.getHeight();
             mNotUp = true;
@@ -118,7 +120,7 @@ public class SunriseView extends View {
             mHasDown = false;
             invalidate();
         } else if (a == 1) {
-            mSunBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.daily_deatil_sun_up);
+            mSunBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sun);
             mBitmapW = mSunBitmap.getWidth() / 2;
             mBitmapH = mSunBitmap.getHeight();
             mNotUp = false;
@@ -128,7 +130,7 @@ public class SunriseView extends View {
             mMovePointY = mEndPointY;
             invalidate();
         } else {
-            mSunBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.daily_deatil_sun);
+            mSunBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.sun_up);
             mBitmapW = mSunBitmap.getWidth() / 2;
             mBitmapH = mSunBitmap.getHeight() / 2;
             mNotUp = false;
@@ -160,14 +162,14 @@ public class SunriseView extends View {
         mPathPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPathPaint.setStyle(Paint.Style.STROKE);
         mPathPaint.setStrokeWidth(2);
-        mPathPaint.setColor(Color.parseColor("#ffffff"));
+        mPathPaint.setColor(Color.parseColor("#FF121111"));
         PathEffect effects = new DashPathEffect(new float[]{10, 10, 10, 10}, 0);
         mPathPaint.setPathEffect(effects);
 
         //日出动画阴影部分初始化
         mAnmationPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mAnmationPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        mAnmationPaint.setColor(Color.parseColor("#32ffffff"));
+        mAnmationPaint.setColor(Color.parseColor("#40D68925"));
 
         //开始坐标的XY
         mStartPointX = dp2px(5);
@@ -196,4 +198,5 @@ public class SunriseView extends View {
     public int dp2px(float dpVal) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpVal, getResources().getDisplayMetrics());
     }
+
 }
