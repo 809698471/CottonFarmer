@@ -2,8 +2,12 @@ package com.lianghuawang.cottonfarmer.activity.home;
 
 
 import android.Manifest;
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.PagerAdapter;
@@ -18,6 +22,7 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.amap.api.location.AMapLocation;
@@ -127,34 +132,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
-    //声明定位回调监听器
-    public AMapLocationListener mLocationListener = new AMapLocationListener() {
-        @Override
-        public void onLocationChanged(AMapLocation amapLocation) {
-            if (amapLocation != null) {
-                if (amapLocation.getErrorCode() == 0) {
-                /*    amapLocation.getProvince();//省信息
-                    amapLocation.getCity();//城市信息
-                    amapLocation.getDistrict();//城区信息*/
-                    // String str = amapLocation.getProvince() + amapLocation.getDistrict();
-                    String str = amapLocation.getDistrict();
-                    text_dingwei.setText(str);
-                    String bianma = bianma(amapLocation.getProvince(), amapLocation.getDistrict());
-                    Log.e("asdasdasdasdada", "" + bianma);
-                    LoadWeather(bianma);
-                    Log.e("AmapError2222", amapLocation.getAddress());
-                } else {
-                    //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
-                    Log.e("AmapError", "location Error, ErrCode:"
-                            + amapLocation.getErrorCode() + ", errInfo:"
-                            + amapLocation.getErrorInfo());
-                }
-            }
-
-        }
-    };
     //声明AMapLocationClientOption对象
     public AMapLocationClientOption mLocationOption = null;
+    private AMapLocationListener mLocationListener;
+
 
     @Override
     public int getLayoutId() {
@@ -190,6 +171,12 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private void initView() {
         QMUIStatusBarHelper.setStatusBarDarkMode(getActivity());
+        if (isNetworkAvailable(getActivity())) {
+            initLocation();
+        }else {
+            Toast.makeText(getActivity(), "没网啦···", Toast.LENGTH_SHORT).show();
+        }
+
         initDingWeiData();
         checkPermission();
         viewpager.setCurrentItem(0);
@@ -350,12 +337,75 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         mLocationClient.startLocation();
     }
 
+    private void initLocation() {
+        //声明定位回调监听器
+        mLocationListener = new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation amapLocation) {
+                if (amapLocation != null) {
+                    if (amapLocation.getErrorCode() == 0) {
+                 /*    amapLocation.getProvince();//省信息
+                     amapLocation.getCity();//城市信息
+                     amapLocation.getDistrict();//城区信息*/
+                        // String str = amapLocation.getProvince() + amapLocation.getDistrict();
+                        String str = amapLocation.getDistrict();
+                        text_dingwei.setText(str);
+                        String bianma = bianma(amapLocation.getProvince(), amapLocation.getDistrict());
+                        Log.e("asdasdasdasdada", "" + bianma);
+                        LoadWeather(bianma);
+                        Log.e("AmapError2222", amapLocation.getAddress());
+                    } else {
+                        //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+                        Log.e("AmapError", "location Error, ErrCode:"
+                                + amapLocation.getErrorCode() + ", errInfo:"
+                                + amapLocation.getErrorInfo());
+                    }
+                }
+
+            }
+        };
+    }
+
+    /**
+     * 检查当前网络是否可用
+     *
+     * @param //context
+     * @return
+     */
+    public boolean isNetworkAvailable(Activity activity) {
+        Context context = activity.getApplicationContext();
+        // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager == null) {
+            return false;
+        } else {
+            // 获取NetworkInfo对象
+            NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
+            if (networkInfo != null && networkInfo.length > 0) {
+                for (int i = 0; i < networkInfo.length; i++) {
+                    System.out.println(i + "===状态===" + networkInfo[i].getState());
+                    System.out.println(i + "===类型===" + networkInfo[i].getTypeName());
+                    // 判断当前网络状态是否为连接状态
+                    if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             //天气
             case R.id.home_lin_weather:
-                startActivity(new Intent(getActivity(),WeatherActivity.class));
+                if (isNetworkAvailable(getActivity())) {
+                    startActivity(new Intent(getActivity(), WeatherActivity.class));
+                } else {
+                    Toast.makeText(getActivity(), "亲，检查一下网络！", Toast.LENGTH_LONG).show();
+
+                }
                 break;
             //互助保险
             case R.id.home_lin_hzbx:
