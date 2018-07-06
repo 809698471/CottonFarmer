@@ -45,7 +45,7 @@
                     android:layout_marginTop="5dp"
                     android:textSize="@dimen/x30"/>
 
-                <TextView
+                <WebView
                     android:id="@+id/tv_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

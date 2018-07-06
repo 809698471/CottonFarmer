@@ -53,7 +53,8 @@ public class BuyInsuranceActivity extends BaseActivity {
 
     private String Token;
 
-    private List<String> titles = Arrays.asList("农业保险", "信用保险", "其他");
+//    private List<String> titles = Arrays.asList("农业保险", "信用保险", "其他");
+    private List<String> titles = Arrays.asList("农业保险", "其他");
 
     private List<Integer> images = Arrays.asList(
             R.mipmap.insurance_zuo_img,
@@ -96,7 +97,7 @@ public class BuyInsuranceActivity extends BaseActivity {
     private void initFragment() {
         fragments = Arrays.asList(
                 (BaseFragment) AgricultureFragment.newInstance(Token),
-                (BaseFragment) CreditFragment.newInstance(Token),
+//                (BaseFragment) CreditFragment.newInstance(Token),
                 (BaseFragment) PriceFragment.newInstance(Token)
         );
     }

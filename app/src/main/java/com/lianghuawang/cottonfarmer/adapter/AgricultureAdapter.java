@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,7 +41,9 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
             final ItemViewHolder holde = (ItemViewHolder) holder;
             holde.title.setText(insuranceList.get(position).getName());
 //            holde.title.setTextSize(MeasureUtil.px2sp(getContext(),30f));
-            holde.content.setText(insuranceList.get(position).getDescribe());
+            holde.content.loadDataWithBaseURL(null,
+                    insuranceList.get(position).getDescribe(),
+                    "text/html", "UTF-8",null);
             holde.time.setText(insuranceList.get(position).getStart_end_time());
             Glide.with(getContext()).load(Concat.IMAGE_URL + insuranceList.get(position).getImage_url()).into(holde.img);
         }
@@ -59,7 +62,8 @@ public class AgricultureAdapter extends AbsRecyclerViewAdapter {
     public class ItemViewHolder extends ClickableViewHolder{
 
         private ImageView img;
-        private TextView title,content,time;
+        private TextView title,time;
+        private WebView content;
 
         public ItemViewHolder(View itemView) {
             super(itemView);

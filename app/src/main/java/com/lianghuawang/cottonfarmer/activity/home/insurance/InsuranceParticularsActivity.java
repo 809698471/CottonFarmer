@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -34,7 +35,7 @@ public class InsuranceParticularsActivity extends BaseActivity {
     TextView mName;
 
     @Bind(R.id.tv_ins_par_content)
-    TextView mMontent;
+    WebView mMontent;
 
     @Bind(R.id.cb_argeed)
     CheckBox mCheck;
@@ -143,7 +144,7 @@ public class InsuranceParticularsActivity extends BaseActivity {
         mQita.setText(Qita);
 //        String policy = String.format(getResources().getString(R.string.policy),mData.getDescribe())
         mPolicy.setText("保单6个月");
-        mMontent.setText("      " + mData.getDescribe());
+        mMontent.loadDataWithBaseURL(null,mData.getDescribe(),"text/html", "UTF-8",null);
         //保险对象
         String Object = String.format(getResources().getString(R.string.object), mData.getStart_end_time());
         mObject.setText(Object);
