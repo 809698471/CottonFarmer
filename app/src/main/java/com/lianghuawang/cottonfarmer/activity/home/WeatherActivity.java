@@ -90,6 +90,7 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
     private AMapLocationListener mLocationListener;
     private TextView weather_sunriseTime;
     private TextView weather_sunsetTime;
+    private String bianma;
 
 
     @Override
@@ -264,7 +265,7 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
                         // String city = amapLocation.getCity();
                         district = amapLocation.getDistrict();
 
-                        String bianma = bianma(amapLocation.getProvince(), amapLocation.getDistrict());
+                        bianma = bianma(amapLocation.getProvince(), amapLocation.getDistrict());
                         Log.e("asdasdasdasdada", "" + bianma);
                         LoadWeather(bianma);
                         initializeAdapter(bianma);
@@ -555,13 +556,18 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
                             loadMoreButton.setText("15天趋势预报");
                         }
                         //   weather_cistrict.setText(data == null ? district : String.format("当前城市：%s，%s", data.getName(), data.getCode()));
-                        weather_cistrict.setText(data == null ? district : String.format(data.getName()));
+                        // weather_cistrict.setText(data == null ? district : String.format(data.getName()));
                         if (data != null) {
-                            Toast.makeText(
+                      /*      Toast.makeText(
                                     getApplicationContext(),
                                     String.format("点击的数据：%s，%s", data.getName(), data.getCode()),
                                     Toast.LENGTH_SHORT)
-                                    .show();
+                                    .show();*/
+                            weather_cistrict.setText(String.format(data.getName()));
+                        } else {
+                            weather_cistrict.setText(district);
+                            LoadWeather(bianma);
+                            initializeAdapter(bianma);
                         }
                     }
 
@@ -573,7 +579,9 @@ public class WeatherActivity extends BaseActivity implements View.OnClickListene
                             public void run() {
                                 CityPicker.getInstance().locateComplete(new LocatedCity(district, "", ""), LocateState.SUCCESS);
                             }
-                        }, 3000);
+                        }, 2000);
+                        LoadWeather(bianma);
+                        initializeAdapter(bianma);
                     }
                 })
                 .show();
