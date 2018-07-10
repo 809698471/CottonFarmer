@@ -205,7 +205,6 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/gray"
                 android:divider="@drawable/table_h_divider"
                 android:orientation="horizontal"
                 android:showDividers="middle|beginning|end">
@@ -216,10 +215,10 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:text="险别"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -227,10 +226,10 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="投保面积"
+                    android:padding="5dp"
+                    android:text="投保面积(亩)"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -238,10 +237,10 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="单位保额"
+                    android:padding="5dp"
+                    android:text="单位保额(￥)"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -249,10 +248,10 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="保险金额"
+                    android:padding="5dp"
+                    android:text="保险金额(￥)"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -260,10 +259,10 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="费率"
+                    android:padding="5dp"
+                    android:text="费率(‰)"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -271,10 +270,10 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="保费"
+                    android:padding="5dp"
+                    android:text="保费(￥)"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
             </TableRow>
 
             <TableRow
@@ -290,65 +289,67 @@
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:text="主险"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
+                    android:id="@+id/tv_insurance_verfiy_area"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="20亩"
+                    android:padding="5dp"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
+                    android:id="@+id/tv_insurance_verfiy_price"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:text="100"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
+                    android:id="@+id/tv_insurance_verfiy_insurance_amount"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="2000"
+                    android:padding="5dp"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
+                    android:id="@+id/tv_insurance_verfiy_rate"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
-                    android:text="90%"
+                    android:padding="5dp"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
 
                 <TextView
+                    android:id="@+id/tv_insurance_verfiy_premium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:padding="10dp"
+                    android:padding="5dp"
                     android:text="1800"
                     android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:textSize="13dp" />
             </TableRow>
         </TableLayout>
     </LinearLayout>
@@ -360,7 +361,8 @@
         android:layout_below="@id/ll4"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
@@ -618,9 +620,9 @@
             android:id="@+id/ll9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -661,9 +663,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <TextView
@@ -708,9 +710,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="保费计算"
-                android:textColor="@color/black"
-                android:textSize="15dp" />
+                android:textColor="@color/green"
+                android:textSize="18dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -6,12 +6,13 @@ import android.support.v7.app.AlertDialog;
 
 public class DialogUtil {
 
-    public static void VerifyDialog(Context context, String titls, String messages, DialogInterface.OnClickListener listener) {
+    public static void VerifyDialog(Context context, String titls, String messages,String PositiveButton,String NegativeButton,
+                                    DialogInterface.OnClickListener listener) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(context);
         dialog.setTitle(titls)
                 .setMessage(messages)
-                .setPositiveButton("确定", listener)
-                .setNegativeButton("取消", listener);
+                .setPositiveButton(PositiveButton, listener)
+                .setNegativeButton(NegativeButton, listener);
         dialog.show();
 
     }

@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lianghuawang.cottonfarmer.R;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.ConfirmOrder;
 
 public class PayDialog2 extends Dialog {
 

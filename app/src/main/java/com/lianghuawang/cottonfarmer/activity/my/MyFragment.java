@@ -76,7 +76,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                         if (data.isSuccess()) {
                             LogUtils.d("请求成功"+data.getData().getUsername());
                             setData(data.getData());
-                            Per.putString(ConstantUtil.PERSONAL_HEAD,Concat.IMAGE_URL + "/" + data.getData().getAvatar());
+                            Per.putString(ConstantUtil.PERSONAL_HEAD,Concat.IMAGE_URL + data.getData().getAvatar());
                             mData = data.getData();
                         } else {
 //                            ToastUtils.showLong(getContext(),data.getData().getErrmsg());

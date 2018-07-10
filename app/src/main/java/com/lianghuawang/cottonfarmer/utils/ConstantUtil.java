@@ -134,6 +134,10 @@ public class ConstantUtil {
 
     public static final String INSURANCE = "INSURANCE";//传递订单详情key
 
+    public static final String INSURANCE_ID = "INSURANCE_TYPE";//保险类型
+
+    public static final String  INSURANCE_ACT = "INSURANCE_ACT";//保险条例
+
     /**
      * -------------------订单模块
      */
@@ -167,4 +171,10 @@ public class ConstantUtil {
 
     /**---------------------------------新闻-----------------------------------**/
 
+
+
+    /** ----------------------DialogUtil-----------------------**/
+
+    public static final int POSITIVE = -1;//PositiveButton
+    public static final int NEGATIVE = -2;//NegativeButton
 }

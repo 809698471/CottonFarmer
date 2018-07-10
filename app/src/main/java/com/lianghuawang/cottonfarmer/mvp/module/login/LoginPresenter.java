@@ -35,6 +35,7 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
     private String getKey;
     private Button button;
     private SharedPreferencesUtil sp = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
+
     /**
      * 登录验证
      *
@@ -44,14 +45,14 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
      */
     public void startlogin(Context context, String usename, String password) {
 
-        if (!LoginUtils.isEmpty(context,usename,ConstantUtil.INPUT_PHONE)) {//验证用户名不为空
+        if (!LoginUtils.isEmpty(context, usename, ConstantUtil.INPUT_PHONE)) {//验证用户名不为空
             return;
         }
         if (!LoginUtils.isMobile(usename)) {//验证用户名合法性
             ToastUtils.showLong(context, ConstantUtil.INPUT_CORRECT_PHONE);
             return;
         }
-        if (!LoginUtils.isEmpty(context,password,ConstantUtil.INPUT_CAPTCHA)) {//验证验证码不为空
+        if (!LoginUtils.isEmpty(context, password, ConstantUtil.INPUT_CAPTCHA)) {//验证验证码不为空
             return;
         }
         Map<String, String> params = new HashMap<>();
@@ -98,23 +99,23 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
 
     /**
      * 获取验证码
+     *
      * @param context
      * @param mCaptcha
      * @param phoneNumber
      */
-    public void captcha(Context context,Button mCaptcha, String phoneNumber) {
-        if (!LoginUtils.isEmpty(context,phoneNumber, ConstantUtil.INPUT_PHONE)){
+    public void captcha(Context context, Button mCaptcha, String phoneNumber) {
+        if (!LoginUtils.isEmpty(context, phoneNumber, ConstantUtil.INPUT_PHONE)) {
             return;
         }
         if (!LoginUtils.isMobile(phoneNumber)) {//验证用户名合法性
-            ToastUtils.showLong(context,ConstantUtil.INPUT_CORRECT_PHONE);
+            ToastUtils.showLong(context, ConstantUtil.INPUT_CORRECT_PHONE);
             return;
         }
-        timekeeperUtil = new TimekeeperUtil(handler, ConstantUtil.LOGIN_CAPTCHA_NUMBER, ConstantUtil.LOGIN_CAPTCHA_NUMBER);
-        timekeeperUtil.start();
+//        timekeeperUtil = new TimekeeperUtil(handler, ConstantUtil.LOGIN_CAPTCHA_NUMBER, ConstantUtil.LOGIN_CAPTCHA_NUMBER);
+//        timekeeperUtil.start();
         button = mCaptcha;
-        button.setEnabled(false);
-        verification(context,phoneNumber);
+        verification(context, phoneNumber);
     }
 
     @SuppressLint("HandlerLeak")
@@ -149,9 +150,15 @@ public class LoginPresenter extends BasePresenter<LoginModel, LoginView> {
                         if (verficationInstance.isSuccess()) {
                             LogUtils.d("验证码为：" + verficationInstance.getData().getKey());
                             getKey = verficationInstance.getData().getKey();
-                            ToastUtils.showLong(context,ConstantUtil.CAPTCHA_ONSUCCEED);
+                            ToastUtils.showLong(context, ConstantUtil.CAPTCHA_ONSUCCEED);
+                            timekeeperUtil = new TimekeeperUtil(handler, ConstantUtil.LOGIN_CAPTCHA_NUMBER, ConstantUtil.LOGIN_CAPTCHA_NUMBER);
+                            timekeeperUtil.start();
+                            button.setEnabled(false);
+                        } else if (verficationInstance.getCode() == 422 &&
+                                verficationInstance.getData().getErrmsg().equals("该账户尚未注册")) {
+                            ToastUtils.showLong(context, verficationInstance.getData().getErrmsg());
                         } else {
-                            ToastUtils.showLong(context,verficationInstance.getData().getErrmsg());
+                            ToastUtils.showLong(context, verficationInstance.getData().getErrmsg());
                         }
                     }
 

@@ -178,10 +178,10 @@ public class SignatureActivity extends BaseActivity {
             @Override
             public void onUi(Qianming qianming) {
                 if (qianming.isSuccess()){
-//                    Intent intent = new Intent(SignatureActivity.this,PayInsuranceActivity.class);
-//                    intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
-//                    intent.putExtra("o_water",o_water);
-//                    startActivity(intent);
+                    Intent intent = new Intent();
+                    setResult(RESULT,intent);
+                    finish();
+                } else {
                     Intent intent = new Intent();
                     setResult(RESULT,intent);
                     finish();

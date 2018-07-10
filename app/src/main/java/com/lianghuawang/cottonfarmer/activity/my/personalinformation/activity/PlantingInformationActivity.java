@@ -71,6 +71,7 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
     private String address;
     private ArrayList<String> code;
     private static int Module;//进入的模式
+
     @Override
     protected int getLayoutId() {
 
@@ -80,8 +81,8 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
 
     @Override
     protected void initView() {
-        Module = getIntent().getIntExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,0);
-        if (Module == ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT){
+        Module = getIntent().getIntExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING, 0);
+        if (Module == ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT) {
             mSkip.setVisibility(View.VISIBLE);
             mSubmit.setText(ConstantUtil.REGISTER_NEXT);
         }
@@ -89,6 +90,7 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
         SharedPreferencesUtil LoginSP = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         mToken = LoginSP.getString(ConstantUtil.LOGINTOKEN, "");
         if (mPlantingSP.getBoolean(ConstantUtil.PLANTING_ISSAVE, false)) {
+            showLoadingDialog(this);
             setView();
         } else {
             getApi();
@@ -97,7 +99,8 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
 
     private void setView() {
         mAcres.setText(mPlantingSP.getString(ConstantUtil.PLANTING_ACRES, "0"));
-        mArea.setText(mPlantingSP.getString(ConstantUtil.PLANTING_AREA, ""));
+        address = mPlantingSP.getString(ConstantUtil.PLANTING_AREA, "");
+        mArea.setText(address);
         mNumber.setText(mPlantingSP.getString(ConstantUtil.PLANTING_NUMBER, "0"));
         mKgs.setText(mPlantingSP.getString(ConstantUtil.PLANTING_KGS, "0"));
         if (code == null) {
@@ -109,6 +112,7 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
         code.add(mPlantingSP.getString(ConstantUtil.PLANTING_TOWNSHIP, "0"));
         code.add(mPlantingSP.getString(ConstantUtil.PLANTING_VILLAGE, "0"));
         type = mPlantingSP.getInt(ConstantUtil.PLANTING_AREA_TYPE, 0);
+        dismissdingDialog();
     }
 
     private void getApi() {
@@ -173,7 +177,7 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
         }
     }
 
-    @OnClick({R.id.plantinginformation_return, R.id.rl_block, R.id.plantinginformation_next,R.id.tv_planting_skip})
+    @OnClick({R.id.plantinginformation_return, R.id.rl_block, R.id.plantinginformation_next, R.id.tv_planting_skip})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.plantinginformation_return:
@@ -197,7 +201,7 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
                 SubmitData();
                 break;
             case R.id.tv_planting_skip:
-                Intent intent = new Intent(PlantingInformationActivity.this,ProofOfOwnershipActivity.class);
+                Intent intent = new Intent(PlantingInformationActivity.this, ProofOfOwnershipActivity.class);
                 intent.putExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,
                         ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT);
                 startActivity(intent);
@@ -404,15 +408,14 @@ public class PlantingInformationActivity extends BaseActivity implements OnClick
                     public void onUi(PlaintingInformationEntity plaintingInformationEntity) {
                         if (plaintingInformationEntity.isSuccess()) {
                             ToastUtils.showLong(PlantingInformationActivity.this, ConstantUtil.SAVE_SUCCEED);
-                            Intent intent = new Intent(PlantingInformationActivity.this,ProofOfOwnershipActivity.class);
+                            Intent intent = new Intent(PlantingInformationActivity.this, ProofOfOwnershipActivity.class);
                             if (Module == ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT) {
                                 intent.putExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,
                                         ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_INT);
+                                startActivity(intent);
                             } else {
-                                intent.putExtra(ConstantUtil.INTENT_LOGIN_JUMP_PERSONALINFORMATION_STRING,
-                                        ConstantUtil.INTENT_MY_JUMP_PERSONALINFORMATION_INT);
+                                PlantingInformationActivity.this.finish();
                             }
-                            startActivity(intent);
                         } else {
                             ToastUtils.showLong(PlantingInformationActivity.this,
                                     plaintingInformationEntity.getData().getErrmsg());

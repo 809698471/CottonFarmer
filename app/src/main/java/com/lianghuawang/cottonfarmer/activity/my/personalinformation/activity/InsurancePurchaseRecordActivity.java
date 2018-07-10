@@ -56,8 +56,6 @@ public class InsurancePurchaseRecordActivity extends BaseActivity implements Ins
     @Bind(R.id.ll_insurance_next)
     LinearLayout mNext;//下一步
 
-    private static final int POSITIVE = -1;//确定删除记录
-
     private static final int RESULT = 1010;
     private static final int RESULTCODE = 1011;//修改回调成功
 
@@ -182,11 +180,11 @@ public class InsurancePurchaseRecordActivity extends BaseActivity implements Ins
     @Override
     public void DelItem(int position, final InsuranceEntity.DataBean dataBean) {
         //删除记录
-        DialogUtil.VerifyDialog(InsurancePurchaseRecordActivity.this, "提示", "是否删除此记录？",
+        DialogUtil.VerifyDialog(InsurancePurchaseRecordActivity.this, "提示", "是否删除此记录？","确定","取消",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (which == POSITIVE) {
+                        if (which == ConstantUtil.POSITIVE) {
                             remove(dataBean.getId());
                         }
                         dialog.dismiss();

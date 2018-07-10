@@ -18,7 +18,7 @@ import okhttp3.Call;
  */
 public class AgriculturalInsurance extends BaseAPI {
 
-    private int mPage = 1;
+    private static final int INSURANCE_TYPE = 1;
 
     private Map<String,String> mParams;
 
@@ -41,24 +41,20 @@ public class AgriculturalInsurance extends BaseAPI {
         return this;
     }
 
-    public AgriculturalInsurance setPage(int page){
-        this.mPage = page;
-        return this;
-    }
-
     public AgriculturalInsurance setListener(APIListener listener){
         this.listener = listener;
         return this;
     }
 
     public AgriculturalInsurance request(){
-        OkHttp3Utils.doGet(ConstantUtil.tokenKey,SP.getString(ConstantUtil.LOGINTOKEN,""), PRODUCTLIST_URL2 + mPage, new GsonObjectCallback<AgriculturalInsurances>() {
+        String url = String.format(PRODUCTLIST_URL,INSURANCE_TYPE);
+        OkHttp3Utils.doGet(ConstantUtil.tokenKey,SP.getString(ConstantUtil.LOGINTOKEN,""), url, new GsonObjectCallback<AgriculturalInsurances>() {
             @Override
             public void onUi(AgriculturalInsurances buyInsurances) {
                 if (buyInsurances.isSuccess()) {
                     for (AgriculturalInsurances.DataBean bean : buyInsurances.getData()){
                         String Image = bean.getImage_url();
-                        bean.setImage_url(IMAGE_URL + "/" + Image);
+                        bean.setImage_url(IMAGE_URL + Image);
                     }
                     listener.onSuccess(buyInsurances.getData());
                 } else {

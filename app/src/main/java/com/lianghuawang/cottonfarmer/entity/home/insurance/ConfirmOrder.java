@@ -1,5 +1,8 @@
 package com.lianghuawang.cottonfarmer.entity.home.insurance;
-
+/**
+ * create by fanwenke at 2018/7/9
+ * 确认订单实例
+ */
 public class ConfirmOrder {
 
 
@@ -7,7 +10,7 @@ public class ConfirmOrder {
      * success : true
      * code : 200
      * message : OK
-     * data : {"username":"范文轲","id_code":"412727199308122715","address":"北京","name":"测试","category_name":{"category_id":"1621","category_name":"棉花种植险"},"risk_name":"综合保险","image_url":"/images/insurance/images/product_picture1528455267t013f3d9225b0e93841.jpg","cotton_area":"200亩","price":"1000","insurance_amount":200000,"rate":90,"premium":18000,"plant_area":"新疆兵团农一师一团一连","n_tgt_fld1":1800,"n_tgt_fld2":3600,"n_tgt_fld3":1800,"n_tgt_fld4":1800,"n_tgt_fld5":3600,"n_tgt_fld6":1800,"n_tgt_fld7":1800,"n_tgt_fld8":1800,"pay_num":1800,"dead_start_time":"2018-06-09 00:00:00","dead_end_time":"2018-06-12 00:00:00","take_effect":"测试测试测试测试测试测试","special_agreement":"测试测试测试测试测试测试"}
+     * data : {"username":"范文轲","id_code":"412727199308122715","address":"北京","name":"喀什-棉花种植险","category_name":{"category_id":"1621","category_name":"棉花种植险"},"risk_name":"综合保险","image_url":"/images/insurance/images/product_picture1530609452棉花种植险.png","cotton_area":"200亩","price":"526","insurance_amount":105200,"rate":70,"premium":7364,"plant_area":"新疆克拉玛依乌尔禾区","n_tgt_fld1":2945.6,"n_tgt_fld2":1841,"n_tgt_fld3":0,"n_tgt_fld4":1104.6,"n_tgt_fld5":0,"n_tgt_fld6":0,"n_tgt_fld7":0,"n_tgt_fld8":1472.8,"pay_num":1472.8,"dead_start_time":"2018-06-23 00:00:00","dead_end_time":"2018-09-30 23:59:59","take_effect":"保险责任期间自保险棉花播种时起，至成熟开始收获时止，但不得超出保险单载明的保险期间范围。","special_agreement":""}
      */
 
     private boolean success;
@@ -52,40 +55,30 @@ public class ConfirmOrder {
          * username : 范文轲
          * id_code : 412727199308122715
          * address : 北京
-         * name : 测试
+         * name : 喀什-棉花种植险
          * category_name : {"category_id":"1621","category_name":"棉花种植险"}
          * risk_name : 综合保险
-         * image_url : /images/insurance/images/product_picture1528455267t013f3d9225b0e93841.jpg
+         * image_url : /images/insurance/images/product_picture1530609452棉花种植险.png
          * cotton_area : 200亩
-         * price : 1000
-         * insurance_amount : 200000
-         * rate : 90
-         * premium : 18000
-         * plant_area : 新疆兵团农一师一团一连
-         * n_tgt_fld1 : 1800
-         * n_tgt_fld2 : 3600
-         * n_tgt_fld3 : 1800
-         * n_tgt_fld4 : 1800
-         * n_tgt_fld5 : 3600
-         * n_tgt_fld6 : 1800
-         * n_tgt_fld7 : 1800
-         * n_tgt_fld8 : 1800
-         * pay_num : 1800
-         * dead_start_time : 2018-06-09 00:00:00
-         * dead_end_time : 2018-06-12 00:00:00
-         * take_effect : 测试测试测试测试测试测试
-         * special_agreement : 测试测试测试测试测试测试
-         * "errmsg":"该账号尚未实名认证，无法预约。"
+         * price : 526
+         * insurance_amount : 105200
+         * rate : 70
+         * premium : 7364
+         * plant_area : 新疆克拉玛依乌尔禾区
+         * n_tgt_fld1 : 2945.6
+         * n_tgt_fld2 : 1841
+         * n_tgt_fld3 : 0.0
+         * n_tgt_fld4 : 1104.6
+         * n_tgt_fld5 : 0.0
+         * n_tgt_fld6 : 0.0
+         * n_tgt_fld7 : 0.0
+         * n_tgt_fld8 : 1472.8
+         * pay_num : 1472.8
+         * dead_start_time : 2018-06-23 00:00:00
+         * dead_end_time : 2018-09-30 23:59:59
+         * take_effect : 保险责任期间自保险棉花播种时起，至成熟开始收获时止，但不得超出保险单载明的保险期间范围。
+         * special_agreement :
          */
-        private String errmsg;
-
-        public String getErrmsg() {
-            return errmsg;
-        }
-
-        public void setErrmsg(String errmsg) {
-            this.errmsg = errmsg;
-        }
 
         private String username;
         private String id_code;
@@ -100,15 +93,15 @@ public class ConfirmOrder {
         private int rate;
         private int premium;
         private String plant_area;
-        private int n_tgt_fld1;
+        private double n_tgt_fld1;
         private int n_tgt_fld2;
-        private int n_tgt_fld3;
-        private int n_tgt_fld4;
-        private int n_tgt_fld5;
-        private int n_tgt_fld6;
-        private int n_tgt_fld7;
-        private int n_tgt_fld8;
-        private int pay_num;
+        private double n_tgt_fld3;
+        private double n_tgt_fld4;
+        private double n_tgt_fld5;
+        private double n_tgt_fld6;
+        private double n_tgt_fld7;
+        private double n_tgt_fld8;
+        private double pay_num;
         private String dead_start_time;
         private String dead_end_time;
         private String take_effect;
@@ -218,11 +211,11 @@ public class ConfirmOrder {
             this.plant_area = plant_area;
         }
 
-        public int getN_tgt_fld1() {
+        public double getN_tgt_fld1() {
             return n_tgt_fld1;
         }
 
-        public void setN_tgt_fld1(int n_tgt_fld1) {
+        public void setN_tgt_fld1(double n_tgt_fld1) {
             this.n_tgt_fld1 = n_tgt_fld1;
         }
 
@@ -234,59 +227,59 @@ public class ConfirmOrder {
             this.n_tgt_fld2 = n_tgt_fld2;
         }
 
-        public int getN_tgt_fld3() {
+        public double getN_tgt_fld3() {
             return n_tgt_fld3;
         }
 
-        public void setN_tgt_fld3(int n_tgt_fld3) {
+        public void setN_tgt_fld3(double n_tgt_fld3) {
             this.n_tgt_fld3 = n_tgt_fld3;
         }
 
-        public int getN_tgt_fld4() {
+        public double getN_tgt_fld4() {
             return n_tgt_fld4;
         }
 
-        public void setN_tgt_fld4(int n_tgt_fld4) {
+        public void setN_tgt_fld4(double n_tgt_fld4) {
             this.n_tgt_fld4 = n_tgt_fld4;
         }
 
-        public int getN_tgt_fld5() {
+        public double getN_tgt_fld5() {
             return n_tgt_fld5;
         }
 
-        public void setN_tgt_fld5(int n_tgt_fld5) {
+        public void setN_tgt_fld5(double n_tgt_fld5) {
             this.n_tgt_fld5 = n_tgt_fld5;
         }
 
-        public int getN_tgt_fld6() {
+        public double getN_tgt_fld6() {
             return n_tgt_fld6;
         }
 
-        public void setN_tgt_fld6(int n_tgt_fld6) {
+        public void setN_tgt_fld6(double n_tgt_fld6) {
             this.n_tgt_fld6 = n_tgt_fld6;
         }
 
-        public int getN_tgt_fld7() {
+        public double getN_tgt_fld7() {
             return n_tgt_fld7;
         }
 
-        public void setN_tgt_fld7(int n_tgt_fld7) {
+        public void setN_tgt_fld7(double n_tgt_fld7) {
             this.n_tgt_fld7 = n_tgt_fld7;
         }
 
-        public int getN_tgt_fld8() {
+        public double getN_tgt_fld8() {
             return n_tgt_fld8;
         }
 
-        public void setN_tgt_fld8(int n_tgt_fld8) {
+        public void setN_tgt_fld8(double n_tgt_fld8) {
             this.n_tgt_fld8 = n_tgt_fld8;
         }
 
-        public int getPay_num() {
+        public double getPay_num() {
             return pay_num;
         }
 
-        public void setPay_num(int pay_num) {
+        public void setPay_num(double pay_num) {
             this.pay_num = pay_num;
         }
 

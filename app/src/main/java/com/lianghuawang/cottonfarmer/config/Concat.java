@@ -6,11 +6,11 @@ package com.lianghuawang.cottonfarmer.config;
 
 public interface Concat {
 
-    String TOKEN = "Bearer 80sCr8LOngrSnB-F0GeHXeH71ka7gtIn";
+    String TOKEN = "Bearer Ka-el4ED20V8fXQ6pWKXuYFXVStP78Kd";
 
     String API = "http://39.107.229.149";
-//    String API = "http://app.lianhuawang.cn";
-    String IMAGE_URL = "http://images.lianhuawang.cn";
+//    String APIS = "http://app.lianhuawang.cn";
+//    String IMAGE_URL = "http://images.lianhuawang.cn";
 
     String PORT = ":82";//数据请求端口
 
@@ -20,7 +20,7 @@ public interface Concat {
 
     String BASE_URL = APIS + "/v2/";
 
-//    String IMAGE_URL = API + PORTIMAGE;
+    String IMAGE_URL = API + PORTIMAGE;
 
     /**
      * GET兵团分类
@@ -160,7 +160,7 @@ public interface Concat {
     String INSURANCEPURCHASERECORD_URL = BASE_URL + "cotton-farmers/insurance-record";
 
     /**
-     * GET购买保险--险种类别
+     * GET购买保险记录--险种类别
      */
     String INSURANCEPURCHASERECORDTYPES_URL = BASE_URL + "cotton-farmers/get-risk";
 
@@ -250,18 +250,20 @@ public interface Concat {
      */
     String JOINACOOPERATIVE_URL = BASE_URL + "cotton-farmers/join-cooperative";
 
-    /**
-     * GET农业保险
-     */
-    String PRODUCTLIST_URL = BASE_URL + "products";
 
     /**
-     * GET农业保险分页
+     * GET保险列表
+     * cate_id = 1表示为农业保险
+     * cate_id = 2表示为信用保险
      */
-    String PRODUCTLIST_URL2 = BASE_URL + "products?page=";
+    String PRODUCTLIST_URL = BASE_URL + "products/list?cate_id=%1$s";
 
     /**
-     * 确认订单
+     * GET保险详情
+     */
+    String PRODUCTS_QUERY_URL = BASE_URL + "products/query-by-id?product_id=%1$s&cate_id=%2$s";
+    /**
+     * GET确认订单
      */
     String CONFIRMORDER_URL = BASE_URL + "insurances/insurance-detail?product_id=%1$s&cate_id=%2$s";
 
@@ -270,6 +272,10 @@ public interface Concat {
      */
     String YUYUEBAOXIAN_URL = BASE_URL + "insurances/insured";
 
+    /**
+     * GET检测是否可用购买保险
+     */
+    String INSURANCES_IS_IDENTITY_URL = BASE_URL + "insurances/is-identity";
     /**
      * 签名
      */

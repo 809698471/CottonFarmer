@@ -61,13 +61,13 @@
                             android:layout_marginRight="30dp"
                             android:layout_toLeftOf="@+id/tv_longtou"
                             android:drawableLeft="@mipmap/duihao"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
                         <!--费率-->
                         <TextView
                             android:id="@+id/tv_rates"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textSize="12sp"
+                            android:textSize="10sp"
                             android:visibility="gone" />
 
                         <TextView
@@ -77,7 +77,7 @@
                             android:layout_centerHorizontal="true"
                             android:drawableLeft="@mipmap/duihao"
                             android:text="龙头企业"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
                         <!--保单-->
                         <TextView
@@ -88,7 +88,7 @@
                             android:layout_marginLeft="30dp"
                             android:layout_toRightOf="@id/tv_longtou"
                             android:drawableLeft="@mipmap/duihao"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
                     </RelativeLayout>
 
                     <LinearLayout
@@ -105,7 +105,7 @@
                             android:layout_weight="1"
                             android:drawableLeft="@mipmap/duihao"
                             android:text="省"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/tv_shi"
@@ -114,7 +114,7 @@
                             android:layout_weight="1"
                             android:drawableLeft="@mipmap/duihao"
                             android:text="市"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/tv_xian"
@@ -123,7 +123,7 @@
                             android:layout_weight="1"
                             android:drawableLeft="@mipmap/duihao"
                             android:text="县"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/tv_xiang"
@@ -132,7 +132,7 @@
                             android:layout_weight="1"
                             android:drawableLeft="@mipmap/duihao"
                             android:text="乡"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/tv_personal"
@@ -140,7 +140,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:drawableLeft="@mipmap/duihao"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
                         <TextView
                             android:id="@+id/tv_qita"
@@ -149,7 +149,7 @@
                             android:layout_weight="1"
                             android:drawableLeft="@mipmap/duihao"
                             android:text="其他"
-                            android:textSize="12sp" />
+                            android:textSize="10sp" />
 
                     </LinearLayout>
 
@@ -161,7 +161,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/cardview"
                 android:layout_margin="10dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="WebViewLayout">
 
                 <TextView
                     android:id="@+id/tv_name"
@@ -215,12 +216,26 @@
                     android:layout_below="@id/ll4"
                     android:layout_marginTop="5dp"
                     android:orientation="vertical">
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="保险构成"
-                        android:textSize="@dimen/x30" />
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="保险构成"
+                            android:textSize="@dimen/x30" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="（期限6个月 保单生效起）"
+                            android:textColor="@color/red"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="@dimen/x25"/>
+                    </LinearLayout>
 
                     <TableLayout
                         android:layout_width="match_parent"
@@ -233,7 +248,6 @@
                         <TableRow
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/gray"
                             android:divider="@drawable/table_h_divider"
                             android:orientation="horizontal"
                             android:showDividers="middle|beginning|end">

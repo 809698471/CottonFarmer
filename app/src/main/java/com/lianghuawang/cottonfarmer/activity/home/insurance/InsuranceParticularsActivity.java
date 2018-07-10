@@ -1,9 +1,7 @@
 package com.lianghuawang.cottonfarmer.activity.home.insurance;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.Toolbar;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -12,15 +10,15 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
+import com.lianghuawang.cottonfarmer.activity.my.mycredit.AuthenticationActivity;
 import com.lianghuawang.cottonfarmer.config.Concat;
-import com.lianghuawang.cottonfarmer.entity.home.insurance.ConfirmOrder;
+import com.lianghuawang.cottonfarmer.entity.home.insurance.Is_identity;
+import com.lianghuawang.cottonfarmer.entity.home.insurance.ParticularInsurance;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
-import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
-import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
+import com.lianghuawang.cottonfarmer.utils.DialogUtil;
 
 import java.io.IOException;
 
@@ -103,9 +101,12 @@ public class InsuranceParticularsActivity extends BaseActivity {
     @Bind(R.id.tv_qita)
     TextView mQita;
 
-    private DataBean mData;
+    private String mInsuranceType;//保险类型
+    private int mCate_id;//保险产品id
 
     private String Token;
+
+    private String mInsurance_act;
 
     @Override
     protected int getLayoutId() {
@@ -115,59 +116,114 @@ public class InsuranceParticularsActivity extends BaseActivity {
     @Override
     protected void initView() {
         Token = getIntent().getStringExtra(ConstantUtil.INTENTTOKEN);
-        init();
-        initToolbar();
-        initData();
+        judge();//检测是否可用购买保险
+    }
+
+    private void judge() {
+        OkHttp3Utils.doGet(ConstantUtil.tokenKey, Token, Concat.INSURANCES_IS_IDENTITY_URL,
+                new GsonObjectCallback<Is_identity>() {
+                    @Override
+                    public void onUi(Is_identity is_identity) {
+                        if (is_identity.isSuccess()){
+                            initAlate(is_identity.getData());
+                        }
+                    }
+
+                    @Override
+                    public void onFailed(Call call, IOException e) {
+
+                    }
+                });
+    }
+
+    private void initAlate(Is_identity.DataBean data){
+        switch (Integer.parseInt(data.getCode())){
+            case 0:
+                DialogUtil.VerifyDialog(InsuranceParticularsActivity.this,
+                        "提示：", data.getErrmsg(), "现在认证", "稍后认证",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if (which == ConstantUtil.POSITIVE){
+                                    //跳转到身份证实名认证页面
+                                    startActivity(new Intent(InsuranceParticularsActivity.this,
+                                            AuthenticationActivity.class));
+                                    InsuranceParticularsActivity.this.finish();
+                                } if (which == ConstantUtil.NEGATIVE){
+                                    InsuranceParticularsActivity.this.finish();
+                                }
+                            }
+                        });
+                break;
+            case 1:
+                init();
+                break;
+        }
     }
 
     private void init() {
-        mData = (DataBean) getIntent().getSerializableExtra(ConstantUtil.INSURANCE);
-        LogUtils.d(mData.toString());
-        mName.setText(mData.getName());
-        String Rates = String.format(getResources().getString(R.string.rates), mData.getRate() + "‰");
+        mInsuranceType = getIntent().getStringExtra(ConstantUtil.INSURANCE);
+        mCate_id = getIntent().getIntExtra(ConstantUtil.INSURANCE_ID,0);
+        String url = String.format(Concat.PRODUCTS_QUERY_URL,mInsuranceType,mCate_id);
+        OkHttp3Utils.doGet(ConstantUtil.tokenKey, Token, url, new GsonObjectCallback<ParticularInsurance>() {
+            @Override
+            public void onUi(ParticularInsurance particularInsurance) {
+                if (particularInsurance.isSuccess()){
+                    initToolbar(particularInsurance.getData().getImage_url());
+                    initData(particularInsurance.getData());
+                }
+            }
+
+            @Override
+            public void onFailed(Call call, IOException e) {
+
+            }
+        });
+    }
+
+    private void initToolbar(String image_url) {
+        Glide.with(this).load(Concat.IMAGE_URL + image_url).into(mImage);
+    }
+
+    private void initData(ParticularInsurance.DataBean data) {
+        mName.setText(data.getName());
+        String Rates = String.format(getResources().getString(R.string.rates), data.getRate() + "‰");
         mRates.setText(Rates);
-        String Central = String.format(getResources().getString(R.string.central), mData.getN_tgt_fld1() + "%");
+        String Central = String.format(getResources().getString(R.string.central), data.getN_tgt_fld1() + "%");
         mCentral.setText(Central);
-        String Longtou = String.format(getResources().getString(R.string.longtou), mData.getN_tgt_fld6() + "%");
+        String Longtou = String.format(getResources().getString(R.string.longtou), data.getN_tgt_fld6() + "%");
         mLongtou.setText(Longtou);
-        String Personal = String.format(getResources().getString(R.string.personal), mData.getN_tgt_fld8() + "%");
+        String Personal = String.format(getResources().getString(R.string.personal), data.getN_tgt_fld8() + "%");
         mPersonal.setText(Personal);
-        String Sheng = String.format(getResources().getString(R.string.sheng), mData.getN_tgt_fld2() + "%");
+        String Sheng = String.format(getResources().getString(R.string.sheng), data.getN_tgt_fld2() + "%");
         mSheng.setText(Sheng);
-        String Shi = String.format(getResources().getString(R.string.shi), mData.getN_tgt_fld3() + "%");
+        String Shi = String.format(getResources().getString(R.string.shi), data.getN_tgt_fld3() + "%");
         mShi.setText(Shi);
-        String Xian = String.format(getResources().getString(R.string.xian), mData.getN_tgt_fld4() + "%");
+        String Xian = String.format(getResources().getString(R.string.xian), data.getN_tgt_fld4() + "%");
         mXian.setText(Xian);
-        String Xiang = String.format(getResources().getString(R.string.xiang), mData.getN_tgt_fld5() + "%");
+        String Xiang = String.format(getResources().getString(R.string.xiang), data.getN_tgt_fld5() + "%");
         mXiang.setText(Xiang);
-        String Qita = String.format(getResources().getString(R.string.qita), mData.getN_tgt_fld7() + "%");
+        String Qita = String.format(getResources().getString(R.string.qita), data.getN_tgt_fld7() + "%");
         mQita.setText(Qita);
-//        String policy = String.format(getResources().getString(R.string.policy),mData.getDescribe())
+//        String policy = String.format(getResources().getString(R.string.policy),data.getDescribe())
         mPolicy.setText("保单6个月");
-        mMontent.loadDataWithBaseURL(null,mData.getDescribe(),"text/html", "UTF-8",null);
+        mMontent.loadDataWithBaseURL(null, data.getDescribe(), "text/html", "UTF-8", null);
         //保险对象
-        String Object = String.format(getResources().getString(R.string.object), mData.getStart_end_time());
+        String Object = String.format(getResources().getString(R.string.object), data.getStart_end_time());
         mObject.setText(Object);
         mRates1.setText(Rates);//费率
         //单位保额
-        String Price = String.format(getResources().getString(R.string.price), mData.getPrice());
+        String Price = String.format(getResources().getString(R.string.price), data.getPrice());
         mPrice.setText(Price);
         //保险性质
-        String Properties = String.format(getResources().getString(R.string.properties), mData.getInsurance_nature());
+        String Properties = String.format(getResources().getString(R.string.properties), data.getInsurance_nature());
         mProperties.setText(Properties);
 
-        mContent.setText(mData.getN_tgt_fld1() + "%");
-        mPlace.setText(mData.getN_tgt_fld2() + "%");
-        mOther.setText(mData.getN_tgt_fld7() + "%");
-        mMyself.setText(mData.getN_tgt_fld8() + "%");
-    }
-
-    private void initToolbar() {
-        Glide.with(this).load(mData.getImage_url()).into(mImage);
-    }
-
-    private void initData() {
-
+        mContent.setText(data.getN_tgt_fld1() + "%");
+        mPlace.setText(data.getN_tgt_fld2() + "%");
+        mOther.setText(data.getN_tgt_fld7() + "%");
+        mMyself.setText(data.getN_tgt_fld8() + "%");
+        mInsurance_act = data.getProduct();
     }
 
     @OnClick(R.id.cb_argeed)
@@ -182,38 +238,22 @@ public class InsuranceParticularsActivity extends BaseActivity {
     //保单条款
     @OnClick(R.id.tv_argeed)
     public void tvClick(TextView textView) {
-        startActivity(new Intent(InsuranceParticularsActivity.this, InsuranceClausesActivity.class));
+        Intent intent = new Intent(InsuranceParticularsActivity.this, InsuranceClausesActivity.class);
+        intent.putExtra(ConstantUtil.INSURANCE_ACT, mInsurance_act);
+        startActivity(intent);
     }
 
     //预约投保>>>>>保险订单
     @OnClick(R.id.btn_argeed)
     public void btnClick(Button button) {
-        initData(mData.getProduct_id(),mData.getCate_id().getCate_id() + "");
+        initData();
     }
 
-    private void initData(String product_id, String cate_id) {
-        showLoadingDialog(this);
-        String url = String.format(Concat.CONFIRMORDER_URL, product_id, cate_id);
-        OkHttp3Utils.doGet(ConstantUtil.tokenKey, Token, url, new GsonObjectCallback<ConfirmOrder>() {
-            @Override
-            public void onUi(ConfirmOrder confirmOrder) {
-                if (confirmOrder.isSuccess()) {
+    private void initData() {
                     Intent intent = new Intent(InsuranceParticularsActivity.this, InsuranceOrderActivity.class);
-                    intent.putExtra("product_id", mData.getProduct_id());
-                    intent.putExtra("cate_id", mData.getCate_id().getCate_id() + "");
+                    intent.putExtra("product_id", mInsuranceType);
+                    intent.putExtra("cate_id", mCate_id+"");
                     intent.putExtra(ConstantUtil.INTENTTOKEN, Token);
                     startActivity(intent);
-                    dismissdingDialog();
-                } else {
-                    ToastUtils.showLong(InsuranceParticularsActivity.this, confirmOrder.getData().getErrmsg());
-                    dismissdingDialog();
-                }
-            }
-
-            @Override
-            public void onFailed(Call call, IOException e) {
-                ToastUtils.showLong(InsuranceParticularsActivity.this, ConstantUtil.NETERROR);
-            }
-        });
     }
 }

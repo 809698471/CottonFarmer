@@ -124,7 +124,8 @@ public class AgricultureFragment extends BaseFragment implements AbsRecyclerView
     @Override
     public void onItemClick(int position, AbsRecyclerViewAdapter.ClickableViewHolder holder) {
         Intent intent = new Intent(getContext(), InsuranceParticularsActivity.class);
-        intent.putExtra(ConstantUtil.INSURANCE,dataBeans.get(position));
+        intent.putExtra(ConstantUtil.INSURANCE,dataBeans.get(position).getProduct_id());
+        intent.putExtra(ConstantUtil.INSURANCE_ID,dataBeans.get(position).getCate_id().getCate_id());
         intent.putExtra(ConstantUtil.INTENTTOKEN,Token);
         startActivity(intent);
     }

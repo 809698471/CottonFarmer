@@ -60,6 +60,9 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
 
     private SharedPreferencesUtil loginSP;
 
+    private int mPayStart;
+    private final int mPayStartDef = -1;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_home_page;
@@ -105,7 +108,9 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
         layout.setOnCheckedChangeListener(this);
     }
 
+    @Override
     protected void initView() {
+        mPayStart = getIntent().getIntExtra("id", mPayStartDef);
         loginSP = SharedPreferencesUtil.newInstance(ConstantUtil.LOGINSP);
         //动态添加Fragment ,获取Fragment 管理器
         msg = getSupportFragmentManager();
@@ -212,6 +217,10 @@ public class HomePageActivity extends BaseActivity implements RadioGroup.OnCheck
                 } else {
                     type = false;
                 }
+            }
+        } else {
+            if (mPayStart != mPayStartDef) {
+                rbArray[mPayStart - 1].setChecked(true);
             }
         }
     }
