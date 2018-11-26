@@ -141,10 +141,10 @@ public class ConstantUtil {
     /**
      * -------------------订单模块
      */
-    public static final int ALL = -1;//全部
-    public static final int NON_PAYMENT = 0;//未付款
-    public static final int PAYMENT_HAS_BEEN = 1;//已付款
-    public static final int HAS_BEEN_COMPLETED = 2;//已完成
+    public static final int ALL = 0;//全部
+    public static final int NON_PAYMENT = 1;//未付款
+    public static final int PAYMENT_HAS_BEEN = 2;//已付款
+    public static final int HAS_BEEN_COMPLETED = 3;//已完成
 
 
     /**---------------------------------数据库-----------------------------------**/

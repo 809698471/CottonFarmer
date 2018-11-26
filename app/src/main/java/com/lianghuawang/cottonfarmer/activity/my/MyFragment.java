@@ -1,7 +1,6 @@
 package com.lianghuawang.cottonfarmer.activity.my;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,7 +32,6 @@ import java.io.IOException;
 
 import okhttp3.Call;
 
-import static com.lianghuawang.cottonfarmer.config.Concat.APIS;
 
 /**
  * 我的
@@ -146,6 +144,7 @@ public class MyFragment extends Fragment implements View.OnClickListener {
                 EventBus.getDefault().register(getActivity());
                 EventBus.getDefault().post(new MessageEvent(true));
                 EventBus.getDefault().unregister(getActivity());
+
                 break;
             //我的保险
             case R.id.myfragment_insurance:

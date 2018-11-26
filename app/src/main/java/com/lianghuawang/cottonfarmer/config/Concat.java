@@ -196,6 +196,12 @@ public interface Concat {
     String ORDERLIST_URL = BASE_URL + "insures";
 
     /**
+     * GET我的订单列表(保险)
+     */
+    String ORDER_INSURANCE_LIST_URL = BASE_URL + "insures/my-order";
+
+
+    /**
      * PUT修改支付状态
      */
     String MODIFYTHESTATEOFPAYMENT_URL = BASE_URL + "insures/update-pay-status";

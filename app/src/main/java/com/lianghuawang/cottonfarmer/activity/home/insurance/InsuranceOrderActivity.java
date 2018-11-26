@@ -21,21 +21,16 @@ import com.lianghuawang.cottonfarmer.entity.home.insurance.PayEntity;
 import com.lianghuawang.cottonfarmer.entity.home.insurance.Sheng;
 import com.lianghuawang.cottonfarmer.entity.home.insurance.toubao;
 import com.lianghuawang.cottonfarmer.netutils.GsonObjectCallback;
-import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.netutils.OkHttp3Utils;
 import com.lianghuawang.cottonfarmer.netutils.ToastUtils;
 import com.lianghuawang.cottonfarmer.netutils.instance.AgriculturalInsurances.DataBean;
-import com.lianghuawang.cottonfarmer.tools.MessageEvent;
 import com.lianghuawang.cottonfarmer.ui.base.BaseActivity;
 import com.lianghuawang.cottonfarmer.utils.ConstantUtil;
 import com.lianghuawang.cottonfarmer.widget.linkage_menu.AddressSelector;
 import com.lianghuawang.cottonfarmer.widget.linkage_menu.CityInterface;
 import com.lianghuawang.cottonfarmer.widget.linkage_menu.OnClickDisappearListener;
 import com.lianghuawang.cottonfarmer.widget.linkage_menu.OnItemAddressClickListener;
-import com.lianghuawang.cottonfarmer.widget.pay.PayDialog;
 import com.lianghuawang.cottonfarmer.widget.pay.PayDialog2;
-
-import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -46,8 +41,6 @@ import java.util.Map;
 import butterknife.Bind;
 import butterknife.OnClick;
 import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
 
 //确认保险订单
 public class InsuranceOrderActivity extends BaseActivity implements OnClickDisappearListener, OnItemAddressClickListener, AddressSelector.OnTabSelectedListener, PayDialog2.DimssLienter, PayDialog2.PayLienter {
@@ -326,7 +319,7 @@ public class InsuranceOrderActivity extends BaseActivity implements OnClickDisap
     private Map<String, String> getParams() {
         Map<String, String> params = new HashMap<>();
         params.put("product_id", product_id);
-        params.put("cooperative_id", "843400");//一期只有小棉袄合作社，所以为固定编号
+        params.put("cooperative_id", "1");//一期只有小棉袄合作社，所以为固定编号
         params.put("mechanism_code", mechanism);
         params.put("premium", dataBeans.getPremium() + "");
         params.put("pay_amount", dataBeans.getPay_num() + "");

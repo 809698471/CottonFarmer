@@ -62,7 +62,7 @@ public class Order extends BaseFragment {
     }
 
     private void initData() {
-        OkHttp3Utils.doGet(ConstantUtil.tokenKey, Token, Concat.ORDERLIST_URL, new GsonObjectCallback<OrderAll>() {
+        OkHttp3Utils.doGet(ConstantUtil.tokenKey, Token, Concat.ORDER_INSURANCE_LIST_URL, new GsonObjectCallback<OrderAll>() {
             @Override
             public void onUi(OrderAll orderAll) {
                 if (orderAll.isSuccess()){

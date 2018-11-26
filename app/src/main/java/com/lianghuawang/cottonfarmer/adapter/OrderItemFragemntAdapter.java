@@ -30,21 +30,19 @@ public class OrderItemFragemntAdapter extends AbsRecyclerViewAdapter {
         this.type = type;
         this.dataBeans = new ArrayList<>();
         for (OrderAll.DataBean bean : dataBeans) {
-            if (bean.getStatus() == 1) {
-                if (type == ConstantUtil.ALL) {//全部
+            if (type == ConstantUtil.ALL) {//全部
+                this.dataBeans.add(bean);
+            } else if (type == ConstantUtil.NON_PAYMENT) {//待支付
+                if (type == bean.getPay_status()) {
                     this.dataBeans.add(bean);
-                } else if (type == ConstantUtil.NON_PAYMENT) {//待支付
-                    if (type == bean.getPay_status()) {
-                        this.dataBeans.add(bean);
-                    }
-                } else if (type == ConstantUtil.PAYMENT_HAS_BEEN) {//已支付
-                    if (type == bean.getPay_status()) {
-                        this.dataBeans.add(bean);
-                    }
-                } else if (type == ConstantUtil.HAS_BEEN_COMPLETED) {//已完成
-                    if (type == bean.getPay_status()) {
-                        this.dataBeans.add(bean);
-                    }
+                }
+            } else if (type == ConstantUtil.PAYMENT_HAS_BEEN) {//已支付
+                if (type == bean.getPay_status()) {
+                    this.dataBeans.add(bean);
+                }
+            } else if (type == ConstantUtil.HAS_BEEN_COMPLETED) {//已完成
+                if (type == bean.getPay_status()) {
+                    this.dataBeans.add(bean);
                 }
             }
         }
@@ -65,7 +63,7 @@ public class OrderItemFragemntAdapter extends AbsRecyclerViewAdapter {
             holde.time.setText("下单时间：" + dataBeans.get(position).getCreated_at());
             Glide.with(mContext).load(Concat.IMAGE_URL + "/" + dataBeans.get(position).getImage_url())
                     .into(holde.banner);
-            switch (dataBeans.get(position).getPay_status()){
+            switch (dataBeans.get(position).getPay_status()) {
                 case ConstantUtil.NON_PAYMENT:
                     holde.state.setText("待支付");
                     break;
@@ -91,7 +89,7 @@ public class OrderItemFragemntAdapter extends AbsRecyclerViewAdapter {
     public class ViewHolder extends ClickableViewHolder {
 
         private ImageView banner;
-        private TextView time,state,name,price,cotton_area;
+        private TextView time, state, name, price, cotton_area;
 
         public ViewHolder(View itemView) {
             super(itemView);

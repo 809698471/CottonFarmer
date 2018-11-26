@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.lianghuawang.cottonfarmer.R;
 import com.lianghuawang.cottonfarmer.config.Concat;
 import com.lianghuawang.cottonfarmer.entity.home.news.News;
+import com.lianghuawang.cottonfarmer.netutils.LogUtils;
 import com.lianghuawang.cottonfarmer.ui.base.AbsRecyclerViewAdapter;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class NewsAndInformationAdapter extends AbsRecyclerViewAdapter {
     @NonNull
     @Override
     public ClickableViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LogUtils.d("viewType---" + viewType);
         mContext = parent.getContext();
         return new ViewHolder(LayoutInflater
                 .from(mContext)
